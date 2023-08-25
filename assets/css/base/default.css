@@ -1,0 +1,36 @@
+@layer base {
+    body {
+        @apply font-bricolage font-normal text-sm text-white;
+    }
+
+    path {
+        fill: currentColor;
+    }
+
+    p + ul, ul + p, p + p {
+        @apply mt-4
+    }
+
+    address {
+        @apply not-italic;
+    }
+
+    b, strong {
+        @apply font-semibold;
+    }
+
+    [type='text'], [type='email'], [type='url'], [type='password'], [type='number'], [type='date'], [type='datetime-local'], [type='month'], [type='search'], [type='tel'], [type='time'], [type='week'], [multiple], textarea, select {
+        outline: none;
+    }
+
+    select {
+        background-image: none
+    }
+
+    textarea {
+        @apply resize-none;
+    }
+    ::selection{
+        @apply bg-orange-100 bg-opacity-75;
+    }
+}

@@ -1,0 +1,62 @@
+.text-big-titles, .text-h1, .text-h2, .text-h3, .text-h4 {
+    @apply font-bold font-monument;
+}
+
+.text-big-titles {
+    @apply text-4xl;
+    @apply leading-normal !important;
+}
+
+.text-h1,
+.text-h2 {
+    @apply text-3.75xl
+}
+
+.text-h3 {
+    @apply text-2.5xl;
+}
+
+.text-h4 {
+    @apply text-base;
+}
+
+.text-cta {
+    @apply font-semibold text-xs;
+    @apply leading-normal !important;
+
+}
+
+.text-small-body {
+    @apply font-normal text-xs;
+    @apply leading-normal !important;
+
+}
+
+@screen s {
+    .text-big-titles {
+        @apply text-5.75xl;
+    }
+}
+
+
+@screen m {
+    .text-big-titles {
+        @apply text-6.5xl;
+    }
+
+    .text-h1,
+    .text-h2 {
+        @apply text-5xl;
+        @apply leading-normal !important;
+
+    }
+
+    .text-h3{
+        @apply text-3.75xl;
+    }
+
+    .text-h4 {
+        @apply text-2.25xl;
+        @apply leading-normal !important;
+    }
+}
