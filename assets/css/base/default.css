@@ -1,6 +1,6 @@
 @layer base {
     body {
-        @apply font-bricolage font-normal text-sm text-white;
+        @apply font-bricolage font-normal text-base;
     }
 
     path {
