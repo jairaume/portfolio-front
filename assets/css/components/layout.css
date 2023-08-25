@@ -1,0 +1,23 @@
+.responsive-layout {
+  @apply mx-auto w-full max-layout-xs xs:max-layout-s s:max-layout-m m:max-layout-l
+}
+
+.responsive-layout-2 {
+  @apply mx-auto w-full max-layout-xs xs:max-layout-s s:max-layout-l
+}
+
+.responsive-padding-x {
+  @apply px-xs xs:px-s s:px-m m:px-l
+}
+
+.responsive-padding-y {
+  @apply py-layout-xs-c-0-g-2 xs:py-layout-xs-c-0-g-4 m:py-layout-l-c-1-g-1;
+}
+
+.responsive-padding-b {
+  @apply pb-xs xs:pb-24 m:pb-32;
+}
+
+.responsive-menu-padding-t {
+  @apply pt-[120px] s:pt-[180px];
+}

@@ -1,0 +1,12 @@
+@import "tailwindcss/base";
+@import "assets/css/base/default.css";
+
+@import "tailwindcss/components";
+@import "assets/css/components/icon.css";
+@import "assets/css/components/layout.css";
+@import "assets/css/components/heading.css";
+@import "assets/css/components/button.css";
+@import "assets/css/components/input.css";
+@import "assets/css/components/swiper.css";
+
+@import "tailwindcss/utilities";
