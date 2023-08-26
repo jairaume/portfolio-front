@@ -1,0 +1,12 @@
+.btn {
+    @apply flex items-center gap-2 px-6 py-3 ring-4 duration-300 rounded-btn text-cta;
+    @apply hover:ring-white
+}
+
+.btn-orange-100 {
+    @apply bg-orange-100 text-white ring-orange-100/50;
+}
+
+.btn-black {
+    @apply bg-black text-white ring-black/50;
+}

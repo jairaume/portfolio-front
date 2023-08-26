@@ -18,25 +18,30 @@ export default {
       'l': '1800px',
       'no-hover': {'raw': '(hover: hover) and (pointer: fine)'}
     },
-    colors: {
-      inherit: 'inherit',
-      current: 'currentColor',
-      transparent: 'transparent',
-      white: '#fffaee',
-      grey: {
-        50: '#BEBEBE',
-        100: '#9a9696',
-        300: '#494949',
-        500: '#313030',
-        700: '#1E1E1E',
-        900: '#131312'
-      },
-      orange: {
-        100: '#F68757',
-        200: '#CC4F29'
-      }
-    },
     extend: {
+      colors: {
+        inherit: 'inherit',
+        current: 'currentColor',
+        transparent: 'transparent',
+        white: '#fffaee',
+        black: '#131312',
+        grey: {
+          50: '#BEBEBE',
+          100: '#9a9696',
+          300: '#494949',
+          500: '#313030',
+          700: '#1E1E1E',
+          900: '#131312'
+        },
+        orange: {
+          100: '#F68757',
+          200: '#CC4F29'
+        }
+      },
+      borderRadius: {
+        'big': '30px',
+        'btn': '15px'
+      },
       boxShadow: {
         'custom-ondark': "2px 5px 18px rgba(0, 0, 0, 0.40)",
       },
