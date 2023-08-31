@@ -1,7 +1,7 @@
 <template>
-  <main class="bg-black">
+  <main id="rootEl" class="bg-black">
 
-    <section aria-labelledby="position" class="relative s:max-h-screen">
+    <section ref="hero" id="hero" aria-labelledby="position" class="relative responsive-layout s:max-h-screen">
       <div
           class="relative min-h-[600px] s:min-h-[825px] m:min-h-[1000px] p-8  xs:pb-8 s:px-12 ">
         <div class="absolute w-full h-full top-0 left-0 z-0 px-8 py-12" id="grey-box">
@@ -31,59 +31,151 @@
       </div>
     </section>
 
-    <section id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
+    <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24">
-        <div class="xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
+        <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="space-y-4">
             <h3 class="text-white text-h3">My name is</h3>
             <h1 id="reveal-text-content" class="text-monument-h1 text-orange-100 reveal-text leading-loose">Jérôme</h1>
-            <h3 id="reveal-text-paragraph" class="text-white text-h3 leading-normal reveal-text-vertical">
+            <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
               I’m a French software engineer who majored in software development in 2024 at ISEN Lille.
               <br>
               Since then, I have worked for multiple companies, helping them achieve their digital journey.
             </h3>
           </div>
           <nuxt-link to="/" class="btn btn-orange-100 w-fit">
-            <span>More about me</span>
+            <p>More about me</p>
+            <i class="icon icon-arrow"/>
           </nuxt-link>
+          <nuxt-img ref="circonflexe" id="circonflexe-follow" src="/images/svg/circonflexe.svg" class="absolute bottom-0 right-0 w-32 h-32" alt=""/>
         </div>
       </div>
     </section>
 
-    <section class="bg-grey-50 py-80">
+    <section class="bg-grey-900 py-80 responsive-layout min-h-screen">
+      <div class="projects_wrapper will-change-transform flex space-x-8">
+        <article v-for="i in 4" :key="i" class="cursor-pointer group relative p-8 bg-teal-900 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+          <div class="absolute w-full h-full top-0 left-0">
+            <nuxt-picture src="/images/projects/grangette.png"
+                          alt="Projects – Grangette"
+                          class="w-full h-full rounded-big"
+                          :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
+            />
+          </div>
+          <div class="absolute w-full bottom-0 left-0 p-4">
+            <div class="bg-teal-900 rounded-btn text-white flex justify-between items-center px-2">
+              <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
+              <i class="icon icon-arrow"></i>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
   </main>
 </template>
 
 <script setup lang="ts">
-const {$gsap} = useNuxtApp();
+const {$gsap, $Draggable} = useNuxtApp();
+
+const revealText = ref<HTMLElement|null>(null);
+const circonflexe = ref<HTMLElement|null>(null);
+const {isOutside} = useMouseInElement(revealText);
+const {x, y, elementPositionX:originX, elementPositionY:originY} = useMouseInElement(circonflexe);
 
 const heroScrollPositions = {
   trigger:"#grey-box",
   start:"25% top",
   endTrigger:"#reveal-text",
-  end:"top 25%",
+  end:"top 15%",
 }
 
-onMounted(()=>{
-  $gsap.to(["#grey-box","#grey-box div"],{
-    scrollTrigger:{
-      scrub:1,
-      markers:true,
+const accentOrigin = computed<{x:number, y:number}>(()=>{
+  return {
+    x: originX.value + (circonflexe.value?.offsetWidth ?? 0)/2,
+    y: originY.value + (circonflexe.value?.offsetHeight ?? 0)/2,
+  }
+})
+const accentAngle = computed<number>(() => {
+  return (Math.atan2(x.value - accentOrigin.value.x,-(y.value - accentOrigin.value.y)))*(180/Math.PI)
+})
+
+watch([x, y], () => {
+  if (!isOutside.value) {
+    $gsap.to("#circonflexe-follow", {
+      rotation: accentAngle.value+"_short",
+      duration: 2,
+      ease: "power4",
+    })
+  }
+})
+
+/*function initGsapProducts() {
+  if (!sectionProducts.value) return;
+
+  const sectionProductsCtx = $gsap.utils.selector(sectionProducts.value);
+  const productsWrapper = sectionProductsCtx('.products__wrapper')[0];
+
+  const product = sectionProductsCtx('.product')[0];
+
+  let mm = $gsap.matchMedia();
+  let draggable;
+  mm.add("(max-width: 1023px)", () => {
+    $gsap.set(productsWrapper, {x: 0})
+
+    draggable = $Draggable.create('.products__wrapper', { // use a proxy element
+      type: "x",
+      inertia: true,
+      edgeResistance: .2,
+      bounds: {
+        minX: -(productsWrapper.offsetWidth - product.offsetWidth),
+        maxX: 0
+      }
+    });
+
+    return () => {
+      draggable[0].kill()
+    }
+  });
+
+  mm.add("(min-width: 1024px)", () => {
+    $gsap.set(productsWrapper, {x: 0})
+
+    const el = $gsap.to(productsWrapper, {
+      x: () => (-productsWrapper.offsetWidth * 0.7) + 'px',
+      ease: "none",
+      scrollTrigger: {
+        trigger: sectionProducts.value,
+        pin: true,
+        scrub: 1,
+        start: "center center",
+        end: () => "+=" + productsWrapper.offsetWidth,
+        invalidateOnRefresh: true,
+      }
+    })
+  });
+
+}
+*/
+
+onMounted(()=> {
+
+  $gsap.to(["#grey-box", "#grey-box div"], {
+    scrollTrigger: {
+      scrub: 1,
       ...heroScrollPositions
     },
-    padding:0,
-    borderRadius:0,
-    backgroundColor:"rgb(30,30,30)",
+    padding: 0,
+    borderRadius: 0,
+    backgroundColor: "rgb(30,30,30)",
   })
 
   $gsap.to("#grey-box-content", {
     scrollTrigger: {
-      scrub:2,
+      scrub: 2,
       ...heroScrollPositions
     },
-    opacity:0,
+    opacity: 0,
   })
 
 
@@ -92,7 +184,6 @@ onMounted(()=>{
     ease: "none",
     scrollTrigger: {
       trigger: "#reveal-text-content",
-      markers: true,
       scrub: 1,
       start: "top center",
       endTrigger: "#reveal-text-paragraph",
@@ -105,26 +196,24 @@ onMounted(()=>{
     ease: "none",
     scrollTrigger: {
       trigger: "#reveal-text-paragraph",
-      markers: true,
       scrub: 1,
       start: "10% center",
       endTrigger: "#reveal-text",
       end: "85% bottom"
     }
   });
-
 })
 
 </script>
 
 <style scoped>
 .reveal-text {
-  @apply bg-gradient-to-r bg-right-top from-50% to-50% from-orange-100 to-grey-300 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r bg-right-top from-40% via-50% to-50% from-orange-100 via-orange-800 to-grey-300 bg-clip-text text-transparent;
   background-size: 200% 100%;
 }
 
 .reveal-text-vertical {
-  @apply bg-gradient-to-b bg-bottom from-50% to-50% from-white to-grey-300 bg-clip-text text-transparent;
+  @apply bg-gradient-to-b bg-bottom from-40% via-50% to-50% from-grey-100 via-white to-grey-300 bg-clip-text text-transparent;
   background-size: 100% 200%;
 }
 </style>

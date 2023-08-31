@@ -10,3 +10,11 @@
     width: 1em;
     height: 1em;
 }
+.icon-arrow {
+    mask: url('/svg/arrow.svg');
+    mask-position: center;
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    width: 1.75em;
+    height: 1.75em;
+}
