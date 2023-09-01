@@ -1,6 +1,7 @@
 <template>
   <div class="bg-black">
     <slot/>
+    <TheFooter/>
   </div>
 </template>
 

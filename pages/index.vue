@@ -47,28 +47,75 @@
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
-          <nuxt-img ref="circonflexe" id="circonflexe-follow" src="/images/svg/circonflexe.svg" class="absolute bottom-0 right-0 w-32 h-32" alt=""/>
+          <nuxt-img ref="circonflexe" id="circonflexe-follow" src="/images/svg/circonflexe.svg" class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32" alt=""/>
         </div>
       </div>
     </section>
 
-    <section class="bg-grey-900 py-80 responsive-layout min-h-screen">
-      <div class="projects_wrapper will-change-transform flex space-x-8">
-        <article v-for="i in 4" :key="i" class="cursor-pointer group relative p-8 bg-teal-900 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
-          <div class="absolute w-full h-full top-0 left-0">
-            <nuxt-picture src="/images/projects/grangette.png"
-                          alt="Projects – Grangette"
-                          class="w-full h-full rounded-big"
-                          :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
-            />
-          </div>
-          <div class="absolute w-full bottom-0 left-0 p-4">
-            <div class="bg-teal-900 rounded-btn text-white flex justify-between items-center px-2">
-              <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
-              <i class="icon icon-arrow"></i>
+    <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
+      <div class="responsive-layout">
+        <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
+          <article v-for="i in 4" :key="i" class="cursor-pointer group relative p-8 bg-teal-900 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)] border-[1px] border-white/25">
+            <div class="absolute w-full h-full top-0 left-0">
+              <nuxt-picture src="/images/projects/grangette.png"
+                            alt="Projects – Grangette"
+                            class="w-full h-full rounded-big"
+                            :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
+              />
             </div>
+            <div class="absolute w-full bottom-0 left-0 p-4">
+              <div class="bg-teal-900 rounded-btn text-white flex justify-between items-center px-2">
+                <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
+                <i class="icon icon-arrow"></i>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <nuxt-link to="/" class="btn btn-white m-12 w-fit mx-auto">
+          <p>View all projects</p>
+          <i class="icon icon-arrow"/>
+        </nuxt-link>
+      </div>
+    </section>
+
+    <section class="py-80 bg-grey-50 text-black responsive-padding-x">
+      <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
+        <div class="space-y-12">
+          <h1 class="text-big-title text-center xs:text-left">Experiences</h1>
+
+          <div class="grid gap-4 xs:grid-cols-2">
+
+              <h4 class="text-monument-h3 text-orange-200 font-light pt-2 col-start-1"> May 2019 – August 2023</h4>
+              <div class="xs:col-start-2">
+                <h4 class="text-h4 font-medium">Software Engineer&nbsp;· <span class="font-black">Apple</span></h4>
+                <p class="text-grey-300 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
+                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum. Non occaecat incididunt adipisicing aute dolore cupidatat enim pariatur est
+                </p>
+              </div>
+
+              <h4 class="text-monument-h3 text-orange-200 font-light pt-2 col-start-1"> 2019 – 2023</h4>
+              <div class="xs:col-start-2">
+                <h4 class="text-h4 font-medium">Intern Developer&nbsp;· <span class="font-black">Google</span></h4>
+                <p class="text-grey-300 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
+                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum.
+                </p>
+              </div>
+
           </div>
-        </article>
+
+          <nuxt-link to="/" class="btn btn-black w-fit mx-auto">
+            <p>View my full resume</p>
+            <i class="icon icon-arrow"/>
+          </nuxt-link>
+
+        </div>
+        <div>
+          <h1 class="text-big-title text-center xs:text-left">
+            Skills
+            <span class="text-xs font-light">All of them</span>
+          </h1>
+        </div>
       </div>
     </section>
 
@@ -110,53 +157,7 @@ watch([x, y], () => {
   }
 })
 
-/*function initGsapProducts() {
-  if (!sectionProducts.value) return;
-
-  const sectionProductsCtx = $gsap.utils.selector(sectionProducts.value);
-  const productsWrapper = sectionProductsCtx('.products__wrapper')[0];
-
-  const product = sectionProductsCtx('.product')[0];
-
-  let mm = $gsap.matchMedia();
-  let draggable;
-  mm.add("(max-width: 1023px)", () => {
-    $gsap.set(productsWrapper, {x: 0})
-
-    draggable = $Draggable.create('.products__wrapper', { // use a proxy element
-      type: "x",
-      inertia: true,
-      edgeResistance: .2,
-      bounds: {
-        minX: -(productsWrapper.offsetWidth - product.offsetWidth),
-        maxX: 0
-      }
-    });
-
-    return () => {
-      draggable[0].kill()
-    }
-  });
-
-  mm.add("(min-width: 1024px)", () => {
-    $gsap.set(productsWrapper, {x: 0})
-
-    const el = $gsap.to(productsWrapper, {
-      x: () => (-productsWrapper.offsetWidth * 0.7) + 'px',
-      ease: "none",
-      scrollTrigger: {
-        trigger: sectionProducts.value,
-        pin: true,
-        scrub: 1,
-        start: "center center",
-        end: () => "+=" + productsWrapper.offsetWidth,
-        invalidateOnRefresh: true,
-      }
-    })
-  });
-
-}
-*/
+const projects = ref<HTMLElement|null>(null);
 
 onMounted(()=> {
 
@@ -202,6 +203,50 @@ onMounted(()=> {
       end: "85% bottom"
     }
   });
+
+  // Projects section
+  let mm = $gsap.matchMedia();
+  mm.add("(max-width: 1023px)", () => {
+    $gsap.set(".projects_wrapper", {x: 0})
+
+    const draggable = $Draggable.create('.projects_wrapper', {
+      type: "x",
+      edgeResistance: .2,
+      bounds: {
+        minX: -1500,
+        maxX: 0
+      }
+    });
+
+    return () => {
+      draggable[0].kill()
+    }
+  });
+
+  mm.add("(min-width: 1024px)", () => {
+    $gsap.set(".projects_wrapper", {x: 0})
+    console.log(projects.value?.offsetWidth)
+    $gsap.to(".projects_wrapper", {
+      xPercent: -100,
+      ease: "power",
+      scrollTrigger: {
+        trigger: projects.value,
+        pin: true,
+        scrub: 1,
+        start: "center center",
+        end: "+=100%",
+        invalidateOnRefresh: true,
+      }
+    });
+  })
+})
+
+onBeforeUnmount(()=>{
+  $gsap.killTweensOf("#grey-box");
+  $gsap.killTweensOf("#grey-box-content");
+  $gsap.killTweensOf("#reveal-text-content");
+  $gsap.killTweensOf("#reveal-text-paragraph");
+  $gsap.killTweensOf("#circonflexe-follow");
 })
 
 </script>
@@ -215,5 +260,14 @@ onMounted(()=> {
 .reveal-text-vertical {
   @apply bg-gradient-to-b bg-bottom from-40% via-50% to-50% from-grey-100 via-white to-grey-300 bg-clip-text text-transparent;
   background-size: 100% 200%;
+}
+
+.projects_wrapper{
+  & > * {
+    @apply duration-500;
+  }
+  &:hover > article:not(:hover) {
+    @apply brightness-50 duration-200;
+  }
 }
 </style>
