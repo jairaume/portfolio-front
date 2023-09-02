@@ -23,7 +23,9 @@
   "dependencies": {
     "@nuxt/content": "^2.7.2",
     "@vueuse/nuxt": "^10.2.0",
+    "draggable": "^4.2.0",
     "gsap": "^3.12.2",
+    "rough-notation": "^0.5.1",
     "swiper": "^10.2.0"
   },
   "hooks": {

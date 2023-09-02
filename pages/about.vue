@@ -64,23 +64,51 @@
     </div>
   </section>
 
-  <section class="py-32 s:py-40 responsive-padding-x text-white">
+  <section id="hobbies" class="relative py-32 s:py-40 responsive-padding-x text-white">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          If I’m not working, I’m probably in a movie theater, or surfing the northern french coast or most likely in my basement beating my drums !
+          If I’m not working, I’m probably in a <span ref="movieAnnotate">movie theater</span>, or <span ref="surfAnnotate">surfing</span> the northern french coast or most likely in my basement beating my <span ref="drumsAnnotate" class="relative after:content-[url(/images/svg/drawn-arrow.svg)] after:absolute after:top-[110%] after:left-1/2 after:w-10 after:h-32">drums</span> !
         </h3>
       </div>
     </div>
+    <nuxt-img src="/images/emoji/popcorn.png" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
+    <nuxt-img src="/images/emoji/surf.png" class="surf absolute top-1/2 left-4 w-16 h-16 xs:left-8 s:w-24 s:h-24 s:left-10 m:w-24 m:h-24 m:left-24"></nuxt-img>
+    <nuxt-img src="/images/emoji/drum.png" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
   </section>
 
-  <section class="bg-grey-300 py-80"></section>
+  <section class="py-32 pb-72 responsive-padding-x relative h-screen">
+    <div class="responsive-layout">
+      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
+        <h4 class="text-h4 text-white text-center">here's other stuff I like...</h4>
+        <ul class="mt-20">
+          <li v-for="i in 5" :key="i"
+              class="hobby absolute w-auto max-w-[600px] h-[50%] max-h-[900px] -translate-y-1/2"
+              :style="{left:i*100+'px', top:'calc('+i*30+'px + 50%)'}">
+            <nuxt-img src="https://picsum.photos/600/500" alt="about" class="w-full h-full object-cover" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </main>
 </template>
 
 <script setup lang="ts">
+import {annotate} from "rough-notation";
+
+const movieAnnotate = ref<HTMLElement>()
+const surfAnnotate = ref<HTMLElement>()
+const drumsAnnotate = ref<HTMLElement>()
+
 const {$gsap} = useNuxtApp()
 
+const hobbiesScrollTrigger = {
+  trigger: '#hobbies',
+  start: 'top 75%',
+  end: 'bottom center',
+  scrub: 1,
+}
 
 onMounted(() => {
   const lineSections = $gsap.utils.toArray('.line-section')
@@ -117,7 +145,95 @@ onMounted(() => {
       y: 50
     })
   })
+
+  const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline:true, color:"#ED702D"})
+  const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline:true, color:"#ED702D"})
+  const drumsAnnotation = annotate(drumsAnnotate.value as HTMLElement, {type: 'circle', color:"#ED702D"})
+
+  $gsap.from(movieAnnotate.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: movieAnnotate.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        movieAnnotation.show()
+      },
+      onLeaveBack: () => {
+        movieAnnotation.hide()
+      }
+    },
+  })
+
+  $gsap.from(surfAnnotate.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: surfAnnotate.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        surfAnnotation.show()
+      },
+      onLeaveBack: () => {
+        surfAnnotation.hide()
+      }
+    },
+  })
+
+  $gsap.from(drumsAnnotate.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: drumsAnnotate.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        drumsAnnotation.show()
+      },
+      onLeaveBack: () => {
+        drumsAnnotation.hide()
+      }
+    },
+  })
+
+  $gsap.fromTo('.movie', {
+    scale: .8,
+    rotation: 0,
+    x:10
+  }, {
+    scrollTrigger : hobbiesScrollTrigger,
+    ease: 'none',
+    scale:1,
+    rotation: 15,
+    x:0
+  })
+
+  $gsap.fromTo('.surf', {
+    scale: .8,
+    rotation: 0,
+    x:-10
+  }, {
+    scrollTrigger : hobbiesScrollTrigger,
+    ease: 'none',
+    scale:1,
+    rotation: -15,
+    x:0
+  })
+
+  $gsap.fromTo('.drum', {
+    scale: .8,
+    rotation: 0,
+    y:10
+  }, {
+    scrollTrigger : hobbiesScrollTrigger,
+    ease: 'none',
+    scale:1,
+    rotation: 15,
+    y:0
+  })
+
 })
+
+
 
 </script>
 

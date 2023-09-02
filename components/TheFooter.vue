@@ -21,7 +21,7 @@
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link to="/about" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       about
                     </nuxt-link>
                   </li>
