@@ -79,7 +79,7 @@
       </div>
     </section>
 
-    <section class="py-80 bg-grey-50 text-black responsive-padding-x">
+    <section class="py-32 pb-72 bg-grey-50 text-black responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="space-y-12">
           <h1 class="text-big-title text-center xs:text-left">Experiences</h1>
@@ -110,11 +110,18 @@
           </nuxt-link>
 
         </div>
-        <div>
+        <div class="space-y-12">
           <h1 class="text-big-title text-center xs:text-left">
             Skills
             <span class="text-xs font-light">All of them</span>
           </h1>
+
+          <div class="grid gap-8">
+            <div v-for="i in 4" :key="i" class="bg-orange-100 rounded-btn text-white flex justify-between items-center py-2 px-4 odd:flex-row-reverse">
+              <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
+              <i class="icon icon-arrow"></i>
+            </div>
+          </div>
         </div>
       </div>
     </section>

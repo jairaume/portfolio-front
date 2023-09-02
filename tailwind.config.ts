@@ -26,7 +26,7 @@ export default {
         white: '#fffaee',
         black: '#131312',
         grey: {
-          50: '#BEBEBE',
+          50: '#E1E1E1',
           100: '#9a9696',
           300: '#494949',
           500: '#313030',
@@ -34,8 +34,8 @@ export default {
           900: '#131312'
         },
         orange: {
-          100: '#F68757',
-          200: '#CC4F29'
+          100: '#ED702D',
+          200: '#C04808'
         }
       },
       borderRadius: {
