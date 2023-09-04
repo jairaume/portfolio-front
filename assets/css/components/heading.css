@@ -1,5 +1,5 @@
-.text-monument{
-    @apply font-monument;
+.text-monument-menu, .text-monument-h1, .text-monument-h2, .text-monument-h3{
+    @apply font-monument font-black;
 }
 
 .text-monument-menu{
@@ -58,10 +58,10 @@
     @apply text-5xl font-bold;
 }
 .text-big-title {
-    @apply text-5xl font-extrabold;
+    @apply text-5xl leading-normal font-extrabold;
 }
 .text-huge-title {
-    @apply text-9xl font-extrabold;
+    @apply text-5xl leading-[52px] font-extrabold;
 }
 
 
@@ -76,7 +76,10 @@
         @apply text-3.5xl;
     }
     .text-big-title {
-        @apply text-6.5xl;
+        @apply text-6.5xl leading-[75px];
+    }
+    .text-huge-title {
+        @apply text-6.5xl leading-[85px];
     }
 }
 
@@ -91,12 +94,18 @@
         @apply text-6.5xl;
     }
     .text-big-title {
-        @apply text-7.5xl;
+        @apply text-7.5xl leading-[85px];
+    }
+    .text-huge-title {
+        @apply text-8xl leading-[100px];
     }
 }
 
 @screen m {
     .text-h3 {
         @apply text-5xl;
+    }
+    .text-huge-title {
+        @apply text-9xl font-extrabold;
     }
 }

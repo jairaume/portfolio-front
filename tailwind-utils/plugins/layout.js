@@ -3,10 +3,10 @@ const plugin = require('tailwindcss/plugin')
 module.exports =
     plugin(function ({addUtilities}) {
 
-            const XS_DEVICE_WIDTH = 576;
-            const S_DEVICE_WIDTH = 1024;
-            const M_DEVICE_WIDTH = 1280;
-            const L_DEVICE_WIDTH = 1920;
+            const XS_DEVICE_WIDTH = 480;
+            const S_DEVICE_WIDTH = 768;
+            const M_DEVICE_WIDTH = 1200;
+            const L_DEVICE_WIDTH = 1800;
 
             // Device gutter width
             const XS_GUTTER_WIDTH = 60;

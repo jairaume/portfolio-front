@@ -3,10 +3,6 @@
         @apply font-bricolage font-normal text-base;
     }
 
-    path {
-        fill: currentColor;
-    }
-
     p + ul, ul + p, p + p {
         @apply mt-4
     }

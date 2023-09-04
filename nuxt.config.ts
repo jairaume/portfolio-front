@@ -43,8 +43,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    //'@nuxt/image',
+    '@nuxt/image',
     '@vueuse/nuxt',
-    'nuxt-font-loader'
   ]
 });
