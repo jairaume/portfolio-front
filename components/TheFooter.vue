@@ -1,5 +1,5 @@
 <template>
-  <footer class="-mt-32 z-30 rounded-t-big bg-black text-white pt-12 s:pt-24 grid gap-6 xs:gap-12 s:gap-20">
+  <footer class="relative -mt-32 z-30 rounded-t-big bg-black text-white pt-12 s:pt-24 grid gap-6 xs:gap-12 s:gap-20">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0">
@@ -26,25 +26,25 @@
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link to="/projects" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       projects
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link to="/contact" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       contact
                     </nuxt-link>
                   </li>
                 </ul>
               </nav>
               <div class="text-orange-100">
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="/">
+                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="/">
+                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="/">
+                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
               </div>
@@ -64,3 +64,9 @@
 <script setup lang="ts">
 
 </script>
+
+<style scoped>
+nav a.router-link-exact-active{
+  @apply text-orange-100;
+}
+</style>

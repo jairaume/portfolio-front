@@ -1,13 +1,13 @@
 <template>
-<main>
+<main ref="rootEl" class="">
   <section class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-1">
-          <div class="grid s:grid-cols-2 gap-8">
+          <div class="grid m:grid-cols-2 gap-8">
 
-            <div class="aspect-square relative xs:max-layout-s-c-6-g-5 s:order-last s:max-layout-m-c-4-g-3 m:max-layout-l-c-3-g-3">
-              <nuxt-img src="https://picsum.photos/600/500" alt="about" class="absolute w-full h-full top-0 left-0 object-cover" />
+            <div class="aspect-square relative xs:max-layout-s-c-6-g-5 m:order-last s:max-layout-m-c-4-g-3 m:max-layout-l-c-3-g-3">
+              <nuxt-img src="/images/jerome.jpeg" alt="about" class="absolute w-full h-full top-0 left-0 object-cover rounded shadow-custom-ondark"/>
             </div>
 
             <div class="text-white flex flex-col gap-2">
@@ -77,15 +77,21 @@
     <nuxt-img src="/images/emoji/drum.png" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
   </section>
 
-  <section class="py-32 pb-72 responsive-padding-x relative h-screen">
+  <section id="hobbyCards" class="py-32 pb-72 responsive-padding-x relative h-screen bg-gradient-to-b from-black to-grey-700">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
-        <h4 class="text-h4 text-white text-center">here's other stuff I like...</h4>
+        <div>
+          <h4 ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">here's other stuff I like...</h4>
+        </div>
         <ul class="mt-20">
-          <li v-for="i in 5" :key="i"
-              class="hobby absolute w-auto max-w-[600px] h-[50%] max-h-[900px] -translate-y-1/2"
-              :style="{left:i*100+'px', top:'calc('+i*30+'px + 50%)'}">
-            <nuxt-img src="https://picsum.photos/600/500" alt="about" class="w-full h-full object-cover" />
+          <li v-for="i in 10" :key="i"
+              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-big overflow-hidden shadow-custom-ondark">
+            <div class="relative w-full h-full">
+              <div class="absolute bottom-0 left-0 w-full p-4 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 duration-300">
+                <p class="bg-black shadow-xl text-white px-4 py-2 rounded-full">Favorite movie 🎬</p>
+              </div>
+              <nuxt-img src="https://picsum.photos/600/500" alt="about" class="w-full h-full object-cover" />
+            </div>
           </li>
         </ul>
       </div>
@@ -95,13 +101,16 @@
 </template>
 
 <script setup lang="ts">
+const rootEl = ref()
 import {annotate} from "rough-notation";
 
 const movieAnnotate = ref<HTMLElement>()
 const surfAnnotate = ref<HTMLElement>()
 const drumsAnnotate = ref<HTMLElement>()
 
-const {$gsap} = useNuxtApp()
+const otherAnnotate = ref<HTMLElement>()
+
+const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp()
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
@@ -110,7 +119,9 @@ const hobbiesScrollTrigger = {
   scrub: 1,
 }
 
-onMounted(() => {
+useSafeOnMounted(rootEl,() => {
+  $ScrollTrigger.refresh()
+
   const lineSections = $gsap.utils.toArray('.line-section')
   lineSections.forEach((lineSection) => {
     $gsap.to(lineSection as HTMLElement, {
@@ -231,9 +242,44 @@ onMounted(() => {
     y:0
   })
 
+  const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
+
+  $gsap.from(otherAnnotate.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: otherAnnotate.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        otherAnnotation.show()
+      },
+      onLeaveBack: () => {
+        otherAnnotation.hide()
+      }
+    },
+  })
+
+
+  const hobbies = $gsap.utils.toArray('li.hobby')
+  hobbies.forEach((hobby)=>{
+    $gsap.set(hobby as HTMLElement, {
+      x: $gsap.utils.random(-75,75)+"%",
+      y: $gsap.utils.random(-25,25)+"%",
+      y: $gsap.utils.random(-25,25)+"%",
+      rotation: $gsap.utils.random(-10,10),
+    })
+    $Draggable.create(hobby as HTMLElement,{
+      bounds: document.querySelector('#hobbyCards') as HTMLElement,
+      edgeResistance: 0.65,
+    })
+  })
+
 })
 
-
+onBeforeUnmount(() => {
+  $ScrollTrigger.killAll()
+  $gsap.globalTimeline.clear();
+})
 
 </script>
 

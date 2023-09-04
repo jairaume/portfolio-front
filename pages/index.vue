@@ -1,5 +1,5 @@
 <template>
-  <main id="rootEl" class="bg-black">
+  <main ref="rootEl" id="rootEl" class="bg-black">
 
     <section ref="hero" id="hero" aria-labelledby="position" class="relative responsive-layout s:max-h-screen">
       <div
@@ -34,9 +34,9 @@
     <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24">
         <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
-          <div class="space-y-4">
+          <div class="">
             <h3 class="text-white text-h3">My name is</h3>
-            <h1 id="reveal-text-content" class="text-monument-h1 text-orange-100 reveal-text leading-loose">Jérôme</h1>
+            <h1 id="reveal-text-content" class="text-huge-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
               I’m a French software engineer who majored in software development in 2024 at ISEN Lille.
               <br>
@@ -117,7 +117,7 @@
           </h1>
 
           <div class="grid gap-8">
-            <div v-for="i in 4" :key="i" class="bg-orange-100 rounded-btn text-white flex justify-between items-center py-2 px-4 odd:flex-row-reverse">
+            <div v-for="i in 4" :key="i" class="bg-orange-100 rounded-btn text-white flex justify-between items-center py-2 px-4 odd:flex-row-reverse shadow-xl">
               <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
               <i class="icon icon-arrow"></i>
             </div>
@@ -130,7 +130,8 @@
 </template>
 
 <script setup lang="ts">
-const {$gsap, $Draggable} = useNuxtApp();
+const rootEl = ref()
+const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp();
 
 const revealText = ref<HTMLElement|null>(null);
 const circonflexe = ref<HTMLElement|null>(null);
@@ -166,94 +167,92 @@ watch([x, y], () => {
 
 const projects = ref<HTMLElement|null>(null);
 
-onMounted(()=> {
 
-  $gsap.to(["#grey-box", "#grey-box div"], {
-    scrollTrigger: {
-      scrub: 1,
-      ...heroScrollPositions
-    },
-    padding: 0,
-    borderRadius: 0,
-    backgroundColor: "rgb(30,30,30)",
-  })
+useSafeOnMounted(rootEl,()=> {
+    $ScrollTrigger.refresh()
 
-  $gsap.to("#grey-box-content", {
-    scrollTrigger: {
-      scrub: 2,
-      ...heroScrollPositions
-    },
-    opacity: 0,
-  })
-
-
-  $gsap.to("#reveal-text-content", {
-    backgroundPositionX: 0,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#reveal-text-content",
-      scrub: 1,
-      start: "top center",
-      endTrigger: "#reveal-text-paragraph",
-      end: "10% center"
-    }
-  });
-
-  $gsap.to("#reveal-text-paragraph", {
-    backgroundPositionY: 0,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#reveal-text-paragraph",
-      scrub: 1,
-      start: "10% center",
-      endTrigger: "#reveal-text",
-      end: "85% bottom"
-    }
-  });
-
-  // Projects section
-  let mm = $gsap.matchMedia();
-  mm.add("(max-width: 1023px)", () => {
-    $gsap.set(".projects_wrapper", {x: 0})
-
-    const draggable = $Draggable.create('.projects_wrapper', {
-      type: "x",
-      edgeResistance: .2,
-      bounds: {
-        minX: -1500,
-        maxX: 0
-      }
-    });
-
-    return () => {
-      draggable[0].kill()
-    }
-  });
-
-  mm.add("(min-width: 1024px)", () => {
-    $gsap.set(".projects_wrapper", {x: 0})
-    console.log(projects.value?.offsetWidth)
-    $gsap.to(".projects_wrapper", {
-      xPercent: -100,
-      ease: "power",
+    $gsap.to(["#grey-box", "#grey-box div"], {
       scrollTrigger: {
-        trigger: projects.value,
-        pin: true,
         scrub: 1,
-        start: "center center",
-        end: "+=100%",
-        invalidateOnRefresh: true,
+        ...heroScrollPositions
+      },
+      padding: 0,
+      borderRadius: 0,
+      backgroundColor: "rgb(30,30,30)",
+    })
+
+    $gsap.to("#grey-box-content", {
+      scrollTrigger: {
+        scrub: 2,
+        ...heroScrollPositions
+      },
+      opacity: 0,
+    })
+
+
+    $gsap.to("#reveal-text-content", {
+      backgroundPositionX: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#reveal-text-content",
+        scrub: 1,
+        start: "top center",
+        endTrigger: "#reveal-text-paragraph",
+        end: "10% center"
       }
     });
-  })
+
+    $gsap.to("#reveal-text-paragraph", {
+      backgroundPositionY: 0,
+      ease: "none",
+      scrollTrigger: {
+        trigger: "#reveal-text-paragraph",
+        scrub: 1,
+        start: "10% center",
+        endTrigger: "#reveal-text",
+        end: "85% bottom"
+      }
+    });
+
+    // Projects section
+    let mm = $gsap.matchMedia();
+    mm.add("(max-width: 1023px)", () => {
+      $gsap.set(".projects_wrapper", {x: 0})
+
+      const draggable = $Draggable.create('.projects_wrapper', {
+        type: "x",
+        edgeResistance: .2,
+        bounds: {
+          minX: -1500,
+          maxX: 0
+        }
+      });
+
+      return () => {
+        draggable[0].kill()
+      }
+    });
+
+    mm.add("(min-width: 1024px)", () => {
+      $gsap.set(".projects_wrapper", {x: 0})
+      $gsap.to(".projects_wrapper", {
+        xPercent: -100,
+        ease: "power",
+        scrollTrigger: {
+          trigger: projects.value,
+          pin: true,
+          scrub: 1,
+          start: "center center",
+          end: "+=100%",
+          invalidateOnRefresh: true,
+        }
+      });
+    })
 })
 
-onBeforeUnmount(()=>{
-  $gsap.killTweensOf("#grey-box");
-  $gsap.killTweensOf("#grey-box-content");
-  $gsap.killTweensOf("#reveal-text-content");
-  $gsap.killTweensOf("#reveal-text-paragraph");
-  $gsap.killTweensOf("#circonflexe-follow");
+onBeforeUnmount(() => {
+  $ScrollTrigger.killAll()
+  $gsap.globalTimeline.clear();
 })
 
 </script>
