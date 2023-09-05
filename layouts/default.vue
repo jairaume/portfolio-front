@@ -23,11 +23,11 @@ useServerSeoMeta({
 <style>
 .page-enter-active,
 .page-leave-active {
-  @apply transition-all duration-200 ease-in-out;
+  @apply transition-all duration-300 ease-in-out;
 }
 .page-enter-from,
 .page-leave-to {
-  @apply opacity-0;
+  @apply opacity-0 scale-95;
 }
 
 </style>
