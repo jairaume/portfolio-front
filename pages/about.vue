@@ -281,6 +281,21 @@ onBeforeUnmount(() => {
   $gsap.globalTimeline.clear();
 })
 
+const {public: {siteUrl}} = useRuntimeConfig();
+const title = 'Jérôme Rascle – About me'
+useSeoMeta({
+  title: title,
+  description: 'Laboris mollit laborum do commodo tempor id laborum. Irure sunt do labore ea dolor voluptate aliqua sint ullamco ut aliquip. Magna ullamco dolor Lorem do. Irure voluptate ad fugiat amet occaecat.',
+  ogTitle: title,
+  ogSiteName: title,
+  ogUrl: siteUrl + '/about',
+  ogImage: siteUrl + '/social-media.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageType: 'image/jpeg',
+  twitterCard: 'summary',
+})
+
 </script>
 
 <style scoped>

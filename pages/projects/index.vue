@@ -46,5 +46,10 @@
 </template>
 
 <script setup lang="ts">
+const {public: {siteUrl}} = useRuntimeConfig();
 
+useSeoMeta({
+  title: 'Projects',
+  description: 'Projects',
+})
 </script>
