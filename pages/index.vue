@@ -255,6 +255,19 @@ onBeforeUnmount(() => {
   $gsap.globalTimeline.clear();
 })
 
+const {public: {siteUrl}} = useRuntimeConfig();
+
+useSeoMeta({
+  title: 'Jérôme Rascle',
+  ogTitle: 'Jérôme Rascle',
+  ogSiteName: 'Jérôme Rascle',
+  ogImage: siteUrl + '/social-media.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageType: 'image/jpeg',
+  twitterCard: 'summary',
+})
+
 </script>
 
 <style scoped>

@@ -37,15 +37,12 @@
                   </li>
                 </ul>
               </nav>
-              <div class="text-orange-100">
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
-                  <i class="icon icon-mail"></i>
+              <div class="text-white grid gap-2">
+                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-orange-100 duration-300 flex items-center" to="https://www.linkedin.com/in/jeromerascle" target="_blank" rel="noopener nofollow">
+                  <i class="icon icon-linkedin"></i>
                 </nuxt-link>
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
-                  <i class="icon icon-mail"></i>
-                </nuxt-link>
-                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-white duration-300 flex items-center" to="facebook.com">
-                  <i class="icon icon-mail"></i>
+                <nuxt-link class="p-2 rounded-md hover:bg-grey-500 hover:text-orange-100 duration-300 flex items-center" to="https://www.github.com/jairaume" target="_blank" rel="noopener nofollow">
+                  <i class="icon icon-github"></i>
                 </nuxt-link>
               </div>
             </div>

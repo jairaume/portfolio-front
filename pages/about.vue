@@ -206,41 +206,30 @@ useSafeOnMounted(rootEl,() => {
     },
   })
 
-  $gsap.fromTo('.movie', {
+  $gsap.fromTo('.movie, .drum', {
     scale: .8,
-    rotation: 0,
+    rotation: -10,
     x:10
   }, {
     scrollTrigger : hobbiesScrollTrigger,
     ease: 'none',
-    scale:1,
+    scale:1.2,
     rotation: 15,
     x:0
   })
 
   $gsap.fromTo('.surf', {
     scale: .8,
-    rotation: 0,
+    rotation: 10,
     x:-10
   }, {
     scrollTrigger : hobbiesScrollTrigger,
     ease: 'none',
-    scale:1,
+    scale:1.2,
     rotation: -15,
     x:0
   })
 
-  $gsap.fromTo('.drum', {
-    scale: .8,
-    rotation: 0,
-    y:10
-  }, {
-    scrollTrigger : hobbiesScrollTrigger,
-    ease: 'none',
-    scale:1,
-    rotation: 15,
-    y:0
-  })
 
   const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
 
@@ -279,6 +268,21 @@ useSafeOnMounted(rootEl,() => {
 onBeforeUnmount(() => {
   $ScrollTrigger.killAll()
   $gsap.globalTimeline.clear();
+})
+
+const {public: {siteUrl}} = useRuntimeConfig();
+const title = 'Jérôme Rascle – About me'
+useSeoMeta({
+  title: title,
+  description: 'Laboris mollit laborum do commodo tempor id laborum. Irure sunt do labore ea dolor voluptate aliqua sint ullamco ut aliquip. Magna ullamco dolor Lorem do. Irure voluptate ad fugiat amet occaecat.',
+  ogTitle: title,
+  ogSiteName: title,
+  ogUrl: siteUrl + '/about',
+  ogImage: siteUrl + '/social-media.jpg',
+  ogImageWidth: '1200',
+  ogImageHeight: '630',
+  ogImageType: 'image/jpeg',
+  twitterCard: 'summary',
 })
 
 </script>

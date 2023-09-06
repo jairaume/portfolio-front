@@ -1,4 +1,7 @@
 @layer base {
+    html {
+        @apply antialiased bg-black;
+    }
     body {
         @apply font-bricolage font-normal text-base;
     }

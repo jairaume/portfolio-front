@@ -1,5 +1,5 @@
 .btn {
-    @apply flex items-center gap-2 px-6 py-3 ring-4 duration-300 rounded-btn text-cta shadow-xl;
+    @apply flex items-center gap-2 px-5 py-2 ring-2 s:ring-4 s:py-3 s:px-6 duration-300 rounded-btn text-cta shadow-xl;
 }
 
 .btn-orange-100 {
