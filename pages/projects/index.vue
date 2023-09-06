@@ -10,8 +10,8 @@
               <div class="absolute top-0 left-0 w-full h-full">
                 <nuxt-img src="/images/projects/grangette.png" class="h-full w-full object-cover s:group-hover:scale-105 duration-500"></nuxt-img>
               </div>
-              <div class="absolute w-full h-fit top-0 left-0 flex flex-col items-end py-6 px-6 s:px-12 s:mix-blend-difference">
-                <h1 class="text-h1">La Grangette</h1>
+              <div class="absolute w-full h-fit top-0 left-0 flex flex-col items-end py-6 px-6 s:px-12 s:mix-blend-difference drop-shadow-xl">
+                <h1 class="text-big-title">La Grangette</h1>
                 <h2 class="text-cta font-light">Collaboration with <span class="font-bold">Gintlemen</span></h2>
               </div>
               <div class="absolute w-fit h-fit bottom-0 right-0 p-6 duration-300">
@@ -27,8 +27,8 @@
               <div class="absolute top-0 left-0 w-full h-full">
                 <nuxt-img src="/images/projects/lbr.png" class="h-full w-full object-cover object-bottom s:object-center s:group-hover:scale-105 duration-500"></nuxt-img>
               </div>
-              <div class="absolute w-full h-fit top-0 left-0 flex flex-col py-6 px-6 s:px-12 s:mix-blend-difference">
-                <h1 class="text-h1">Les Briques Rouges</h1>
+              <div class="absolute w-full h-fit top-0 left-0 flex flex-col py-6 px-6 s:px-12 s:mix-blend-difference drop-shadow-xl">
+                <h1 class="text-big-title">Les Briques Rouges</h1>
                 <h2 class="text-cta font-light">Collaboration with <span class="font-bold">Gintlemen</span></h2>
               </div>
               <div class="absolute w-fit h-fit bottom-0 right-0 p-6 duration-300">

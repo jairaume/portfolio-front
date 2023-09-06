@@ -206,41 +206,30 @@ useSafeOnMounted(rootEl,() => {
     },
   })
 
-  $gsap.fromTo('.movie', {
+  $gsap.fromTo('.movie, .drum', {
     scale: .8,
-    rotation: 0,
+    rotation: -10,
     x:10
   }, {
     scrollTrigger : hobbiesScrollTrigger,
     ease: 'none',
-    scale:1,
+    scale:1.2,
     rotation: 15,
     x:0
   })
 
   $gsap.fromTo('.surf', {
     scale: .8,
-    rotation: 0,
+    rotation: 10,
     x:-10
   }, {
     scrollTrigger : hobbiesScrollTrigger,
     ease: 'none',
-    scale:1,
+    scale:1.2,
     rotation: -15,
     x:0
   })
 
-  $gsap.fromTo('.drum', {
-    scale: .8,
-    rotation: 0,
-    y:10
-  }, {
-    scrollTrigger : hobbiesScrollTrigger,
-    ease: 'none',
-    scale:1,
-    rotation: 15,
-    y:0
-  })
 
   const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
 

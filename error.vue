@@ -7,8 +7,8 @@
           The page you're trying to reach does not exist.
         </h3>
         <nuxt-link to="/" class="btn btn-orange-100 w-fit mx-auto">
+          <i class="icon icon-arrow rotate-180"></i>
           <p>Back to safety</p>
-          <i class="icon icon-arrow"></i>
         </nuxt-link>
       </div>
     </section>
