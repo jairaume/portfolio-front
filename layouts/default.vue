@@ -13,6 +13,8 @@ import "mouse-follower/src/scss/index.scss"
 
 let smoother:Lenis
 
+const {width} = useWindowSize()
+
 function initLenis() {
   smoother = new Lenis({
     duration: 1,
@@ -28,6 +30,17 @@ function initLenis() {
 }
 
 const cursor = ref()
+
+watch(width,(value)=>{
+  if(cursor.value){
+    if(value < 1000){
+      cursor.value.hide()
+    }
+    else {
+      cursor.value.show()
+    }
+  }
+})
 
 onMounted(() => {
   initLenis()
