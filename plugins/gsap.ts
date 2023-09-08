@@ -3,9 +3,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Observer } from 'gsap/Observer'
 import { Draggable } from 'gsap/Draggable'
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin'
+import MouseFollower from "mouse-follower";
 
 export default defineNuxtPlugin(() => {
     gsap.registerPlugin(Observer, ScrollTrigger, Draggable, ScrollToPlugin)
+    MouseFollower.registerGSAP(gsap);
 
     return {
         provide: {
@@ -13,6 +15,7 @@ export default defineNuxtPlugin(() => {
             Observer,
             ScrollTrigger,
             Draggable,
+            MouseFollower
         }
     }
 })

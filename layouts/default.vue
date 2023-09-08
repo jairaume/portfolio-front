@@ -1,4 +1,5 @@
 <template>
+  <span class="mouse-follower"></span>
   <div class="bg-black">
     <slot/>
     <TheFooter/>
@@ -6,6 +7,36 @@
 </template>
 
 <script setup lang="ts">
+import Lenis from '@studio-freight/lenis'
+import MouseFollower from "mouse-follower";
+import "mouse-follower/src/scss/index.scss"
+
+let smoother:Lenis
+
+function initLenis() {
+  smoother = new Lenis({
+    duration: 1,
+    smoothTouch: false
+  })
+
+  function raf(time) {
+    smoother.raf(time)
+    requestAnimationFrame(raf)
+  }
+
+  requestAnimationFrame(raf)
+}
+
+const cursor = ref()
+
+onMounted(() => {
+  initLenis()
+  cursor.value = new MouseFollower({
+    ease: "power3"
+  });
+})
+
+
 const {public: {siteUrl}} = useRuntimeConfig();
 
 useServerSeoMeta({

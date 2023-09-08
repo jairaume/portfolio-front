@@ -1,5 +1,5 @@
 .swiper-pagination-bullet {
-    @apply w-[10px] h-[10px] rounded-[10px] opacity-100 mx-[3px] bg-white bg-opacity-30 duration-300 ease-in-out;
+    @apply block w-[10px] h-[10px] rounded-[10px] opacity-100 mx-[3px] bg-white bg-opacity-30 duration-300 ease-in-out;
 }
 
 .swiper-pagination-bullet-active {
@@ -8,5 +8,9 @@
 
 .swiper-pagination-bullet:hover:not(.swiper-pagination-bullet-active) {
     @apply w-[14px] bg-white bg-opacity-50 duration-300 ease-in-out;
+}
+
+.swiper-pagination{
+    @apply flex justify-center items-center mt-[20px];
 }
 
