@@ -160,7 +160,7 @@ watch([x, y], () => {
     $gsap.to("#circonflexe-follow", {
       rotation: accentAngle.value+"_short",
       duration: 2,
-      ease: "power4",
+      ease: "power3",
     })
   }
 })

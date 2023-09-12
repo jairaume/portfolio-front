@@ -45,7 +45,13 @@ watch(width,(value)=>{
 onMounted(() => {
   initLenis()
   cursor.value = new MouseFollower({
-    ease: "power3"
+    ease: "power2",
+    speed: 0.2,
+    skewing: 2,
+    stateDetection:{
+      '-pointer': 'a,button',
+      '-inverse': '.bg-black, .bg-grey-700, .bg-grey-900'
+    }
   });
 })
 

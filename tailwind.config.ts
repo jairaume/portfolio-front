@@ -44,6 +44,8 @@ export default {
       },
       animation:{
         'scroll': 'scroll 20s linear infinite',
+        'point': 'point 6s ease-in-out infinite',
+        'click': 'click 5s ease-in-out infinite',
       },
       boxShadow: {
         'custom-ondark': "2px 5px 18px rgba(0, 0, 0, 0.40)",
