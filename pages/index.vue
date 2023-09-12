@@ -59,7 +59,7 @@
     <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-          <article v-for="i in 4" :key="i" class="cursor-pointer group relative p-8 bg-teal-900 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)] border-[1px] border-white/25">
+            <nuxt-link v-for="i in 4" :key="i" to="/projects/la-grangette" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
               <nuxt-picture src="/images/projects/grangette.png"
                             alt="Projects – Grangette"
@@ -73,7 +73,7 @@
                 <i class="icon icon-arrow"></i>
               </div>
             </div>
-          </article>
+          </nuxt-link>
         </div>
 
         <nuxt-link to="/" class="btn btn-white m-12 w-fit mx-auto">
@@ -217,7 +217,7 @@ useSafeOnMounted(rootEl,()=> {
     mm.add("(min-width: 1024px)", () => {
       $gsap.set(".projects_wrapper", {x: 0})
       $gsap.to(".projects_wrapper", {
-        xPercent: -100,
+        xPercent: -120,
         ease: "power",
         scrollTrigger: {
           trigger: projects.value,
