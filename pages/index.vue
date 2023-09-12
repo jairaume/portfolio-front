@@ -18,11 +18,11 @@
           </div>
           <div
               class="flex flex-col items-center justify-end gap-6 xs:flex-wrap xs:flex-row xs:justify-between s:justify-start z-10">
-            <nuxt-link data-cursor-stick data-cursor="-inverse" to="/" class="btn btn-orange-100 w-fit">
+            <nuxt-link to="/contact" class="btn btn-orange-100 w-fit">
               <p>Contact me</p>
               <i class="icon icon-mail"/>
             </nuxt-link>
-            <nuxt-link data-cursor-text="Hello!" to="/" class="btn btn-black w-fit">
+            <nuxt-link to="/" class="btn btn-black w-fit">
               <p class="font-light">Available <span class="font-bold">now</span></p>
               <span class="bg-green-400 rounded-full w-4 h-4 ring-[3px] ring-green-400/50"></span>
             </nuxt-link>
@@ -31,7 +31,7 @@
       </div>
     </section>
 
-    <section data-cursor="-inverse" ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
+    <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24">
         <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="">
@@ -48,7 +48,7 @@
             <i class="icon icon-arrow"/>
           </nuxt-link>
           <div class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32">
-            <MouseLooker :active="true">
+            <MouseLooker :active="!isOutside">
               <nuxt-img src="/images/svg/circonflexe.svg" class="w-full h-full object-fit !-rotate-45 s:!rotate-0" alt=""/>
             </MouseLooker>
           </div>
@@ -138,6 +138,7 @@ const rootEl = ref()
 const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp();
 
 const revealText = ref<HTMLElement|null>(null);
+const {isOutside} = useMouseInElement(revealText)
 
 const heroScrollPositions = {
   trigger:"#grey-box",
