@@ -9,9 +9,11 @@
 <script setup lang="ts">
 import Lenis from '@studio-freight/lenis'
 import MouseFollower from "mouse-follower";
-import "mouse-follower/src/scss/index.scss"
+import "/assets/css/components/cursor.scss"
 
 let smoother:Lenis
+
+const {width} = useWindowSize()
 
 function initLenis() {
   smoother = new Lenis({
@@ -29,10 +31,26 @@ function initLenis() {
 
 const cursor = ref()
 
+watch(width,(value)=>{
+  if(cursor.value){
+    if(value < 1000){
+      cursor.value.hide()
+    }
+    else {
+      cursor.value.show()
+    }
+  }
+})
+
 onMounted(() => {
   initLenis()
   cursor.value = new MouseFollower({
-    ease: "power3"
+    ease: "expo.out",
+    speed: .5,
+    skewing: 4,
+    stateDetection:{
+      '-pointer': 'a,button',
+    }
   });
 })
 
@@ -54,11 +72,11 @@ useServerSeoMeta({
 <style>
 .page-enter-active,
 .page-leave-active {
-  @apply transition-all duration-300 ease-in-out;
+  @apply transition-all duration-300 ease-in-out ;
 }
 .page-enter-from,
 .page-leave-to {
-  @apply opacity-0 scale-95;
+  @apply opacity-0 duration-300;
 }
 
 </style>

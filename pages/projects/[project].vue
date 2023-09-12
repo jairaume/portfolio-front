@@ -1,13 +1,10 @@
 <template>
-  <main class="text-white pb-52 min-h-screen bg-teal-900 overflow-hidden">
+  <main ref="rootEl" class="text-white pb-52 min-h-screen bg-teal-900 overflow-hidden">
     <section class="responsive-padding-x">
       <div class="responsive-layout pt-12">
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
-          <!-- Slider main container -->
           <div class="swiper projectSwiper w-full !overflow-visible">
-            <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
-              <!-- Slides -->
               <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)]" v-for="i in 5" :key="i">
                 <nuxt-picture
                     src="/images/projects/grangette.png"
@@ -63,11 +60,13 @@ import Swiper from "swiper";
 import 'swiper/css';
 import { Pagination } from 'swiper/modules';
 
+const rootEl = ref<HTMLElement>()
 const route = useRoute()
 const project = route.params.project
 const projectSwiper = ref<Swiper>()
 
-onMounted(()=> {
+useSafeOnMounted(rootEl,()=> {
+  console.log("initializing swiper")
   projectSwiper.value = new Swiper('.projectSwiper', {
     grabCursor: true,
     pagination: {

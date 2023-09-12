@@ -8,5 +8,11 @@
 @import "assets/css/components/button.css";
 @import "assets/css/components/input.css";
 @import "assets/css/components/swiper.css";
+@import "assets/css/components/animation.css";
 
 @import "tailwindcss/utilities";
+@layer utilities {
+    .pause {
+        animation-play-state: paused;
+    }
+}

@@ -47,7 +47,11 @@
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
-          <nuxt-img ref="circonflexe" id="circonflexe-follow" src="/images/svg/circonflexe.svg" class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32" alt=""/>
+          <div class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32">
+            <MouseLooker :active="true">
+              <nuxt-img src="/images/svg/circonflexe.svg" class="w-full h-full object-fit !-rotate-45 s:!rotate-0" alt=""/>
+            </MouseLooker>
+          </div>
         </div>
       </div>
     </section>
@@ -55,7 +59,7 @@
     <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-          <article v-for="i in 4" :key="i" class="cursor-pointer group relative p-8 bg-teal-900 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)] border-[1px] border-white/25">
+            <nuxt-link v-for="i in 4" :key="i" to="/projects/la-grangette" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
               <nuxt-picture src="/images/projects/grangette.png"
                             alt="Projects – Grangette"
@@ -69,7 +73,7 @@
                 <i class="icon icon-arrow"></i>
               </div>
             </div>
-          </article>
+          </nuxt-link>
         </div>
 
         <nuxt-link to="/" class="btn btn-white m-12 w-fit mx-auto">
@@ -134,9 +138,6 @@ const rootEl = ref()
 const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp();
 
 const revealText = ref<HTMLElement|null>(null);
-const circonflexe = ref<HTMLElement|null>(null);
-const {isOutside} = useMouseInElement(revealText);
-const {x, y, elementPositionX:originX, elementPositionY:originY} = useMouseInElement(circonflexe);
 
 const heroScrollPositions = {
   trigger:"#grey-box",
@@ -144,26 +145,6 @@ const heroScrollPositions = {
   endTrigger:"#reveal-text",
   end:"top 15%",
 }
-
-const accentOrigin = computed<{x:number, y:number}>(()=>{
-  return {
-    x: originX.value + (circonflexe.value?.offsetWidth ?? 0)/2,
-    y: originY.value + (circonflexe.value?.offsetHeight ?? 0)/2,
-  }
-})
-const accentAngle = computed<number>(() => {
-  return (Math.atan2(x.value - accentOrigin.value.x,-(y.value - accentOrigin.value.y)))*(180/Math.PI)
-})
-
-watch([x, y], () => {
-  if (!isOutside.value) {
-    $gsap.to("#circonflexe-follow", {
-      rotation: accentAngle.value+"_short",
-      duration: 2,
-      ease: "power4",
-    })
-  }
-})
 
 const projects = ref<HTMLElement|null>(null);
 
@@ -236,7 +217,7 @@ useSafeOnMounted(rootEl,()=> {
     mm.add("(min-width: 1024px)", () => {
       $gsap.set(".projects_wrapper", {x: 0})
       $gsap.to(".projects_wrapper", {
-        xPercent: -100,
+        xPercent: -120,
         ease: "power",
         scrollTrigger: {
           trigger: projects.value,
