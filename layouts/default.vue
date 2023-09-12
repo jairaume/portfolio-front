@@ -72,11 +72,11 @@ useServerSeoMeta({
 <style>
 .page-enter-active,
 .page-leave-active {
-  @apply transition-all duration-300 ease-in-out ;
+  @apply transition-all duration-500 ease-in-out ;
 }
 .page-enter-from,
 .page-leave-to {
-  @apply opacity-0 duration-300;
+  @apply opacity-0 duration-500;
 }
 
 </style>
