@@ -1,6 +1,0 @@
-.mf-cursor{
-    @apply before:scale-[.5] !important;
-}
-.mf-cursor.-pointer{
-    @apply before:scale-[.2] before:bg-orange-100 !important;
-}

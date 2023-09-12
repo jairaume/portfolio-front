@@ -47,7 +47,11 @@
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
-          <nuxt-img ref="circonflexe" id="circonflexe-follow" src="/images/svg/circonflexe.svg" class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32" alt=""/>
+          <div class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32">
+            <MouseLooker :active="true">
+              <nuxt-img src="/images/svg/circonflexe.svg" class="w-full h-full object-fit !-rotate-45 s:!rotate-0" alt=""/>
+            </MouseLooker>
+          </div>
         </div>
       </div>
     </section>
@@ -134,9 +138,6 @@ const rootEl = ref()
 const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp();
 
 const revealText = ref<HTMLElement|null>(null);
-const circonflexe = ref<HTMLElement|null>(null);
-const {isOutside} = useMouseInElement(revealText);
-const {x, y, elementPositionX:originX, elementPositionY:originY} = useMouseInElement(circonflexe);
 
 const heroScrollPositions = {
   trigger:"#grey-box",
@@ -144,26 +145,6 @@ const heroScrollPositions = {
   endTrigger:"#reveal-text",
   end:"top 15%",
 }
-
-const accentOrigin = computed<{x:number, y:number}>(()=>{
-  return {
-    x: originX.value + (circonflexe.value?.offsetWidth ?? 0)/2,
-    y: originY.value + (circonflexe.value?.offsetHeight ?? 0)/2,
-  }
-})
-const accentAngle = computed<number>(() => {
-  return (Math.atan2(x.value - accentOrigin.value.x,-(y.value - accentOrigin.value.y)))*(180/Math.PI)
-})
-
-watch([x, y], () => {
-  if (!isOutside.value) {
-    $gsap.to("#circonflexe-follow", {
-      rotation: accentAngle.value+"_short",
-      duration: 2,
-      ease: "power3",
-    })
-  }
-})
 
 const projects = ref<HTMLElement|null>(null);
 

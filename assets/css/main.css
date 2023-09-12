@@ -9,7 +9,6 @@
 @import "assets/css/components/input.css";
 @import "assets/css/components/swiper.css";
 @import "assets/css/components/animation.css";
-@import "assets/css/components/cursor.css";
 
 @import "tailwindcss/utilities";
 @layer utilities {
