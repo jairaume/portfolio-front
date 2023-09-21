@@ -47,11 +47,11 @@ onMounted(() => {
   initLenis()
   cursor.value = new MouseFollower({
     ease: "expo.out",
-    speed: .5,
+    speed: .3,
     skewing: 4,
     stateDetection:{
       '-pointer': 'a,button',
-      '-inverse': '.bg-grey-50',
+      '-inverse': '.bg-grey-50, .bg-white, .bg-grey-100',
     }
   });
 })
