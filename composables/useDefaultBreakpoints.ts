@@ -1,9 +1,9 @@
 export const useDefaultBreakpoints = () => {
     const breakpoints = useBreakpoints({
-        xs: 576,
-        s: 1024,
-        m: 1280,
-        l: 1536,
+        xs: 480,
+        s: 738,
+        m: 1200,
+        l: 1800,
     });
 
     return {breakpoints}

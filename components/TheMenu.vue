@@ -13,12 +13,32 @@
       </nuxt-link>
       <nuxt-link to="/projects" class="text-cta px-8 hidden s:block">projects</nuxt-link>
       <nuxt-link to="/contact" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">contact</nuxt-link>
-      <button class="text-cta px-3 py-1 border border-white rounded-lg hover:bg-white hover:text-grey-500 duration-300 s:hidden" aria-controls="overlay" @click="toggleMenu">menu</button>
-      <Transition name="slide">
-        <div v-show="expanded" id="overlay" class="absolute top-full left-0 w-full h-full">
-          <h1>Hello</h1>
-        </div>
-      </Transition>
+      <div class="relative">
+        <button class="text-cta px-3 py-1 border border-white rounded-lg duration-300 s:hidden" :class="{'bg-white text-grey-500': expanded}" aria-controls="overlay" @click="toggleMenu">menu</button>
+        <Transition name="slide">
+          <div v-show="expanded" id="overlay" class="absolute top-full right-0 w-full h-full text-right py-3">
+            <nav>
+              <ul class="pr-1 space-y-2 flex flex-col items-end" @click="toggleMenu">
+                <li>
+                  <nuxt-link to="/" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">home</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/about" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">about</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/projects" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">projects</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/contact" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
+                    contact
+                    <i class="icon icon-mail"></i>
+                  </nuxt-link>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </Transition>
+      </div>
     </nav>
   </header>
 </template>
@@ -27,6 +47,15 @@
 const {$gsap, $ScrollTrigger} = useNuxtApp()
 const rootEl = ref<HTMLElement>()
 const expanded = ref(false)
+
+const {breakpoints} = useDefaultBreakpoints()
+const sm = breakpoints.smaller('s')
+watch(sm, (val)=>{
+  console.log(val)
+  if(!val){
+    expanded.value = false
+  }
+})
 
 const basePositions = {
   rightAccent: {
@@ -85,10 +114,6 @@ const headerScrollTrigger = {
 
 function toggleMenu(){
   expanded.value = !expanded.value;
-  if (expanded.value)
-    document.body.classList.add('overflow-hidden');
-  else
-    document.body.classList.remove('overflow-hidden');
 }
 
 useSafeOnMounted(rootEl, ()=>{
@@ -119,10 +144,10 @@ useSafeOnMounted(rootEl, ()=>{
 })
 
 onBeforeUnmount(()=>{
-  document.body.classList.remove('overflow-hidden');
   $ScrollTrigger.killAll()
   $gsap.globalTimeline.clear();
 })
+
 </script>
 
 <style scoped>
@@ -137,6 +162,6 @@ header a {
   transition: all 0.3s ease-in-out;
 }
 .slide-enter-from, .slide-leave-to {
-  transform: translateY(-100%);
+  transform: translateX(200%);
 }
 </style>
