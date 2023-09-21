@@ -3,7 +3,7 @@
 
     <section ref="hero" id="hero" aria-labelledby="position" class="relative responsive-layout s:max-h-screen">
       <div
-          class="relative min-h-[600px] s:min-h-[825px] m:min-h-[1000px] p-8  xs:pb-8 s:px-12 ">
+          class="relative min-h-[600px] s:min-h-[825px] m:min-h-[1000px] p-8 xs:pb-8 s:px-12 ">
         <div class="absolute w-full h-full top-0 left-0 z-0 px-8 py-12" id="grey-box">
           <div class="bg-grey-50 w-full h-full rounded-big"></div>
         </div>

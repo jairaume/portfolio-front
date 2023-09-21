@@ -1,6 +1,7 @@
 <template>
   <span class="mouse-follower"></span>
   <div class="bg-black">
+    <TheMenu/>
     <slot/>
     <TheFooter/>
   </div>
@@ -50,10 +51,10 @@ onMounted(() => {
     skewing: 4,
     stateDetection:{
       '-pointer': 'a,button',
+      '-inverse': '.bg-grey-50',
     }
   });
 })
-
 
 const {public: {siteUrl}} = useRuntimeConfig();
 
