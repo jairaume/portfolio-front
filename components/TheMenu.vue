@@ -1,7 +1,9 @@
 <template>
-  <header ref="rootEl" id="menu" class="w-full z-50 sticky top-0 overflow-hidden">
-    <div class="responsive-padding-x py-8">
-      <nuxt-link to="/" class="text-monument-menu text-orange-100">
+  <header ref="rootEl" id="menu" class="w-full z-50 sticky top-0 overflow-hidden text-white">
+    <nav class="responsive-padding-x py-8 flex items-center justify-between s:gap-2 s:justify-center m:gap-6">
+      <nuxt-link to="/" class="text-cta px-8 hidden s:block">home</nuxt-link>
+      <nuxt-link to="/about" class="text-cta px-8 hidden s:block">about</nuxt-link>
+      <nuxt-link to="/" class="text-monument-menu text-orange-100 w-fit px-8 mx-[1ch] mr-[2ch]">
         <h1 class="relative w-fit">
           Jerome
           <span id="rightAccent" class="absolute w-[1ch] rotate-180 drop-shadow">&lt;</span>
@@ -9,7 +11,9 @@
           <span id="leftAccent" class="absolute w-[1ch] right-full drop-shadow">&lt;</span>
         </h1>
       </nuxt-link>
-    </div>
+      <nuxt-link to="/projects" class="text-cta px-8 hidden s:block">projects</nuxt-link>
+      <nuxt-link to="/contact" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">contact</nuxt-link>
+    </nav>
   </header>
 </template>
 
@@ -128,3 +132,9 @@ useSafeOnMounted(rootEl, ()=>{
   })
 })
 </script>
+
+<style scoped>
+header a.router-link-exact-active{
+  @apply text-orange-100;
+}
+</style>

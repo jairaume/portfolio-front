@@ -4,7 +4,7 @@
     <section ref="hero" id="hero" aria-labelledby="position" class="relative responsive-layout s:max-h-screen">
       <div
           class="relative min-h-[600px] s:min-h-[825px] m:min-h-[1000px] p-8 xs:pb-8 s:px-12 ">
-        <div class="absolute w-full h-full top-0 left-0 z-0 px-8 py-12" id="grey-box">
+        <div class="absolute w-full h-full top-0 left-0 z-0 pt-0 px-8 py-12" id="grey-box">
           <div class="bg-grey-50 w-full h-full rounded-big"></div>
         </div>
         <div id="grey-box-content" class="responsive-padding-x pb-8 py-20 s:py-12 m:py-32 z-10 flex flex-col justify-around s:justify-center gap-8 xs:gap-20">

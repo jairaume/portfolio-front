@@ -27,7 +27,7 @@ export default defineNuxtConfig({
         {
           innerHTML: `WebFont.load({
             google: {families: ['Bricolage Grotesque:300,400,600,700,800']},
-            custom: {families: ['Monument Extended:n8']},
+            custom: {families: ['Monument:n8'], urls:['/css/font.css']},
           });`,
           type: 'text/javascript'
         }
