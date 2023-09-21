@@ -31,8 +31,8 @@ $mf-color-text: #000 !default;
     transition: transform 0.25s ease-in-out, opacity 0.1s;
   }
 
-  &.-inverse {
-    color: invert($mf-color-base);
+  &.-inverse:before {
+    background: invert($mf-color-base);
   }
 
   &.-exclusion {

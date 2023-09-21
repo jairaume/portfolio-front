@@ -1,6 +1,7 @@
 <template>
   <span class="mouse-follower"></span>
   <div class="bg-black">
+    <TheMenu/>
     <slot/>
     <TheFooter/>
   </div>
@@ -12,8 +13,7 @@ import MouseFollower from "mouse-follower";
 import "/assets/css/components/cursor.scss"
 
 let smoother:Lenis
-
-const {width} = useWindowSize()
+const {$gsap} = useNuxtApp()
 
 function initLenis() {
   smoother = new Lenis({
@@ -30,30 +30,23 @@ function initLenis() {
 }
 
 const cursor = ref()
-
-watch(width,(value)=>{
-  if(cursor.value){
-    if(value < 1000){
-      cursor.value.hide()
-    }
-    else {
-      cursor.value.show()
-    }
-  }
-})
+let mm = $gsap.matchMedia()
 
 onMounted(() => {
-  initLenis()
-  cursor.value = new MouseFollower({
-    ease: "expo.out",
-    speed: .5,
-    skewing: 4,
-    stateDetection:{
-      '-pointer': 'a,button',
-    }
-  });
-})
+  mm.add("(max-width: 1023px)", () => {
+    initLenis()
 
+    cursor.value = new MouseFollower({
+      ease: "expo.out",
+      speed: .3,
+      skewing: 4,
+      stateDetection: {
+        '-pointer': 'a,button',
+        '-inverse': '.bg-grey-50, .bg-white, .bg-grey-100',
+      }
+    });
+  })
+})
 
 const {public: {siteUrl}} = useRuntimeConfig();
 
@@ -78,5 +71,7 @@ useServerSeoMeta({
 .page-leave-to {
   @apply opacity-0 duration-500;
 }
-
+.mf-cursor {
+  @apply hidden s:block;
+}
 </style>
