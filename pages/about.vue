@@ -110,7 +110,8 @@ const drumsAnnotate = ref<HTMLElement>()
 
 const otherAnnotate = ref<HTMLElement>()
 
-const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp()
+const {$gsap, $Draggable} = useNuxtApp()
+let ctx: gsap.Context;
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
@@ -119,155 +120,155 @@ const hobbiesScrollTrigger = {
   scrub: 1,
 }
 
-useSafeOnMounted(rootEl,() => {
-  $ScrollTrigger.refresh()
-
-  const lineSections = $gsap.utils.toArray('.line-section')
-  lineSections.forEach((lineSection) => {
-    $gsap.to(lineSection as HTMLElement, {
-      scrollTrigger: {
-        trigger: lineSection as HTMLElement,
-        start: 'top center',
-        end: 'bottom center',
-        scrub: .2,
-      },
-      ease: 'none',
-      backgroundPositionY:0
+onMounted(() => {
+  ctx = $gsap.context(()=>{
+    const lineSections = $gsap.utils.toArray('.line-section')
+    lineSections.forEach((lineSection) => {
+      $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
+        scrollTrigger: {
+          trigger: lineSection as HTMLElement,
+          start: 'top center',
+          end: 'bottom center',
+          scrub: .2,
+        },
+        ease: 'none',
+        backgroundPositionY:0
+      })
     })
-  })
 
-  const experiences = $gsap.utils.toArray('.experience')
-  experiences.forEach((experience) => {
-    $gsap.from(experience as HTMLElement, {
+    const experiences = $gsap.utils.toArray('.experience')
+    experiences.forEach((experience) => {
+      $gsap.fromTo(experience as HTMLElement,{
+        opacity: .2,
+        y: 50
+      }, {
+        scrollTrigger: {
+          trigger: experience as HTMLElement,
+          start: 'top center',
+          end: 'center center',
+          scrub: 2,
+          onEnter: () => {
+            experience.classList.add('active')
+          },
+          onLeaveBack: () => {
+            experience.classList.remove('active')
+          }
+        },
+        y:0,
+        opacity: 1
+      })
+    })
+
+    const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline:true, color:"#ED702D"})
+    const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline:true, color:"#ED702D"})
+    const drumsAnnotation = annotate(drumsAnnotate.value as HTMLElement, {type: 'circle', color:"#ED702D"})
+
+    $gsap.from(movieAnnotate.value as HTMLElement, {
       scrollTrigger: {
-        trigger: experience as HTMLElement,
-        start: 'top center',
-        end: 'center center',
+        trigger: movieAnnotate.value as HTMLElement,
+        start: 'top 75%',
+        end: 'bottom center',
         scrub: 2,
         onEnter: () => {
-          experience.classList.add('active')
+          movieAnnotation.show()
         },
         onLeaveBack: () => {
-          experience.classList.remove('active')
+          movieAnnotation.hide()
         }
       },
+    })
+
+    $gsap.from(surfAnnotate.value as HTMLElement, {
+      scrollTrigger: {
+        trigger: surfAnnotate.value as HTMLElement,
+        start: 'top 75%',
+        end: 'bottom center',
+        scrub: 2,
+        onEnter: () => {
+          surfAnnotation.show()
+        },
+        onLeaveBack: () => {
+          surfAnnotation.hide()
+        }
+      },
+    })
+
+    $gsap.from(drumsAnnotate.value as HTMLElement, {
+      scrollTrigger: {
+        trigger: drumsAnnotate.value as HTMLElement,
+        start: 'top 75%',
+        end: 'bottom center',
+        scrub: 2,
+        onEnter: () => {
+          drumsAnnotation.show()
+        },
+        onLeaveBack: () => {
+          drumsAnnotation.hide()
+        }
+      },
+    })
+
+    $gsap.fromTo('.movie, .drum', {
+      scale: .8,
+      rotation: -10,
+      x:10
+    }, {
+      scrollTrigger : hobbiesScrollTrigger,
       ease: 'none',
-      opacity: .2,
-      y: 50
+      scale:1.2,
+      rotation: 15,
+      x:0
     })
-  })
 
-  const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline:true, color:"#ED702D"})
-  const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline:true, color:"#ED702D"})
-  const drumsAnnotation = annotate(drumsAnnotate.value as HTMLElement, {type: 'circle', color:"#ED702D"})
-
-  $gsap.from(movieAnnotate.value as HTMLElement, {
-    scrollTrigger: {
-      trigger: movieAnnotate.value as HTMLElement,
-      start: 'top 75%',
-      end: 'bottom center',
-      scrub: 2,
-      onEnter: () => {
-        movieAnnotation.show()
-      },
-      onLeaveBack: () => {
-        movieAnnotation.hide()
-      }
-    },
-  })
-
-  $gsap.from(surfAnnotate.value as HTMLElement, {
-    scrollTrigger: {
-      trigger: surfAnnotate.value as HTMLElement,
-      start: 'top 75%',
-      end: 'bottom center',
-      scrub: 2,
-      onEnter: () => {
-        surfAnnotation.show()
-      },
-      onLeaveBack: () => {
-        surfAnnotation.hide()
-      }
-    },
-  })
-
-  $gsap.from(drumsAnnotate.value as HTMLElement, {
-    scrollTrigger: {
-      trigger: drumsAnnotate.value as HTMLElement,
-      start: 'top 75%',
-      end: 'bottom center',
-      scrub: 2,
-      onEnter: () => {
-        drumsAnnotation.show()
-      },
-      onLeaveBack: () => {
-        drumsAnnotation.hide()
-      }
-    },
-  })
-
-  $gsap.fromTo('.movie, .drum', {
-    scale: .8,
-    rotation: -10,
-    x:10
-  }, {
-    scrollTrigger : hobbiesScrollTrigger,
-    ease: 'none',
-    scale:1.2,
-    rotation: 15,
-    x:0
-  })
-
-  $gsap.fromTo('.surf', {
-    scale: .8,
-    rotation: 10,
-    x:-10
-  }, {
-    scrollTrigger : hobbiesScrollTrigger,
-    ease: 'none',
-    scale:1.2,
-    rotation: -15,
-    x:0
-  })
-
-
-  const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
-
-  $gsap.from(otherAnnotate.value as HTMLElement, {
-    scrollTrigger: {
-      trigger: otherAnnotate.value as HTMLElement,
-      start: 'top 75%',
-      end: 'bottom center',
-      scrub: 2,
-      onEnter: () => {
-        otherAnnotation.show()
-      },
-      onLeaveBack: () => {
-        otherAnnotation.hide()
-      }
-    },
-  })
-
-
-  const hobbies = $gsap.utils.toArray('li.hobby')
-  hobbies.forEach((hobby)=>{
-    $gsap.set(hobby as HTMLElement, {
-      x: $gsap.utils.random(-75,75)+"%",
-      y: $gsap.utils.random(-25,25)+"%",
-      y: $gsap.utils.random(-25,25)+"%",
-      rotation: $gsap.utils.random(-10,10),
+    $gsap.fromTo('.surf', {
+      scale: .8,
+      rotation: 10,
+      x:-10
+    }, {
+      scrollTrigger : hobbiesScrollTrigger,
+      ease: 'none',
+      scale:1.2,
+      rotation: -15,
+      x:0
     })
-    $Draggable.create(hobby as HTMLElement,{
-      bounds: document.querySelector('#hobbyCards') as HTMLElement,
-      edgeResistance: 0.65,
-    })
-  })
 
+
+    const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
+
+    $gsap.from(otherAnnotate.value as HTMLElement, {
+      scrollTrigger: {
+        trigger: otherAnnotate.value as HTMLElement,
+        start: 'top 75%',
+        end: 'bottom center',
+        scrub: 2,
+        onEnter: () => {
+          otherAnnotation.show()
+        },
+        onLeaveBack: () => {
+          otherAnnotation.hide()
+        }
+      },
+    })
+
+
+    const hobbies = $gsap.utils.toArray('li.hobby')
+    hobbies.forEach((hobby)=>{
+      $gsap.set(hobby as HTMLElement, {
+        x: $gsap.utils.random(-75,75)+"%",
+        y: $gsap.utils.random(-25,25)+"%",
+        rotation: $gsap.utils.random(-10,10),
+      })
+      $Draggable.create(hobby as HTMLElement,{
+        bounds: document.querySelector('#hobbyCards') as HTMLElement,
+        edgeResistance: 0.65,
+      })
+    })
+
+  }, rootEl.value)
 })
 
-onBeforeUnmount(() => {
-  $ScrollTrigger.killAll()
-  $gsap.globalTimeline.clear();
+onUnmounted(() => {
+  ctx.kill()
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();

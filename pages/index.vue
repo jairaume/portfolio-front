@@ -135,7 +135,8 @@
 
 <script setup lang="ts">
 const rootEl = ref()
-const {$gsap, $Draggable, $ScrollTrigger} = useNuxtApp();
+const {$gsap, $Draggable} = useNuxtApp();
+let ctx: gsap.Context;
 
 const revealText = ref<HTMLElement|null>(null);
 const {isOutside} = useMouseInElement(revealText)
@@ -150,91 +151,93 @@ const heroScrollPositions = {
 const projects = ref<HTMLElement|null>(null);
 
 
-useSafeOnMounted(rootEl,()=> {
-    $ScrollTrigger.refresh()
-
-    $gsap.to(["#grey-box", "#grey-box div"], {
-      scrollTrigger: {
-        scrub: 1,
-        ...heroScrollPositions
-      },
-      padding: 0,
-      borderRadius: 0,
-      backgroundColor: "rgb(30,30,30)",
-    })
-
-    $gsap.to("#grey-box-content", {
-      scrollTrigger: {
-        scrub: 2,
-        ...heroScrollPositions
-      },
-      opacity: 0,
-    })
-
-
-    $gsap.to("#reveal-text-content", {
-      backgroundPositionX: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#reveal-text-content",
-        scrub: 1,
-        start: "top center",
-        endTrigger: "#reveal-text-paragraph",
-        end: "10% center"
-      }
-    });
-
-    $gsap.to("#reveal-text-paragraph", {
-      backgroundPositionY: 0,
-      ease: "none",
-      scrollTrigger: {
-        trigger: "#reveal-text-paragraph",
-        scrub: 1,
-        start: "10% center",
-        endTrigger: "#reveal-text",
-        end: "85% bottom"
-      }
-    });
-
-    // Projects section
-    let mm = $gsap.matchMedia();
-    mm.add("(max-width: 1023px)", () => {
-      $gsap.set(".projects_wrapper", {x: 0})
-
-      const draggable = $Draggable.create('.projects_wrapper', {
-        type: "x",
-        edgeResistance: .2,
-        bounds: {
-          minX: -1500,
-          maxX: 0
-        }
-      });
-
-      return () => {
-        draggable[0].kill()
-      }
-    });
-
-    mm.add("(min-width: 1024px)", () => {
-      $gsap.set(".projects_wrapper", {x: 0})
-      $gsap.to(".projects_wrapper", {
-        xPercent: -120,
-        ease: "power",
+onMounted(()=> {
+    ctx = $gsap.context(()=> {
+      $gsap.fromTo(["#grey-box", "#grey-box div"], {
+        backgroundColor: '#E1E1E1',
+        borderRadius: 30,
+        padding: 30,
+      }, {
         scrollTrigger: {
-          trigger: projects.value,
-          pin: true,
           scrub: 1,
-          start: "center center",
-          end: "+=100%",
-          invalidateOnRefresh: true,
+          ...heroScrollPositions
+        },
+        padding: 0,
+        borderRadius: 0,
+        backgroundColor: "rgb(30,30,30)",
+      })
+
+      $gsap.fromTo("#grey-box-content",{opacity:1}, {
+        scrollTrigger: {
+          scrub: 2,
+          ...heroScrollPositions
+        },
+        opacity: 0,
+      })
+
+
+      $gsap.to("#reveal-text-content", {
+        backgroundPositionX: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#reveal-text-content",
+          scrub: 1,
+          start: "top center",
+          endTrigger: "#reveal-text-paragraph",
+          end: "10% center"
         }
       });
-    })
+
+      $gsap.to("#reveal-text-paragraph", {
+        backgroundPositionY: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#reveal-text-paragraph",
+          scrub: 1,
+          start: "10% center",
+          endTrigger: "#reveal-text",
+          end: "85% bottom"
+        }
+      });
+
+      // Projects section
+      let mm = $gsap.matchMedia();
+      mm.add("(max-width: 1023px)", () => {
+        $gsap.from(".projects_wrapper", {x: 0})
+
+        const draggable = $Draggable.create('.projects_wrapper', {
+          type: "x",
+          edgeResistance: .2,
+          bounds: {
+            minX: -1500,
+            maxX: 0
+          }
+        });
+
+        return () => {
+          draggable[0].kill()
+        }
+      });
+
+      mm.add("(min-width: 1024px)", () => {
+        $gsap.fromTo(".projects_wrapper", {x: 0}, {
+          xPercent: -120,
+          ease: "power",
+          scrollTrigger: {
+            trigger: projects.value,
+            pin: true,
+            scrub: 1,
+            start: "center center",
+            end: "+=100%",
+            invalidateOnRefresh: true,
+          }
+        });
+      })
+    }, rootEl.value)
 })
 
-onBeforeUnmount(() => {
-  $ScrollTrigger.killAll()
-  $gsap.globalTimeline.clear();
+onUnmounted(() => {
+  ctx.kill()
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();
