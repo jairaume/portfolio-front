@@ -8,46 +8,6 @@
 </template>
 
 <script setup lang="ts">
-import Lenis from '@studio-freight/lenis'
-import MouseFollower from "mouse-follower";
-import "/assets/css/components/cursor.scss"
-
-let smoother:Lenis
-const {$gsap} = useNuxtApp()
-
-function initLenis() {
-  smoother = new Lenis({
-    duration: 1,
-    smoothTouch: false
-  })
-
-  function raf(time) {
-    smoother.raf(time)
-    requestAnimationFrame(raf)
-  }
-
-  requestAnimationFrame(raf)
-}
-
-const cursor = ref()
-let mm = $gsap.matchMedia()
-
-onMounted(() => {
-  mm.add("(max-width: 1023px)", () => {
-    initLenis()
-
-    cursor.value = new MouseFollower({
-      ease: "expo.out",
-      speed: .3,
-      skewing: 4,
-      stateDetection: {
-        '-pointer': 'a,button',
-        '-inverse': '.bg-grey-50, .bg-white, .bg-grey-100',
-      }
-    });
-  })
-})
-
 const {public: {siteUrl}} = useRuntimeConfig();
 
 useServerSeoMeta({
@@ -70,8 +30,5 @@ useServerSeoMeta({
 .page-enter-from,
 .page-leave-to {
   @apply opacity-0 duration-500;
-}
-.mf-cursor {
-  @apply hidden s:block;
 }
 </style>
