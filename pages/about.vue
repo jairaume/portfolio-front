@@ -260,16 +260,18 @@ onMounted(() => {
       $gsap.fromTo(hobby as HTMLElement,{
         translateX:"-50%",
         translateY:"-50%",
+        scale:.6
       }, {
         rotation: $gsap.utils.random(-10,10),
         duration:2,
         translateX: positions.x,
         translateY: positions.y,
+        scale:1,
         scrollTrigger:{
           trigger: hobby as HTMLElement,
+          toggleActions: 'play none none reverse',
           start: 'top 80%',
           end: 'bottom center',
-          markers: true,
         }
       })
       $Draggable.create(hobby as HTMLElement,{

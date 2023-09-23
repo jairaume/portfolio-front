@@ -3,21 +3,21 @@
     <section class="responsive-padding-x">
       <div class="responsive-layout pt-12">
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
-          <div class="swiper projectSwiper w-full !overflow-visible">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)]" v-for="i in 5" :key="i">
-                <nuxt-picture
-                    src="/images/projects/grangette.png"
-                    loading="lazy"
-                    :img-attrs="{
-                      class: 'absolute top-0 left-0 h-full w-full object-cover object-center',
-                    }"
-                ></nuxt-picture>
+            <div ref="projectSwiperElement" class="swiper projectSwiper w-full !overflow-visible">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)]" v-for="i in 5" :key="i">
+                  <nuxt-picture
+                      src="/images/projects/grangette.png"
+                      loading="lazy"
+                      :img-attrs="{
+                        class: 'absolute top-0 left-0 h-full w-full object-cover object-center',
+                      }"
+                  ></nuxt-picture>
+                </div>
               </div>
+              <!-- If we need pagination -->
+              <div class="swiper-pagination"></div>
             </div>
-            <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
-          </div>
           <div class="grid gap-12">
             <div>
               <h1 class="text-h1 leading-tight">{{ project }}</h1>
@@ -63,11 +63,12 @@ import { Pagination } from 'swiper/modules';
 const rootEl = ref<HTMLElement>()
 const route = useRoute()
 const project = route.params.project
+const projectSwiperElement = ref<HTMLElement>()
 const projectSwiper = ref<Swiper>()
 
-useSafeOnMounted(rootEl,()=> {
-  console.log("initializing swiper")
-  projectSwiper.value = new Swiper('.projectSwiper', {
+onMounted(()=> {
+  if(!projectSwiperElement.value) return
+  projectSwiper.value = new Swiper(projectSwiperElement.value, {
     grabCursor: true,
     pagination: {
       el: '.swiper-pagination',
