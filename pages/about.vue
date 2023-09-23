@@ -85,7 +85,7 @@
         </div>
         <ul class="mt-20">
           <li v-for="i in 10" :key="i"
-              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 rounded-big overflow-hidden shadow-custom-ondark">
+              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-big overflow-hidden shadow-custom-ondark">
             <div class="relative w-full h-full">
               <div class="absolute bottom-0 left-0 w-full p-4 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 duration-300">
                 <p class="bg-black shadow-xl text-white px-4 py-2 rounded-full">Favorite movie 🎬</p>
@@ -253,10 +253,24 @@ onMounted(() => {
 
     const hobbies = $gsap.utils.toArray('li.hobby')
     hobbies.forEach((hobby)=>{
-      $gsap.set(hobby as HTMLElement, {
-        x: $gsap.utils.random(-75,75)+"%",
-        y: $gsap.utils.random(-25,25)+"%",
+      let positions = {
+        x: ($gsap.utils.random(-75,75)-50)+"%",
+        y: ($gsap.utils.random(-25,25)-50)+"%",
+      }
+      $gsap.fromTo(hobby as HTMLElement,{
+        translateX:"-50%",
+        translateY:"-50%",
+      }, {
         rotation: $gsap.utils.random(-10,10),
+        duration:2,
+        translateX: positions.x,
+        translateY: positions.y,
+        scrollTrigger:{
+          trigger: hobby as HTMLElement,
+          start: 'top 80%',
+          end: 'bottom center',
+          markers: true,
+        }
       })
       $Draggable.create(hobby as HTMLElement,{
         bounds: document.querySelector('#hobbyCards') as HTMLElement,
@@ -268,7 +282,7 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-  ctx.kill()
+  ctx.revert()
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();
