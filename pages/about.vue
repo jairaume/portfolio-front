@@ -85,7 +85,7 @@
         </div>
         <ul class="mt-20">
           <li v-for="i in 10" :key="i"
-              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-big overflow-hidden shadow-custom-ondark">
+              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-btn overflow-hidden shadow-custom-ondark">
             <div class="relative w-full h-full">
               <div class="absolute bottom-0 left-0 w-full p-4 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 duration-300">
                 <p class="bg-black shadow-xl text-white px-4 py-2 rounded-full">Favorite movie 🎬</p>
@@ -101,8 +101,9 @@
 </template>
 
 <script setup lang="ts">
-const rootEl = ref()
 import {annotate} from "rough-notation";
+
+const rootEl = ref()
 
 const movieAnnotate = ref<HTMLElement>()
 const surfAnnotate = ref<HTMLElement>()
@@ -256,14 +257,17 @@ onMounted(() => {
       let positions = {
         x: ($gsap.utils.random(-75,75)-50)+"%",
         y: ($gsap.utils.random(-25,25)-50)+"%",
+        r: $gsap.utils.random(-10,10),
       }
       $gsap.fromTo(hobby as HTMLElement,{
         translateX:"-50%",
         translateY:"-50%",
-        scale:.6
+        scale:.6,
+        rotation: -positions.r,
       }, {
-        rotation: $gsap.utils.random(-10,10),
-        duration:2,
+        rotation: positions.r,
+        duration:1,
+        ease:"power3.out",
         translateX: positions.x,
         translateY: positions.y,
         scale:1,
@@ -279,7 +283,6 @@ onMounted(() => {
         edgeResistance: 0.65,
       })
     })
-
   }, rootEl.value)
 })
 

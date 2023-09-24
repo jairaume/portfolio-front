@@ -1,5 +1,5 @@
 <template>
-  <main ref="rootEl" class="text-white pb-52 min-h-screen bg-teal-900 overflow-hidden">
+  <main ref="rootEl" class="text-white pb-52 -mt-32 pt-20 min-h-screen bg-teal-900 overflow-hidden">
     <section class="responsive-padding-x">
       <div class="responsive-layout pt-12">
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
@@ -68,18 +68,20 @@ const projectSwiper = ref<Swiper>()
 
 onMounted(()=> {
   if(!projectSwiperElement.value) return
-  projectSwiper.value = new Swiper(projectSwiperElement.value, {
-    grabCursor: true,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    spaceBetween: 50,
-    mousewheel: {
-      forceToAxis: true,
-    },
-    loop: true,
-    modules: [Pagination]
+  nextTick(()=>{
+    projectSwiper.value = new Swiper(projectSwiperElement.value, {
+      grabCursor: true,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      spaceBetween: 50,
+      mousewheel: {
+        forceToAxis: true,
+      },
+      loop: true,
+      modules: [Pagination]
+    })
   })
 })
 

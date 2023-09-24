@@ -3,7 +3,11 @@
     <nav class="relative responsive-padding-x py-8 flex items-center justify-between s:gap-2 s:justify-center m:gap-6 drop-shadow">
       <nuxt-link to="/" class="text-cta px-8 hidden s:block">home</nuxt-link>
       <nuxt-link to="/about" class="text-cta px-8 hidden s:block">about</nuxt-link>
-      <nuxt-link to="/" class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]">
+      <nuxt-link
+          to="/"
+          class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]"
+          :class="{ 'text-white': route.fullPath.includes('projects/')}"
+      >
         <h1 class="relative w-fit">
           Jerome
           <span id="rightAccent" class="absolute w-[1ch] rotate-180">&lt;</span>
@@ -46,6 +50,7 @@
 <script setup lang="ts">
 const {$gsap, $ScrollTrigger} = useNuxtApp()
 const rootEl = ref<HTMLElement>()
+const route = useRoute()
 const expanded = ref(false)
 
 const {breakpoints} = useDefaultBreakpoints()
@@ -56,7 +61,10 @@ watch(sm, (val)=>{
     expanded.value = false
   }
 })
-
+const timings = {
+  duration: 0.5,
+  ease: "power2.inOut"
+}
 const basePositions = {
   rightAccent: {
     rotate: 180,
@@ -109,7 +117,7 @@ const headerScrollTrigger = {
   trigger: "header",
   start: "center top",
   end: "bottom top",
-  scrub: 1.5,
+  scrub:1
 }
 
 function toggleMenu(){
@@ -118,26 +126,26 @@ function toggleMenu(){
 
 useSafeOnMounted(rootEl, ()=>{
   $gsap.fromTo('#rightAccent', {
-    duration: 0.5,
+    ...timings,
     ...basePositions.rightAccent,
   },{
-    duration: 0.5,
+    ...timings,
     ...endPositions.rightAccent,
     scrollTrigger: headerScrollTrigger
   })
   $gsap.fromTo('#leftAccent', {
-    duration: 0.5,
+    ...timings,
     ...basePositions.leftAccent
   },{
-    duration: 0.5,
+    ...timings,
     ...endPositions.leftAccent,
     scrollTrigger: headerScrollTrigger
   })
   $gsap.fromTo('#slashMenu', {
-    duration: 0.5,
+    ...timings,
     ...basePositions.slashMenu
   },{
-    duration: 0.5,
+    ...timings,
     ...endPositions.slashMenu,
     scrollTrigger: headerScrollTrigger
   })

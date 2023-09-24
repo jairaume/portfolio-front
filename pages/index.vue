@@ -1,15 +1,37 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black">
-    <section>
-
+    <section class="py-8 -mt-28 s:-mt-32 bg-gradient-to-b from-white to-orange-100 h-[min(80vh,_1000px)]">
+      <div class="responsive-padding-x h-full">
+        <div class="responsive-layout h-full">
+          <div class="relative bg-black h-full rounded-big py-8 flex flex-col items-center justify-around">
+            <div class="text-white text-center  ">
+              <h3 class="text-h4 text-white">
+                <span class="text-orange-100">Jérôme Rascle</span>
+                <span class="font-light"> – Freelance Software Engineer.</span>
+              </h3>
+              <h1 class="text-h1"><span class="font-light text-grey-50">Crafting</span> <span ref="heroAnnotate">ambitious ideas</span></h1>
+            </div>
+            <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-12">
+              <nuxt-link to="/contact" class="btn btn-orange-100 w-fit">
+                <p>My works</p>
+                <i class="icon icon-arrow"/>
+              </nuxt-link>
+              <div class="btn btn-black w-fit">
+                <p>Available <b>now</b></p>
+                <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[200vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24">
         <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="">
-            <h3 class="text-white text-h3">My name is</h3>
-            <h1 id="reveal-text-content" class="text-huge-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
+            <h3 class="text-grey-100 text-h3">My name is</h3>
+            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
               I’m a French software engineer who majored in software development in 2024 at ISEN Lille.
               <br>
@@ -81,24 +103,30 @@
 
           </div>
 
-          <nuxt-link to="/" class="btn btn-black w-fit mx-auto">
-            <p>View my full resume</p>
-            <i class="icon icon-arrow"/>
+          <nuxt-link to="/" class="btn btn-black w-fit mx-auto group">
+            <p>Get my full resume</p>
+            <div class="border-b border-white py-px flex items-center">
+              <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
+            </div>
           </nuxt-link>
 
         </div>
-        <div class="space-y-12">
+        <div class="gap-y-8 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">
             Skills
-            <span class="text-xs font-light">All of them</span>
+            <span class="text-xs font-light">Some of them ;)</span>
           </h1>
 
           <div class="grid gap-8">
-            <div v-for="i in 4" :key="i" class="bg-orange-100 rounded-btn text-white flex justify-between items-center py-2 px-4 odd:flex-row-reverse shadow-xl">
+            <div v-for="i in 4" :key="i" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 odd:-rotate-3 text-center">
               <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
-              <i class="icon icon-arrow"></i>
             </div>
           </div>
+
+          <nuxt-link to="/" class="btn btn-orange-100 w-fit mx-auto">
+            <p>Get to know me</p>
+            <i class="icon icon-arrow"/>
+          </nuxt-link>
         </div>
       </div>
     </section>
@@ -107,25 +135,33 @@
 </template>
 
 <script setup lang="ts">
+import {annotate} from "rough-notation";
+
+const {roundPaths} = useRoundedAnnotations()
+
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
 let ctx: gsap.Context;
 
+const heroAnnotate = ref<HTMLElement|null>(null);
+
 const revealText = ref<HTMLElement|null>(null);
 const {isOutside} = useMouseInElement(revealText)
 
-const heroScrollPositions = {
-  trigger:"#grey-box",
-  start:"25% top",
-  endTrigger:"#reveal-text",
-  end:"top 15%",
-}
-
 const projects = ref<HTMLElement|null>(null);
 
-
 onMounted(()=> {
+
     ctx = $gsap.context(()=> {
+      const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
+        type: 'underline',
+        multiline:true,
+        color:"rgba(237, 112, 45, .5)",
+        strokeWidth: 8,
+      })
+      heroAnnotation.show()
+      roundPaths()
+
 
       $gsap.fromTo("#reveal-text-content",{backgroundPositionX: "100%"}, {
         backgroundPositionX: 0,
@@ -133,9 +169,9 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: "#reveal-text-content",
           scrub: 1,
-          start: "top center",
+          start: "top 25%",
           endTrigger: "#reveal-text-paragraph",
-          end: "10% center"
+          end: "top 25%"
         }
       });
 
@@ -145,7 +181,7 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: "#reveal-text-paragraph",
           scrub: 1,
-          start: "10% center",
+          start: "top 25%",
           endTrigger: "#reveal-text",
           end: "85% bottom"
         }
@@ -208,12 +244,12 @@ useSeoMeta({
 
 <style scoped>
 .reveal-text {
-  @apply bg-gradient-to-r bg-right-top from-40% via-50% to-50% from-orange-100 via-orange-800 to-grey-300 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
   background-size: 200% 100%;
 }
 
 .reveal-text-vertical {
-  @apply bg-gradient-to-b bg-bottom from-40% via-50% to-50% from-grey-100 via-white to-grey-300 bg-clip-text text-transparent;
+  @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
   background-size: 100% 200%;
 }
 
@@ -224,5 +260,9 @@ useSeoMeta({
   &:hover > article:not(:hover) {
     @apply brightness-50 duration-200;
   }
+}
+
+svg.rough-annotation path{
+  border-radius: 4px;
 }
 </style>

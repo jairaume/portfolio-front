@@ -7,7 +7,7 @@
 }
 
 .btn-black {
-    @apply bg-black text-white ring-black/50 hover:ring-black/75;
+    @apply bg-grey-500 text-white ring-grey-500/50 hover:ring-black/75;
 }
 
 .btn-white {
