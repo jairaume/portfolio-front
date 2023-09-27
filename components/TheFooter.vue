@@ -6,7 +6,7 @@
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-3">
               <h1 class="text-big-title">Thinking of a project&nbsp;?</h1>
-              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" to="/">
+              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" to="/contact">
                 <p>Let's discuss it</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>

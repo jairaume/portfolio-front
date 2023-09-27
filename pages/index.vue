@@ -1,18 +1,21 @@
 <template>
-  <main ref="rootEl" id="rootEl" class="bg-black">
-    <section class="py-8 -mt-28 s:-mt-32 bg-gradient-to-b from-white to-orange-100 h-[min(80vh,_1000px)]">
-      <div class="responsive-padding-x h-full">
-        <div class="responsive-layout h-full">
-          <div class="relative bg-black h-full rounded-big py-8 flex flex-col items-center justify-around">
-            <div class="text-white text-center  ">
+  <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
+    <section class="bg-gradient-to-b from-white to-orange-100 h-[min(80vh,_1000px)]">
+      <div ref="heroBoxCtn" class="p-4 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
+        <div ref="heroBox" class="relative bg-black rounded-big py-8 h-full">
+          <div class="relative h-full flex flex-col items-center justify-around">
+            <div class="text-white text-center">
               <h3 class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – Freelance Software Engineer.</span>
               </h3>
-              <h1 class="text-h1"><span class="font-light text-grey-50">Crafting</span> <span ref="heroAnnotate">ambitious ideas</span></h1>
+              <h1 class="text-h1">
+                <span class="font-light text-grey-50">Crafting </span>
+                <span ref="heroAnnotate">ambitious ideas</span>
+              </h1>
             </div>
             <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-12">
-              <nuxt-link to="/contact" class="btn btn-orange-100 w-fit">
+              <nuxt-link to="/projects" class="btn btn-orange-100 w-fit">
                 <p>My works</p>
                 <i class="icon icon-arrow"/>
               </nuxt-link>
@@ -38,7 +41,7 @@
               Since then, I have worked for multiple companies, helping them achieve their digital journey.
             </h3>
           </div>
-          <nuxt-link to="/" class="btn btn-orange-100 w-fit">
+          <nuxt-link to="/about" class="btn btn-orange-100 w-fit">
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -71,7 +74,7 @@
           </nuxt-link>
         </div>
 
-        <nuxt-link to="/" class="btn btn-white m-12 w-fit mx-auto">
+        <nuxt-link to="/projects" class="btn btn-white m-12 w-fit mx-auto">
           <p>View all projects</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
@@ -80,7 +83,7 @@
 
     <section class="py-32 pb-72 bg-grey-50 text-black responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
-        <div class="space-y-12">
+        <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">Experiences</h1>
 
           <div class="grid gap-4 xs:grid-cols-2">
@@ -117,13 +120,13 @@
             <span class="text-xs font-light">Some of them ;)</span>
           </h1>
 
-          <div class="grid gap-8">
-            <div v-for="i in 4" :key="i" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 odd:-rotate-3 text-center">
+          <div class="grid gap-8 group">
+            <div v-for="i in 4" :key="i" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
               <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
             </div>
           </div>
 
-          <nuxt-link to="/" class="btn btn-orange-100 w-fit mx-auto">
+          <nuxt-link to="/about" class="btn btn-orange-100 w-fit mx-auto">
             <p>Get to know me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -143,6 +146,8 @@ const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
 let ctx: gsap.Context;
 
+const heroBoxCtn = ref<HTMLElement|null>(null);
+const heroBox = ref<HTMLElement|null>(null);
 const heroAnnotate = ref<HTMLElement|null>(null);
 
 const revealText = ref<HTMLElement|null>(null);
@@ -153,6 +158,29 @@ const projects = ref<HTMLElement|null>(null);
 onMounted(()=> {
 
     ctx = $gsap.context(()=> {
+      $gsap.to(heroBoxCtn.value,{
+        padding:0,
+        maxWidth:"100vw",
+        scrollTrigger: {
+          trigger: heroBoxCtn.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%"
+        }
+      })
+      $gsap.to(heroBox.value,{
+        borderRadius:0,
+        background: "#1E1E1E",
+        scrollTrigger: {
+          trigger: heroBox.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%",
+        }
+      })
+
       const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
         type: 'underline',
         multiline:true,
