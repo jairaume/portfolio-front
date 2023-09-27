@@ -12,7 +12,9 @@
 
             <div class="text-white flex flex-col gap-2">
               <h4 class="text-h4">My name is</h4>
-              <h1 class="text-h1 text-orange-100 leading-none">Jérôme Rascle</h1>
+              <h1 class="text-h1 text-grey-500 leading-none">
+                <span ref="prenom" class="reveal-text">Jérôme </span>
+                <span ref="nom" class="reveal-text">Rascle</span></h1>
               <p class="xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
                 Laboris mollit laborum do commodo tempor id laborum. Irure sunt do labore ea dolor voluptate aliqua sint ullamco ut aliquip. Magna ullamco dolor Lorem do. Irure voluptate ad fugiat amet occaecat.
               </p>
@@ -105,6 +107,9 @@ import {annotate} from "rough-notation";
 
 const rootEl = ref()
 
+const prenom = ref<HTMLElement|null>(null)
+const nom = ref<HTMLElement|null>(null)
+
 const movieAnnotate = ref<HTMLElement>()
 const surfAnnotate = ref<HTMLElement>()
 const drumsAnnotate = ref<HTMLElement>()
@@ -114,15 +119,26 @@ const otherAnnotate = ref<HTMLElement>()
 const {$gsap, $Draggable} = useNuxtApp()
 let ctx: gsap.Context;
 
+const revealNameTo: gsap.TweenVars = {
+  backgroundPositionX:0,
+  duration:1,
+  ease: 'power2.in',
+}
+
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
-  start: 'top 75%',
-  end: 'bottom center',
+  start: 'top center',
+  end: '75% center',
   scrub: 1,
+  markers:true,
 }
 
 onMounted(() => {
   ctx = $gsap.context(()=>{
+    const tl = $gsap.timeline()
+    tl.to(prenom.value,revealNameTo)
+    tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
+
     const lineSections = $gsap.utils.toArray('.line-section')
     lineSections.forEach((lineSection) => {
       $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
@@ -308,10 +324,15 @@ useSeoMeta({
 </script>
 
 <style scoped>
+.reveal-text {
+  @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
+  background-size: 230% 100%;
+}
+
 .line-section{
   @apply bg-grey-300 w-full rounded-full;
   @apply bg-gradient-to-b bg-bottom from-40% via-50% to-50% from-grey-100 via-white to-grey-300 text-transparent;
-  background-size: 100% 200%;
+  background-size: 100% 220%;
   &.line-section-1 {
     @apply h-[1.5%];
   }
