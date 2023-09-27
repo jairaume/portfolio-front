@@ -20,7 +20,7 @@
               </p>
               <div class="grid gap-4 mt-8">
                 <p class="text-orange-100">Sharing the same phylosophy ?</p>
-                <nuxt-link to="/" class="btn btn-white w-fit">
+                <nuxt-link to="/contact" class="btn btn-white w-fit">
                   <p>Let's discuss</p>
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
@@ -129,8 +129,7 @@ const hobbiesScrollTrigger = {
   trigger: '#hobbies',
   start: 'top center',
   end: '75% center',
-  scrub: 1,
-  markers:true,
+  scrub: 1
 }
 
 onMounted(() => {

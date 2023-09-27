@@ -1,7 +1,7 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
     <section class="bg-gradient-to-b from-white to-orange-100 h-[min(80vh,_1000px)]">
-      <div ref="heroBoxCtn" class="p-4 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
+      <div ref="heroBoxCtn" class="p-2 xs:p-4 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroBox" class="relative bg-black rounded-big py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
             <div class="text-white text-center">

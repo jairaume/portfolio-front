@@ -32,7 +32,7 @@
 
 @screen m {
     .text-monument-menu {
-        @apply text-5xl;
+        @apply text-4xl;
     }
     .text-monument-h1 {
         @apply text-8xl;
