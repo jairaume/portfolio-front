@@ -1,8 +1,8 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section class="bg-gradient-to-b from-white to-orange-100 h-[min(80vh,_1000px)]">
-      <div ref="heroBoxCtn" class="p-2 xs:p-4 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
-        <div ref="heroBox" class="relative bg-black rounded-big py-8 h-full">
+    <section class="relative bg-gradient-to-b from-white to-orange-100 h-[clamp(800px,_80vh,_1000px)]">
+      <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
+        <div ref="heroContent" class="relative z-10 py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
             <div class="text-white text-center">
               <h3 class="text-h4 text-white">
@@ -26,6 +26,9 @@
             </div>
           </div>
         </div>
+      </div>
+      <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
+        <div ref="heroBox" class="bg-black rounded-big w-full h-full"></div>
       </div>
     </section>
 
@@ -148,6 +151,7 @@ let ctx: gsap.Context;
 
 const heroBoxCtn = ref<HTMLElement|null>(null);
 const heroBox = ref<HTMLElement|null>(null);
+const heroContent = ref<HTMLElement|null>(null);
 const heroAnnotate = ref<HTMLElement|null>(null);
 
 const revealText = ref<HTMLElement|null>(null);
@@ -156,22 +160,33 @@ const {isOutside} = useMouseInElement(revealText)
 const projects = ref<HTMLElement|null>(null);
 
 onMounted(()=> {
-
     ctx = $gsap.context(()=> {
-      $gsap.to(heroBoxCtn.value,{
+      $gsap.fromTo(heroBoxCtn.value,{maxWidth:"1400px"},{
         padding:0,
-        maxWidth:"100vw",
+        maxWidth: "100vw",
         scrollTrigger: {
-          trigger: heroBoxCtn.value,
+          trigger: heroBox.value,
           scrub: 1,
           start: "75% center",
           endTrigger: revealText.value,
-          end: "top 10%"
+          end: "top 10%",
         }
       })
       $gsap.to(heroBox.value,{
         borderRadius:0,
-        background: "#1E1E1E",
+        background: "rgb(30,30,30)",
+        scrollTrigger: {
+          trigger: heroBox.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%",
+        }
+      })
+      $gsap.set(heroContent.value,{transformOrigin:"top"})
+      $gsap.to(heroContent.value,{
+        opacity:0,
+        scale:.6,
         scrollTrigger: {
           trigger: heroBox.value,
           scrub: 1,
