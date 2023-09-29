@@ -53,7 +53,7 @@
           </p>
         </div>
 
-        <div class=" experience grid px-4 h-fit row-start-2 col-start-2 relative">
+        <div class="experience grid px-4 h-fit row-start-2 col-start-2 relative">
           <span class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 left-0 -translate-x-1/2 translate-y-1/2"></span>
           <h3 class="text-monument-h3 text-orange-100 text-left font-light s:absolute top-0 s:right-full s:w-full s:text-right s:px-8 s:translate-y-1/2">2019 – Now</h3>
           <h4 class="text-h4">Front-End Developer</h4>
@@ -66,9 +66,22 @@
     </div>
   </section>
 
-  <section class="py-32 responsive-padding-x">
-    <div class="responsive-layout">
+  <section class="py-12 responsive-padding-x">
+    <div class="responsive-layout space-y-6">
       <h1 class="text-big-title">Skills</h1>
+      <div class="relative grid gap-8">
+        <div class="flex gap-8" v-for="i in 3" :key="i">
+          <div class="text-center shrink-0">
+            <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
+          </div>
+          <div>
+            <p>
+              Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
+            </p>
+          </div>
+        </div>
+        <div class="absolute z-0 w-1/2 h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+      </div>
 
     </div>
   </section>
