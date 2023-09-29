@@ -212,7 +212,7 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: "#reveal-text-content",
           scrub: 1,
-          start: "top 25%",
+          start: "top center",
           endTrigger: "#reveal-text-paragraph",
           end: "top 25%"
         }

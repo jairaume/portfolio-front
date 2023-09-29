@@ -1,5 +1,5 @@
 <template>
-<main ref="rootEl" class="">
+<main ref="rootEl" class="text-white">
   <section class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
@@ -33,7 +33,7 @@
     </div>
   </section>
 
-  <section class="pt-12 pb-20 s:py-32 responsive-padding-x text-white bg-grey-700">
+  <section class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
       <h1 class="text-big-title text-center">Past experiences</h1>
       <div class="relative grid grid-cols-2 gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
@@ -66,7 +66,14 @@
     </div>
   </section>
 
-  <section id="hobbies" class="relative py-32 s:py-40 responsive-padding-x text-white">
+  <section class="py-32 responsive-padding-x">
+    <div class="responsive-layout">
+      <h1 class="text-big-title">Skills</h1>
+
+    </div>
+  </section>
+
+  <section id="hobbies" class="relative py-32 s:py-40 responsive-padding-x">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <h3 class="text-h3 font-light leading-normal">
