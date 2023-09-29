@@ -33,8 +33,8 @@
     </section>
 
     <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
-      <div class="responsive-layout sticky top-24">
-        <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
+      <div class="responsive-layout sticky top-24 m:top-32">
+        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="relative">
             <h3 class="text-grey-100 text-h3">My name is</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
