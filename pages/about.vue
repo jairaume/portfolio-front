@@ -68,19 +68,23 @@
 
   <section class="py-12 responsive-padding-x">
     <div class="responsive-layout space-y-6">
-      <h1 class="text-big-title">Skills</h1>
-      <div class="relative grid gap-8">
-        <div class="flex gap-8" v-for="i in 3" :key="i">
-          <div class="text-center shrink-0">
-            <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
-          </div>
-          <div>
-            <p>
-              Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
-            </p>
-          </div>
-        </div>
-        <div class="absolute z-0 w-1/2 h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+        <h1 class="text-big-title">Skills</h1>
+      <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-0">
+        <ul class="grid gap-8">
+          <li v-for="i in 3" :key="i" class="skill flex gap-8 relative
+            after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
+          ">
+            <div class="text-center text-cta shrink-0">
+              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
+            </div>
+            <div class="max-w-[800px]">
+              <p>
+                Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
+              </p>
+            </div>
+          </li>
+        </ul>
+          <div class="absolute z-0 w-1/2 h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
     </div>
