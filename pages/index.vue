@@ -32,7 +32,7 @@
       </div>
     </section>
 
-    <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
+    <section ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="relative">
@@ -86,34 +86,34 @@
       </div>
     </section>
 
-    <section class="py-32 pb-72 bg-grey-50 text-black responsive-padding-x">
+    <section class="py-32 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">Experiences</h1>
 
           <div class="grid gap-4 xs:grid-cols-2">
 
-              <h4 class="text-monument-h3 text-orange-200 font-light pt-2 col-start-1"> May 2019 – August 2023</h4>
+              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> May 2019 – August 2023</h4>
               <div class="xs:col-start-2">
                 <h4 class="text-h4 font-medium">Software Engineer&nbsp;· <span class="font-black">Apple</span></h4>
-                <p class="text-grey-300 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
+                <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
                   Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum. Non occaecat incididunt adipisicing aute dolore cupidatat enim pariatur est
                 </p>
               </div>
 
-              <h4 class="text-monument-h3 text-orange-200 font-light pt-2 col-start-1"> 2019 – 2023</h4>
+              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> 2019 – 2023</h4>
               <div class="xs:col-start-2">
                 <h4 class="text-h4 font-medium">Intern Developer&nbsp;· <span class="font-black">Google</span></h4>
-                <p class="text-grey-300 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
+                <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
                   Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum.
                 </p>
               </div>
 
           </div>
 
-          <nuxt-link to="/" class="btn btn-black w-fit mx-auto group">
+          <nuxt-link to="/" class="btn btn-white w-fit mx-auto group">
             <p>Get my full resume</p>
-            <div class="border-b border-white py-px flex items-center">
+            <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
             </div>
           </nuxt-link>
@@ -131,9 +131,9 @@
             </div>
           </div>
 
-          <nuxt-link to="/about" class="btn btn-orange-100 w-fit mx-auto">
+          <nuxt-link to="/about" class="btn btn-orange-100 w-fit mx-auto group">
             <p>Get to know me</p>
-            <i class="icon icon-arrow"/>
+            <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>
         </div>
       </div>
