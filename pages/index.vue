@@ -35,7 +35,7 @@
     <section ref="revealText" id="reveal-text" class="bg-grey-700 py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24">
         <div class="relative xs:px-layout-s-c-2-g-1 s:px-layout-m-c-1-g-2 m:px-layout-l-c-2-g-1 space-y-12">
-          <div class="">
+          <div class="relative">
             <h3 class="text-grey-100 text-h3">My name is</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
@@ -43,6 +43,7 @@
               <br>
               Since then, I have worked for multiple companies, helping them achieve their digital journey.
             </h3>
+            <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           <nuxt-link to="/about" class="btn btn-orange-100 w-fit">
             <p>More about me</p>
@@ -53,6 +54,7 @@
               <nuxt-img src="/images/svg/circonflexe.svg" class="w-full h-full object-fit !-rotate-45 s:!rotate-0" alt=""/>
             </MouseLooker>
           </div>
+
         </div>
       </div>
     </section>
@@ -298,10 +300,10 @@ useSeoMeta({
 
 .projects_wrapper{
   & > * {
-    @apply duration-500;
+    @apply duration-1000;
   }
-  &:hover > article:not(:hover) {
-    @apply brightness-50 duration-200;
+  &:hover > a:not(:hover) {
+    @apply brightness-50 duration-500;
   }
 }
 
