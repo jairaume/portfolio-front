@@ -1,5 +1,5 @@
 <template>
-  <main ref="theSection" class="pb-52 pt-12 text-white min-h-[80vh] bg-gradient-to-b from-black to-grey-700 overflow-hidden">
+  <main ref="theSection" class="relative pb-52 -mt-20 s:-mt-32 pt-44 text-white min-h-[80vh] bg-gradient-to-b from-black to-grey-700 overflow-hidden">
     <section class="relative responsive-padding-x">
       <div class="responsive-layout">
         <div class="py-32 space-y-32 m:space-y-40">
@@ -51,12 +51,30 @@
         </MouseLooker>
       </div>
     </section>
+    <div ref="blur" class="z-0 absolute hidden s:block w-1/2 h-1/2 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 bg-orange-100/10 blur-3xl pointer-events-none"></div>
   </main>
 </template>
 
 <script setup lang="ts">
 const theSection = ref<HTMLElement | null>(null)
-const {isOutside} = useMouseInElement(theSection)
+const {$gsap} = useNuxtApp()
+const {x, y, isOutside} = useMouseInElement(theSection)
+
+const blur = ref<HTMLElement | null>(null)
+
+watch([x,y],()=>{
+  if(blur.value){
+    $gsap.to(blur.value, {
+      x: x.value,
+      y: y.value,
+      duration: 1,
+      ease: 'power1'
+    })
+  }
+})
+
+onMounted(() => {
+})
 </script>
 
 <style scoped>

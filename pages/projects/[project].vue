@@ -78,7 +78,6 @@ const projectSwiper = ref<Swiper>()
 
 onMounted(()=> {
   if(!projectSwiperElement.value) return
-  nextTick(()=>{
     projectSwiper.value = new Swiper(projectSwiperElement.value, {
       grabCursor: true,
       pagination: {
@@ -89,12 +88,11 @@ onMounted(()=> {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
+      slidesPerView: 1,
       spaceBetween: 50,
       mousewheel: {
         forceToAxis: true,
       },
-      modules: [Pagination, Navigation]
-    })
   })
 })
 
