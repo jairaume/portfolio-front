@@ -66,7 +66,7 @@
     </div>
   </section>
 
-  <section class="py-12 responsive-padding-x">
+  <section id="skills" class="py-12 responsive-padding-x">
     <div class="responsive-layout space-y-6">
         <h1 class="text-big-title">Skills</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-0">

@@ -17,6 +17,16 @@
               </div>
               <!-- If we need pagination -->
               <div class="swiper-pagination"></div>
+              <!-- If we need navigation buttons -->
+              <div class="absolute w-full top-1/2 -translate-y-1/2 flex justify-between z-50">
+
+                <div class="swiper-button-prev">
+                  <i class="icon icon-arrow rotate-180"></i>
+                </div>
+                <div class="swiper-button-next">
+                  <i class="icon icon-arrow"></i>
+                </div>
+              </div>
             </div>
           <div class="grid gap-12">
             <div>
@@ -58,7 +68,7 @@
 <script setup lang="ts">
 import Swiper from "swiper";
 import 'swiper/css';
-import { Pagination } from 'swiper/modules';
+import {Navigation, Pagination} from 'swiper/modules';
 
 const rootEl = ref<HTMLElement>()
 const route = useRoute()
@@ -75,12 +85,15 @@ onMounted(()=> {
         el: '.swiper-pagination',
         clickable: true,
       },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
       spaceBetween: 50,
       mousewheel: {
         forceToAxis: true,
       },
-      loop: true,
-      modules: [Pagination]
+      modules: [Pagination, Navigation]
     })
   })
 })

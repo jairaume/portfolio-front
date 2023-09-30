@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section class="relative bg-gradient-to-b from-white to-orange-100 h-[clamp(650px,_80vh,_1000px)]">
+    <section class="relative bg-grey-50 h-[clamp(650px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
