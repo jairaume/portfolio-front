@@ -1,10 +1,10 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section class="relative bg-gradient-to-b from-white to-orange-100 h-[clamp(800px,_80vh,_1000px)]">
+    <section class="relative bg-gradient-to-b from-white to-orange-100 h-[clamp(650px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
-            <div class="text-white text-center">
+            <div class="relative text-white text-center">
               <h3 class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – Freelance Software Engineer.</span>
@@ -13,8 +13,30 @@
                 <span class="font-light text-grey-50">Crafting </span>
                 <span ref="heroAnnotate">ambitious ideas</span>
               </h1>
+
+              <div class="absolute my-8 s:my-12 left-12 s:left-0 bottom-full m-0 w-10 h-10 s:w-20 s:h-20">
+                <MouseLooker :active="true">
+                  <nuxt-img src="/images/svg/point-virgule.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                </MouseLooker>
+              </div>
+              <div class="absolute my-8 s:my-12 left-12 s:left-0 top-full m-0 w-5 h-5 s:w-10 s:h-10">
+                <MouseLooker :active="true">
+                  <nuxt-img src="/images/svg/accolade.svg" class="w-full h-full object-fit rotate-90"></nuxt-img>
+                </MouseLooker>
+              </div>
+              <div class="absolute my-8 s:my-12 right-12 s:right-0 bottom-full m-0 w-10 h-10 s:w-20 s:h-20">
+                <MouseLooker :active="true">
+                  <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                </MouseLooker>
+              </div>
+              <div class="absolute my-8 s:my-12 right-12 s:right-0 top-full m-0 w-5 h-5 s:w-10 s:h-10">
+                <MouseLooker :active="true">
+                  <nuxt-img src="/images/svg/slash.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                </MouseLooker>
+              </div>
             </div>
-            <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-12">
+
+            <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-8">
               <nuxt-link to="/projects" class="btn btn-orange-100 w-fit">
                 <p>My works</p>
                 <i class="icon icon-arrow"/>

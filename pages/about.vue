@@ -77,7 +77,7 @@
             <div class="text-center text-cta shrink-0">
               <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
             </div>
-            <div class="max-w-[800px]">
+            <div class="max-w-[800px] text-grey-50">
               <p>
                 Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
               </p>
@@ -113,8 +113,8 @@
           <li v-for="i in 10" :key="i"
               class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-btn overflow-hidden shadow-custom-ondark">
             <div class="relative w-full h-full">
-              <div class="absolute bottom-0 left-0 w-full p-4 opacity-0 scale-90 group-hover:opacity-100 group-hover:scale-100 duration-300">
-                <p class="bg-black shadow-xl text-white px-4 py-2 rounded-full">Favorite movie 🎬</p>
+              <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
+                <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">Favorite movie 🎬</p>
               </div>
               <nuxt-img src="https://picsum.photos/600/500" alt="about" class="w-full h-full object-cover" />
             </div>
@@ -199,9 +199,9 @@ onMounted(() => {
       })
     })
 
-    const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline:true, color:"#ED702D"})
-    const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline:true, color:"#ED702D"})
-    const drumsAnnotation = annotate(drumsAnnotate.value as HTMLElement, {type: 'circle', color:"#ED702D"})
+    const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline: true, color: "rgba(237, 112, 45, .5)"})
+    const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline: true, color: "rgba(237, 112, 45, .5)"})
+    const drumsAnnotation = annotate(drumsAnnotate.value as HTMLElement, {type: 'circle', color: "rgba(237, 112, 45, .5)"})
 
     $gsap.from(movieAnnotate.value as HTMLElement, {
       scrollTrigger: {
@@ -273,7 +273,11 @@ onMounted(() => {
     })
 
 
-    const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {type: 'highlight', multiline:true, color:"#ED702D"})
+    const otherAnnotation = annotate(otherAnnotate.value as HTMLElement, {
+      type: 'highlight',
+      multiline:true,
+      color:"rgba(237, 112, 45, .75)"
+    })
 
     $gsap.from(otherAnnotate.value as HTMLElement, {
       scrollTrigger: {
