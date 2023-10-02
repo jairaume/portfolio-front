@@ -16,10 +16,10 @@
 
 
 .swiper-button-disabled {
-    @apply opacity-50 cursor-default;
+    @apply opacity-30 cursor-default;
 }
 .swiper-button-next, .swiper-button-prev {
-    @apply h-10 w-10 mx-2 flex items-center border border-white/25 duration-200 rounded-full p-2 active:translate-x-1;
+    @apply h-10 w-10 mx-2 flex items-center border border-white/40 duration-200 rounded-full p-2 active:translate-x-1;
 }
 .swiper-button-next:not(.swiper-button-disabled), .swiper-button-prev:not(.swiper-button-disabled){
      @apply hover:border-white;
