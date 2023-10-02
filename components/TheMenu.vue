@@ -56,7 +56,6 @@ const expanded = ref(false)
 const {breakpoints} = useDefaultBreakpoints()
 const sm = breakpoints.smaller('s')
 watch(sm, (val)=>{
-  console.log(val)
   if(!val){
     expanded.value = false
   }

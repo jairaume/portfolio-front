@@ -13,7 +13,7 @@
               </template>
             </Marquee>
             <div class="absolute w-20 h-20 s:w-32 s:h-32 bottom-full left-3/4 rotate-180">
-              <nuxt-img src="/images/svg/drawn-arrow.svg" class="w-full h-full object-fit duration-300"></nuxt-img>
+              <div class="svg svg-arrow w-full h-full text-orange-100"></div>
             </div>
           </div>
 
@@ -28,26 +28,26 @@
               </template>
             </Marquee>
             <div class="absolute w-8 h-8 s:w-12 s:h-12 top-full left-1/2 mt-8">
-              <nuxt-img src="/images/svg/drawn-cursor.svg" class="w-full h-full object-fit duration-300"></nuxt-img>
+              <div class="svg svg-cursor w-full h-full text-orange-100"></div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <div class="absolute top-0 left-0 m-8 w-20 h-20 m:w-32 m:h-32 s:left-12">
+      <div class="absolute top-0 left-0 s:left-12">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">&lt;</p>
         </MouseLooker>
       </div>
-      <div class="absolute bottom-0 left-0 m-8 w-12 h-12 m:w-20 m:h-20 s:left-20">
+      <div class="absolute bottom-0 left-0 s:left-20">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/slash.svg" class="w-full h-full object-fit"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">/</p>
         </MouseLooker>
       </div>
-      <div class="absolute bottom-0 right-0 m-8 w-20 h-20 m:w-32 m:h-32 m:pt-12 s:right-20">
+      <div class="absolute bottom-0 right-0 m-8 m:pt-12 s:right-20">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">&lt;</p>
         </MouseLooker>
       </div>
     </section>

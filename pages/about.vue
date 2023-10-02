@@ -94,7 +94,7 @@
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          If I’m not working, I’m probably in a <span ref="movieAnnotate">movie theater</span>, or <span ref="surfAnnotate">surfing</span> the northern french coast or most likely in my basement beating my <span ref="drumsAnnotate" class="relative after:content-[url(/images/svg/drawn-arrow.svg)] after:absolute after:top-[110%] after:left-1/2 after:w-10 after:h-32">drums</span> !
+          If I’m not working, I’m probably in a <span ref="movieAnnotate">movie theater</span>, or <span ref="surfAnnotate">surfing</span> the northern french coast or most likely in my basement beating my <span ref="drumsAnnotate" class="relative littleArrow">drums</span> !
         </h3>
       </div>
     </div>
@@ -376,5 +376,14 @@ useSeoMeta({
 
 .experience.active > span {
   @apply border-orange-100;
+}
+
+.littleArrow {
+  &:after{
+    mask: url('/images/svg/drawn-arrow.svg') no-repeat center;
+    -webkit-mask: url('/images/svg/drawn-arrow.svg') no-repeat center;
+    mask-size: contain;
+  }
+  @apply after:absolute after:bg-orange-100/75 after:top-[110%] after:left-1/2 after:w-20 after:h-20;
 }
 </style>

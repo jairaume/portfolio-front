@@ -4,7 +4,7 @@
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
-            <div class="relative text-white text-center">
+            <div class="relative text-white text-center px-8">
               <h3 class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – Freelance Software Engineer.</span>
@@ -14,24 +14,24 @@
                 <span ref="heroAnnotate">ambitious ideas</span>
               </h1>
 
-              <div class="absolute my-8 s:my-12 left-12 s:left-0 bottom-full m-0 w-10 h-10 s:w-20 s:h-20">
+              <div class="absolute my-8 s:my-12 left-12 s:left-8 bottom-full m-0">
                 <MouseLooker :active="true">
-                  <nuxt-img src="/images/svg/point-virgule.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                  <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 left-12 s:left-0 top-full m-0 w-5 h-5 s:w-10 s:h-10">
+              <div class="absolute my-8 s:my-12 left-20 s:left-24 top-full m-0">
                 <MouseLooker :active="true">
-                  <nuxt-img src="/images/svg/accolade.svg" class="w-full h-full object-fit rotate-90"></nuxt-img>
+                  <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-0 bottom-full m-0 w-10 h-10 s:w-20 s:h-20">
+              <div class="absolute my-8 s:my-12 right-12 s:right-8 bottom-full m-0">
                 <MouseLooker :active="true">
-                  <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                  <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-0 top-full m-0 w-5 h-5 s:w-10 s:h-10">
+              <div class="absolute my-8 s:my-12 right-20 s:right-24 top-full m-0">
                 <MouseLooker :active="true">
-                  <nuxt-img src="/images/svg/slash.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+                  <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
               </div>
             </div>
@@ -71,9 +71,9 @@
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
-          <div class="absolute bottom-0 right-0 w-12 h-12 s:w-32 s:h-32">
+          <div class="absolute bottom-0 right-0">
             <MouseLooker :active="!isOutside">
-              <nuxt-img src="/images/svg/circonflexe.svg" class="w-full h-full object-fit !-rotate-45 s:!rotate-0" alt=""/>
+              <p class="rotate-90 font-monument text-[15vw] m:text-9xl text-orange-100">&lt;</p>
             </MouseLooker>
           </div>
 
