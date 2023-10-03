@@ -99,7 +99,7 @@ onMounted(()=> {
       slidesPerView: 1,
       spaceBetween: 50,
       mousewheel: {
-        //forceToAxis: true,
+        forceToAxis: true,
       },
   })
 })
