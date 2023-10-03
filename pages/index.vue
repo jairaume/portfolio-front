@@ -207,18 +207,6 @@ onMounted(()=> {
           end: "top 10%",
         }
       })
-      $gsap.set(heroContent.value,{transformOrigin:"top"})
-      $gsap.to(heroContent.value,{
-        opacity:0,
-        scale:.6,
-        scrollTrigger: {
-          trigger: heroBox.value,
-          scrub: 1,
-          start: "75% center",
-          endTrigger: revealText.value,
-          end: "top 10%",
-        }
-      })
 
       const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
         type: 'underline',
@@ -286,6 +274,19 @@ onMounted(()=> {
             invalidateOnRefresh: true,
           }
         });
+
+        $gsap.set(heroContent.value,{transformOrigin:"top"})
+        $gsap.to(heroContent.value,{
+          opacity:0,
+          scale:.6,
+          scrollTrigger: {
+            trigger: heroBox.value,
+            scrub: 1,
+            start: "75% center",
+            endTrigger: revealText.value,
+            end: "top 10%",
+          }
+        })
       })
     }, rootEl.value)
 })

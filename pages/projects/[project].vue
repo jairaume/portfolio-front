@@ -29,9 +29,17 @@
               </div>
             </div>
           <div class="grid gap-12">
-            <div>
-              <h1 class="text-h1 leading-tight">{{ project }}</h1>
-              <h4 class="text-cta font-light">work for <span class="font-bold">Gintlemen</span></h4>
+            <div class="flex justify-between flex-wrap items-center gap-8">
+              <div>
+                <h1 class="text-h1 leading-tight">{{ project }}</h1>
+                <h4 class="text-cta font-light">work for <span class="font-bold">Gintlemen</span></h4>
+              </div>
+              <div>
+                <nuxt-link to="https://orthodyneanalyticalusa.com" class="flex items-center gap-2 px-3 py-1 border border-white/40 hover:border-white rounded-btn" target="_blank" rel="noopener" title="Link to La Grangette">
+                  <p>View the project</p>
+                  <i class="icon icon-arrow -rotate-45"></i>
+                </nuxt-link>
+              </div>
             </div>
             <div class="flex flex-col gap-8 xs:flex-row flex-wrap s:gap-12">
               <div class="max-layout-xs-c-1-g-1 xs:max-layout-s-c-3-g-2 s:max-layout-m-c-2-g-3">
@@ -91,7 +99,7 @@ onMounted(()=> {
       slidesPerView: 1,
       spaceBetween: 50,
       mousewheel: {
-        forceToAxis: true,
+        //forceToAxis: true,
       },
   })
 })
