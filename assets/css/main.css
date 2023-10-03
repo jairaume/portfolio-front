@@ -3,6 +3,7 @@
 
 @import "tailwindcss/components";
 @import "assets/css/components/icon.css";
+@import "assets/css/components/svg.css";
 @import "assets/css/components/layout.css";
 @import "assets/css/components/heading.css";
 @import "assets/css/components/button.css";

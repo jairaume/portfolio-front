@@ -1,5 +1,5 @@
 <template>
-  <div class="flex hover:-translate-x-[10%] duration-[4s] ease-out group">
+  <div class="flex hover:-translate-x-[7.5%] duration-[4s] ease-out group">
     <div v-for="j in 2" :key="j" class="flex will-change-transform animate-scroll w-fit group-hover:pause">
       <slot/>
     </div>

@@ -1,12 +1,19 @@
 <template>
   <footer class="relative -mt-32 z-30 rounded-t-big bg-black text-white pt-12 s:pt-24 grid gap-6 xs:gap-12 s:gap-20">
+    <button @click="scrollToTop" class="absolute right-4 s:right-8 bottom-full m-4 s:bottom-8 flex flex-col gap-2 items-center group">
+      <span  class=" border border-white/50 s:hover:border-white rounded-full p-3">
+        <i class="icon icon-arrow -rotate-90 flex items-center s:group-hover:-translate-y-2 duration-300"></i>
+      </span>
+      <span class="text-xs text-center w-2/3 opacity-75 s:group-hover:opacity-100 duration-300 pointer-events-none">Scroll back to top</span>
+    </button>
+
     <div class="responsive-padding-x">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0">
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-3">
               <h1 class="text-big-title">Thinking of a project&nbsp;?</h1>
-              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" to="/">
+              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" to="/contact">
                 <p>Let's discuss it</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>
@@ -59,7 +66,12 @@
 </template>
 
 <script setup lang="ts">
-
+function scrollToTop(){
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
 </script>
 
 <style scoped>

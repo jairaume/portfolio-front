@@ -1,5 +1,5 @@
 <template>
-  <main ref="theSection" class="pb-52 pt-12 text-white min-h-[80vh] bg-gradient-to-b from-black to-grey-700 overflow-hidden">
+  <main ref="theSection" class="relative pb-52 -mt-20 s:-mt-32 pt-44 text-white min-h-[80vh] bg-gradient-to-b from-black to-grey-700 overflow-hidden">
     <section class="relative responsive-padding-x">
       <div class="responsive-layout">
         <div class="py-32 space-y-32 m:space-y-40">
@@ -13,7 +13,7 @@
               </template>
             </Marquee>
             <div class="absolute w-20 h-20 s:w-32 s:h-32 bottom-full left-3/4 rotate-180">
-              <nuxt-img src="/images/svg/drawn-arrow.svg" class="w-full h-full object-fit duration-300"></nuxt-img>
+              <div class="svg svg-arrow w-full h-full text-orange-100"></div>
             </div>
           </div>
 
@@ -28,35 +28,53 @@
               </template>
             </Marquee>
             <div class="absolute w-8 h-8 s:w-12 s:h-12 top-full left-1/2 mt-8">
-              <nuxt-img src="/images/svg/drawn-cursor.svg" class="w-full h-full object-fit duration-300"></nuxt-img>
+              <div class="svg svg-cursor w-full h-full text-orange-100"></div>
             </div>
           </div>
 
         </div>
       </div>
 
-      <div class="absolute top-0 left-0 m-8 w-20 h-20 m:w-32 m:h-32 s:left-12">
+      <div class="absolute top-0 left-0 s:left-12">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">&lt;</p>
         </MouseLooker>
       </div>
-      <div class="absolute bottom-0 left-0 m-8 w-12 h-12 m:w-20 m:h-20 s:left-20">
+      <div class="absolute bottom-0 left-0 s:left-20">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/slash.svg" class="w-full h-full object-fit"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">/</p>
         </MouseLooker>
       </div>
-      <div class="absolute bottom-0 right-0 m-8 w-20 h-20 m:w-32 m:h-32 m:pt-12 s:right-20">
+      <div class="absolute bottom-0 right-0 m-8 m:pt-12 s:right-20">
         <MouseLooker :active="!isOutside">
-          <nuxt-img src="/images/svg/superieur.svg" class="w-full h-full object-fit -rotate-90"></nuxt-img>
+          <p class="rotate-90 font-monument text-[10vw] m:text-8xl text-orange-100">&lt;</p>
         </MouseLooker>
       </div>
     </section>
+    <div ref="blur" class="z-0 absolute hidden s:block w-1/2 h-1/2 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 bg-orange-100/10 blur-3xl pointer-events-none"></div>
   </main>
 </template>
 
 <script setup lang="ts">
 const theSection = ref<HTMLElement | null>(null)
-const {isOutside} = useMouseInElement(theSection)
+const {$gsap} = useNuxtApp()
+const {x, y, isOutside} = useMouseInElement(theSection)
+
+const blur = ref<HTMLElement | null>(null)
+
+watch([x,y],()=>{
+  if(blur.value){
+    $gsap.to(blur.value, {
+      x: x.value,
+      y: y.value,
+      duration: 1,
+      ease: 'power1'
+    })
+  }
+})
+
+onMounted(() => {
+})
 </script>
 
 <style scoped>
