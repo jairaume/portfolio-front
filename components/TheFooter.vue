@@ -1,10 +1,10 @@
 <template>
   <footer class="relative -mt-32 z-30 rounded-t-big bg-black text-white pt-12 s:pt-24 grid gap-6 xs:gap-12 s:gap-20">
-    <button @click="scrollToTop" class="absolute right-8 top-8 flex flex-col gap-2 items-center group">
-      <span  class=" border border-white/50 hover:border-white rounded-full p-3">
-        <i class="icon icon-arrow -rotate-90 flex items-center group-hover:-translate-y-2 duration-300"></i>
+    <button @click="scrollToTop" class="absolute right-4 s:right-8 bottom-full m-4 s:bottom-8 flex flex-col gap-2 items-center group">
+      <span  class=" border border-white/50 s:hover:border-white rounded-full p-3">
+        <i class="icon icon-arrow -rotate-90 flex items-center s:group-hover:-translate-y-2 duration-300"></i>
       </span>
-      <span class="text-xs text-center w-2/3 opacity-75 group-hover:opacity-100 duration-300 pointer-events-none">Scroll back to top</span>
+      <span class="text-xs text-center w-2/3 opacity-75 s:group-hover:opacity-100 duration-300 pointer-events-none">Scroll back to top</span>
     </button>
 
     <div class="responsive-padding-x">

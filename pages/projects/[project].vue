@@ -5,7 +5,7 @@
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
             <div ref="projectSwiperElement" class="swiper projectSwiper w-full !overflow-visible">
               <div class="swiper-wrapper">
-                <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)]" v-for="i in 5" :key="i">
+                <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)] shadow-2xl" v-for="i in 5" :key="i">
                   <nuxt-picture
                       src="/images/projects/grangette.png"
                       loading="lazy"
