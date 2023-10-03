@@ -45,5 +45,30 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/image',
     '@vueuse/nuxt',
-  ]
+    '@nuxtjs/i18n',
+  ],
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    experimental: {
+      jsTsFormatResource: true
+    },
+    locales: [
+      {
+        name: 'Français',
+        code: 'fr',
+        iso: 'fr-FR',
+        file: 'fr-fr.ts'
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-us.ts'
+      }
+    ],
+    strategy: "prefix",
+    langDir: 'lang/',
+    lazy: true,
+    defaultLocale: 'fr',
+  }
 });
