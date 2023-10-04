@@ -8,7 +8,9 @@
             <h1 class="text-cta font-light">Contact me <span class="font-bold">here</span> !</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
-                <nuxt-link class="text-big-title px-4" to="mailto:rasclejerome@gmail.com">rasclejerome@gmail.com</nuxt-link>
+                <nuxt-link title="Contact me by mail: rasclejerome@gmail.com" rel="noopener" target="_blank" class="text-big-title px-4" to="mailto:rasclejerome@gmail.com">
+                  rasclejerome@gmail.com
+                </nuxt-link>
                 <span class="text-big-title px-4">·</span>
               </template>
             </Marquee>
@@ -21,9 +23,13 @@
             <h1 class="text-cta font-light">And here are my <span class="font-bold">professional socials</span> !</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
-                <nuxt-link class="text-big-title px-4" to="https://github.com/jairaume">GitHub</nuxt-link>
+                <nuxt-link title="View my GitHub: jairaume" rel="noopener" target="_blank" class="text-big-title px-4" to="https://github.com/jairaume">
+                  GitHub
+                </nuxt-link>
                 <span class="text-big-title px-4">·</span>
-                <nuxt-link class="text-big-title px-4" to="https://linkedin.com/in/jeromerascle">LinkedIn</nuxt-link>
+                <nuxt-link title="visit my LinkedIn: jeromerascle" rel="noopener" target="_blank" class="text-big-title px-4" to="https://linkedin.com/in/jeromerascle">
+                  LinkedIn
+                </nuxt-link>
                 <span class="text-big-title px-4">·</span>
               </template>
             </Marquee>

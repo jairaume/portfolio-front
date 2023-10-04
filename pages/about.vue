@@ -20,7 +20,7 @@
               </p>
               <div class="grid gap-4 mt-8">
                 <p class="text-orange-100">Sharing the same phylosophy ?</p>
-                <nuxt-link to="/contact" class="btn btn-white w-fit">
+                <nuxt-link :to="localePath('/contact')" class="btn btn-white w-fit">
                   <p>Let's discuss</p>
                   <i class="icon icon-mail"></i>
                 </nuxt-link>

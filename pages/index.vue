@@ -37,7 +37,7 @@
             </div>
 
             <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-8">
-              <nuxt-link to="/projects" class="btn btn-orange-100 w-fit">
+              <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit">
                 <p>My works</p>
                 <i class="icon icon-arrow"/>
               </nuxt-link>
@@ -67,7 +67,7 @@
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
-          <nuxt-link to="/about" class="btn btn-orange-100 w-fit">
+          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit">
             <p>More about me</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -84,7 +84,7 @@
     <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-            <nuxt-link v-for="i in 4" :key="i" to="/projects/la-grangette" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+            <nuxt-link v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
               <nuxt-picture src="/images/projects/grangette.png"
                             alt="Projects – Grangette"
@@ -101,7 +101,7 @@
           </nuxt-link>
         </div>
 
-        <nuxt-link to="/projects" class="btn btn-white m-12 w-fit mx-auto">
+        <nuxt-link :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
           <p>View all projects</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
@@ -133,7 +133,7 @@
 
           </div>
 
-          <nuxt-link to="/" class="btn btn-white w-fit mx-auto group">
+          <nuxt-link :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
             <p>Get my full resume</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
@@ -153,7 +153,7 @@
             </div>
           </div>
 
-          <nuxt-link to="/about" class="btn btn-orange-100 w-fit mx-auto group">
+          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
             <p>Get to know me</p>
             <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>

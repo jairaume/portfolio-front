@@ -13,7 +13,7 @@
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-3">
               <h1 class="text-big-title">Thinking of a project&nbsp;?</h1>
-              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" to="/contact">
+              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
                 <p>Let's discuss it</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>
@@ -23,22 +23,22 @@
               <nav>
                 <ul class="grid gap-2">
                   <li>
-                    <nuxt-link to="/" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       home
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/about" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       about
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/projects" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       projects
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link to="/contact" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
                       contact
                     </nuxt-link>
                   </li>
