@@ -14,6 +14,11 @@ export const common: LangCommon = {
     resume: 'Download my resume',
     contact_me: 'Let\'s discuss !',
 
+    // Links
+    to_projects: "View the project",
+    to_in: "View my LinkedIn profile",
+    to_git: "View my GitHub profile",
+
     // Footer components
     footer: {
         cta_projects: "Thinking of a project ?",

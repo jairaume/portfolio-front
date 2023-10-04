@@ -15,8 +15,9 @@
           <span id="leftAccent" class="absolute w-[1ch] right-full">&lt;</span>
         </h1>
       </nuxt-link>
-      <nuxt-link :to="localePath('/projects')" class="text-cta px-8 hidden s:block">projects</nuxt-link>
-      <nuxt-link :to="localePath('/contact')" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">contact</nuxt-link>
+      <nuxt-link :to="localePath('/projects')" class="text-cta px-8 hidden s:block">{{ $t('common.projects') }}</nuxt-link>
+      <nuxt-link :to="localePath('/contact')" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">
+        {{ $t('common.contact') }}</nuxt-link>
       <div class="relative">
         <button class="text-cta px-3 py-1 border border-white rounded-lg duration-300 s:hidden" :class="{'bg-white text-grey-500': expanded}" aria-controls="overlay" @click="toggleMenu">menu</button>
         <Transition name="slide">
@@ -24,17 +25,17 @@
             <nav>
               <ul class="pr-1 space-y-2 flex flex-col items-end" @click="toggleMenu">
                 <li>
-                  <nuxt-link :to="localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">home</nuxt-link>
+                  <nuxt-link :to="localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.home') }}</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">about</nuxt-link>
+                  <nuxt-link :to="localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.about') }}</nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">projects</nuxt-link>
+                  <nuxt-link :to="localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.projects') }}</nuxt-link>
                 </li>
                 <li>
                   <nuxt-link :to="localePath('/contact')" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
-                    contact
+                    {{ $t('common.contact') }}
                     <i class="icon icon-mail"></i>
                   </nuxt-link>
                 </li>

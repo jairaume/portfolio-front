@@ -16,6 +16,11 @@ export interface LangCommon {
     resume: string,
     contact_me: string,
 
+    // Links
+    to_projects: string,
+    to_in: string,
+    to_git: string,
+
     // Footer components
     footer: {
         cta_projects: string,
