@@ -11,7 +11,7 @@
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0">
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
-            <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-3">
+            <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-2">
               <h1 class="text-big-title">{{ $t('common.footer.cta_projects') }}</h1>
               <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
                 <p>{{ $t('common.footer.cta_contact') }}</p>

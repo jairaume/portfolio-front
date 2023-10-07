@@ -12,6 +12,8 @@ export const about: LangAbout = {
 
     title3: 'Compétences',
 
+    other_stuff: 'd\'autres trucs que j\'aime...',
+
     p4: {
         intro: 'Si je ne travaille pas, je suis probablement au ',
         hobby1: 'cinéma',

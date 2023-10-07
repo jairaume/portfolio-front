@@ -72,6 +72,8 @@ export interface LangAbout {
 
     title3: string,
 
+    other_stuff: string,
+
     p4: {
         intro: string,
         hobby1: string,
@@ -98,5 +100,7 @@ export interface LangContact {
     meta_description: string,
 
     contact_me: string,
+    contact_me2: string,
     professional_socials: string,
+    professional_socials2: string,
 }

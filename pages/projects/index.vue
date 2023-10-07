@@ -16,7 +16,8 @@
               </div>
               <div class="absolute w-fit h-fit bottom-0 right-0 p-6 duration-300">
                 <nuxt-link :to="localePath('/projects/la-grangette')" class="bg-black/50 backdrop-blur border border-grey-500 s:border-transparent text-white s:text-grey-100 s:group-hover:text-white group-hover:bg-grey-700/50 s:hover:border-grey-500 duration-300 rounded-full p-4 flex items-center gap-4 s:gap-0 s:group-hover:gap-4">
-                  <p class="w-[8ch] s:w-0 s:group-hover:w-[8ch] text-center whitespace-nowrap overflow-hidden duration-300">See more</p>
+                  <p class="w-[8ch] s:w-0 s:group-hover:w-[8ch] text-center whitespace-nowrap overflow-hidden duration-300">
+                    {{ $t('common.see_more') }}</p>
                   <i class="icon icon-arrow -rotate-45"></i>
                 </nuxt-link>
               </div>
@@ -33,7 +34,7 @@
               </div>
               <div class="absolute w-fit h-fit bottom-0 right-0 p-6 duration-300">
                 <div class="bg-black/50 backdrop-blur border border-grey-500 s:border-transparent text-white s:text-grey-50 s:group-hover:text-white group-hover:bg-grey-700/50 s:hover:border-grey-500 duration-300 rounded-full p-4 flex items-center gap-4 s:gap-0 s:group-hover:gap-4">
-                  <p class="w-[8ch] s:w-0 s:group-hover:w-[8ch] text-center whitespace-nowrap overflow-hidden duration-300">See more</p>
+                  <p class="w-[8ch] s:w-0 s:group-hover:w-[8ch] text-center whitespace-nowrap overflow-hidden duration-300">{{ $t('common.see_more') }}</p>
                   <i class="icon icon-arrow -rotate-45"></i>
                 </div>
               </div>

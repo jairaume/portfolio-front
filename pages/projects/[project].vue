@@ -36,27 +36,27 @@
               </div>
               <div>
                 <nuxt-link to="https://orthodyneanalyticalusa.com" class="flex items-center gap-2 px-3 py-1 border border-white/40 hover:border-white rounded-btn" target="_blank" rel="noopener" title="Link to La Grangette">
-                  <p>View the project</p>
+                  <p>{{ $t('pages.projects.view_project') }}</p>
                   <i class="icon icon-arrow -rotate-45"></i>
                 </nuxt-link>
               </div>
             </div>
             <div class="flex flex-col gap-8 xs:flex-row flex-wrap s:gap-12">
               <div class="max-layout-xs-c-1-g-1 xs:max-layout-s-c-3-g-2 s:max-layout-m-c-2-g-3">
-                <h4 class="text-h4">Description</h4>
+                <h4 class="text-h4">{{ $t('pages.projects.description') }}</h4>
                 <p>
                   Create a website for a luxury vacation stay in Belgium      
                 </p>
               </div>
               <div class="grid grid-cols-2 gap-8 s:gap-12">
                 <div>
-                  <h4 class="text-h4">Type</h4>
+                  <h4 class="text-h4">{{ $t('pages.projects.type') }}</h4>
                   <p class="border border-white rounded-md w-fit px-2">
                     Web development
                   </p>
                 </div>
                 <div>
-                  <h4 class="text-h4">Technologies</h4>
+                  <h4 class="text-h4">{{ $t('pages.projects.technologies') }}</h4>
                   <ul class="list-inside list-disc">
                     <li>Nuxt 3</li>
                     <li>TailwindCSS</li>  

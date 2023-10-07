@@ -306,6 +306,8 @@ useSeoMeta({
   twitterCard: 'summary',
 })
 
+const i18n = useLocaleHead()
+useHead({htmlAttrs: {lang: i18n.value.htmlAttrs!.lang}})
 </script>
 
 <style scoped>

@@ -11,17 +11,17 @@
             </div>
 
             <div class="text-white flex flex-col gap-2">
-              <h4 class="text-h4">My name is</h4>
+              <h4 class="text-h4">{{ $t('pages.about.hi_im') }}</h4>
               <h1 class="text-h1 text-grey-500 leading-none">
                 <span ref="prenom" class="reveal-text">Jérôme </span>
                 <span ref="nom" class="reveal-text">Rascle</span></h1>
               <p class="xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
-                Laboris mollit laborum do commodo tempor id laborum. Irure sunt do labore ea dolor voluptate aliqua sint ullamco ut aliquip. Magna ullamco dolor Lorem do. Irure voluptate ad fugiat amet occaecat.
+                {{ $t('pages.about.p1') }}
               </p>
               <div class="grid gap-4 mt-8">
-                <p class="text-orange-100">Sharing the same phylosophy ?</p>
+                <p class="text-orange-100">{{ $t('pages.about.philosophy') }}</p>
                 <nuxt-link :to="localePath('/contact')" class="btn btn-white w-fit">
-                  <p>Let's discuss</p>
+                  <p>{{ $t('common.contact_me') }}</p>
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
               </div>
@@ -35,7 +35,7 @@
 
   <section class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
-      <h1 class="text-big-title text-center">Past experiences</h1>
+      <h1 class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
       <div class="relative grid grid-cols-2 gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
         <div ref="line" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 flex flex-col gap-4">
           <span class="line-section line-section-1"></span>
@@ -68,7 +68,7 @@
 
   <section id="skills" class="py-12 responsive-padding-x">
     <div class="responsive-layout space-y-6">
-        <h1 class="text-big-title">Skills</h1>
+        <h1 class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-0">
         <ul class="grid gap-8">
           <li v-for="i in 3" :key="i" class="skill flex gap-8 relative
@@ -94,7 +94,7 @@
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          If I’m not working, I’m probably in a <span ref="movieAnnotate">movie theater</span>, or <span ref="surfAnnotate">surfing</span> the northern french coast or most likely in my basement beating my <span ref="drumsAnnotate" class="relative littleArrow">drums</span> !
+          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span> !
         </h3>
       </div>
     </div>
@@ -107,7 +107,7 @@
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <div>
-          <h4 ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">here's other stuff I like...</h4>
+          <h4 ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">{{ $t('pages.about.other_stuff') }}</h4>
         </div>
         <ul class="mt-20">
           <li v-for="i in 10" :key="i"
