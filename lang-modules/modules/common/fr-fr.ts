@@ -11,6 +11,7 @@ export const common: LangCommon = {
     more_about: 'Qui suis-je ?',
     more_about2: 'À propos de moi',
     more_projects: 'Mes projets',
+    more_projects2: 'Voir tous mes projets',
     resume: 'Télécharger mon CV',
     contact_me: 'Contactez-moi !',
 

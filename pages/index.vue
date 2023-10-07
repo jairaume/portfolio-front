@@ -7,11 +7,11 @@
             <div class="relative text-white text-center px-8">
               <h3 class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
-                <span class="font-light"> – Freelance Software Engineer.</span>
+                <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
               </h3>
               <h1 class="text-h1">
-                <span class="font-light text-grey-50">Crafting </span>
-                <span ref="heroAnnotate">ambitious ideas</span>
+                <span class="font-light text-grey-50">{{ $t('pages.home.catch_phrase') }}&nbsp;</span>
+                <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
               <div class="absolute my-8 s:my-12 left-12 s:left-8 bottom-full m-0">
@@ -38,11 +38,11 @@
 
             <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-8">
               <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit">
-                <p>My works</p>
+                <p>{{$t('common.more_projects')}}</p>
                 <i class="icon icon-arrow"/>
               </nuxt-link>
               <div class="btn btn-black w-fit">
-                <p>Available <b>now</b></p>
+                <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
                 <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
               </div>
             </div>
@@ -58,17 +58,15 @@
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="relative">
-            <h3 class="text-grey-100 text-h3">My name is</h3>
+            <h3 class="text-grey-100 text-h3">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
-              I’m a French software engineer who majored in software development in 2024 at ISEN Lille.
-              <br>
-              Since then, I have worked for multiple companies, helping them achieve their digital journey.
+              {{ $t('pages.home.p1_reveal') }}
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit">
-            <p>More about me</p>
+            <p>{{ $t('common.more_about') }}</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
           <div class="absolute bottom-0 right-0">
@@ -102,7 +100,7 @@
         </div>
 
         <nuxt-link :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
-          <p>View all projects</p>
+          <p>{{ $t('common.more_projects2') }}</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
       </div>
@@ -111,7 +109,7 @@
     <section class="py-32 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
-          <h1 class="text-big-title text-center xs:text-left">Experiences</h1>
+          <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
 
           <div class="grid gap-4 xs:grid-cols-2">
 
@@ -134,7 +132,7 @@
           </div>
 
           <nuxt-link :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
-            <p>Get my full resume</p>
+            <p>{{ $t('common.resume') }}</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
             </div>
@@ -143,8 +141,8 @@
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">
-            Skills
-            <span class="text-xs font-light">Some of them ;)</span>
+            {{ $t('pages.home.title3') }}
+            <span class="text-xs font-light"> {{ $t('pages.home.subtitle3') }} </span>
           </h1>
 
           <div class="grid gap-8 group">
@@ -154,7 +152,7 @@
           </div>
 
           <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
-            <p>Get to know me</p>
+            <p>{{ $t('common.more_about2') }}</p>
             <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>
         </div>

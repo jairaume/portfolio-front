@@ -13,6 +13,7 @@ export interface LangCommon {
     more_about: string,
     more_about2: string,
     more_projects: string,
+    more_projects2: string,
     resume: string,
     contact_me: string,
 
@@ -49,6 +50,7 @@ export interface LangHome {
 
     job_title: string,
     catch_phrase: string,
+    catch_phrase_underline: string,
     hi_im: string,
     p1_reveal: string,
 
