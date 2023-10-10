@@ -25,11 +25,16 @@ const lookingAngle = computed<number>(()=>{
   return (Math.atan2(x.value - trueOrigin.value.x,-(y.value - trueOrigin.value.y)))*(180/Math.PI)
 })
 
+const distance = computed<number>(()=>{
+  return Math.sqrt(Math.pow(x.value - trueOrigin.value.x,2) + Math.pow(y.value - trueOrigin.value.y,2))
+})
+
 
 watch([x, y], () => {
     if (props.active && !screenSmall.value) {
       $gsap.to(element.value as HTMLElement, {
         rotation: lookingAngle.value + "_short",
+        scale: 1 + distance.value/1000,
         duration: 2,
         ease: "power3",
       })
