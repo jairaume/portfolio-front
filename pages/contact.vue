@@ -8,7 +8,7 @@
             <h1 class="text-cta font-light">{{ $t('pages.contact.contact_me') }} <span class="font-bold">{{ $t('pages.contact.contact_me2') }}</span> !</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
-                <nuxt-link title="Contact me by mail: rasclejerome@gmail.com" rel="noopener" target="_blank" class="text-big-title px-4" to="mailto:rasclejerome@gmail.com">
+                <nuxt-link title="e-mail: rasclejerome@gmail.com" rel="noopener" target="_blank" class="text-big-title px-4" to="mailto:rasclejerome@gmail.com">
                   rasclejerome@gmail.com
                 </nuxt-link>
                 <span class="text-big-title px-4">·</span>
@@ -23,11 +23,11 @@
             <h1 class="text-cta font-light">{{ $t('pages.contact.professional_socials')}} <span class="font-bold">{{ $t('pages.contact.professional_socials2')}}</span> !</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
-                <nuxt-link title="View my GitHub: jairaume" rel="noopener" target="_blank" class="text-big-title px-4" to="https://github.com/jairaume">
+                <nuxt-link title="GitHub: jairaume" rel="noopener" target="_blank" class="text-big-title px-4" to="https://github.com/jairaume">
                   GitHub
                 </nuxt-link>
                 <span class="text-big-title px-4">·</span>
-                <nuxt-link title="visit my LinkedIn: jeromerascle" rel="noopener" target="_blank" class="text-big-title px-4" to="https://linkedin.com/in/jeromerascle">
+                <nuxt-link title="LinkedIn: jeromerascle" rel="noopener" target="_blank" class="text-big-title px-4" to="https://linkedin.com/in/jeromerascle">
                   LinkedIn
                 </nuxt-link>
                 <span class="text-big-title px-4">·</span>
