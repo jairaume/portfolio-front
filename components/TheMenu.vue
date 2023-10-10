@@ -17,7 +17,9 @@
       </nuxt-link>
       <nuxt-link :to="localePath('/projects')" class="text-cta px-8 hidden s:block">{{ $t('common.projects') }}</nuxt-link>
       <nuxt-link :to="localePath('/contact')" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">
-        {{ $t('common.contact') }}</nuxt-link>
+        {{ $t('common.contact') }}
+      </nuxt-link>
+
       <div class="relative">
         <button class="text-cta px-3 py-1 border border-white rounded-lg duration-300 s:hidden" :class="{'bg-white text-grey-500': expanded}" aria-controls="overlay" @click="toggleMenu">menu</button>
         <Transition name="slide">
