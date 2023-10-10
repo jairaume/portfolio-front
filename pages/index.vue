@@ -59,7 +59,7 @@
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
           <div class="relative">
             <h3 class="text-grey-100 text-h3">{{ $t('pages.home.hi_im') }}</h3>
-            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme</h1>
+            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>

@@ -70,5 +70,10 @@ export default defineNuxtConfig({
     langDir: 'lang/',
     lazy: true,
     defaultLocale: 'fr',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // recommended
+    }
   }
 });

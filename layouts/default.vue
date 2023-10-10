@@ -1,6 +1,6 @@
 <template>
-  <span class="mouse-follower"></span>
   <div class="bg-black">
+    <LanguageSwitch class="fixed bottom-4 left-0 z-50"/>
     <TheMenu/>
     <slot/>
     <TheFooter/>
