@@ -49,7 +49,8 @@ export default {
       },
       boxShadow: {
         'custom-ondark': "2px 5px 18px rgba(0, 0, 0, 0.40)",
-        'shine': "0 0 50px 40px #fff"
+        'shine': "0 0 50px 40px #fff",
+        'btn-glow': "0 2px 20px 5px #ED702D",
       },
       fontSize: {
         'xxs': ['.625rem', '2.1em'],

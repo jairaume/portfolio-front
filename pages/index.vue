@@ -36,15 +36,17 @@
               </div>
             </div>
 
-            <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-8">
-              <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit">
-                <p>{{$t('common.more_projects')}}</p>
-                <i class="icon icon-arrow"/>
-              </nuxt-link>
-              <nuxt-link :to="localePath('/contact')" class="btn btn-black w-fit">
-                <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
-                <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
-              </nuxt-link>
+            <div class="absolute bottom-0 w-full h-fit left-1/2 -translate-x-1/2 my-8">
+              <div class="relative w-fit mx-auto grid s:grid-cols-2 justify-center gap-8">
+                <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
+                  <p>{{$t('common.more_projects')}}</p>
+                  <i class="icon icon-arrow"/>
+                </nuxt-link>
+                <nuxt-link :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
+                  <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
+                  <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
+                </nuxt-link>
+              </div>
             </div>
           </div>
         </div>
