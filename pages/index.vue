@@ -81,7 +81,7 @@
       </div>
     </section>
 
-    <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
+    <section class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
             <nuxt-link v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
@@ -93,7 +93,8 @@
               />
             </div>
             <div class="absolute w-full bottom-0 left-0 p-4">
-              <div class="bg-teal-900 rounded-btn text-white flex justify-between items-center px-2">
+              <div class="relative isolate overflow-hidden bg-teal-900 rounded-btn text-white flex justify-between items-center px-2
+              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/50 after:to-transparent">
                 <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
                 <i class="icon icon-arrow"></i>
               </div>
@@ -108,7 +109,7 @@
       </div>
     </section>
 
-    <section class="py-32 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
+    <section class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
@@ -160,7 +161,6 @@
         </div>
       </div>
     </section>
-
   </main>
 </template>
 

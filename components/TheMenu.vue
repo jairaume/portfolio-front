@@ -161,11 +161,15 @@ onBeforeUnmount(()=>{
 </script>
 
 <style scoped>
-header a.router-link-active {
+header a.router-link-active:not(.text-monument-menu, .btn) {
   @apply text-orange-100 duration-300;
 }
+header a.router-link-active.btn {
+  @apply ring-2 ring-orange-100 bg-orange-100/25;
+}
+
 header a:not(.btn, .text-monument-menu, .router-link-active) {
-  @apply bg-gradient-to-r bg-right-top from-40% via-40% to-50% from-orange-100 via-orange-300 to-white bg-clip-text text-transparent hover:bg-left-top duration-700;
+  @apply bg-gradient-to-r bg-right-top from-40% via-40% to-50% from-orange-100 via-orange-300 to-white bg-clip-text text-transparent hover:bg-left-top duration-500;
   background-size: 230% 100%;
 }
 

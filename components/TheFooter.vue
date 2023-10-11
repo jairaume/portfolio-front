@@ -13,7 +13,7 @@
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-2">
               <h1 class="text-big-title">{{ $t('common.footer.cta_projects') }}</h1>
-              <nuxt-link class="text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
+              <nuxt-link class="pushContact text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
                 <p>{{ $t('common.footer.cta_contact') }}</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>
@@ -79,7 +79,7 @@ nav a.router-link-exact-active{
   @apply text-orange-100;
 }
 
-footer a {
+footer a:not(.pushContact) {
   @apply hover:bg-white/10 hover:text-orange-100 duration-300;
 }
 </style>

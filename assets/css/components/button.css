@@ -1,10 +1,12 @@
 .btn {
     @apply relative flex items-center gap-4 isolate
-    px-4 py-1 s:py-2 s:px-5
+    px-5 py-1
     ring-1 s:ring-1
     rounded-btn text-white text-cta shadow-lg overflow-hidden
     before:block before:-z-10 before:duration-500 before:w-0 before:h-[90%] before:absolute before:top-[5%] before:left-0 before:bg-white before:shadow-shine before:shadow-white/25 before:opacity-0 before:-skew-x-[20deg]
-    hover:before:left-3/4 hover:before:opacity-100 hover:before:delay-150 hover:shadow-btn-glow hover:scale-[.97] hover:ring-2
+    hover:before:left-3/4 hover:before:opacity-100 hover:before:delay-150 hover:shadow-btn-glow hover:scale-[1.02] hover:ring-2
+    focus:ring-2 focus:ring-white focus:outline-none
+    active:scale-[.97]
     duration-300;
 }
 
