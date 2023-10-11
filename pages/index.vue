@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section class="relative bg-grey-50 h-[clamp(650px,_80vh,_1000px)]">
+    <section ref="heroSection" class="relative bg-grey-50 h-[clamp(650px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 h-full">
           <div class="relative h-full flex flex-col items-center justify-around">
@@ -15,22 +15,22 @@
               </h1>
 
               <div class="absolute my-8 s:my-12 left-12 s:left-8 bottom-full m-0">
-                <MouseLooker :active="true">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
               <div class="absolute my-8 s:my-12 left-20 s:left-24 top-full m-0">
-                <MouseLooker :active="true">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
               <div class="absolute my-8 s:my-12 right-12 s:right-8 bottom-full m-0">
-                <MouseLooker :active="true">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
               <div class="absolute my-8 s:my-12 right-20 s:right-24 top-full m-0">
-                <MouseLooker :active="true">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
               </div>
@@ -41,10 +41,10 @@
                 <p>{{$t('common.more_projects')}}</p>
                 <i class="icon icon-arrow"/>
               </nuxt-link>
-              <div class="btn btn-black w-fit">
+              <nuxt-link :to="localePath('/contact')" class="btn btn-black w-fit">
                 <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
                 <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
-              </div>
+              </nuxt-link>
             </div>
           </div>
         </div>
@@ -171,6 +171,8 @@ const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
 let ctx: gsap.Context;
 
+const heroSection = ref<HTMLElement|null>(null);
+const {isOutside: isOutsideHero} = useMouseInElement(heroSection)
 const heroBoxCtn = ref<HTMLElement|null>(null);
 const heroBox = ref<HTMLElement|null>(null);
 const heroContent = ref<HTMLElement|null>(null);

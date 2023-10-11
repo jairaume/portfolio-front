@@ -40,7 +40,7 @@ export default {
       },
       borderRadius: {
         'big': '30px',
-        'btn': '15px'
+        'btn': '10px'
       },
       animation:{
         'scroll': 'scroll 20s linear infinite',
@@ -49,6 +49,7 @@ export default {
       },
       boxShadow: {
         'custom-ondark': "2px 5px 18px rgba(0, 0, 0, 0.40)",
+        'shine': "0 0 50px 40px #fff"
       },
       fontSize: {
         'xxs': ['.625rem', '2.1em'],

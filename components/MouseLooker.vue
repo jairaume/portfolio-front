@@ -34,7 +34,7 @@ watch([x, y], () => {
     if (props.active && !screenSmall.value) {
       $gsap.to(element.value as HTMLElement, {
         rotation: lookingAngle.value + "_short",
-        scale: 1 + distance.value/1000,
+        scale: $gsap.utils.clamp(.5, 1.5, 1 + distance.value/1000),
         duration: 2,
         ease: "power3",
       })

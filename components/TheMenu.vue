@@ -16,7 +16,7 @@
         </h1>
       </nuxt-link>
       <nuxt-link :to="localePath('/projects')" class="text-cta px-8 hidden s:block">{{ $t('common.projects') }}</nuxt-link>
-      <nuxt-link :to="localePath('/contact')" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">
+      <nuxt-link :to="localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden s:block">
         {{ $t('common.contact') }}
       </nuxt-link>
 
@@ -164,7 +164,7 @@ onBeforeUnmount(()=>{
 header a.router-link-exact-active {
   @apply text-orange-100 duration-300;
 }
-header a {
+header a:not(.btn) {
   @apply hover:text-orange-100 duration-300;
 }
 
