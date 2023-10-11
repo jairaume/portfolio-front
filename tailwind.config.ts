@@ -14,7 +14,7 @@ export default {
     screens: {
       'xs': '480px',
       's': '738px',
-      'm': '1200px',
+      'm': '1100px',
       'l': '1800px',
       'no-hover': {'raw': '(hover: hover) and (pointer: fine)'}
     },

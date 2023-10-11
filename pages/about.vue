@@ -3,7 +3,7 @@
   <section class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
-        <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-1">
+        <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-1">
           <div class="grid m:grid-cols-2 gap-8">
 
             <div class="aspect-square relative xs:max-layout-s-c-6-g-5 m:order-last s:max-layout-m-c-4-g-3 m:max-layout-l-c-3-g-3">
@@ -69,9 +69,9 @@
   <section id="skills" class="py-12 responsive-padding-x">
     <div class="responsive-layout space-y-6">
         <h1 class="text-big-title">{{ $t('pages.about.title3') }}</h1>
-      <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-0">
+      <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
         <ul class="grid gap-8">
-          <li v-for="i in 3" :key="i" class="skill flex gap-8 relative
+          <li v-for="i in 3" :key="i" class="skill flex flex-col s:flex-row gap-8 relative
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
@@ -84,7 +84,7 @@
             </div>
           </li>
         </ul>
-          <div class="absolute z-0 w-1/2 h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+          <div class="absolute z-0 w-2/3 s:w-1/2 h-3/4 s:h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
     </div>
@@ -92,9 +92,9 @@
 
   <section id="hobbies" class="relative py-32 s:py-40 responsive-padding-x">
     <div class="responsive-layout">
-      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
+      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span> !
+          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span>&nbsp;!
         </h3>
       </div>
     </div>

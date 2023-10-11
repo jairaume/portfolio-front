@@ -58,9 +58,9 @@
 
     <section ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24 m:top-32">
-        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
+        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
-            <h3 class="text-grey-100 text-h3">{{ $t('pages.home.hi_im') }}</h3>
+            <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
             <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
@@ -280,7 +280,7 @@ onMounted(()=> {
         $gsap.set(heroContent.value,{transformOrigin:"top"})
         $gsap.to(heroContent.value,{
           opacity:0,
-          scale:.6,
+          top: -100,
           scrollTrigger: {
             trigger: heroBox.value,
             scrub: 1,

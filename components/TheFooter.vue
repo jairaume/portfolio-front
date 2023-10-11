@@ -23,32 +23,32 @@
               <nav>
                 <ul class="grid gap-2">
                   <li>
-                    <nuxt-link :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.home') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.about') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.projects') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1 hover:bg-grey-500 hover:text-orange-100 duration-300">
+                    <nuxt-link :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.contact') }}
                     </nuxt-link>
                   </li>
                 </ul>
               </nav>
               <div class="text-white grid gap-2">
-                <nuxt-link :title="$t('common.to_in')" class="p-2 rounded-md hover:bg-grey-500 hover:text-orange-100 duration-300 flex items-center" to="https://www.linkedin.com/in/jeromerascle" target="_blank" rel="noopener nofollow">
+                <nuxt-link :title="$t('common.to_in')" class="p-2 rounded-md flex items-center" to="https://www.linkedin.com/in/jeromerascle" target="_blank" rel="noopener nofollow">
                   <i class="icon icon-linkedin"></i>
                 </nuxt-link>
-                <nuxt-link :title="$t('common.to_git')" class="p-2 rounded-md hover:bg-grey-500 hover:text-orange-100 duration-300 flex items-center" to="https://www.github.com/jairaume" target="_blank" rel="noopener nofollow">
+                <nuxt-link :title="$t('common.to_git')" class="p-2 rounded-md flex items-center" to="https://www.github.com/jairaume" target="_blank" rel="noopener nofollow">
                   <i class="icon icon-github"></i>
                 </nuxt-link>
               </div>
@@ -77,5 +77,9 @@ function scrollToTop(){
 <style scoped>
 nav a.router-link-exact-active{
   @apply text-orange-100;
+}
+
+footer a {
+  @apply hover:bg-white/10 hover:text-orange-100 duration-300;
 }
 </style>
