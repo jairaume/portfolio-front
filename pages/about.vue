@@ -71,7 +71,7 @@
         <h1 class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
         <ul class="grid gap-8">
-          <li v-for="i in 3" :key="i" class="skill flex flex-col s:flex-row gap-8 relative
+          <li v-for="i in 3" :key="i" class="flex flex-col gap-2 s:flex-row s:gap-8 relative
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
@@ -152,7 +152,7 @@ const revealNameTo: gsap.TweenVars = {
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
   start: 'top center',
-  end: '75% center',
+  end: 'center center',
   scrub: 1
 }
 

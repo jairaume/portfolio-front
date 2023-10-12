@@ -1,42 +1,42 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section ref="heroSection" class="relative bg-grey-50 h-[clamp(650px,_80vh,_1000px)]">
+    <section ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
-        <div ref="heroContent" class="relative z-10 py-8 h-full">
-          <div class="relative h-full flex flex-col items-center justify-around">
-            <div class="relative text-white text-center px-8">
-              <h3 class="text-h4 text-white">
+        <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
+          <div class="relative h-full flex flex-col items-center justify-around py-6">
+            <div class="relative text-white text-center px-8 space-y-4">
+              <h4 class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
-              </h3>
+              </h4>
               <h1 class="text-h1">
                 <span class="font-light text-grey-50">{{ $t('pages.home.catch_phrase') }}&nbsp;</span>
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
-              <div class="absolute my-8 s:my-12 left-12 s:left-8 bottom-full m-0">
+              <div class="absolute my-8 s:my-12 left-20 s:left-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 left-20 s:left-24 top-full m-0">
+              <div class="absolute my-8 s:my-12 left-12 s:left-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-8 bottom-full m-0">
+              <div class="absolute my-8 s:my-12 right-20 s:right-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-20 s:right-24 top-full m-0">
+              <div class="absolute my-8 s:my-12 right-12 s:right-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
               </div>
             </div>
 
-            <div class="absolute bottom-0 w-full h-fit left-1/2 -translate-x-1/2 my-8">
+            <div class="mx-auto s:absolute s:bottom-0 w-full h-fit s:left-1/2 s:-translate-x-1/2 my-8">
               <div class="relative w-fit mx-auto grid s:grid-cols-2 justify-center gap-8">
                 <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
                   <p>{{$t('common.more_projects')}}</p>
@@ -62,7 +62,7 @@
           <div class="relative">
             <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
-            <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
+            <h3 id="reveal-text-paragraph" class="whitespace-pre-wrap text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
@@ -210,16 +210,6 @@ onMounted(()=> {
         }
       })
 
-      const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
-        type: 'underline',
-        multiline:true,
-        color:"rgba(237, 112, 45, .5)",
-        strokeWidth: 8,
-      })
-      heroAnnotation.show()
-      roundPaths()
-
-
       $gsap.fromTo("#reveal-text-content",{backgroundPositionX: "100%"}, {
         backgroundPositionX: 0,
         ease: "none",
@@ -264,18 +254,15 @@ onMounted(()=> {
       });
 
       mm.add("(min-width: 1024px)", () => {
-        $gsap.fromTo(".projects_wrapper", {x: 0}, {
-          xPercent: -120,
-          ease: "power",
-          scrollTrigger: {
-            trigger: projects.value,
-            pin: true,
-            scrub: 1,
-            start: "center center",
-            end: "+=100%",
-            invalidateOnRefresh: true,
-          }
-        });
+
+        const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
+          type: 'underline',
+          multiline:true,
+          color:"rgba(237, 112, 45, .5)",
+          strokeWidth: 8,
+        })
+        heroAnnotation.show()
+        roundPaths()
 
         $gsap.set(heroContent.value,{transformOrigin:"top"})
         $gsap.to(heroContent.value,{
@@ -289,6 +276,19 @@ onMounted(()=> {
             end: "top 10%",
           }
         })
+
+        $gsap.fromTo(".projects_wrapper", {x: 0}, {
+          xPercent: -120,
+          ease: "power",
+          scrollTrigger: {
+            trigger: projects.value,
+            pin: true,
+            scrub: 1,
+            start: "center center",
+            end: "+=100%",
+            invalidateOnRefresh: true,
+          }
+        });
       })
     }, rootEl.value)
 })
