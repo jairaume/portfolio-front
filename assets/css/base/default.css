@@ -1,9 +1,9 @@
 @layer base {
     html {
-        @apply antialiased bg-black whitespace-pre-line;
+        @apply antialiased bg-black;
     }
     body {
-        @apply font-bricolage font-normal text-base;
+        @apply font-bricolage font-normal text-base ;
     }
 
     p + ul, ul + p, p + p {
