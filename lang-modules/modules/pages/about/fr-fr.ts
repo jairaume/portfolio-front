@@ -6,7 +6,7 @@ export const about: LangAbout = {
 
     hi_im: 'Je m\'appelle',
     p1: 'Enim labore nulla enim est proident irure commodo cupidatat anim anim esse veniam aute sint. Nulla officia consectetur do do nostrud minim officia deserunt dolore enim. Amet elit cillum eu minim id aute et occaecat duis cupidatat. Aute sit dolore elit sunt eiusmod anim nisi ea eiusmod.',
-    philosophy: 'Vous partagez la même philosophie ?',
+    philosophy: 'Vous partagez la même philosophie\xa0?',
 
     title2: 'Expériences',
 

@@ -13,7 +13,7 @@ export const common: LangCommon = {
     more_projects: 'My works',
     more_projects2: 'View all my projects',
     resume: 'Download my resume',
-    contact_me: 'Let\'s discuss !',
+    contact_me: 'Let\'s discuss!',
 
     // Links
     to_projects: "View the project",
@@ -22,8 +22,8 @@ export const common: LangCommon = {
 
     // Footer components
     footer: {
-        cta_projects: "Thinking of a project ?",
-        cta_contact: 'Let\'s talk about it !',
+        cta_projects: "Thinking of a project\xa0?",
+        cta_contact: 'Let\'s talk about it!',
         scroll_top: 'Scroll to top',
         all_rights_reserved: 'All rights reserved',
     },

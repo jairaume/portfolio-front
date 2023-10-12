@@ -5,7 +5,7 @@
         <div class="py-32 space-y-32 m:space-y-40">
 
           <div class="relative">
-            <h1 class="text-cta font-light">{{ $t('pages.contact.contact_me') }} <span class="font-bold">{{ $t('pages.contact.contact_me2') }}</span> !</h1>
+            <h1 class="text-cta font-light">{{ $t('pages.contact.contact_me') }} <span class="font-bold">{{ $t('pages.contact.contact_me2') }}</span>&nbsp;!</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
                 <nuxt-link title="e-mail: contact@rasclejero.me" rel="noopener" target="_blank" class="text-big-title px-4" to="mailto:contact@rasclejero.me">
@@ -20,7 +20,7 @@
           </div>
 
           <div class="relative">
-            <h1 class="text-cta font-light">{{ $t('pages.contact.professional_socials')}} <span class="font-bold">{{ $t('pages.contact.professional_socials2')}}</span> !</h1>
+            <h1 class="text-cta font-light">{{ $t('pages.contact.professional_socials')}} <span class="font-bold">{{ $t('pages.contact.professional_socials2')}}</span>&nbsp;!</h1>
             <Marquee>
               <template v-for="i in 2" :key="i">
                 <nuxt-link title="GitHub: jairaume" rel="noopener" target="_blank" class="text-big-title px-4" to="https://github.com/jairaume">

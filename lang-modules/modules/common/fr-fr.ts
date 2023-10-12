@@ -8,12 +8,12 @@ export const common: LangCommon = {
     contact: 'contact',
 
     // Buttons
-    more_about: 'Qui suis-je ?',
+    more_about: 'Qui suis-je\xa0?',
     more_about2: 'À propos de moi',
     more_projects: 'Mes projets',
     more_projects2: 'Voir tous mes projets',
     resume: 'Télécharger mon CV',
-    contact_me: 'Contactez-moi !',
+    contact_me: 'Contactez-moi\xa0!',
 
     // Links
     to_projects: "Voir le projet",
@@ -22,8 +22,8 @@ export const common: LangCommon = {
 
     // Footer components
     footer: {
-        cta_projects: "Un projet en vue ?",
-        cta_contact: 'Parlons-en ensemble !',
+        cta_projects: "Un projet en vue\xa0?",
+        cta_contact: 'Parlons-en ensemble\xa0!',
         scroll_top: 'Revenir en haut',
         all_rights_reserved: 'Tous droits réservés',
     },
