@@ -1,10 +1,12 @@
 <template>
   <footer class="relative -mt-32 z-30 rounded-t-big bg-black text-white pt-12 s:pt-24 grid gap-6 xs:gap-12 s:gap-20">
-    <button @click="scrollToTop" class="absolute right-4 s:right-8 bottom-full m-4 s:bottom-8 flex flex-col gap-2 items-center group">
+    <button :title="$t('common.footer.scroll_top')" @click="scrollToTop" class="absolute right-4 s:right-8 bottom-full m-4 s:bottom-8 flex flex-col gap-2 items-center group">
       <span  class=" border border-white/50 s:hover:border-white rounded-full p-3">
         <i class="icon icon-arrow -rotate-90 flex items-center s:group-hover:-translate-y-2 duration-300"></i>
       </span>
-      <span class="text-xs text-center w-2/3 opacity-75 s:group-hover:opacity-100 duration-300 pointer-events-none">{{ $t('common.footer.scroll_top') }}</span>
+      <span class="text-xs text-center w-2/3 opacity-75 s:group-hover:opacity-100 duration-300 pointer-events-none">
+        {{ $t('common.footer.scroll_top') }}
+      </span>
     </button>
 
     <div class="responsive-padding-x">
@@ -13,7 +15,7 @@
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-2">
               <h1 class="text-big-title">{{ $t('common.footer.cta_projects') }}</h1>
-              <nuxt-link class="pushContact text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
+              <nuxt-link :title="$t('common.footer.cta_contact')" class="pushContact text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
                 <p>{{ $t('common.footer.cta_contact') }}</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>
@@ -23,22 +25,22 @@
               <nav>
                 <ul class="grid gap-2">
                   <li>
-                    <nuxt-link :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.home') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.about') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.projects') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.contact') }}
                     </nuxt-link>
                   </li>

@@ -1,11 +1,11 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
             <div class="relative text-white text-center px-8 space-y-4">
-              <h4 class="text-h4 text-white">
+              <h4 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
               </h4>
@@ -38,11 +38,11 @@
 
             <div class="mx-auto s:absolute s:bottom-0 w-full h-fit s:left-1/2 s:-translate-x-1/2 my-8">
               <div class="relative w-fit mx-auto grid s:grid-cols-2 justify-center gap-8">
-                <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
+                <nuxt-link :title="$t('common.more_projects')" :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
                   <p>{{$t('common.more_projects')}}</p>
                   <i class="icon icon-arrow"/>
                 </nuxt-link>
-                <nuxt-link :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
+                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
                   <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
                   <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
                 </nuxt-link>
@@ -56,7 +56,7 @@
       </div>
     </section>
 
-    <section ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
+    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
@@ -67,7 +67,7 @@
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
-          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit">
+          <nuxt-link :title="$t('common.more_about')" :to="localePath('/about')" class="btn btn-orange-100 w-fit">
             <p>{{ $t('common.more_about') }}</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -81,10 +81,10 @@
       </div>
     </section>
 
-    <section class="bg-grey-900 py-20 overflow-hidden">
+    <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-            <nuxt-link v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+          <nuxt-link title="La Grangette" v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
               <nuxt-picture src="/images/projects/grangette.png"
                             alt="Projects – Grangette"
@@ -102,14 +102,14 @@
           </nuxt-link>
         </div>
 
-        <nuxt-link :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
+        <nuxt-link :title="$t('common.more_projects2')" :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
           <p>{{ $t('common.more_projects2') }}</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
       </div>
     </section>
 
-    <section class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
+    <section :aria-label="$t('pages.home.title2') + ' & ' + $t('pages.home.title3')" class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
@@ -134,7 +134,7 @@
 
           </div>
 
-          <nuxt-link :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
+          <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
             <p>{{ $t('common.resume') }}</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
@@ -154,7 +154,7 @@
             </div>
           </div>
 
-          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
+          <nuxt-link :title="$t('common.more_about2')" :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
             <p>{{ $t('common.more_about2') }}</p>
             <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>
@@ -303,10 +303,6 @@ useSeoMeta({
   title: 'Jérôme Rascle',
   ogTitle: 'Jérôme Rascle',
   ogSiteName: 'Jérôme Rascle',
-  ogImage: siteUrl + '/social-media.jpg',
-  ogImageWidth: '1200',
-  ogImageHeight: '630',
-  ogImageType: 'image/jpeg',
   twitterCard: 'summary',
 })
 

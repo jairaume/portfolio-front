@@ -1,6 +1,6 @@
 <template>
   <main ref="theSection" class="relative pb-52 -mt-20 s:-mt-32 pt-44 text-white min-h-[80vh] bg-gradient-to-b from-black to-grey-700 overflow-hidden">
-    <section class="relative responsive-padding-x">
+    <section aria-label="Contact" class="relative responsive-padding-x">
       <div class="responsive-layout">
         <div class="py-32 space-y-32 m:space-y-40">
 
