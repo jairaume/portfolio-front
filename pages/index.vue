@@ -1,49 +1,51 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section class="relative bg-grey-50 h-[clamp(650px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
-        <div ref="heroContent" class="relative z-10 py-8 h-full">
-          <div class="relative h-full flex flex-col items-center justify-around">
-            <div class="relative text-white text-center px-8">
-              <h3 class="text-h4 text-white">
+        <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
+          <div class="relative h-full flex flex-col items-center justify-around py-6">
+            <div class="relative text-white text-center px-8 space-y-4">
+              <h4 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
-              </h3>
+              </h4>
               <h1 class="text-h1">
                 <span class="font-light text-grey-50">{{ $t('pages.home.catch_phrase') }}&nbsp;</span>
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
-              <div class="absolute my-8 s:my-12 left-12 s:left-8 bottom-full m-0">
-                <MouseLooker :active="true">
+              <div class="absolute my-8 s:my-12 left-20 s:left-8 bottom-full m-0">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 left-20 s:left-24 top-full m-0">
-                <MouseLooker :active="true">
+              <div class="absolute my-8 s:my-12 left-12 s:left-24 top-full m-0">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-8 bottom-full m-0">
-                <MouseLooker :active="true">
+              <div class="absolute my-8 s:my-12 right-20 s:right-8 bottom-full m-0">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-20 s:right-24 top-full m-0">
-                <MouseLooker :active="true">
+              <div class="absolute my-8 s:my-12 right-12 s:right-24 top-full m-0">
+                <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
               </div>
             </div>
 
-            <div class="absolute bottom-0 w-full h-fit left-0 flex flex-col s:flex-row items-center justify-center gap-8 my-8">
-              <nuxt-link :to="localePath('/projects')" class="btn btn-orange-100 w-fit">
-                <p>{{$t('common.more_projects')}}</p>
-                <i class="icon icon-arrow"/>
-              </nuxt-link>
-              <div class="btn btn-black w-fit">
-                <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
-                <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
+            <div class="mx-auto s:absolute s:bottom-0 w-full h-fit s:left-1/2 s:-translate-x-1/2 my-8">
+              <div class="relative w-fit mx-auto grid s:grid-cols-2 justify-center gap-8">
+                <nuxt-link :title="$t('common.more_projects')" :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
+                  <p>{{$t('common.more_projects')}}</p>
+                  <i class="icon icon-arrow"/>
+                </nuxt-link>
+                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
+                  <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
+                  <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
+                </nuxt-link>
               </div>
             </div>
           </div>
@@ -54,18 +56,18 @@
       </div>
     </section>
 
-    <section ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
+    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
       <div class="responsive-layout sticky top-24 m:top-32">
-        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-1 space-y-12">
+        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
-            <h3 class="text-grey-100 text-h3">{{ $t('pages.home.hi_im') }}</h3>
+            <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
-            <h3 id="reveal-text-paragraph" class="text-white font-bold text-h3 leading-normal reveal-text-vertical">
+            <h3 id="reveal-text-paragraph" class="whitespace-pre-wrap text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
-          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit">
+          <nuxt-link :title="$t('common.more_about')" :to="localePath('/about')" class="btn btn-orange-100 w-fit">
             <p>{{ $t('common.more_about') }}</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -79,10 +81,10 @@
       </div>
     </section>
 
-    <section class="bg-grey-900 py-32 min-h-screen overflow-hidden">
+    <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-            <nuxt-link v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+          <nuxt-link title="La Grangette" v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
               <nuxt-picture src="/images/projects/grangette.png"
                             alt="Projects – Grangette"
@@ -91,7 +93,8 @@
               />
             </div>
             <div class="absolute w-full bottom-0 left-0 p-4">
-              <div class="bg-teal-900 rounded-btn text-white flex justify-between items-center px-2">
+              <div class="relative isolate overflow-hidden bg-teal-900 rounded-btn text-white flex justify-between items-center px-2
+              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/50 after:to-transparent">
                 <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
                 <i class="icon icon-arrow"></i>
               </div>
@@ -99,14 +102,14 @@
           </nuxt-link>
         </div>
 
-        <nuxt-link :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
+        <nuxt-link :title="$t('common.more_projects2')" :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
           <p>{{ $t('common.more_projects2') }}</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
       </div>
     </section>
 
-    <section class="py-32 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
+    <section :aria-label="$t('pages.home.title2') + ' & ' + $t('pages.home.title3')" class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
@@ -131,7 +134,7 @@
 
           </div>
 
-          <nuxt-link :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
+          <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
             <p>{{ $t('common.resume') }}</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
@@ -151,14 +154,13 @@
             </div>
           </div>
 
-          <nuxt-link :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
+          <nuxt-link :title="$t('common.more_about2')" :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
             <p>{{ $t('common.more_about2') }}</p>
             <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>
         </div>
       </div>
     </section>
-
   </main>
 </template>
 
@@ -171,6 +173,8 @@ const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
 let ctx: gsap.Context;
 
+const heroSection = ref<HTMLElement|null>(null);
+const {isOutside: isOutsideHero} = useMouseInElement(heroSection)
 const heroBoxCtn = ref<HTMLElement|null>(null);
 const heroBox = ref<HTMLElement|null>(null);
 const heroContent = ref<HTMLElement|null>(null);
@@ -205,16 +209,6 @@ onMounted(()=> {
           end: "top 10%",
         }
       })
-
-      const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
-        type: 'underline',
-        multiline:true,
-        color:"rgba(237, 112, 45, .5)",
-        strokeWidth: 8,
-      })
-      heroAnnotation.show()
-      roundPaths()
-
 
       $gsap.fromTo("#reveal-text-content",{backgroundPositionX: "100%"}, {
         backgroundPositionX: 0,
@@ -260,6 +254,29 @@ onMounted(()=> {
       });
 
       mm.add("(min-width: 1024px)", () => {
+
+        const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
+          type: 'underline',
+          multiline:true,
+          color:"rgba(237, 112, 45, .5)",
+          strokeWidth: 8,
+        })
+        heroAnnotation.show()
+        roundPaths()
+
+        $gsap.set(heroContent.value,{transformOrigin:"top"})
+        $gsap.to(heroContent.value,{
+          opacity:0,
+          top: -100,
+          scrollTrigger: {
+            trigger: heroBox.value,
+            scrub: 1,
+            start: "75% center",
+            endTrigger: revealText.value,
+            end: "top 10%",
+          }
+        })
+
         $gsap.fromTo(".projects_wrapper", {x: 0}, {
           xPercent: -120,
           ease: "power",
@@ -272,19 +289,6 @@ onMounted(()=> {
             invalidateOnRefresh: true,
           }
         });
-
-        $gsap.set(heroContent.value,{transformOrigin:"top"})
-        $gsap.to(heroContent.value,{
-          opacity:0,
-          scale:.6,
-          scrollTrigger: {
-            trigger: heroBox.value,
-            scrub: 1,
-            start: "75% center",
-            endTrigger: revealText.value,
-            end: "top 10%",
-          }
-        })
       })
     }, rootEl.value)
 })
@@ -299,10 +303,6 @@ useSeoMeta({
   title: 'Jérôme Rascle',
   ogTitle: 'Jérôme Rascle',
   ogSiteName: 'Jérôme Rascle',
-  ogImage: siteUrl + '/social-media.jpg',
-  ogImageWidth: '1200',
-  ogImageHeight: '630',
-  ogImageType: 'image/jpeg',
   twitterCard: 'summary',
 })
 

@@ -7,5 +7,5 @@ export const contact: LangContact = {
     contact_me: "Contactez moi",
     contact_me2: "ici",
     professional_socials: "Et voilà mes",
-    professional_socials2: "réseaux sociaux professionnels !",
+    professional_socials2: "réseaux sociaux professionnels\xa0!",
 }

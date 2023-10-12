@@ -1,13 +1,13 @@
 <template>
 <main ref="rootEl" class="text-white">
-  <section class="py-32">
+  <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
-        <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-1">
+        <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-1">
           <div class="grid m:grid-cols-2 gap-8">
 
             <div class="aspect-square relative xs:max-layout-s-c-6-g-5 m:order-last s:max-layout-m-c-4-g-3 m:max-layout-l-c-3-g-3">
-              <nuxt-img src="/images/jerome.jpeg" alt="about" class="absolute w-full h-full top-0 left-0 object-cover rounded shadow-custom-ondark"/>
+              <nuxt-img preload src="/images/jerome.jpeg" alt="Picture of Jérôme Rascle" class="absolute w-full h-full top-0 left-0 object-cover rounded shadow-custom-ondark"/>
             </div>
 
             <div class="text-white flex flex-col gap-2">
@@ -20,7 +20,7 @@
               </p>
               <div class="grid gap-4 mt-8">
                 <p class="text-orange-100">{{ $t('pages.about.philosophy') }}</p>
-                <nuxt-link :to="localePath('/contact')" class="btn btn-white w-fit">
+                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-white w-fit">
                   <p>{{ $t('common.contact_me') }}</p>
                   <i class="icon icon-mail"></i>
                 </nuxt-link>
@@ -33,9 +33,9 @@
     </div>
   </section>
 
-  <section class="pt-12 pb-20 s:py-32 responsive-padding-x">
+  <section aria-labelledby="experiences" class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
-      <h1 class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
+      <h1 id="experiences" class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
       <div class="relative grid grid-cols-2 gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
         <div ref="line" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 flex flex-col gap-4">
           <span class="line-section line-section-1"></span>
@@ -63,15 +63,23 @@
         </div>
 
       </div>
+
+
+      <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="!mt-12 btn btn-white w-fit mx-auto group">
+        <p>{{ $t('common.resume') }}</p>
+        <div class="flex items-center">
+          <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
+        </div>
+      </nuxt-link>
     </div>
   </section>
 
-  <section id="skills" class="py-12 responsive-padding-x">
+  <section aria-labelledby="skills" class="py-12 responsive-padding-x">
     <div class="responsive-layout space-y-6">
-        <h1 class="text-big-title">{{ $t('pages.about.title3') }}</h1>
-      <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-2-g-0">
+        <h1 id="skills" class="text-big-title">{{ $t('pages.about.title3') }}</h1>
+      <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
         <ul class="grid gap-8">
-          <li v-for="i in 3" :key="i" class="skill flex gap-8 relative
+          <li v-for="i in 3" :key="i" class="flex flex-col gap-2 s:flex-row s:gap-8 relative
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
@@ -84,30 +92,32 @@
             </div>
           </li>
         </ul>
-          <div class="absolute z-0 w-1/2 h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+          <div class="absolute z-0 w-2/3 s:w-1/2 h-3/4 s:h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
     </div>
   </section>
 
-  <section id="hobbies" class="relative py-32 s:py-40 responsive-padding-x">
+  <section aria-label="Hobbies" id="hobbies" class="relative py-32 s:py-40 responsive-padding-x">
     <div class="responsive-layout">
-      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
+      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span> !
+          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span>&nbsp;!
         </h3>
       </div>
     </div>
-    <nuxt-img src="/images/emoji/popcorn.png" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
-    <nuxt-img src="/images/emoji/surf.png" class="surf absolute top-1/2 left-4 w-16 h-16 xs:left-8 s:w-24 s:h-24 s:left-10 m:w-24 m:h-24 m:left-24"></nuxt-img>
-    <nuxt-img src="/images/emoji/drum.png" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
+    <nuxt-img loading="lazy" src="/images/emoji/popcorn.png" alt="Emoji of a popcorn bucket" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
+    <nuxt-img loading="lazy" src="/images/emoji/surf.png" alt="Emoji of a man surfing" class="surf absolute top-1/2 left-4 w-16 h-16 xs:left-8 s:w-24 s:h-24 s:left-10 m:w-24 m:h-24 m:left-24"></nuxt-img>
+    <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
   </section>
 
-  <section id="hobbyCards" class="py-32 pb-72 responsive-padding-x relative h-screen bg-gradient-to-b from-black to-grey-700">
+  <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 pb-72 responsive-padding-x relative h-screen bg-gradient-to-b from-black to-grey-700">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <div>
-          <h4 ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">{{ $t('pages.about.other_stuff') }}</h4>
+          <h4 id="otherStuff" ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">
+            {{ $t('pages.about.other_stuff') }}
+          </h4>
         </div>
         <ul class="mt-20">
           <li v-for="i in 10" :key="i"
@@ -116,7 +126,7 @@
               <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
                 <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">Favorite movie 🎬</p>
               </div>
-              <nuxt-img src="https://picsum.photos/600/500" alt="about" class="w-full h-full object-cover" />
+              <nuxt-img loading="lazy" src="https://picsum.photos/600/500" alt="One of my hobby" class="w-full h-full object-cover" />
             </div>
           </li>
         </ul>
@@ -151,8 +161,8 @@ const revealNameTo: gsap.TweenVars = {
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
-  start: 'top center',
-  end: '75% center',
+  start: 'top 75%',
+  end: 'center center',
   scrub: 1
 }
 

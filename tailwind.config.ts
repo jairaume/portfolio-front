@@ -14,7 +14,7 @@ export default {
     screens: {
       'xs': '480px',
       's': '738px',
-      'm': '1200px',
+      'm': '1100px',
       'l': '1800px',
       'no-hover': {'raw': '(hover: hover) and (pointer: fine)'}
     },
@@ -40,7 +40,7 @@ export default {
       },
       borderRadius: {
         'big': '30px',
-        'btn': '15px'
+        'btn': '10px'
       },
       animation:{
         'scroll': 'scroll 20s linear infinite',
@@ -49,6 +49,8 @@ export default {
       },
       boxShadow: {
         'custom-ondark': "2px 5px 18px rgba(0, 0, 0, 0.40)",
+        'shine': "0 0 50px 40px #fff",
+        'btn-glow': "0 2px 20px 5px #ED702D",
       },
       fontSize: {
         'xxs': ['.625rem', '2.1em'],

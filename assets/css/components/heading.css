@@ -43,7 +43,7 @@
 }
 
 .text-cta {
-    @apply text-lg font-semibold;
+    @apply text-base font-semibold;
 }
 .text-h4 {
     @apply text-lg font-bold;
@@ -55,7 +55,7 @@
     @apply text-3.5xl font-bold;
 }
 .text-h1 {
-    @apply text-5xl font-bold;
+    @apply text-4.5xl font-bold;
 }
 .text-big-title {
     @apply text-5xl leading-normal font-extrabold;

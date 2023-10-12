@@ -1,9 +1,13 @@
 <template>
   <header ref="rootEl" id="menu" class="w-full z-50 sticky top-0 text-white">
-    <nav class="relative responsive-padding-x py-8 flex items-center justify-between s:gap-2 s:justify-center m:gap-6 drop-shadow">
-      <nuxt-link :to="localePath('/')" class="text-cta px-8 hidden s:block">{{ $t('common.home') }}</nuxt-link>
-      <nuxt-link :to="localePath('/about')" class="text-cta px-8 hidden s:block">{{ $t('common.about') }}</nuxt-link>
-      <nuxt-link
+    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow">
+      <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta px-8 hidden m:block">
+        {{ $t('common.home') }}
+      </nuxt-link>
+      <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta px-8 hidden m:block">
+        {{ $t('common.about') }}
+      </nuxt-link>
+      <nuxt-link :title="$t('common.home')"
           :to="localePath('/')"
           class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]"
           :class="{ 'text-white': route.fullPath.includes('projects/')}"
@@ -15,30 +19,43 @@
           <span id="leftAccent" class="absolute w-[1ch] right-full">&lt;</span>
         </h1>
       </nuxt-link>
-      <nuxt-link :to="localePath('/projects')" class="text-cta px-8 hidden s:block">{{ $t('common.projects') }}</nuxt-link>
-      <nuxt-link :to="localePath('/contact')" class="text-cta text-black btn btn-white px-4 py-1 border hidden s:block">
+      <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta px-8 hidden m:block">
+        {{ $t('common.projects') }}
+      </nuxt-link>
+      <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden m:block">
         {{ $t('common.contact') }}
       </nuxt-link>
 
-      <div class="relative">
-        <button class="text-cta px-3 py-1 border border-white rounded-lg duration-300 s:hidden" :class="{'bg-white text-grey-500': expanded}" aria-controls="overlay" @click="toggleMenu">menu</button>
+      <div class="absolute right-0 mx-8">
+        <button title="Open navigation menu" class="text-cta px-3 py-1 border border-white rounded-lg duration-300 m:hidden"
+                :class="{'bg-white text-grey-500': expanded}" aria-controls="overlay"
+                @click="toggleMenu"
+        >
+          menu
+        </button>
         <Transition name="slide">
-          <div v-show="expanded" id="overlay" class="absolute top-full right-0 w-full h-full text-right py-3">
+          <div v-show="expanded" id="overlay" class="absolute top-full right-0 w-screen h-full text-right py-3">
             <nav>
-              <ul class="pr-1 space-y-2 flex flex-col items-end" @click="toggleMenu">
+              <ul class="w-full pr-1 space-y-2 flex flex-col items-end" @click="toggleMenu">
                 <li>
-                  <nuxt-link :to="localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.home') }}</nuxt-link>
+                  <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                    {{ $t('common.home') }}
+                  </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.about') }}</nuxt-link>
+                  <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                    {{ $t('common.about') }}
+                  </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">{{ $t('common.projects') }}</nuxt-link>
+                  <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                    {{ $t('common.projects') }}
+                  </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :to="localePath('/contact')" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
+                  <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
                     {{ $t('common.contact') }}
-                    <i class="icon icon-mail"></i>
+                    <i class="icon icon-mail bg-white"></i>
                   </nuxt-link>
                 </li>
               </ul>
@@ -57,7 +74,7 @@ const route = useRoute()
 const expanded = ref(false)
 
 const {breakpoints} = useDefaultBreakpoints()
-const sm = breakpoints.smaller('s')
+const sm = breakpoints.smaller('m')
 watch(sm, (val)=>{
   if(!val){
     expanded.value = false
@@ -161,11 +178,16 @@ onBeforeUnmount(()=>{
 </script>
 
 <style scoped>
-header a.router-link-exact-active {
+header a.router-link-active:not(.text-monument-menu, .btn) {
   @apply text-orange-100 duration-300;
 }
-header a {
-  @apply hover:text-orange-100 duration-300;
+header a.router-link-active.btn {
+  @apply ring-2 ring-orange-100 bg-orange-100/25;
+}
+
+header a:not(.btn, .text-monument-menu, .router-link-active) {
+  @apply bg-gradient-to-r bg-right-top from-40% via-40% to-50% from-orange-100 via-orange-300 to-white bg-clip-text text-transparent hover:bg-left-top duration-500;
+  background-size: 230% 100%;
 }
 
 .slide-enter-active, .slide-leave-active {

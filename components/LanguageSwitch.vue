@@ -5,7 +5,7 @@
         <i class="icon icon-language text-black"></i>
       </div>
       <div class="absolute right-full top-1/2 -translate-y-1/2">
-        <nuxt-link v-for="locale in locales" :key="locale.code" :to="switchLocalePath(locale.code)"
+        <nuxt-link :title="'Language: '+locale.name" v-for="locale in locales" :key="locale.code" :to="switchLocalePath(locale.code)"
             class="language" :class="{ 'active': locale.code == currentLocale}"
         >
           {{ locale.code }}
