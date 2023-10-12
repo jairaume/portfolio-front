@@ -78,17 +78,15 @@
     <div class="responsive-layout space-y-6">
         <h1 id="skills" class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
-        <ul class="grid gap-8">
-          <li v-for="i in 3" :key="i" class="flex flex-col gap-2 s:flex-row s:gap-8 relative
+        <ul class="grid gap-12">
+          <li v-for="skill in all_skills" :key="skill.id" class="flex flex-col gap-2 s:items-start relative pb-6
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
-              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
+              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">{{ skill["skill_name_"+locale] }}</h4>
             </div>
             <div class="max-w-[800px] text-grey-50">
-              <p>
-                Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
-              </p>
+              <p>{{ skill["description_"+locale] }}</p>
             </div>
           </li>
         </ul>
@@ -140,6 +138,7 @@
 import {annotate} from "rough-notation";
 
 const rootEl = ref()
+const supabase = useSupabaseClient()
 
 const prenom = ref<HTMLElement|null>(null)
 const nom = ref<HTMLElement|null>(null)
@@ -151,6 +150,7 @@ const drumsAnnotate = ref<HTMLElement>()
 const otherAnnotate = ref<HTMLElement>()
 
 const {$gsap, $Draggable} = useNuxtApp()
+const {locale} = useI18n()
 let ctx: gsap.Context;
 
 const revealNameTo: gsap.TweenVars = {
@@ -165,6 +165,13 @@ const hobbiesScrollTrigger = {
   end: 'center center',
   scrub: 1
 }
+
+const { data: all_skills } = await useLazyAsyncData('all_skill', async () => {
+  const { data, error } = await supabase.from('skill').select()
+  if(error) console.error(error)
+  console.log(data)
+  return data
+})
 
 onMounted(() => {
   ctx = $gsap.context(()=>{

@@ -149,8 +149,8 @@
           </h1>
 
           <div class="grid gap-8 group">
-            <div v-for="i in 4" :key="i" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
-              <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
+            <div v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
+              <h4 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h4>
             </div>
           </div>
 
@@ -173,6 +173,7 @@ const supabase = useSupabaseClient()
 
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
+const {locale} = useI18n()
 let ctx: gsap.Context;
 
 const heroSection = ref<HTMLElement|null>(null);
@@ -187,8 +188,9 @@ const {isOutside} = useMouseInElement(revealText)
 
 const projects = ref<HTMLElement|null>(null);
 
-const { data: skill } = await useLazyAsyncData('skill', async () => {
-  const { data, error } = await supabase.from('skill').select()
+const { data: skills } = await useLazyAsyncData('skill', async () => {
+  const selectString = 'id, skill (skill_name_' + locale.value + ')'
+  const { data, error } = await supabase.from('featured_skills').select(selectString)
   if(error) console.error(error)
   return data
 })
