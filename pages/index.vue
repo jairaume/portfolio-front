@@ -169,6 +169,8 @@ import {annotate} from "rough-notation";
 
 const {roundPaths} = useRoundedAnnotations()
 
+const supabase = useSupabaseClient()
+
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
 let ctx: gsap.Context;
@@ -184,6 +186,12 @@ const revealText = ref<HTMLElement|null>(null);
 const {isOutside} = useMouseInElement(revealText)
 
 const projects = ref<HTMLElement|null>(null);
+
+const { data: skill } = await useLazyAsyncData('skill', async () => {
+  const { data, error } = await supabase.from('skill').select()
+  if(error) console.error(error)
+  return data
+})
 
 onMounted(()=> {
     ctx = $gsap.context(()=> {
