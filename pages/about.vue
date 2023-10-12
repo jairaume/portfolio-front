@@ -44,23 +44,12 @@
           <span class="line-section line-section-main"></span>
         </div>
 
-        <div class="experience grid px-4 h-fit relative">
-          <span class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 right-0 translate-x-1/2 translate-y-1/2"></span>
-          <h3 class="text-monument-h3 text-orange-100 text-right font-light s:absolute top-0 s:left-full s:w-full s:text-left s:px-8 s:translate-y-1/2">2019 – Now</h3>
-          <h4 class="text-h4">Front-End Developer · Apple USA</h4>
-          <p class="text-grey-50 text-sm font-light">
-            Dolore aute cillum veniam anim do. Veniam minim nostrud duis duis
-          </p>
-        </div>
-
-        <div class="experience grid px-4 h-fit row-start-2 col-start-2 relative">
-          <span class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 left-0 -translate-x-1/2 translate-y-1/2"></span>
-          <h3 class="text-monument-h3 text-orange-100 text-left font-light s:absolute top-0 s:right-full s:w-full s:text-right s:px-8 s:translate-y-1/2">2019 – Now</h3>
-          <h4 class="text-h4">Front-End Developer</h4>
-          <p class="text-grey-50 text-sm font-light">
-            Dolore aute cillum veniam anim do. Veniam minim nostrud duis duis do duis amet minim dolore sit eu. Nisi esse aliquip labore Lorem aliquip cupidatat dolore commodo.
-          </p>
-        </div>
+        <Experience
+            v-for="experience in experiences"
+            :experience="experience"
+            :key="experience.id"
+            :left="experience.id % 2 === 0"
+        />
 
       </div>
 
@@ -166,10 +155,15 @@ const hobbiesScrollTrigger = {
   scrub: 1
 }
 
+const { data: experiences } = await useLazyAsyncData('experiences', async () => {
+  const { data, error } = await supabase.from('experience').select()
+  if(error) console.error(error)
+  return data
+})
+
 const { data: all_skills } = await useLazyAsyncData('all_skill', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
-  console.log(data)
   return data
 })
 
@@ -389,10 +383,6 @@ useSeoMeta({
   &.line-section-main {
     @apply h-full;
   }
-}
-
-.experience.active > span {
-  @apply border-orange-100;
 }
 
 .littleArrow {
