@@ -107,13 +107,18 @@
           </h4>
         </div>
         <ul class="mt-20">
-          <li v-for="i in 10" :key="i"
+          <li v-for="(hobby, i) in hobbies" :key="i"
               class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-btn overflow-hidden shadow-custom-ondark">
             <div class="relative w-full h-full">
               <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
-                <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">Favorite movie 🎬</p>
+                <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">
+                  {{ hobby["description_"+locale] }}</p>
               </div>
-              <nuxt-img loading="lazy" src="https://picsum.photos/600/500" alt="One of my hobby" class="w-full h-full object-cover" />
+              <nuxt-img loading="lazy"
+                        :src="'https://tawisixerigsoikwrnxf.supabase.co/storage/v1/object/public/images'+hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
+                        :alt="hobby['description_'+locale]"
+                        class="w-full h-full object-cover"
+              />
             </div>
           </li>
         </ul>
@@ -166,6 +171,13 @@ const { data: experiences } = await useLazyAsyncData('experiences', async () => 
 const { data: all_skills } = await useLazyAsyncData('all_skill', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
+  return data
+})
+
+const { data: hobbies } = await useLazyAsyncData('hobbies', async () => {
+  const { data, error } = await supabase.from('hobby').select()
+  if(error) console.error(error)
+  console.log(data)
   return data
 })
 
