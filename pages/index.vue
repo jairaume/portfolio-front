@@ -58,7 +58,7 @@
 
     <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
       <div class="responsive-layout sticky top-24 m:top-32">
-        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
+        <div class="overflow-hidden relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
             <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
@@ -116,21 +116,21 @@
 
           <div class="grid gap-4 xs:grid-cols-2">
 
-              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> May 2019 – August 2023</h4>
+            <template v-for="(experience, i) in featured_experiences" :key="i">
+              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1">
+                {{ new Date(experience.experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
+                &nbsp;–&nbsp;
+                {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
+              </h4>
               <div class="xs:col-start-2">
-                <h4 class="text-h4 font-medium">Software Engineer&nbsp;· <span class="font-black">Apple</span></h4>
+                <h4 class="text-h4 font-medium">
+                  Software Engineer&nbsp;· <span class="font-black">Apple</span>
+                </h4>
                 <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
                   Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum. Non occaecat incididunt adipisicing aute dolore cupidatat enim pariatur est
                 </p>
               </div>
-
-              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> 2019 – 2023</h4>
-              <div class="xs:col-start-2">
-                <h4 class="text-h4 font-medium">Intern Developer&nbsp;· <span class="font-black">Google</span></h4>
-                <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
-                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum.
-                </p>
-              </div>
+            </template>
 
           </div>
 
@@ -189,9 +189,18 @@ const {isOutside} = useMouseInElement(revealText)
 
 const projects = ref<HTMLElement|null>(null);
 
+
+const { data: featured_experiences } = await useLazyAsyncData('featured_experiences', async () => {
+  const { data, error } = await supabase.from('featured_experiences')
+      .select('id, experience (*)')
+      .range(0,1)
+  if(error) console.error(error)
+  return data
+})
+
 const { data: skills } = await useLazyAsyncData('skill', async () => {
   const selectString = 'id, skill (skill_name_' + locale.value + ')'
-  const { data, error } = await supabase.from('featured_skills').select(selectString)
+  const { data, error } = await supabase.from('featured_skills').select(selectString).range(0,3)
   if(error) console.error(error)
   return data
 })
