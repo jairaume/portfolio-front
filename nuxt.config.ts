@@ -1,7 +1,8 @@
 export default defineNuxtConfig({
-  /*nitro: {
+  nitro: {
     preset: 'vercel-edge',
-  },*/
+    compressPublicAssets: true,
+  },
   devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
