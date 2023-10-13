@@ -134,12 +134,12 @@
 
           </div>
 
-          <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
+          <div @click="downloadResume" role="button" :title="$t('common.resume')" class="btn btn-white w-fit mx-auto group">
             <p>{{ $t('common.resume') }}</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
             </div>
-          </nuxt-link>
+          </div>
 
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
@@ -170,6 +170,7 @@ import {annotate} from "rough-notation";
 const {roundPaths} = useRoundedAnnotations()
 
 const supabase = useSupabaseClient()
+const {downloadResume} = useDownloadResume()
 
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();

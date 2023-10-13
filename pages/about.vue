@@ -54,12 +54,12 @@
       </div>
 
 
-      <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="!mt-12 btn btn-white w-fit mx-auto group">
+      <div @click="downloadResume" role="button" :title="$t('common.resume')" class="!mt-12 btn btn-white w-fit mx-auto group">
         <p>{{ $t('common.resume') }}</p>
         <div class="flex items-center">
           <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
         </div>
-      </nuxt-link>
+      </div>
     </div>
   </section>
 
@@ -125,9 +125,11 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
+import {useDownloadResume} from "~/composables/useDownloadResume";
 
 const rootEl = ref()
 const supabase = useSupabaseClient()
+const {downloadResume} = useDownloadResume()
 
 const prenom = ref<HTMLElement|null>(null)
 const nom = ref<HTMLElement|null>(null)
