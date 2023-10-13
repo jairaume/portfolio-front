@@ -108,17 +108,19 @@
         </div>
         <ul class="mt-20">
           <li v-for="(hobby, i) in hobbies" :key="i"
-              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-btn overflow-hidden shadow-custom-ondark">
-            <div class="relative w-full h-full">
-              <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
-                <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">
-                  {{ hobby["description_"+locale] }}</p>
+              class="hobby group absolute top-1/2 left-1/2">
+            <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
+              <div class=" w-full h-full">
+                <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
+                  <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">
+                    {{ hobby["description_"+locale] }}</p>
+                </div>
+                <nuxt-img loading="lazy"
+                          :src="'https://tawisixerigsoikwrnxf.supabase.co/storage/v1/object/public/images'+hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
+                          :alt="hobby['description_'+locale]"
+                          class="w-full h-full max-h-[min(50vh,_600px)] object-cover"
+                />
               </div>
-              <nuxt-img loading="lazy"
-                        :src="'https://tawisixerigsoikwrnxf.supabase.co/storage/v1/object/public/images'+hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
-                        :alt="hobby['description_'+locale]"
-                        class="w-full h-full object-cover"
-              />
             </div>
           </li>
         </ul>
@@ -177,7 +179,6 @@ const { data: all_skills } = await useLazyAsyncData('all_skill', async () => {
 const { data: hobbies } = await useLazyAsyncData('hobbies', async () => {
   const { data, error } = await supabase.from('hobby').select()
   if(error) console.error(error)
-  console.log(data)
   return data
 })
 
