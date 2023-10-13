@@ -1,5 +1,5 @@
 <template>
-<main ref="rootEl" class="text-white">
+<main ref="rootEl" class="text-white overflow-hidden">
   <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
@@ -36,7 +36,7 @@
   <section aria-labelledby="experiences" class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
       <h1 id="experiences" class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
-      <div class="relative grid grid-cols-2 gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
+      <div class="relative grid gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
         <div ref="line" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 flex flex-col gap-4">
           <span class="line-section line-section-1"></span>
           <span class="line-section line-section-2"></span>
@@ -45,10 +45,10 @@
         </div>
 
         <Experience
-            v-for="experience in experiences"
+            v-for="(experience, i) in experiences"
             :experience="experience"
             :key="experience.id"
-            :left="experience.id % 2 === 0"
+            :left="i % 2 === 0"
         />
 
       </div>
