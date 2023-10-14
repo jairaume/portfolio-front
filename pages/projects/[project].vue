@@ -1,5 +1,5 @@
 <template>
-  <main ref="rootEl" class="text-white pb-52 -mt-32 pt-20 min-h-screen bg-grey-700 overflow-hidden">
+  <main v-if="projectData" ref="rootEl" class="text-white pb-52 -mt-32 pt-20 min-h-screen bg-grey-700 overflow-hidden">
     <section aria-labelledby="project-title" class="relative responsive-padding-x">
 
       <div class="responsive-layout pt-12">
@@ -116,7 +116,7 @@ const project = route.params.project
 const projectSwiperElement = ref<HTMLElement>()
 const projectSwiper = ref<Swiper>()
 
-const { data: projectData } = await useLazyAsyncData('project', async () => {
+const { data: projectData } = await useAsyncData('project', async () => {
   const { data, error } = await supabase.from('project')
       .select()
       .eq('slug', project)

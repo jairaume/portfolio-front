@@ -167,19 +167,19 @@ const hobbiesScrollTrigger = {
   scrub: 1
 }
 
-const { data: experiences } = await useLazyAsyncData('experiences', async () => {
+const { data: experiences } = await useAsyncData('experiences', async () => {
   const { data, error } = await supabase.from('experience').select()
   if(error) console.error(error)
   return data
 })
 
-const { data: all_skills } = await useLazyAsyncData('all_skill', async () => {
+const { data: all_skills } = await useAsyncData('all_skill', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
   return data
 })
 
-const { data: hobbies } = await useLazyAsyncData('hobbies', async () => {
+const { data: hobbies } = await useAsyncData('hobbies', async () => {
   const { data, error } = await supabase.from('hobby').select()
   if(error) console.error(error)
   return data

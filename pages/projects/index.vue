@@ -47,7 +47,7 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 
-const { data: projects } = await useLazyAsyncData('projects', async () => {
+const { data: projects } = await useAsyncData('projects', async () => {
   const { data, error } = await supabase.from('project')
       .select('id, title, slug, thumbnail_image, collaboration_type, company')
       .range(0,6)
