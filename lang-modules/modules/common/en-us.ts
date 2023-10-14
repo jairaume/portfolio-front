@@ -28,6 +28,28 @@ export const common: LangCommon = {
         all_rights_reserved: 'All rights reserved',
     },
 
+    //Collaboration type
+    collab: {
+        work: "Work for",
+        school: "During my studies at",
+        freelance: "Freelance for",
+    },
+
+    // Project type
+    type: {
+        web: "Web development",
+        software: "Software development",
+        mobile: "Mobile development",
+        design: "Design",
+        consulting: "Consulting",
+    },
+
+    error: {
+        404: "404 Error",
+        not_found: "The page you are looking for does not exist.",
+        go_home: "Back to safety",
+    },
+
     // others
     available: 'Available',
     today: 'Today',

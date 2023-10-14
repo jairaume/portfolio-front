@@ -4,7 +4,7 @@
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
-            <div class="relative text-white text-center px-8 space-y-4">
+            <div class="relative text-white text-center px-8">
               <h4 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
@@ -14,22 +14,22 @@
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
-              <div class="absolute my-8 s:my-12 left-20 s:left-8 bottom-full m-0">
+              <div class="absolute my-12 s:my-20 left-20 s:left-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 left-12 s:left-24 top-full m-0">
+              <div class="absolute my-12 s:my-20 left-12 s:left-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-20 s:right-8 bottom-full m-0">
+              <div class="absolute my-12 s:my-20 right-20 s:right-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-24 top-full m-0">
+              <div class="absolute my-12 s:my-20 right-12 s:right-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
@@ -52,17 +52,19 @@
         </div>
       </div>
       <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
-        <div ref="heroBox" class="bg-black rounded-big w-full h-full"></div>
+        <div ref="heroBox" class="relative bg-black rounded-big w-full h-full overflow-hidden">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 bg-orange-100/10 rounded-full blur-3xl"></div>
+        </div>
       </div>
     </section>
 
-    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x">
+    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
-          <div class="relative">
+          <div class="relative overflow-hidden">
             <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
-            <h3 id="reveal-text-paragraph" class="whitespace-pre-wrap text-white font-bold text-h3 leading-normal reveal-text-vertical">
+            <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
@@ -84,18 +86,19 @@
     <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-          <nuxt-link title="La Grangette" v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+          <nuxt-link v-for="(project, i) in featured_projects" :key="i" :title="project.project.title" :to="localePath('/projects/'+project.project.slug)" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
-              <nuxt-picture src="/images/projects/grangette.png"
+              <nuxt-picture :src="project.project.thumbnail_image"
                             alt="Projects – Grangette"
                             class="w-full h-full rounded-big"
                             :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
               />
             </div>
             <div class="absolute w-full bottom-0 left-0 p-4">
-              <div class="relative isolate overflow-hidden bg-teal-900 rounded-btn text-white flex justify-between items-center px-2
-              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/50 after:to-transparent">
-                <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
+              <div :style="{backgroundColor: project.project.color}"
+                  class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2
+              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-r after:from-black/95 after:to-black/50">
+                <h4 class="text-cta py-1 px-2 font-light">{{ project.project.title }}</h4>
                 <i class="icon icon-arrow"></i>
               </div>
             </div>
@@ -116,30 +119,32 @@
 
           <div class="grid gap-4 xs:grid-cols-2">
 
-              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> May 2019 – August 2023</h4>
+            <template v-for="(experience, i) in featured_experiences" :key="i">
+              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1">
+                {{ new Date(experience.experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
+                &nbsp;–&nbsp;
+                {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
+              </h4>
               <div class="xs:col-start-2">
-                <h4 class="text-h4 font-medium">Software Engineer&nbsp;· <span class="font-black">Apple</span></h4>
+                <h4 class="text-h4 font-medium">
+                  {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
+                </h4>
                 <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
-                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum. Non occaecat incididunt adipisicing aute dolore cupidatat enim pariatur est
+                  {{
+                    experience.experience["description_"+locale]
+                  }}
                 </p>
               </div>
-
-              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1"> 2019 – 2023</h4>
-              <div class="xs:col-start-2">
-                <h4 class="text-h4 font-medium">Intern Developer&nbsp;· <span class="font-black">Google</span></h4>
-                <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
-                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum.
-                </p>
-              </div>
+            </template>
 
           </div>
 
-          <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="btn btn-white w-fit mx-auto group">
+          <div @click="downloadResume" role="button" :title="$t('common.resume')" class="btn btn-white w-fit mx-auto group">
             <p>{{ $t('common.resume') }}</p>
             <div class="flex items-center">
               <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
             </div>
-          </nuxt-link>
+          </div>
 
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
@@ -149,8 +154,8 @@
           </h1>
 
           <div class="grid gap-8 group">
-            <div v-for="i in 4" :key="i" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
-              <h4 class="text-h3 py-1 px-2 font-light">Front-end</h4>
+            <div v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
+              <h4 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h4>
             </div>
           </div>
 
@@ -169,8 +174,12 @@ import {annotate} from "rough-notation";
 
 const {roundPaths} = useRoundedAnnotations()
 
+const supabase = useSupabaseClient()
+const {downloadResume} = useDownloadResume()
+
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
+const {locale} = useI18n()
 let ctx: gsap.Context;
 
 const heroSection = ref<HTMLElement|null>(null);
@@ -184,6 +193,29 @@ const revealText = ref<HTMLElement|null>(null);
 const {isOutside} = useMouseInElement(revealText)
 
 const projects = ref<HTMLElement|null>(null);
+
+const { data: featured_projects } = await useAsyncData('featured_projects', async () => {
+  const { data, error } = await supabase.from('featured_projects')
+      .select('id, project (id,title,color,slug,thumbnail_image)')
+      .range(0,6)
+  if(error) console.error(error)
+  return data
+})
+
+const { data: featured_experiences } = await useAsyncData('featured_experiences', async () => {
+  const { data, error } = await supabase.from('featured_experiences')
+      .select('id, experience (*)')
+      .range(0,1)
+  if(error) console.error(error)
+  return data
+})
+
+const { data: skills } = await useAsyncData('skill', async () => {
+  const selectString = 'id, skill (skill_name_' + locale.value + ')'
+  const { data, error } = await supabase.from('featured_skills').select(selectString).range(0,3)
+  if(error) console.error(error)
+  return data
+})
 
 onMounted(()=> {
     ctx = $gsap.context(()=> {

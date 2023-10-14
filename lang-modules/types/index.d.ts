@@ -30,6 +30,28 @@ export interface LangCommon {
         all_rights_reserved: string,
     }
 
+    //Collaboration type
+    collab: {
+        work: string,
+        school: string,
+        freelance: string,
+    }
+
+    // Project type
+    type: {
+        web: string,
+        software: string,
+        mobile: string,
+        design: string,
+        consulting: string,
+    }
+
+    error: {
+        404: string,
+        not_found: string,
+        go_home: string,
+    }
+
     // others
     available: string,
     today: string,

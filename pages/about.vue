@@ -1,5 +1,5 @@
 <template>
-<main ref="rootEl" class="text-white">
+<main ref="rootEl" class="text-white overflow-hidden">
   <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
@@ -36,7 +36,7 @@
   <section aria-labelledby="experiences" class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
       <h1 id="experiences" class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
-      <div class="relative grid grid-cols-2 gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
+      <div class="relative grid gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-1-g-1">
         <div ref="line" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 flex flex-col gap-4">
           <span class="line-section line-section-1"></span>
           <span class="line-section line-section-2"></span>
@@ -44,33 +44,22 @@
           <span class="line-section line-section-main"></span>
         </div>
 
-        <div class="experience grid px-4 h-fit relative">
-          <span class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 right-0 translate-x-1/2 translate-y-1/2"></span>
-          <h3 class="text-monument-h3 text-orange-100 text-right font-light s:absolute top-0 s:left-full s:w-full s:text-left s:px-8 s:translate-y-1/2">2019 – Now</h3>
-          <h4 class="text-h4">Front-End Developer · Apple USA</h4>
-          <p class="text-grey-50 text-sm font-light">
-            Dolore aute cillum veniam anim do. Veniam minim nostrud duis duis
-          </p>
-        </div>
-
-        <div class="experience grid px-4 h-fit row-start-2 col-start-2 relative">
-          <span class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 left-0 -translate-x-1/2 translate-y-1/2"></span>
-          <h3 class="text-monument-h3 text-orange-100 text-left font-light s:absolute top-0 s:right-full s:w-full s:text-right s:px-8 s:translate-y-1/2">2019 – Now</h3>
-          <h4 class="text-h4">Front-End Developer</h4>
-          <p class="text-grey-50 text-sm font-light">
-            Dolore aute cillum veniam anim do. Veniam minim nostrud duis duis do duis amet minim dolore sit eu. Nisi esse aliquip labore Lorem aliquip cupidatat dolore commodo.
-          </p>
-        </div>
+        <Experience
+            v-for="(experience, i) in experiences"
+            :experience="experience"
+            :key="experience.id"
+            :left="i % 2 === 0"
+        />
 
       </div>
 
 
-      <nuxt-link :title="$t('common.resume')" :to="localePath('/')" class="!mt-12 btn btn-white w-fit mx-auto group">
+      <div @click="downloadResume" role="button" :title="$t('common.resume')" class="!mt-12 btn btn-white w-fit mx-auto group">
         <p>{{ $t('common.resume') }}</p>
         <div class="flex items-center">
           <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
         </div>
-      </nuxt-link>
+      </div>
     </div>
   </section>
 
@@ -78,17 +67,15 @@
     <div class="responsive-layout space-y-6">
         <h1 id="skills" class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
-        <ul class="grid gap-8">
-          <li v-for="i in 3" :key="i" class="flex flex-col gap-2 s:flex-row s:gap-8 relative
+        <ul class="grid gap-12">
+          <li v-for="skill in all_skills" :key="skill.id" class="flex flex-col gap-2 s:items-start relative pb-6
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
-              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">Web Development</h4>
+              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">{{ skill["skill_name_"+locale] }}</h4>
             </div>
             <div class="max-w-[800px] text-grey-50">
-              <p>
-                Cupidatat sunt officia amet qui duis minim laborum duis consequat consequat tempor. Esse velit do ex eu eu veniam consectetur consectetur. Nulla id laboris deserunt dolore aliquip velit sit. Lorem occaecat ipsum ad ipsum nisi nulla ea excepteur tempor.
-              </p>
+              <p>{{ skill["description_"+locale] }}</p>
             </div>
           </li>
         </ul>
@@ -102,7 +89,7 @@
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span>&nbsp;!
+          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{$t('pages.about.p4.hobby3')}}</span>&nbsp;!
         </h3>
       </div>
     </div>
@@ -120,13 +107,20 @@
           </h4>
         </div>
         <ul class="mt-20">
-          <li v-for="i in 10" :key="i"
-              class="hobby group absolute w-[min(400px,_50vw)] h-[min(600px,_30vh)] top-1/2 left-1/2 rounded-btn overflow-hidden shadow-custom-ondark">
-            <div class="relative w-full h-full">
-              <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
-                <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">Favorite movie 🎬</p>
+          <li v-for="(hobby, i) in hobbies" :key="i"
+              class="hobby group absolute top-1/2 left-1/2">
+            <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
+              <div class=" w-full h-full">
+                <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
+                  <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white text-center px-4 py-2 rounded-full w-fit mx-auto">
+                    {{ hobby["description_"+locale] }}</p>
+                </div>
+                <nuxt-img loading="lazy"
+                          :src="'https://tawisixerigsoikwrnxf.supabase.co/storage/v1/object/public/images'+hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
+                          :alt="hobby['description_'+locale]"
+                          class="w-full h-full max-h-[min(50vh,_600px)] object-cover"
+                />
               </div>
-              <nuxt-img loading="lazy" src="https://picsum.photos/600/500" alt="One of my hobby" class="w-full h-full object-cover" />
             </div>
           </li>
         </ul>
@@ -138,8 +132,11 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
+import {useDownloadResume} from "~/composables/useDownloadResume";
 
 const rootEl = ref()
+const supabase = useSupabaseClient()
+const {downloadResume} = useDownloadResume()
 
 const prenom = ref<HTMLElement|null>(null)
 const nom = ref<HTMLElement|null>(null)
@@ -151,7 +148,11 @@ const drumsAnnotate = ref<HTMLElement>()
 const otherAnnotate = ref<HTMLElement>()
 
 const {$gsap, $Draggable} = useNuxtApp()
+const {locale} = useI18n()
 let ctx: gsap.Context;
+
+const experiencesLoaded = ref(false)
+const hobbiesLoaded = ref(false)
 
 const revealNameTo: gsap.TweenVars = {
   backgroundPositionX:0,
@@ -166,48 +167,111 @@ const hobbiesScrollTrigger = {
   scrub: 1
 }
 
+const { data: experiences } = await useAsyncData('experiences', async () => {
+  const { data, error } = await supabase.from('experience').select()
+  if(error) console.error(error)
+  return data
+})
+
+const { data: all_skills } = await useAsyncData('all_skill', async () => {
+  const { data, error } = await supabase.from('skill').select()
+  if(error) console.error(error)
+  return data
+})
+
+const { data: hobbies } = await useAsyncData('hobbies', async () => {
+  const { data, error } = await supabase.from('hobby').select()
+  if(error) console.error(error)
+  return data
+})
+
+watch(experiences, initExperiences)
+
+function initExperiences(){
+  if(experiencesLoaded.value) return
+
+  const lineSections = $gsap.utils.toArray('.line-section')
+  lineSections.forEach((lineSection) => {
+    $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
+      scrollTrigger: {
+        trigger: lineSection as HTMLElement,
+        start: 'top center',
+        end: 'bottom center',
+        scrub: .2,
+      },
+      ease: 'none',
+      backgroundPositionY:0
+    })
+  })
+
+  const experiences = $gsap.utils.toArray('.experience')
+  experiences.forEach((experience) => {
+    $gsap.fromTo(experience as HTMLElement,{
+      opacity: .2,
+      y: 50
+    }, {
+      scrollTrigger: {
+        trigger: experience as HTMLElement,
+        start: 'top center',
+        end: 'center center',
+        scrub: 2,
+        onEnter: () => {
+          experience.classList.add('active')
+        },
+        onLeaveBack: () => {
+          experience.classList.remove('active')
+        }
+      },
+      y:0,
+      opacity: 1
+    })
+  })
+}
+
+watch(hobbies, initHobbies)
+
+function initHobbies(){
+  if(hobbiesLoaded.value) return
+
+  const hobbies = $gsap.utils.toArray('li.hobby')
+  hobbies.forEach((hobby)=>{
+    let positions = {
+      x: ($gsap.utils.random(-75,75)-50)+"%",
+      y: ($gsap.utils.random(-25,25)-50)+"%",
+      r: $gsap.utils.random(-10,10),
+    }
+    $gsap.fromTo(hobby as HTMLElement,{
+      translateX:"-50%",
+      translateY:"-50%",
+      scale:.6,
+      rotation: -positions.r,
+    }, {
+      rotation: positions.r,
+      duration:1,
+      ease:"power3.out",
+      translateX: positions.x,
+      translateY: positions.y,
+      scale:1,
+      scrollTrigger:{
+        trigger: hobby as HTMLElement,
+        toggleActions: 'play none none reverse',
+        start: 'top 80%',
+        end: 'bottom center',
+      }
+    })
+    $Draggable.create(hobby as HTMLElement,{
+      bounds: document.querySelector('#hobbyCards') as HTMLElement,
+      edgeResistance: 0.65,
+    })
+  })
+  hobbiesLoaded.value = true
+}
+
 onMounted(() => {
   ctx = $gsap.context(()=>{
     const tl = $gsap.timeline()
     tl.to(prenom.value,revealNameTo)
     tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
-
-    const lineSections = $gsap.utils.toArray('.line-section')
-    lineSections.forEach((lineSection) => {
-      $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
-        scrollTrigger: {
-          trigger: lineSection as HTMLElement,
-          start: 'top center',
-          end: 'bottom center',
-          scrub: .2,
-        },
-        ease: 'none',
-        backgroundPositionY:0
-      })
-    })
-
-    const experiences = $gsap.utils.toArray('.experience')
-    experiences.forEach((experience) => {
-      $gsap.fromTo(experience as HTMLElement,{
-        opacity: .2,
-        y: 50
-      }, {
-        scrollTrigger: {
-          trigger: experience as HTMLElement,
-          start: 'top center',
-          end: 'center center',
-          scrub: 2,
-          onEnter: () => {
-            experience.classList.add('active')
-          },
-          onLeaveBack: () => {
-            experience.classList.remove('active')
-          }
-        },
-        y:0,
-        opacity: 1
-      })
-    })
 
     const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline: true, color: "rgba(237, 112, 45, .5)"})
     const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline: true, color: "rgba(237, 112, 45, .5)"})
@@ -304,38 +368,9 @@ onMounted(() => {
       },
     })
 
+    if(!experiencesLoaded.value) initExperiences()
+    if(!hobbiesLoaded.value) initHobbies()
 
-    const hobbies = $gsap.utils.toArray('li.hobby')
-    hobbies.forEach((hobby)=>{
-      let positions = {
-        x: ($gsap.utils.random(-75,75)-50)+"%",
-        y: ($gsap.utils.random(-25,25)-50)+"%",
-        r: $gsap.utils.random(-10,10),
-      }
-      $gsap.fromTo(hobby as HTMLElement,{
-        translateX:"-50%",
-        translateY:"-50%",
-        scale:.6,
-        rotation: -positions.r,
-      }, {
-        rotation: positions.r,
-        duration:1,
-        ease:"power3.out",
-        translateX: positions.x,
-        translateY: positions.y,
-        scale:1,
-        scrollTrigger:{
-          trigger: hobby as HTMLElement,
-          toggleActions: 'play none none reverse',
-          start: 'top 80%',
-          end: 'bottom center',
-        }
-      })
-      $Draggable.create(hobby as HTMLElement,{
-        bounds: document.querySelector('#hobbyCards') as HTMLElement,
-        edgeResistance: 0.65,
-      })
-    })
   }, rootEl.value)
 })
 
@@ -382,10 +417,6 @@ useSeoMeta({
   &.line-section-main {
     @apply h-full;
   }
-}
-
-.experience.active > span {
-  @apply border-orange-100;
 }
 
 .littleArrow {

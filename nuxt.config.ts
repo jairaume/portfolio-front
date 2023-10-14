@@ -1,7 +1,8 @@
 export default defineNuxtConfig({
-  /*nitro: {
+  nitro: {
     preset: 'vercel-edge',
-  },*/
+    compressPublicAssets: true,
+  },
   devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
@@ -46,6 +47,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
+    '@nuxtjs/supabase'
   ],
   i18n: {
     vueI18n: './i18n.config.ts',
@@ -75,5 +77,8 @@ export default defineNuxtConfig({
       cookieKey: 'i18n_redirected',
       redirectOn: 'root', // recommended
     }
+  },
+  supabase: {
+    redirect: false
   }
 });
