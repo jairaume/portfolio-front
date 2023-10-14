@@ -52,6 +52,10 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/supabase'
   ],
+  components: [
+    { path: '~/components/Card' , prefix: 'Card'},
+    '~/components',
+  ],
   i18n: {
     vueI18n: './i18n.config.ts',
     experimental: {
