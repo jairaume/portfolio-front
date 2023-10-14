@@ -36,7 +36,7 @@
   <section aria-labelledby="experiences" class="pt-12 pb-20 s:py-32 responsive-padding-x">
     <div class="responsive-layout space-y-8">
       <h1 id="experiences" class="text-big-title text-center">{{ $t('pages.about.title2') }}</h1>
-      <div class="relative grid gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-2-g-1">
+      <div class="relative grid gap-y-24 py-[25%] xs:py-[20%] s:py-[15%] m:py-[10%] s:px-layout-m-c-1-g-1 m:px-layout-l-c-1-g-1">
         <div ref="line" class="absolute top-0 left-1/2 -translate-x-1/2 h-full w-2 flex flex-col gap-4">
           <span class="line-section line-section-1"></span>
           <span class="line-section line-section-2"></span>
@@ -89,7 +89,7 @@
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-2">
         <h3 class="text-h3 font-light leading-normal">
-          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{ $t('pages.about.p4.hobby3') }}</span>&nbsp;!
+          {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{$t('pages.about.p4.hobby3')}}</span>&nbsp;!
         </h3>
       </div>
     </div>

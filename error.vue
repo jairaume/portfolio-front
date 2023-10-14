@@ -1,7 +1,7 @@
 <template>
   <LanguageSwitch class="fixed bottom-4 left-0 z-50"/>
   <main class="text-white h-screen responsive-padding-x py-32 text-center flex flex-col justify-center">
-    
+
     <div class="absolute z-0 top-1/2 left-1/2 bg-orange-100 opacity-10 rounded-full w-2/3 h-3/4 blur-3xl pointer-events-none -translate-x-1/2 -translate-y-1/2"></div>
 
     <section class="relative responsive-layout">

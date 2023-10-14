@@ -52,7 +52,9 @@
         </div>
       </div>
       <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
-        <div ref="heroBox" class="bg-black rounded-big w-full h-full"></div>
+        <div ref="heroBox" class="relative bg-black rounded-big w-full h-full overflow-hidden">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 bg-orange-100/10 rounded-full blur-3xl"></div>
+        </div>
       </div>
     </section>
 
