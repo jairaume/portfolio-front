@@ -179,7 +179,7 @@ const {downloadResume} = useDownloadResume()
 
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
-const {locale} = useI18n()
+const {t, locale} = useI18n()
 let ctx: gsap.Context;
 
 const heroSection = ref<HTMLElement|null>(null);
@@ -332,14 +332,15 @@ onUnmounted(() => {
 const {public: {siteUrl}} = useRuntimeConfig();
 
 useSeoMeta({
-  title: 'Jérôme Rascle',
-  ogTitle: 'Jérôme Rascle',
+  title: t("pages.home.meta_title"),
+  ogTitle: t("pages.home.meta_title"),
   ogSiteName: 'Jérôme Rascle',
-  twitterCard: 'summary',
+  ogDescription: t("pages.home.meta_description"),
+  description: t("pages.home.meta_description"),
+  ogUrl: siteUrl,
 })
 
-const i18n = useLocaleHead()
-useHead({htmlAttrs: {lang: i18n.value.htmlAttrs!.lang}})
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>

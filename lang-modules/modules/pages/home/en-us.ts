@@ -1,7 +1,7 @@
 import {LangHome} from "~/lang-modules/types";
 
 export const home: LangHome = {
-    meta_title: 'Jérôme Rascle – Home',
+    meta_title: 'Jérôme Rascle - Home',
     meta_description: 'Home page of Jérôme Rascle\'s portfolio website',
 
     job_title: 'Freelance software engineer',

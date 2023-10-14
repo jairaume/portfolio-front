@@ -108,7 +108,7 @@ import 'swiper/css';
 import {Navigation, Pagination} from 'swiper/modules';
 
 const supabase = useSupabaseClient()
-const { locale } = useI18n()
+const {t, locale } = useI18n()
 
 const rootEl = ref<HTMLElement>()
 const route = useRoute()
@@ -144,6 +144,17 @@ onMounted(()=> {
   })
 })
 
+const {public: {siteUrl}} = useRuntimeConfig();
+
+useSeoMeta({
+  title: "Jérôme Rascle - "+projectData.value.title,
+  ogTitle: "Jérôme Rascle - "+projectData.value.title,
+  ogSiteName: 'Jérôme Rascle',
+  ogDescription: projectData.value["description_"+locale.value],
+  ogUrl: siteUrl,
+})
+
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>

@@ -46,6 +46,7 @@
 
 <script setup lang="ts">
 const supabase = useSupabaseClient()
+const {t, locale} = useI18n()
 
 const { data: projects } = await useAsyncData('projects', async () => {
   const { data, error } = await supabase.from('project')
@@ -57,8 +58,15 @@ const { data: projects } = await useAsyncData('projects', async () => {
   return data
 })
 
+const {public: {siteUrl}} = useRuntimeConfig();
+
 useSeoMeta({
-  title: 'Projects',
-  description: 'Projects',
+  title: t("pages.projects.meta_title"),
+  ogTitle: t("pages.projects.meta_title"),
+  ogSiteName: 'Jérôme Rascle',
+  ogDescription: t("pages.projects.meta_description"),
+  ogUrl: siteUrl,
 })
+
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
