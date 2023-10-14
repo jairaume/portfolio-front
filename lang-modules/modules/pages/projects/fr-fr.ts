@@ -8,5 +8,5 @@ export const projects: LangProjects = {
 
     description: "Description",
     type: "Type",
-    technologies: "technologies",
+    technologies: "Technologies",
 }

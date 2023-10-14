@@ -51,6 +51,8 @@ const { data: projects } = await useLazyAsyncData('projects', async () => {
   const { data, error } = await supabase.from('project')
       .select('id, title, slug, thumbnail_image, collaboration_type, company')
       .range(0,6)
+      .eq('status','published')
+      .order('created_at', { ascending: false })
   if(error) console.error(error)
   return data
 })
