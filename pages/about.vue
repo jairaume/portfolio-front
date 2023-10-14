@@ -112,7 +112,7 @@
             <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
               <div class=" w-full h-full">
                 <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
-                  <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white px-4 py-2 rounded-full w-fit mx-auto">
+                  <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white text-center px-4 py-2 rounded-full w-fit mx-auto">
                     {{ hobby["description_"+locale] }}</p>
                 </div>
                 <nuxt-img loading="lazy"
@@ -151,6 +151,9 @@ const {$gsap, $Draggable} = useNuxtApp()
 const {locale} = useI18n()
 let ctx: gsap.Context;
 
+const experiencesLoaded = ref(false)
+const hobbiesLoaded = ref(false)
+
 const revealNameTo: gsap.TweenVars = {
   backgroundPositionX:0,
   duration:1,
@@ -182,48 +185,93 @@ const { data: hobbies } = await useLazyAsyncData('hobbies', async () => {
   return data
 })
 
+watch(experiences, initExperiences)
+
+function initExperiences(){
+  if(experiencesLoaded.value) return
+
+  const lineSections = $gsap.utils.toArray('.line-section')
+  lineSections.forEach((lineSection) => {
+    $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
+      scrollTrigger: {
+        trigger: lineSection as HTMLElement,
+        start: 'top center',
+        end: 'bottom center',
+        scrub: .2,
+      },
+      ease: 'none',
+      backgroundPositionY:0
+    })
+  })
+
+  const experiences = $gsap.utils.toArray('.experience')
+  experiences.forEach((experience) => {
+    $gsap.fromTo(experience as HTMLElement,{
+      opacity: .2,
+      y: 50
+    }, {
+      scrollTrigger: {
+        trigger: experience as HTMLElement,
+        start: 'top center',
+        end: 'center center',
+        scrub: 2,
+        onEnter: () => {
+          experience.classList.add('active')
+        },
+        onLeaveBack: () => {
+          experience.classList.remove('active')
+        }
+      },
+      y:0,
+      opacity: 1
+    })
+  })
+}
+
+watch(hobbies, initHobbies)
+
+function initHobbies(){
+  if(hobbiesLoaded.value) return
+
+  const hobbies = $gsap.utils.toArray('li.hobby')
+  hobbies.forEach((hobby)=>{
+    let positions = {
+      x: ($gsap.utils.random(-75,75)-50)+"%",
+      y: ($gsap.utils.random(-25,25)-50)+"%",
+      r: $gsap.utils.random(-10,10),
+    }
+    $gsap.fromTo(hobby as HTMLElement,{
+      translateX:"-50%",
+      translateY:"-50%",
+      scale:.6,
+      rotation: -positions.r,
+    }, {
+      rotation: positions.r,
+      duration:1,
+      ease:"power3.out",
+      translateX: positions.x,
+      translateY: positions.y,
+      scale:1,
+      scrollTrigger:{
+        trigger: hobby as HTMLElement,
+        toggleActions: 'play none none reverse',
+        start: 'top 80%',
+        end: 'bottom center',
+      }
+    })
+    $Draggable.create(hobby as HTMLElement,{
+      bounds: document.querySelector('#hobbyCards') as HTMLElement,
+      edgeResistance: 0.65,
+    })
+  })
+  hobbiesLoaded.value = true
+}
+
 onMounted(() => {
   ctx = $gsap.context(()=>{
     const tl = $gsap.timeline()
     tl.to(prenom.value,revealNameTo)
     tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
-
-    const lineSections = $gsap.utils.toArray('.line-section')
-    lineSections.forEach((lineSection) => {
-      $gsap.fromTo(lineSection as HTMLElement,{backgroundPositionY:"100%"}, {
-        scrollTrigger: {
-          trigger: lineSection as HTMLElement,
-          start: 'top center',
-          end: 'bottom center',
-          scrub: .2,
-        },
-        ease: 'none',
-        backgroundPositionY:0
-      })
-    })
-
-    const experiences = $gsap.utils.toArray('.experience')
-    experiences.forEach((experience) => {
-      $gsap.fromTo(experience as HTMLElement,{
-        opacity: .2,
-        y: 50
-      }, {
-        scrollTrigger: {
-          trigger: experience as HTMLElement,
-          start: 'top center',
-          end: 'center center',
-          scrub: 2,
-          onEnter: () => {
-            experience.classList.add('active')
-          },
-          onLeaveBack: () => {
-            experience.classList.remove('active')
-          }
-        },
-        y:0,
-        opacity: 1
-      })
-    })
 
     const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline: true, color: "rgba(237, 112, 45, .5)"})
     const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline: true, color: "rgba(237, 112, 45, .5)"})
@@ -320,38 +368,9 @@ onMounted(() => {
       },
     })
 
+    if(!experiencesLoaded.value) initExperiences()
+    if(!hobbiesLoaded.value) initHobbies()
 
-    const hobbies = $gsap.utils.toArray('li.hobby')
-    hobbies.forEach((hobby)=>{
-      let positions = {
-        x: ($gsap.utils.random(-75,75)-50)+"%",
-        y: ($gsap.utils.random(-25,25)-50)+"%",
-        r: $gsap.utils.random(-10,10),
-      }
-      $gsap.fromTo(hobby as HTMLElement,{
-        translateX:"-50%",
-        translateY:"-50%",
-        scale:.6,
-        rotation: -positions.r,
-      }, {
-        rotation: positions.r,
-        duration:1,
-        ease:"power3.out",
-        translateX: positions.x,
-        translateY: positions.y,
-        scale:1,
-        scrollTrigger:{
-          trigger: hobby as HTMLElement,
-          toggleActions: 'play none none reverse',
-          start: 'top 80%',
-          end: 'bottom center',
-        }
-      })
-      $Draggable.create(hobby as HTMLElement,{
-        bounds: document.querySelector('#hobbyCards') as HTMLElement,
-        edgeResistance: 0.65,
-      })
-    })
   }, rootEl.value)
 })
 

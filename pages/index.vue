@@ -4,7 +4,7 @@
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
-            <div class="relative text-white text-center px-8 space-y-4">
+            <div class="relative text-white text-center px-8">
               <h4 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
@@ -14,22 +14,22 @@
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
-              <div class="absolute my-8 s:my-12 left-20 s:left-8 bottom-full m-0">
+              <div class="absolute my-12 s:my-20 left-20 s:left-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 left-12 s:left-24 top-full m-0">
+              <div class="absolute my-12 s:my-20 left-12 s:left-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-20 s:right-8 bottom-full m-0">
+              <div class="absolute my-12 s:my-20 right-20 s:right-8 bottom-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-8 s:my-12 right-12 s:right-24 top-full m-0">
+              <div class="absolute my-12 s:my-20 right-12 s:right-24 top-full m-0">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
@@ -58,11 +58,11 @@
 
     <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
       <div class="responsive-layout sticky top-24 m:top-32">
-        <div class="overflow-hidden relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
-          <div class="relative">
+        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
+          <div class="relative overflow-hidden">
             <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
-            <h3 id="reveal-text-paragraph" class="whitespace-pre-wrap text-white font-bold text-h3 leading-normal reveal-text-vertical">
+            <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>
             <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
@@ -84,18 +84,19 @@
     <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-          <nuxt-link title="La Grangette" v-for="i in 4" :key="i" :to="localePath('/projects/la-grangette')" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
+          <nuxt-link v-for="(project, i) in featured_projects" :key="i" :title="project.project.title" :to="localePath('/projects/'+project.project.slug)" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
             <div class="absolute w-full h-full top-0 left-0">
-              <nuxt-picture src="/images/projects/grangette.png"
+              <nuxt-picture :src="project.project.thumbnail_image"
                             alt="Projects – Grangette"
                             class="w-full h-full rounded-big"
                             :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
               />
             </div>
             <div class="absolute w-full bottom-0 left-0 p-4">
-              <div class="relative isolate overflow-hidden bg-teal-900 rounded-btn text-white flex justify-between items-center px-2
-              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/50 after:to-transparent">
-                <h4 class="text-cta py-1 px-2 font-light">La Grangette</h4>
+              <div :style="{backgroundColor: project.project.color}"
+                  class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2
+              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/95 after:to-black/50">
+                <h4 class="text-cta py-1 px-2 font-light">{{ project.project.title }}</h4>
                 <i class="icon icon-arrow"></i>
               </div>
             </div>
@@ -189,6 +190,14 @@ const {isOutside} = useMouseInElement(revealText)
 
 const projects = ref<HTMLElement|null>(null);
 
+const { data: featured_projects } = await useLazyAsyncData('featured_projects', async () => {
+  const { data, error } = await supabase.from('featured_projects')
+      .select('id, project (id,title,color,slug,thumbnail_image)')
+      .range(0,6)
+  if(error) console.error(error)
+  console.log(data)
+  return data
+})
 
 const { data: featured_experiences } = await useLazyAsyncData('featured_experiences', async () => {
   const { data, error } = await supabase.from('featured_experiences')
