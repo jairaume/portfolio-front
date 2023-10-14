@@ -30,7 +30,7 @@
               </div>
             </div>
             <!-- If we need pagination -->
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination" v-show="projectData.slider_images && projectData.slider_images.length > 0"></div>
             <!-- If we need navigation buttons -->
             <div class="absolute w-full top-1/2 -translate-y-1/2 flex justify-between z-50">
 
@@ -157,5 +157,22 @@ onMounted(()=> {
     margin-right: 1em;
     color: v-bind(projectData.color);
     filter: brightness(200%) saturate(100%);
+  }
+
+  a.btn::before {
+    box-shadow: 0 0 50px 40px v-bind(projectData.color) !important;
+    filter:brightness(75%) saturate(50%);
+  }
+
+  :deep(.swiper-pagination-bullet) {
+    background: v-bind(projectData.color) !important;
+    opacity: .3;
+    filter: brightness(200%) saturate(100%);
+  }
+  :deep(.swiper-pagination-bullet-active) {
+    opacity: 1;
+  }
+  :deep(.swiper-pagination-bullet:hover:not(.swiper-pagination-bullet-active)) {
+    opacity: .5;
   }
 </style>
