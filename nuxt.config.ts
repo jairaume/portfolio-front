@@ -1,12 +1,11 @@
 export default defineNuxtConfig({
-  nitro: {
-    preset: 'vercel-edge',
-    compressPublicAssets: true,
-  },
-  devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
   ],
+  runtimeConfig:{
+    supabaseUrl: process.env.SUPABASE_URL,
+    supabaseKey: process.env.SUPABASE_KEY,
+  },
   app: {
     //pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -79,6 +78,6 @@ export default defineNuxtConfig({
     }
   },
   supabase: {
-    redirect: false
+    redirect: false,
   }
 });
