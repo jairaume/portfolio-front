@@ -148,7 +148,7 @@ const drumsAnnotate = ref<HTMLElement>()
 const otherAnnotate = ref<HTMLElement>()
 
 const {$gsap, $Draggable} = useNuxtApp()
-const {locale} = useI18n()
+const {t, locale} = useI18n()
 let ctx: gsap.Context;
 
 const experiencesLoaded = ref(false)
@@ -379,20 +379,16 @@ onUnmounted(() => {
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();
-const title = 'Jérôme Rascle – About me'
+
 useSeoMeta({
-  title: title,
-  description: 'Laboris mollit laborum do commodo tempor id laborum. Irure sunt do labore ea dolor voluptate aliqua sint ullamco ut aliquip. Magna ullamco dolor Lorem do. Irure voluptate ad fugiat amet occaecat.',
-  ogTitle: title,
-  ogSiteName: title,
-  ogUrl: siteUrl + '/about',
-  ogImage: siteUrl + '/social-media.jpg',
-  ogImageWidth: '1200',
-  ogImageHeight: '630',
-  ogImageType: 'image/jpeg',
-  twitterCard: 'summary',
+  title: t("pages.about.meta_title"),
+  ogTitle: t("pages.about.meta_title"),
+  ogSiteName: 'Jérôme Rascle',
+  ogDescription: t("pages.about.meta_description"),
+  ogUrl: siteUrl,
 })
 
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>

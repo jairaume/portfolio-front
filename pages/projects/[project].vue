@@ -1,5 +1,5 @@
 <template>
-  <main v-if="projectData" ref="rootEl" class="text-white pb-52 -mt-32 pt-20 min-h-screen bg-grey-700 overflow-hidden">
+  <main v-if="projectData" ref="rootEl" class="text-white pb-52 -mt-32 pt-20 min-h-screen bg-grey-700 overflow-hidden space-y-48">
     <section aria-labelledby="project-title" class="relative responsive-padding-x">
 
       <div class="responsive-layout pt-12">
@@ -99,6 +99,40 @@
       <div :style="{backgroundColor: projectData.color}" class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-2/3 w-full h-2/3 blur-3xl rounded-full opacity-50 pointer-events-none"></div>
 
     </section>
+
+    <section v-if="other_projects && other_projects.length === 2" class="responsive-padding-x">
+      <div class="responsive-layout">
+        <div class="xs:px-layout-s-c-1-g-0 text-center space-y-8">
+
+          <h4 ref="viewOthers" class="text-h4 w-fit mx-auto">{{ $t('common.other_projects') }}</h4>
+
+          <div class="grid s:grid-cols-2 gap-8">
+            <nuxt-link v-for="(other_project , o) in other_projects" :key="o"
+                :title="other_project.title"
+                :to="localePath('/projects/'+other_project.slug)"
+                class="otherProject group relative p-8 shadow-custom-ondark rounded-big overflow-hidden h-32"
+            >
+              <div class="absolute w-full h-full top-0 left-0">
+                <nuxt-picture :src="other_project.thumbnail_image"
+                              alt="Projects – Grangette"
+                              class="w-full h-full rounded-big"
+                              :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
+                />
+              </div>
+              <div class="otherProjectName absolute w-full bottom-0 left-0 p-4">
+                <div :style="{backgroundColor: other_project.color}"
+                     class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2
+                after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-r after:from-black/95 after:to-black/50">
+                  <h4 class="text-cta py-1 px-2 font-light">{{ other_project.title }}</h4>
+                  <i class="icon icon-arrow duration-300"></i>
+                </div>
+              </div>
+            </nuxt-link>
+          </div>
+
+        </div>
+      </div>
+    </section>
   </main>
 </template>
 
@@ -106,9 +140,12 @@
 import Swiper from "swiper";
 import 'swiper/css';
 import {Navigation, Pagination} from 'swiper/modules';
+import {Project} from "~/types";
+import {annotate} from "rough-notation";
 
 const supabase = useSupabaseClient()
-const { locale } = useI18n()
+const {$gsap} = useNuxtApp()
+const {t, locale } = useI18n()
 
 const rootEl = ref<HTMLElement>()
 const route = useRoute()
@@ -116,13 +153,26 @@ const project = route.params.project
 const projectSwiperElement = ref<HTMLElement>()
 const projectSwiper = ref<Swiper>()
 
+const viewOthers = ref<HTMLElement|null>(null)
+
 const { data: projectData } = await useAsyncData('project', async () => {
   const { data, error } = await supabase.from('project')
       .select()
       .eq('slug', project)
+      .single()
   if(error) console.error(error)
-  return data[0]
+  return data as Project
 })
+
+const { data: other_projects } = await useAsyncData('other_projects', async () => {
+  const { data, error } = await supabase.from('random_project')
+      .select('id, title, slug, thumbnail_image, color')
+      .range(0,1)
+      .neq('slug',project)
+  if(error) console.error(error)
+  return data as unknown as Project[]
+})
+
 
 onMounted(()=> {
   if(!projectSwiperElement.value) return
@@ -142,8 +192,38 @@ onMounted(()=> {
         forceToAxis: true,
       },
   })
+  const viewOthersAnnotate = annotate(viewOthers.value as HTMLElement, {
+    type: 'highlight',
+    multiline:true,
+    color: projectData.value?.color || '#ffffff',
+  })
+  $gsap.from(viewOthers.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: viewOthers.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        viewOthersAnnotate.show()
+      },
+      onLeaveBack: () => {
+        viewOthersAnnotate.hide()
+      }
+    },
+  })
 })
 
+const {public: {siteUrl}} = useRuntimeConfig();
+
+useSeoMeta({
+  title: "Jérôme Rascle - "+projectData.value.title,
+  ogTitle: "Jérôme Rascle - "+projectData.value.title,
+  ogSiteName: 'Jérôme Rascle',
+  ogDescription: projectData.value["description_"+locale.value],
+  ogUrl: siteUrl,
+})
+
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>
@@ -175,4 +255,23 @@ onMounted(()=> {
   :deep(.swiper-pagination-bullet:hover:not(.swiper-pagination-bullet-active)) {
     opacity: .5;
   }
+
+  a.otherProject:first-child div.otherProjectName {
+    &:hover div i{
+      @apply s:translate-x-2
+    }
+    & div{
+      @apply s:flex-row-reverse s:after:bg-gradient-to-l;
+      & i{
+        @apply s:rotate-180;
+      }
+    }
+  }
+
+  a.otherProject:last-child div.otherProjectName {
+    &:hover div i{
+      @apply s:-translate-x-2
+    }
+  }
+
 </style>

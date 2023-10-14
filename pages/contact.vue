@@ -62,6 +62,7 @@
 </template>
 
 <script setup lang="ts">
+const {t, locale} = useI18n()
 const theSection = ref<HTMLElement | null>(null)
 const {$gsap} = useNuxtApp()
 const {x, y, isOutside} = useMouseInElement(theSection)
@@ -79,8 +80,17 @@ watch([x,y],()=>{
   }
 })
 
-onMounted(() => {
+const {public: {siteUrl}} = useRuntimeConfig();
+
+useSeoMeta({
+  title: t("pages.contact.meta_title"),
+  ogTitle: t("pages.contact.meta_title"),
+  ogSiteName: 'Jérôme Rascle',
+  ogDescription: t("pages.contact.meta_description"),
+  ogUrl: siteUrl,
 })
+
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>

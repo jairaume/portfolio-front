@@ -14,6 +14,7 @@ export interface LangCommon {
     more_about2: string,
     more_projects: string,
     more_projects2: string,
+    other_projects: string,
     resume: string,
     contact_me: string,
 

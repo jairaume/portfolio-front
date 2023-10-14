@@ -86,23 +86,7 @@
     <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
-          <nuxt-link v-for="(project, i) in featured_projects" :key="i" :title="project.project.title" :to="localePath('/projects/'+project.project.slug)" class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]">
-            <div class="absolute w-full h-full top-0 left-0">
-              <nuxt-picture :src="project.project.thumbnail_image"
-                            alt="Projects – Grangette"
-                            class="w-full h-full rounded-big"
-                            :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
-              />
-            </div>
-            <div class="absolute w-full bottom-0 left-0 p-4">
-              <div :style="{backgroundColor: project.project.color}"
-                  class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2
-              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-r after:from-black/95 after:to-black/50">
-                <h4 class="text-cta py-1 px-2 font-light">{{ project.project.title }}</h4>
-                <i class="icon icon-arrow"></i>
-              </div>
-            </div>
-          </nuxt-link>
+          <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
         </div>
 
         <nuxt-link :title="$t('common.more_projects2')" :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
@@ -179,7 +163,7 @@ const {downloadResume} = useDownloadResume()
 
 const rootEl = ref()
 const {$gsap, $Draggable} = useNuxtApp();
-const {locale} = useI18n()
+const {t, locale} = useI18n()
 let ctx: gsap.Context;
 
 const heroSection = ref<HTMLElement|null>(null);
@@ -332,14 +316,15 @@ onUnmounted(() => {
 const {public: {siteUrl}} = useRuntimeConfig();
 
 useSeoMeta({
-  title: 'Jérôme Rascle',
-  ogTitle: 'Jérôme Rascle',
+  title: t("pages.home.meta_title"),
+  ogTitle: t("pages.home.meta_title"),
   ogSiteName: 'Jérôme Rascle',
-  twitterCard: 'summary',
+  ogDescription: t("pages.home.meta_description"),
+  description: t("pages.home.meta_description"),
+  ogUrl: siteUrl,
 })
 
-const i18n = useLocaleHead()
-useHead({htmlAttrs: {lang: i18n.value.htmlAttrs!.lang}})
+useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>
