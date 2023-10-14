@@ -95,7 +95,7 @@
             <div class="absolute w-full bottom-0 left-0 p-4">
               <div :style="{backgroundColor: project.project.color}"
                   class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2
-              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-tr after:from-black/95 after:to-black/50">
+              after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-r after:from-black/95 after:to-black/50">
                 <h4 class="text-cta py-1 px-2 font-light">{{ project.project.title }}</h4>
                 <i class="icon icon-arrow"></i>
               </div>

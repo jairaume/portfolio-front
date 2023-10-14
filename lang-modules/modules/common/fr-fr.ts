@@ -44,6 +44,11 @@ export const common: LangCommon = {
         consulting: "Consulting",
     },
 
+    error: {
+        404: "Erreur 404",
+        not_found: "La page que vous cherchez n'existe pas.",
+        go_home: "Retour à la maison",
+    },
 
     // others
     available: 'Disponible',

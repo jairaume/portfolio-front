@@ -46,6 +46,12 @@ export interface LangCommon {
         consulting: string,
     }
 
+    error: {
+        404: string,
+        not_found: string,
+        go_home: string,
+    }
+
     // others
     available: string,
     today: string,
