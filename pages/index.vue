@@ -125,10 +125,12 @@
               </h4>
               <div class="xs:col-start-2">
                 <h4 class="text-h4 font-medium">
-                  Software Engineer&nbsp;· <span class="font-black">Apple</span>
+                  {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
                 </h4>
                 <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
-                  Enim mollit sint cillum sint deserunt velit deserunt. Ad quis et sint esse non sint duis sit do dolore eu et ullamco in. Reprehenderit deserunt velit amet cillum. Non occaecat incididunt adipisicing aute dolore cupidatat enim pariatur est
+                  {{
+                    experience.experience["description_"+locale]
+                  }}
                 </p>
               </div>
             </template>
