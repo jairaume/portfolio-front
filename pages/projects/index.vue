@@ -6,7 +6,7 @@
         <div class="responsive-layout">
           <div class="grid gap-y-12 py-12">
 
-            <CardProject v-for="(project, i) in projects" :project="project" :key="i" />
+            <CardProject v-for="(project, i) in projects" :project="project" :width="width" :height="height" :key="i" />
 
           </div>
         </div>
@@ -18,6 +18,7 @@
 <script setup lang="ts">
 const supabase = useSupabaseClient()
 const {t, locale} = useI18n()
+const {width, height} = useWindowSize()
 
 const { data: projects } = await useAsyncData('projects', async () => {
   const { data, error } = await supabase.from('project')
