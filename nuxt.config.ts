@@ -3,8 +3,12 @@ export default defineNuxtConfig({
     '~/assets/css/main.css',
   ],
   runtimeConfig:{
-    supabaseUrl: process.env.SUPABASE_URL,
-    supabaseKey: process.env.SUPABASE_KEY,
+    supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "",
+      socialImage: process.env.NUXT_PUBLIC_SOCIAL_IMAGE || "",
+    }
   },
   app: {
     //pageTransition: { name: 'page', mode: 'out-in' },
@@ -79,5 +83,7 @@ export default defineNuxtConfig({
   },
   supabase: {
     redirect: false,
+    url: process.env.NUXT_PUBLIC_SUPABASE_URL,
+    key: process.env.NUXT_PUBLIC_SUPABASE_KEY,
   }
 });

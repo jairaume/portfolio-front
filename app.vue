@@ -7,13 +7,13 @@
 </template>
 
 <script setup lang="ts">
-const {public: {siteUrl}} = useRuntimeConfig();
+const {public: {socialImage}} = useRuntimeConfig();
 
 useServerSeoMeta({
   title: 'Jérôme Rascle',
   ogTitle: 'Jérôme Rascle',
   ogSiteName: 'Jérôme Rascle',
-  ogImage: siteUrl + '/social-media.jpg',
+  ogImage: socialImage,
   ogImageWidth: '1200',
   ogImageHeight: '630',
   ogImageType: 'image/jpeg',
