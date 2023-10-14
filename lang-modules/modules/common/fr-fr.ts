@@ -28,6 +28,23 @@ export const common: LangCommon = {
         all_rights_reserved: 'Tous droits réservés',
     },
 
+    //Collaboration type
+    collab: {
+        work: "En entreprise chez",
+        school: "Pendant mes études à",
+        freelance: "En freelance pour",
+    },
+
+    // Project type
+    type: {
+        web: "Développement Web",
+        software: "Développement logiciel",
+        mobile: "Développement mobile",
+        design: "Design",
+        consulting: "Consulting",
+    },
+
+
     // others
     available: 'Disponible',
     today: 'Aujourd\'hui',

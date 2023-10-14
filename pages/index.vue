@@ -195,7 +195,6 @@ const { data: featured_projects } = await useLazyAsyncData('featured_projects', 
       .select('id, project (id,title,color,slug,thumbnail_image)')
       .range(0,6)
   if(error) console.error(error)
-  console.log(data)
   return data
 })
 
