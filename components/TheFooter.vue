@@ -23,7 +23,7 @@
 
             <div class="flex justify-between s:items-center s:justify-evenly gap-8">
               <nav>
-                <ul class="grid gap-2">
+                <ul class="grid gap-2 text-right whitespace-nowrap">
                   <li>
                     <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.home') }}
@@ -61,7 +61,7 @@
     </div>
 
     <p class="text-center text-xs text-grey-100 py-2">
-      2023 <span class="text-orange-100">|</span> Jérôme Rascle © <span class="text-orange-100">|</span> {{ $t('common.footer.all_rights_reserved') }}.
+      Designed & Made with 🎶 by <span class="font-extrabold">Jérôme Rascle</span><span class="text-orange-100"> | </span> © {{ $t('common.footer.all_rights_reserved') }}
     </p>
 
   </footer>

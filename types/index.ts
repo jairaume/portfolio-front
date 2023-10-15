@@ -1,9 +1,11 @@
-export type Availability = {
-    availability: string | null
+export interface Availability {
+    currently_en: string | null
+    currently_fr: string | null
+    available: boolean
     id: number
 }
 
-export type Experience = {
+export interface Experience {
         company: string | null
         description_en: string | null
         description_fr: string | null
@@ -13,7 +15,7 @@ export type Experience = {
         position_fr: string
         start_date: string
 }
-export type Project = {
+export interface Project {
     collaboration_type: Collaboration_Type | null
     color: string | null
     company: string
@@ -31,7 +33,7 @@ export type Project = {
     type: Project_Type | null
 }
 
-export type Skill = {
+export interface Skill {
     description_en: string | null
     description_fr: string | null
     id: number
@@ -39,40 +41,40 @@ export type Skill = {
     skill_name_fr: string | null
 }
 
-export type Featured_Experiences = {
-        experience: number | Experience | null
-        id: number
+export interface Featured_Experiences {
+    experience: Experience | null
+    id: number
 }
 
-export type Featured_Projects = {
-        id: number
-        project: number | Project | null
+export interface Featured_Projects {
+    id: number
+    project: Project | null
 }
 
-export type Featured_Skills = {
-        id: number
-        skill: number | Skill | null
+export interface Featured_Skills {
+    id: number
+    skill: Skill | null
 }
 
-export type Hobby = {
-        description_en: string | null
-        description_fr: string | null
-        id: number
-        image: string | null
+export interface Hobby {
+    description_en: string | null
+    description_fr: string | null
+    id: number
+    image: string | null
 }
 
-export const enum Collaboration_Type {
+export enum Collaboration_Type {
     "work" = "work",
     "school" = "school",
     "freelance" = "freelance",
 }
 
-export const enum Status {
+export enum Status {
     "published" = "published",
     "draft" = "draft",
 }
 
-export const enum Project_Type {
+export enum Project_Type {
     "web" = "web",
     "mobile" = "mobile",
     "software" = "software",

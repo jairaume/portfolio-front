@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section aria-labelledby="job_title" ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="max-w-screen overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
@@ -42,10 +42,7 @@
                   <p>{{$t('common.more_projects')}}</p>
                   <i class="icon icon-arrow"/>
                 </nuxt-link>
-                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
-                  <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
-                  <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
-                </nuxt-link>
+                <StatusIndicator/>
               </div>
             </div>
           </div>
@@ -61,8 +58,8 @@
     <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
-          <div class="relative overflow-hidden">
-            <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
+          <div class="relative">
+            <h3 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
             <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
@@ -83,7 +80,7 @@
       </div>
     </section>
 
-    <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
+    <section aria-label="Projects" class="bg-grey-900 py-20 w-screen overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
           <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
@@ -132,9 +129,9 @@
 
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
-          <h1 class="text-big-title text-center xs:text-left">
+          <h1 class="relative text-big-title text-center xs:text-left">
             {{ $t('pages.home.title3') }}
-            <span class="text-xs font-light"> {{ $t('pages.home.subtitle3') }} </span>
+            <span class="text-xs font-light absolute bottom-0 s:left-0"> {{ $t('pages.home.subtitle3') }} </span>
           </h1>
 
           <div class="grid gap-8 group">
@@ -155,6 +152,7 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
+import type {Featured_Projects, Featured_Experiences, Featured_Skills} from "types";
 
 const {roundPaths} = useRoundedAnnotations()
 
@@ -181,24 +179,26 @@ const projects = ref<HTMLElement|null>(null);
 const { data: featured_projects } = await useAsyncData('featured_projects', async () => {
   const { data, error } = await supabase.from('featured_projects')
       .select('id, project (id,title,color,slug,thumbnail_image)')
-      .range(0,6)
+      .limit(5)
   if(error) console.error(error)
-  return data
+  return data as Featured_Projects[]
 })
 
 const { data: featured_experiences } = await useAsyncData('featured_experiences', async () => {
   const { data, error } = await supabase.from('featured_experiences')
       .select('id, experience (*)')
-      .range(0,1)
+      .limit(2)
   if(error) console.error(error)
-  return data
+  return data as Featured_Experiences[]
 })
 
 const { data: skills } = await useAsyncData('skill', async () => {
   const selectString = 'id, skill (skill_name_' + locale.value + ')'
-  const { data, error } = await supabase.from('featured_skills').select(selectString).range(0,3)
+  const { data, error } = await supabase.from('featured_skills')
+      .select(selectString)
+      .limit(4)
   if(error) console.error(error)
-  return data
+  return data as unknown as Featured_Skills[]
 })
 
 onMounted(()=> {
@@ -230,11 +230,10 @@ onMounted(()=> {
         backgroundPositionX: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: "#reveal-text-content",
+          trigger: "#reveal-text-paragraph",
           scrub: 1,
-          start: "top center",
-          endTrigger: "#reveal-text-paragraph",
-          end: "top 25%"
+          start: "top 25%",
+          end: "center 25%",
         }
       });
 
@@ -244,9 +243,9 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: "#reveal-text-paragraph",
           scrub: 1,
-          start: "top 25%",
+          start: "center 25%",
           endTrigger: "#reveal-text",
-          end: "85% bottom"
+          end: "80% bottom"
         }
       });
 
@@ -333,18 +332,13 @@ useHead({htmlAttrs: {lang: locale.value}})
   background-size: 200% 100%;
 }
 
+#reveal-text {
+  contain: paint;
+}
+
 .reveal-text-vertical {
   @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
   background-size: 100% 200%;
-}
-
-.projects_wrapper{
-  & > * {
-    @apply duration-1000;
-  }
-  &:hover > a:not(:hover) {
-    @apply brightness-50 duration-500;
-  }
 }
 
 svg.rough-annotation path{

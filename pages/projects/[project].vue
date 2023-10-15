@@ -78,7 +78,7 @@
               <div class="grid grid-cols-2 gap-8 s:gap-12">
                 <div>
                   <h4 class="text-h4">{{ $t('pages.projects.type') }}</h4>
-                  <p class="border border-white rounded-md w-fit px-2 filter brightness-200 saturate-100"
+                  <p class="border border-white rounded-md w-fit px-2 filter brightness-200 saturate-100 text-center"
                      :style="{color: projectData.color, borderColor: projectData.color}"
                   >
                     {{ $t('common.type.' + projectData.type) }}
@@ -100,7 +100,7 @@
 
     </section>
 
-    <section v-if="other_projects && other_projects.length === 2" class="responsive-padding-x">
+    <section v-if="other_projects && other_projects.length === 2" class="responsive-padding-x pb-12 s:pb-0">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-0 text-center space-y-8">
 
@@ -129,7 +129,6 @@
               </div>
             </nuxt-link>
           </div>
-
         </div>
       </div>
     </section>
@@ -139,8 +138,7 @@
 <script setup lang="ts">
 import Swiper from "swiper";
 import 'swiper/css';
-import {Navigation, Pagination} from 'swiper/modules';
-import {Project} from "~/types";
+import type {Project} from "types";
 import {annotate} from "rough-notation";
 
 const supabase = useSupabaseClient()
@@ -159,15 +157,17 @@ const { data: projectData } = await useAsyncData('project', async () => {
   const { data, error } = await supabase.from('project')
       .select()
       .eq('slug', project)
+      .eq('status', 'published')
       .single()
   if(error) console.error(error)
-  return data as Project
+  return data as unknown as Project
 })
 
 const { data: other_projects } = await useAsyncData('other_projects', async () => {
   const { data, error } = await supabase.from('random_project')
       .select('id, title, slug, thumbnail_image, color')
       .range(0,1)
+      .eq('status', 'published')
       .neq('slug',project)
   if(error) console.error(error)
   return data as unknown as Project[]
@@ -187,6 +187,16 @@ onMounted(()=> {
         prevEl: '.swiper-button-prev',
       },
       slidesPerView: 1,
+      autoplay: {
+        delay: 3000,
+      },
+      speed: 800,
+      effect: 'coverflow',
+      coverflowEffect: {
+        depth: 50,
+        rotate: 0,
+        scale: 0.8,
+      },
       spaceBetween: 50,
       mousewheel: {
         forceToAxis: true,

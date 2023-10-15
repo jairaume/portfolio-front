@@ -15,7 +15,7 @@
               <h1 class="text-h1 text-grey-500 leading-none">
                 <span ref="prenom" class="reveal-text">Jérôme </span>
                 <span ref="nom" class="reveal-text">Rascle</span></h1>
-              <p class="xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
+              <p class="whitespace-pre-line xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
                 {{ $t('pages.about.p1') }}
               </p>
               <div class="grid gap-4 mt-8">
@@ -131,6 +131,7 @@
 </template>
 
 <script setup lang="ts">
+import type {Experience, Skill, Hobby} from "~/types";
 import {annotate} from "rough-notation";
 import {useDownloadResume} from "~/composables/useDownloadResume";
 
@@ -170,19 +171,19 @@ const hobbiesScrollTrigger = {
 const { data: experiences } = await useAsyncData('experiences', async () => {
   const { data, error } = await supabase.from('experience').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Experience
 })
 
 const { data: all_skills } = await useAsyncData('all_skill', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Skill;
 })
 
 const { data: hobbies } = await useAsyncData('hobbies', async () => {
   const { data, error } = await supabase.from('hobby').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Hobby;
 })
 
 watch(experiences, initExperiences)
@@ -236,8 +237,8 @@ function initHobbies(){
   const hobbies = $gsap.utils.toArray('li.hobby')
   hobbies.forEach((hobby)=>{
     let positions = {
-      x: ($gsap.utils.random(-75,75)-50)+"%",
-      y: ($gsap.utils.random(-25,25)-50)+"%",
+      x: ($gsap.utils.random(-25,25)-50)+"%",
+      y: ($gsap.utils.random(-15,15)-50)+"%",
       r: $gsap.utils.random(-10,10),
     }
     $gsap.fromTo(hobby as HTMLElement,{
