@@ -155,7 +155,6 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
-import {Featured_Projects, Featured_Experiences, Featured_Skills} from "types";
 
 const {roundPaths} = useRoundedAnnotations()
 
@@ -339,15 +338,6 @@ useHead({htmlAttrs: {lang: locale.value}})
 .reveal-text-vertical {
   @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
   background-size: 100% 200%;
-}
-
-.projects_wrapper{
-  & > * {
-    @apply duration-1000;
-  }
-  &:hover > a:not(:hover) {
-    @apply brightness-50 duration-500;
-  }
 }
 
 svg.rough-annotation path{
