@@ -131,6 +131,7 @@
 </template>
 
 <script setup lang="ts">
+import {Experience, Hobby, Skill} from "~/types";
 import {annotate} from "rough-notation";
 import {useDownloadResume} from "~/composables/useDownloadResume";
 
@@ -170,19 +171,19 @@ const hobbiesScrollTrigger = {
 const { data: experiences } = await useAsyncData('experiences', async () => {
   const { data, error } = await supabase.from('experience').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Experience
 })
 
 const { data: all_skills } = await useAsyncData('all_skill', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Skill;
 })
 
 const { data: hobbies } = await useAsyncData('hobbies', async () => {
   const { data, error } = await supabase.from('hobby').select()
   if(error) console.error(error)
-  return data
+  return data as unknown as Hobby;
 })
 
 watch(experiences, initExperiences)

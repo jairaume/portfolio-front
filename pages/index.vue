@@ -155,6 +155,7 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
+import {Featured_Projects, Featured_Experiences, Featured_Skills} from "types";
 
 const {roundPaths} = useRoundedAnnotations()
 
@@ -181,24 +182,26 @@ const projects = ref<HTMLElement|null>(null);
 const { data: featured_projects } = await useAsyncData('featured_projects', async () => {
   const { data, error } = await supabase.from('featured_projects')
       .select('id, project (id,title,color,slug,thumbnail_image)')
-      .range(0,6)
+      .limit(5)
   if(error) console.error(error)
-  return data
+  return data as Featured_Projects[]
 })
 
 const { data: featured_experiences } = await useAsyncData('featured_experiences', async () => {
   const { data, error } = await supabase.from('featured_experiences')
       .select('id, experience (*)')
-      .range(0,1)
+      .limit(2)
   if(error) console.error(error)
-  return data
+  return data as Featured_Experiences[]
 })
 
 const { data: skills } = await useAsyncData('skill', async () => {
   const selectString = 'id, skill (skill_name_' + locale.value + ')'
-  const { data, error } = await supabase.from('featured_skills').select(selectString).range(0,3)
+  const { data, error } = await supabase.from('featured_skills')
+      .select(selectString)
+      .limit(4)
   if(error) console.error(error)
-  return data
+  return data as unknown as Featured_Skills[]
 })
 
 onMounted(()=> {

@@ -140,7 +140,7 @@
 import Swiper from "swiper";
 import 'swiper/css';
 import {Navigation, Pagination} from 'swiper/modules';
-import {Project} from "~/types";
+import {Project} from "types";
 import {annotate} from "rough-notation";
 
 const supabase = useSupabaseClient()
@@ -159,15 +159,17 @@ const { data: projectData } = await useAsyncData('project', async () => {
   const { data, error } = await supabase.from('project')
       .select()
       .eq('slug', project)
+      .eq('status', 'published')
       .single()
   if(error) console.error(error)
-  return data as Project
+  return data as unknown as Project
 })
 
 const { data: other_projects } = await useAsyncData('other_projects', async () => {
   const { data, error } = await supabase.from('random_project')
       .select('id, title, slug, thumbnail_image, color')
       .range(0,1)
+      .eq('status', 'published')
       .neq('slug',project)
   if(error) console.error(error)
   return data as unknown as Project[]

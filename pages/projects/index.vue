@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import {Project} from "~/types";
+
 const supabase = useSupabaseClient()
 const {t, locale} = useI18n()
 const {width, height} = useWindowSize()
@@ -27,7 +29,7 @@ const { data: projects } = await useAsyncData('projects', async () => {
       .eq('status','published')
       .order('created_at', { ascending: false })
   if(error) console.error(error)
-  return data
+  return data as unknown as Project
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();
