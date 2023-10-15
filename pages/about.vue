@@ -15,7 +15,7 @@
               <h1 class="text-h1 text-grey-500 leading-none">
                 <span ref="prenom" class="reveal-text">Jérôme </span>
                 <span ref="nom" class="reveal-text">Rascle</span></h1>
-              <p class="xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
+              <p class="whitespace-pre-line xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
                 {{ $t('pages.about.p1') }}
               </p>
               <div class="grid gap-4 mt-8">

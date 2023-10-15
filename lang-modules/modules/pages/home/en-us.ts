@@ -7,9 +7,8 @@ export const home: LangHome = {
     job_title: 'Freelance software engineer',
     catch_phrase: 'Crafting',
     catch_phrase_underline: 'ambitious ideas',
-    hi_im: 'My name is',
-    p1_reveal: 'I’m a French software engineering student who will major in software development in 2024 at ISEN Lille.\n' +
-        'I offer my services to companies and individuals to help them achieve their projects.\n',
+    hi_im: 'Hi! I\'m',
+    p1_reveal: 'and I\'m a (future) software engineer specialized in software development. \nI like to solve and design solutions to all kinds of problems (and all that while listening to some tunes)!',
 
     title2: 'Experiences',
 

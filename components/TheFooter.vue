@@ -61,7 +61,7 @@
     </div>
 
     <p class="text-center text-xs text-grey-100 py-2">
-      2023 <span class="text-orange-100">|</span> Jérôme Rascle © <span class="text-orange-100">|</span> {{ $t('common.footer.all_rights_reserved') }}.
+      Designed & Made with 🎶 by <span class="font-extrabold">Jérôme Rascle</span><span class="text-orange-100"> | </span> © {{ $t('common.footer.all_rights_reserved') }}
     </p>
 
   </footer>

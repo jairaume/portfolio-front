@@ -5,7 +5,9 @@ export const about: LangAbout = {
     meta_description: 'About Jérôme Rascle',
 
     hi_im: 'My name is',
-    p1: 'Enim labore nulla enim est proident irure commodo cupidatat anim anim esse veniam aute sint. Nulla officia consectetur do do nostrud minim officia deserunt dolore enim. Amet elit cillum eu minim id aute et occaecat duis cupidatat. Aute sit dolore elit sunt eiusmod anim nisi ea eiusmod.',
+    p1: "I am a 21 years old software engineering student from Lille, France. " +
+        "\n\nMy passion is solving problems and creating solutions through all kinds of technologies and my ultimate goal is to mix it with my love for music. " +
+        "\n\nEvery project I work on is a step towards this goal and I believe every project is a chance to learn something new.",
     philosophy: 'Sharing the same philosophy?',
 
     title2: 'Past experiences',

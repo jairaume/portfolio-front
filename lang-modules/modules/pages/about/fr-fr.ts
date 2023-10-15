@@ -5,7 +5,9 @@ export const about: LangAbout = {
     meta_description: 'À propos de Jérôme Rascle',
 
     hi_im: 'Je m\'appelle',
-    p1: 'Enim labore nulla enim est proident irure commodo cupidatat anim anim esse veniam aute sint. Nulla officia consectetur do do nostrud minim officia deserunt dolore enim. Amet elit cillum eu minim id aute et occaecat duis cupidatat. Aute sit dolore elit sunt eiusmod anim nisi ea eiusmod.',
+    p1: "Je suis un étudiant en informatique de 21 ans originaire de Lille, France. " +
+        "\n\nMa passion est de résoudre des problèmes et de créer des solutions grâce à toutes sortes de technologies et mon objectif ultime est de la mélanger avec mon amour pour la musique. " +
+        "\n\nChaque projet sur lequel je travaille est un pas vers cet objectif et je suis convaincu que chaque projet est une chance d'apprendre quelque chose de nouveau.",
     philosophy: 'Vous partagez la même philosophie\xa0?',
 
     title2: 'Expériences',
@@ -15,11 +17,11 @@ export const about: LangAbout = {
     other_stuff: 'd\'autres trucs que j\'aime...',
 
     p4: {
-        intro: 'Si je ne travaille pas, je suis probablement au ',
+        intro: 'Si je ne travaille pas, vous me trouverez probablement au ',
         hobby1: 'cinéma',
         or: ', ou en train de ',
         hobby2: 'surfer',
-        or2: ' sur la côte nord de la France ou plus probablement dans ma cave à jouer de la ',
+        or2: ' sur la côte d\'opale ou plus probablement au sous sol à jouer de la ',
         hobby3: 'batterie'
     },
 }
