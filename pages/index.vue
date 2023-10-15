@@ -132,9 +132,9 @@
 
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
-          <h1 class="text-big-title text-center xs:text-left">
+          <h1 class="relative text-big-title text-center xs:text-left">
             {{ $t('pages.home.title3') }}
-            <span class="text-xs font-light"> {{ $t('pages.home.subtitle3') }} </span>
+            <span class="text-xs font-light absolute bottom-0 s:left-0"> {{ $t('pages.home.subtitle3') }} </span>
           </h1>
 
           <div class="grid gap-8 group">

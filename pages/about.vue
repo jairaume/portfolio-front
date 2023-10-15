@@ -237,8 +237,8 @@ function initHobbies(){
   const hobbies = $gsap.utils.toArray('li.hobby')
   hobbies.forEach((hobby)=>{
     let positions = {
-      x: ($gsap.utils.random(-75,75)-50)+"%",
-      y: ($gsap.utils.random(-25,25)-50)+"%",
+      x: ($gsap.utils.random(-25,25)-50)+"%",
+      y: ($gsap.utils.random(-15,15)-50)+"%",
       r: $gsap.utils.random(-10,10),
     }
     $gsap.fromTo(hobby as HTMLElement,{
