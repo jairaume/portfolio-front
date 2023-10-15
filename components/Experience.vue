@@ -47,19 +47,13 @@
 </template>
 
 <script setup lang="ts">
+import type {Experience} from "types";
+
 const {locale} = useI18n()
 
 defineProps<{
   left: boolean
-  experience: {
-    company: string
-    position_en: string
-    position_fr: string
-    start_date: Date,
-    end_date: Date | null,
-    description_en: string
-    description_fr: string
-  }
+  experience: Experience
 }>()
 </script>
 

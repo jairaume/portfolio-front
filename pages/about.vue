@@ -131,6 +131,7 @@
 </template>
 
 <script setup lang="ts">
+import type {Experience, Skill, Hobby} from "~/types";
 import {annotate} from "rough-notation";
 import {useDownloadResume} from "~/composables/useDownloadResume";
 

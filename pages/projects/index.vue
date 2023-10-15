@@ -16,6 +16,8 @@
 </template>
 
 <script setup lang="ts">
+import type {Project} from "types";
+
 const supabase = useSupabaseClient()
 const {t, locale} = useI18n()
 const {width, height} = useWindowSize()

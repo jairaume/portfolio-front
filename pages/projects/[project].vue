@@ -139,8 +139,7 @@
 <script setup lang="ts">
 import Swiper from "swiper";
 import 'swiper/css';
-import {Navigation, Pagination} from 'swiper/modules';
-import {Project} from "types";
+import type {Project} from "types";
 import {annotate} from "rough-notation";
 
 const supabase = useSupabaseClient()

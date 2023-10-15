@@ -155,6 +155,7 @@
 
 <script setup lang="ts">
 import {annotate} from "rough-notation";
+import type {Featured_Projects, Featured_Experiences, Featured_Skills} from "types";
 
 const {roundPaths} = useRoundedAnnotations()
 

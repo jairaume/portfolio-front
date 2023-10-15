@@ -40,18 +40,18 @@ export interface Skill {
 }
 
 export interface Featured_Experiences {
-    experience: number | Experience | null
+    experience: Experience | null
     id: number
 }
 
 export interface Featured_Projects {
     id: number
-    project: number | Project | null
+    project: Project | null
 }
 
 export interface Featured_Skills {
     id: number
-    skill: number | Skill | null
+    skill: Skill | null
 }
 
 export interface Hobby {
