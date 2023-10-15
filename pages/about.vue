@@ -75,7 +75,7 @@
               <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">{{ skill["skill_name_"+locale] }}</h4>
             </div>
             <div class="max-w-[800px] text-grey-50">
-              <p>{{ skill["description_"+locale] }}</p>
+              <p class="whitespace-pre-line">{{ skill["description_"+locale] }}</p>
             </div>
           </li>
         </ul>
@@ -106,7 +106,7 @@
             {{ $t('pages.about.other_stuff') }}
           </h4>
         </div>
-        <ul class="mt-20">
+        <ul class="mt-44">
           <li v-for="(hobby, i) in hobbies" :key="i"
               class="hobby group absolute top-1/2 left-1/2">
             <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
@@ -116,7 +116,7 @@
                     {{ hobby["description_"+locale] }}</p>
                 </div>
                 <nuxt-img loading="lazy"
-                          :src="'https://tawisixerigsoikwrnxf.supabase.co/storage/v1/object/public/images'+hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
+                          :src="hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
                           :alt="hobby['description_'+locale]"
                           class="w-full h-full max-h-[min(50vh,_600px)] object-cover"
                 />
@@ -169,19 +169,21 @@ const hobbiesScrollTrigger = {
 }
 
 const { data: experiences } = await useAsyncData('experiences', async () => {
-  const { data, error } = await supabase.from('experience').select()
+  const { data, error } = await supabase.from('experience')
+      .select()
+      .eq('status', 'published')
   if(error) console.error(error)
   return data as unknown as Experience
 })
 
-const { data: all_skills } = await useAsyncData('all_skill', async () => {
+const { data: all_skills } = await useAsyncData('all_skills', async () => {
   const { data, error } = await supabase.from('skill').select()
   if(error) console.error(error)
   return data as unknown as Skill;
 })
 
 const { data: hobbies } = await useAsyncData('hobbies', async () => {
-  const { data, error } = await supabase.from('hobby').select()
+  const { data, error } = await supabase.from('random_hobby').select()
   if(error) console.error(error)
   return data as unknown as Hobby;
 })

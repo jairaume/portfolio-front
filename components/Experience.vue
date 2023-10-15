@@ -15,7 +15,7 @@
         }}
       </h3>
       <h4 class="text-h4">{{ experience["position_" + locale] }} · {{ experience.company }}</h4>
-      <p class="text-grey-50 text-sm font-light">
+      <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
         }}
@@ -36,7 +36,7 @@
         }}
       </h3>
       <h4 class="text-h4">{{ experience["position_" + locale] }} · {{ experience.company }}</h4>
-      <p class="text-grey-50 text-sm font-light">
+      <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
         }}

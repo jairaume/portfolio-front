@@ -110,7 +110,7 @@
                 <h4 class="text-h4 font-medium">
                   {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
                 </h4>
-                <p class="text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
+                <p class="whitespace-pre-line text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
                   {{
                     experience.experience["description_"+locale]
                   }}
@@ -187,6 +187,7 @@ const { data: featured_projects } = await useAsyncData('featured_projects', asyn
 const { data: featured_experiences } = await useAsyncData('featured_experiences', async () => {
   const { data, error } = await supabase.from('featured_experiences')
       .select('id, experience (*)')
+      .order('experience(start_date)', {ascending: true})
       .limit(2)
   if(error) console.error(error)
   return data as Featured_Experiences[]
