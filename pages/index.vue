@@ -42,10 +42,7 @@
                   <p>{{$t('common.more_projects')}}</p>
                   <i class="icon icon-arrow"/>
                 </nuxt-link>
-                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
-                  <p><span class="font-light">{{ $t('common.available') }}</span> {{ $t('common.now') }}</p>
-                  <span class="bg-green-400 ring-4 ring-green-400/50 rounded-full p-1.5"></span>
-                </nuxt-link>
+                <StatusIndicator/>
               </div>
             </div>
           </div>

@@ -54,7 +54,7 @@ export interface LangCommon {
     }
 
     // others
-    available: string,
+    currently: string,
     today: string,
     now: string,
     see_more: string,

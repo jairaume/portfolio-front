@@ -52,7 +52,7 @@ export const common: LangCommon = {
     },
 
     // others
-    available: 'Available',
+    currently: 'Currently',
     today: 'Today',
     now: 'Now',
     see_more: 'See more',

@@ -1,5 +1,7 @@
 export interface Availability {
-    availability: string | null
+    currently_en: string | null
+    currently_fr: string | null
+    available: boolean
     id: number
 }
 
