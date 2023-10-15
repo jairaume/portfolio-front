@@ -61,7 +61,7 @@
     <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
       <div class="responsive-layout sticky top-24 m:top-32">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
-          <div class="relative overflow-hidden">
+          <div class="relative">
             <h3 class="text-grey-100 text-h4">{{ $t('pages.home.hi_im') }}</h3>
             <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
             <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
@@ -83,7 +83,7 @@
       </div>
     </section>
 
-    <section aria-label="Projects" class="bg-grey-900 py-20 overflow-hidden">
+    <section aria-label="Projects" class="bg-grey-900 py-20 w-screen overflow-hidden">
       <div class="responsive-layout">
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
           <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
