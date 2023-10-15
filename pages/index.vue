@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section aria-labelledby="job_title" ref="heroSection" class="relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="max-w-screen overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
@@ -233,11 +233,10 @@ onMounted(()=> {
         backgroundPositionX: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: "#reveal-text-content",
+          trigger: "#reveal-text-paragraph",
           scrub: 1,
-          start: "top center",
-          endTrigger: "#reveal-text-paragraph",
-          end: "top 25%"
+          start: "top 25%",
+          end: "center 25%",
         }
       });
 
@@ -247,9 +246,9 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: "#reveal-text-paragraph",
           scrub: 1,
-          start: "top 25%",
+          start: "center 25%",
           endTrigger: "#reveal-text",
-          end: "85% bottom"
+          end: "80% bottom"
         }
       });
 
@@ -334,6 +333,10 @@ useHead({htmlAttrs: {lang: locale.value}})
 .reveal-text {
   @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
   background-size: 200% 100%;
+}
+
+#reveal-text {
+  contain: paint;
 }
 
 .reveal-text-vertical {

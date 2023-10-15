@@ -23,7 +23,7 @@
 
             <div class="flex justify-between s:items-center s:justify-evenly gap-8">
               <nav>
-                <ul class="grid gap-2">
+                <ul class="grid gap-2 text-right whitespace-nowrap">
                   <li>
                     <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.home') }}
