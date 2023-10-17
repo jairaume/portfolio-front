@@ -183,7 +183,9 @@ const { data: all_skills } = await useAsyncData('all_skills', async () => {
 })
 
 const { data: hobbies } = await useAsyncData('hobbies', async () => {
-  const { data, error } = await supabase.from('random_hobby').select()
+  const { data, error } = await supabase.from('random_hobby')
+      .select()
+      .eq('status', 'published')
   if(error) console.error(error)
   return data as unknown as Hobby;
 })
