@@ -93,7 +93,9 @@ function initItems() {
 }
 
 onMounted( () => {
-  initItems();
+  setTimeout(()=> {
+    initItems();
+  }, 1000)
 });
 
 onBeforeUnmount(() => {

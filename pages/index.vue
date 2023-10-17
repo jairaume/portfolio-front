@@ -1,6 +1,6 @@
 <template>
-  <main ref="rootEl" id="rootEl" class="bg-black -mt-28">
-    <section aria-labelledby="job_title" ref="heroSection" class="max-w-screen overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
+  <main ref="rootEl" id="rootEl" class="bg-black -mt-28 max-w-screen overflow-hidden">
+    <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-around py-6">
@@ -55,8 +55,8 @@
       </div>
     </section>
 
-    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-24 xs:py-32 m:py-40 min-h-[300vh] responsive-padding-x max-w-screen">
-      <div class="responsive-layout sticky top-24 m:top-32">
+    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-20 xs:py-24 m:py-32 min-h-[100vh] responsive-padding-x max-w-[100dvw]">
+      <div ref="revealContainer" id="reveal-container" class="">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
             <h3 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h3>
@@ -93,7 +93,7 @@
       </div>
     </section>
 
-    <section :aria-label="$t('pages.home.title2') + ' & ' + $t('pages.home.title3')" class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x">
+    <section :aria-label="$t('pages.home.title2') + ' & ' + $t('pages.home.title3')" class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x max-w-[100dvw] overflow-hidden">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
@@ -135,9 +135,9 @@
           </h1>
 
           <div class="grid gap-8 group">
-            <div v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 group-hover:-rotate-3 odd:-rotate-3 odd:group-hover:rotate-3 duration-300 text-center">
+            <nuxt-link :to="localePath('/about')+'#skill_'+skill.skill['skill_name_'+locale]" v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 s:group-hover:-rotate-3 odd:-rotate-3 s:odd:group-hover:rotate-3 hover:border-white active:scale-95 duration-300 text-center">
               <h4 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h4>
-            </div>
+            </nuxt-link>
           </div>
 
           <nuxt-link :title="$t('common.more_about2')" :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
@@ -171,6 +171,7 @@ const heroBox = ref<HTMLElement|null>(null);
 const heroContent = ref<HTMLElement|null>(null);
 const heroAnnotate = ref<HTMLElement|null>(null);
 
+const revealContainer = ref<HTMLElement|null>(null);
 const revealText = ref<HTMLElement|null>(null);
 const {isOutside} = useMouseInElement(revealText)
 
@@ -203,9 +204,10 @@ const { data: skills } = await useAsyncData('skill', async () => {
 })
 
 onMounted(()=> {
-    ctx = $gsap.context(()=> {
-      $gsap.fromTo(heroBoxCtn.value,{maxWidth:"1400px"},{
-        padding:0,
+  setTimeout(()=> {
+    ctx = $gsap.context(() => {
+      $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
+        padding: 0,
         maxWidth: "100vw",
         scrollTrigger: {
           trigger: heroBox.value,
@@ -215,8 +217,8 @@ onMounted(()=> {
           end: "top 10%",
         }
       })
-      $gsap.to(heroBox.value,{
-        borderRadius:0,
+      $gsap.to(heroBox.value, {
+        borderRadius: 0,
         background: "rgb(30,30,30)",
         scrollTrigger: {
           trigger: heroBox.value,
@@ -227,26 +229,36 @@ onMounted(()=> {
         }
       })
 
-      $gsap.fromTo("#reveal-text-content",{backgroundPositionX: "100%"}, {
+      $gsap.to(revealContainer.value, {
+        duration: 1,
+        scrollTrigger: {
+          trigger: revealText.value,
+          scrub: 1,
+          pin: true,
+          start: "top top",
+          end: "200% bottom",
+        }
+      })
+
+      $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
         backgroundPositionX: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: "#reveal-text-paragraph",
+          trigger: "#reveal-text",
           scrub: 1,
-          start: "top 25%",
-          end: "center 25%",
+          start: "top top",
+          end: "25% top",
         }
       });
 
-      $gsap.fromTo("#reveal-text-paragraph",{backgroundPositionY: "100%"}, {
+      $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
         backgroundPositionY: 0,
         ease: "none",
         scrollTrigger: {
           trigger: "#reveal-text-paragraph",
           scrub: 1,
           start: "center 25%",
-          endTrigger: "#reveal-text",
-          end: "80% bottom"
+          end: "175% 25%",
         }
       });
 
@@ -273,16 +285,16 @@ onMounted(()=> {
 
         const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
           type: 'underline',
-          multiline:true,
-          color:"rgba(237, 112, 45, .5)",
+          multiline: true,
+          color: "rgba(237, 112, 45, .5)",
           strokeWidth: 8,
         })
         heroAnnotation.show()
         roundPaths()
 
-        $gsap.set(heroContent.value,{transformOrigin:"top"})
-        $gsap.to(heroContent.value,{
-          opacity:0,
+        $gsap.set(heroContent.value, {transformOrigin: "top"})
+        $gsap.to(heroContent.value, {
+          opacity: 0,
           top: -100,
           scrollTrigger: {
             trigger: heroBox.value,
@@ -295,7 +307,7 @@ onMounted(()=> {
 
         $gsap.fromTo(".projects_wrapper", {x: 0}, {
           xPercent: -120,
-          ease: "power",
+          ease: "none",
           scrollTrigger: {
             trigger: projects.value,
             pin: true,
@@ -307,6 +319,7 @@ onMounted(()=> {
         });
       })
     }, rootEl.value)
+  }, 1000)
 })
 
 onUnmounted(() => {

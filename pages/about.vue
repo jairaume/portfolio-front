@@ -68,7 +68,7 @@
         <h1 id="skills" class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
         <ul class="grid gap-12">
-          <li v-for="skill in all_skills" :key="skill.id" class="flex flex-col gap-2 s:items-start relative pb-6
+          <li :id="'skill_'+skill['skill_name_'+locale]" v-for="skill in all_skills" :key="skill.id" class="flex flex-col gap-2 s:items-start relative pb-6
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
@@ -271,7 +271,8 @@ function initHobbies(){
 }
 
 onMounted(() => {
-  ctx = $gsap.context(()=>{
+  setTimeout(()=> {
+    ctx = $gsap.context(()=>{
     const tl = $gsap.timeline()
     tl.to(prenom.value,revealNameTo)
     tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
@@ -375,6 +376,7 @@ onMounted(() => {
     if(!hobbiesLoaded.value) initHobbies()
 
   }, rootEl.value)
+  }, 1000)
 })
 
 onUnmounted(() => {

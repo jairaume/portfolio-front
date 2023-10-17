@@ -175,7 +175,8 @@ const { data: other_projects } = await useAsyncData('other_projects', async () =
 
 
 onMounted(()=> {
-  if(!projectSwiperElement.value) return
+  setTimeout(()=> {
+    if(!projectSwiperElement.value) return
     projectSwiper.value = new Swiper(projectSwiperElement.value, {
       grabCursor: true,
       pagination: {
@@ -201,26 +202,27 @@ onMounted(()=> {
       mousewheel: {
         forceToAxis: true,
       },
-  })
-  const viewOthersAnnotate = annotate(viewOthers.value as HTMLElement, {
-    type: 'highlight',
-    multiline:true,
-    color: projectData.value?.color || '#ffffff',
-  })
-  $gsap.from(viewOthers.value as HTMLElement, {
-    scrollTrigger: {
-      trigger: viewOthers.value as HTMLElement,
-      start: 'top 75%',
-      end: 'bottom center',
-      scrub: 2,
-      onEnter: () => {
-        viewOthersAnnotate.show()
+    })
+    const viewOthersAnnotate = annotate(viewOthers.value as HTMLElement, {
+      type: 'highlight',
+      multiline:true,
+      color: projectData.value?.color || '#ffffff',
+    })
+    $gsap.from(viewOthers.value as HTMLElement, {
+      scrollTrigger: {
+        trigger: viewOthers.value as HTMLElement,
+        start: 'top 75%',
+        end: 'bottom center',
+        scrub: 2,
+        onEnter: () => {
+          viewOthersAnnotate.show()
+        },
+        onLeaveBack: () => {
+          viewOthersAnnotate.hide()
+        }
       },
-      onLeaveBack: () => {
-        viewOthersAnnotate.hide()
-      }
-    },
-  })
+    })
+  }, 1000)
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();
