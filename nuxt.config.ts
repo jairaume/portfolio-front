@@ -1,11 +1,15 @@
 export default defineNuxtConfig({
-  /*nitro: {
-    preset: 'vercel-edge',
-  },*/
-  devtools: { enabled: true },
   css: [
     '~/assets/css/main.css',
   ],
+  runtimeConfig:{
+    supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
+    supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+    public: {
+      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "",
+      socialImage: process.env.NUXT_PUBLIC_SOCIAL_IMAGE || "",
+    }
+  },
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -27,7 +31,7 @@ export default defineNuxtConfig({
         {
           innerHTML: `WebFont.load({
             google: {families: ['Bricolage Grotesque:300,400,600,700,800']},
-            custom: {families: ['Monument Extended:n8']},
+            custom: {families: ['Monument:n8'], urls:['/css/font.css']},
           });`,
           type: 'text/javascript'
         }
@@ -43,8 +47,47 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    //'@nuxt/image',
+    '@nuxt/image',
     '@vueuse/nuxt',
-    'nuxt-font-loader'
-  ]
+    '@nuxtjs/i18n',
+    '@nuxtjs/supabase'
+  ],
+  components: [
+    { path: '~/components/Card' , prefix: 'Card'},
+    '~/components',
+  ],
+  i18n: {
+    vueI18n: './i18n.config.ts',
+    experimental: {
+      jsTsFormatResource: true
+    },
+    locales: [
+      {
+        name: 'Français',
+        code: 'fr',
+        iso: 'fr-FR',
+        file: 'fr-fr.ts'
+      },
+      {
+        name: 'English',
+        code: 'en',
+        iso: 'en-US',
+        file: 'en-us.ts'
+      }
+    ],
+    strategy: "prefix",
+    langDir: 'lang/',
+    lazy: true,
+    defaultLocale: 'fr',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // recommended
+    }
+  },
+  supabase: {
+    redirect: false,
+    url: process.env.NUXT_PUBLIC_SUPABASE_URL,
+    key: process.env.NUXT_PUBLIC_SUPABASE_KEY,
+  }
 });

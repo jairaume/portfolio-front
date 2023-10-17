@@ -1,5 +1,5 @@
 .swiper-pagination-bullet {
-    @apply w-[10px] h-[10px] rounded-[10px] opacity-100 mx-[3px] bg-white bg-opacity-30 duration-300 ease-in-out;
+    @apply block w-[10px] h-[10px] rounded-[10px] opacity-100 mx-[3px] bg-white bg-opacity-30 duration-300 ease-in-out;
 }
 
 .swiper-pagination-bullet-active {
@@ -8,5 +8,27 @@
 
 .swiper-pagination-bullet:hover:not(.swiper-pagination-bullet-active) {
     @apply w-[14px] bg-white bg-opacity-50 duration-300 ease-in-out;
+}
+
+.swiper-pagination{
+    @apply flex justify-center items-center mt-[20px];
+}
+
+
+.swiper-button-disabled {
+    @apply opacity-30 cursor-default;
+}
+.swiper-button-next, .swiper-button-prev {
+    @apply h-10 w-10 mx-2 flex items-center border border-white/40 duration-200 rounded-full p-2 active:translate-x-1;
+}
+.swiper-button-next:not(.swiper-button-disabled), .swiper-button-prev:not(.swiper-button-disabled){
+     @apply hover:border-white;
+}
+
+.swiper-button-next{
+    @apply left-full;
+}
+.swiper-button-prev{
+    @apply right-full;
 }
 

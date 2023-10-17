@@ -2,6 +2,9 @@
     font-family: 'Monument Extended';
     font-style: normal;
     font-weight: 800;
-    src: local('Monument Extended 900'), url('../fonts/MonumentExtended-Ultrabold.woff2') format('woff2');
-    font-display: swap;
+    src: url('../fonts/MonumentExtended-Ultrabold.woff2') format('woff2'),
+        url('../fonts/MonumentExtended-Ultrabold.eot'),
+        url('../fonts/MonumentExtended-Ultrabold.woff') format('woff');
+        url('../fonts/MonumentExtended-Ultrabold.eot?#iefix') format('embedded-opentype');
+        url('../fonts/MonumentExtended-Ultrabold.ttf') format('truetype');
 }

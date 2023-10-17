@@ -1,10 +1,9 @@
 @layer base {
-    body {
-        @apply font-bricolage font-normal text-sm text-white;
+    html {
+        @apply antialiased bg-black;
     }
-
-    path {
-        fill: currentColor;
+    body {
+        @apply font-bricolage font-normal text-base;
     }
 
     p + ul, ul + p, p + p {

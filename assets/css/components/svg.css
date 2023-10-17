@@ -1,0 +1,15 @@
+.svg {
+    @apply bg-current inline-block;
+}
+
+.svg-cursor {
+    mask: url('/images/svg/drawn-cursor.svg') no-repeat center;
+    -webkit-mask: url('/images/svg/drawn-cursor.svg') no-repeat center;
+    mask-size: contain;
+}
+
+.svg-arrow {
+    mask: url('/images/svg/drawn-arrow.svg') no-repeat center;
+    -webkit-mask: url('/images/svg/drawn-arrow.svg') no-repeat center;
+    mask-size: contain;
+}

@@ -1,62 +1,111 @@
-.text-big-titles, .text-h1, .text-h2, .text-h3, .text-h4 {
-    @apply font-bold font-monument;
+.text-monument-menu, .text-monument-h1, .text-monument-h2, .text-monument-h3{
+    @apply font-monument font-black;
 }
 
-.text-big-titles {
-    @apply text-4xl;
-    @apply leading-normal !important;
+.text-monument-menu{
+    @apply text-2xl tracking-widest;
 }
 
-.text-h1,
-.text-h2 {
-    @apply text-3.75xl
+.text-monument-h1{
+    @apply text-4xl tracking-widest;
 }
 
-.text-h3 {
-    @apply text-2.5xl;
+.text-monument-h2{
+    @apply text-3.5xl tracking-widest;
 }
 
-.text-h4 {
-    @apply text-base;
+.text-monument-h3{
+    @apply text-sm
 }
 
-.text-cta {
-    @apply font-semibold text-xs;
-    @apply leading-normal !important;
-
-}
-
-.text-small-body {
-    @apply font-normal text-xs;
-    @apply leading-normal !important;
-
+@screen xs {
+    .text-monument-h1 {
+        @apply text-6.5xl;
+    }
 }
 
 @screen s {
-    .text-big-titles {
-        @apply text-5.75xl;
+    .text-monument-h1 {
+        @apply text-7.5xl;
     }
 }
 
-
 @screen m {
-    .text-big-titles {
+    .text-monument-menu {
+        @apply text-4xl;
+    }
+    .text-monument-h1 {
+        @apply text-8xl;
+    }
+    .text-monument-h2 {
+        @apply text-4.5xl;
+    }
+}
+
+.text-cta {
+    @apply text-base font-semibold;
+}
+.text-h4 {
+    @apply text-lg font-bold;
+}
+.text-h3 {
+    @apply text-2xl font-bold leading-5;
+}
+.text-h2 {
+    @apply text-3.5xl font-bold;
+}
+.text-h1 {
+    @apply text-4.5xl font-bold;
+}
+.text-big-title {
+    @apply text-5xl leading-normal font-extrabold;
+}
+.text-huge-title {
+    @apply text-5xl leading-[52px] font-extrabold;
+}
+
+
+@screen xs {
+    .text-h4 {
+        @apply text-xl;
+    }
+    .text-h3 {
+        @apply text-3.5xl;
+    }
+    .text-h2 {
+        @apply text-3.5xl;
+    }
+    .text-big-title {
+        @apply text-6.5xl leading-[75px];
+    }
+    .text-huge-title {
+        @apply text-6.5xl leading-[85px];
+    }
+}
+
+@screen s {
+    .text-h4 {
+        @apply text-2xl;
+    }
+    .text-h3 {
+        @apply text-4.5xl;
+    }
+    .text-h1 {
         @apply text-6.5xl;
     }
+    .text-big-title {
+        @apply text-7.5xl leading-[85px];
+    }
+    .text-huge-title {
+        @apply text-8xl leading-[100px];
+    }
+}
 
-    .text-h1,
-    .text-h2 {
+@screen m {
+    .text-h3 {
         @apply text-5xl;
-        @apply leading-normal !important;
-
     }
-
-    .text-h3{
-        @apply text-3.75xl;
-    }
-
-    .text-h4 {
-        @apply text-2.25xl;
-        @apply leading-normal !important;
+    .text-huge-title {
+        @apply text-9xl font-extrabold;
     }
 }
