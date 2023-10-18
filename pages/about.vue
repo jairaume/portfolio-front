@@ -98,7 +98,7 @@
     <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
   </section>
 
-  <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 pb-72 responsive-padding-x relative h-screen bg-gradient-to-b from-black to-grey-700">
+  <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 responsive-padding-x bg-gradient-to-b from-black to-grey-700">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
         <div>
@@ -106,7 +106,7 @@
             {{ $t('pages.about.other_stuff') }}
           </h4>
         </div>
-        <ul class="mt-44">
+        <ul class="relative pt-20 min-h-[min(70vh,_1000px)]">
           <li v-for="(hobby, i) in hobbies" :key="i"
               class="hobby group absolute top-1/2 left-1/2">
             <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
@@ -249,6 +249,7 @@ function initHobbies(){
       translateX:"-50%",
       translateY:"-50%",
       scale:.6,
+      opacity:0,
       rotation: -positions.r,
     }, {
       rotation: positions.r,
@@ -257,6 +258,7 @@ function initHobbies(){
       translateX: positions.x,
       translateY: positions.y,
       scale:1,
+      opacity:1,
       scrollTrigger:{
         trigger: hobby as HTMLElement,
         toggleActions: 'play none none reverse',
