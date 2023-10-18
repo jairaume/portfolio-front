@@ -11,7 +11,7 @@
           class="h-full w-full object-cover">
       </nuxt-img>
     </div>
-    <div class="absolute w-full z-30 h-fit top-0 left-0 flex flex-col items-end py-6 px-6 s:px-12 s:mix-blend-difference drop-shadow-xl">
+    <div class="absolute w-full z-30 h-fit top-0 left-0 flex flex-col items-end py-6 px-6 s:px-12 drop-shadow-xl">
       <h1 class="text-big-title">{{ project.title }}</h1>
       <h2 class="text-cta font-light">{{ $t('common.collab.'+project.collaboration_type) }} <span class="font-bold">{{ project.company }}</span></h2>
     </div>
