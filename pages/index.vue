@@ -206,65 +206,8 @@ const { data: skills } = await useAsyncData('skill', async () => {
 onMounted(()=> {
   setTimeout(()=> {
     ctx = $gsap.context(() => {
-      $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
-        padding: 0,
-        maxWidth: "100vw",
-        scrollTrigger: {
-          trigger: heroBox.value,
-          scrub: 1,
-          start: "75% center",
-          endTrigger: revealText.value,
-          end: "top 10%",
-        }
-      })
-      $gsap.to(heroBox.value, {
-        borderRadius: 0,
-        background: "rgb(30,30,30)",
-        scrollTrigger: {
-          trigger: heroBox.value,
-          scrub: 1,
-          start: "75% center",
-          endTrigger: revealText.value,
-          end: "top 10%",
-        }
-      })
-
-      $gsap.to(revealContainer.value, {
-        duration: 1,
-        scrollTrigger: {
-          trigger: revealText.value,
-          scrub: 1,
-          pin: true,
-          start: "top top",
-          end: "200% bottom",
-        }
-      })
-
-      $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
-        backgroundPositionX: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#reveal-text",
-          scrub: 1,
-          start: "top top",
-          end: "25% top",
-        }
-      });
-
-      $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
-        backgroundPositionY: 0,
-        ease: "none",
-        scrollTrigger: {
-          trigger: "#reveal-text-paragraph",
-          scrub: 1,
-          start: "center 25%",
-          end: "175% 25%",
-        }
-      });
-
-      // Projects section
       let mm = $gsap.matchMedia();
-      mm.add("(max-width: 1023px)", () => {
+      mm.add("(max-width: 1099px)", () => {
         $gsap.from(".projects_wrapper", {x: 0})
 
         const draggable = $Draggable.create('.projects_wrapper', {
@@ -281,7 +224,29 @@ onMounted(()=> {
         }
       });
 
-      mm.add("(min-width: 1024px)", () => {
+      mm.add("(min-width: 1100px)", () => {
+        $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
+          padding: 0,
+          maxWidth: "100vw",
+          scrollTrigger: {
+            trigger: heroBox.value,
+            scrub: 1,
+            start: "75% center",
+            endTrigger: revealText.value,
+            end: "top 10%",
+          }
+        })
+        $gsap.to(heroBox.value, {
+          borderRadius: 0,
+          background: "rgb(30,30,30)",
+          scrollTrigger: {
+            trigger: heroBox.value,
+            scrub: 1,
+            start: "75% center",
+            endTrigger: revealText.value,
+            end: "top 10%",
+          }
+        })
 
         const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
           type: 'underline',
@@ -304,6 +269,39 @@ onMounted(()=> {
             end: "top 10%",
           }
         })
+
+        $gsap.to(revealContainer.value, {
+          duration: 1,
+          scrollTrigger: {
+            trigger: revealText.value,
+            scrub: 1,
+            pin: true,
+            start: "top top",
+            end: "200% bottom",
+          }
+        })
+
+        $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
+          backgroundPositionX: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#reveal-text",
+            scrub: 1,
+            start: "top top",
+            end: "25% top",
+          }
+        });
+
+        $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
+          backgroundPositionY: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: "#reveal-text-paragraph",
+            scrub: 1,
+            start: "center 25%",
+            end: "175% 25%",
+          }
+        });
 
         $gsap.fromTo(".projects_wrapper", {x: 0}, {
           xPercent: -120,
@@ -342,8 +340,10 @@ useHead({htmlAttrs: {lang: locale.value}})
 
 <style scoped>
 .reveal-text {
-  @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
-  background-size: 200% 100%;
+  @screen m{
+    @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
+    background-size: 200% 100%;
+  }
 }
 
 #reveal-text {
@@ -351,8 +351,10 @@ useHead({htmlAttrs: {lang: locale.value}})
 }
 
 .reveal-text-vertical {
-  @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
-  background-size: 100% 200%;
+  @screen m {
+    @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
+    background-size: 100% 200%;
+  }
 }
 
 svg.rough-annotation path{
