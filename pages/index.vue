@@ -24,12 +24,12 @@
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute m-0 my-6 m:my-20 left-20 s:left-24 top-[170%] s:top-full blur s:blur-sm">
+              <div class="absolute m-0 my-6 m:my-20 left-20 s:left-24 top-[160%] s:top-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
                 </MouseLooker>
               </div>
-              <div class="absolute m-0 my-6 m:my-20 right-20 s:right-24 top-[170%] s:top-full blur s:blur-sm">
+              <div class="absolute m-0 my-6 m:my-20 right-20 s:right-24 top-[160%] s:top-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
@@ -80,8 +80,11 @@
       </div>
     </section>
 
-    <section aria-label="Projects" class="bg-grey-900 py-20 w-screen overflow-hidden">
+    <section aria-label="Projects" class="relative bg-grey-900 text-white py-20 w-screen overflow-hidden">
       <div class="responsive-layout">
+        <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1">
+          <h1 class="text-big-title py-8">{{$t('common.more_projects')}}</h1>
+        </div>
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
           <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
         </div>
