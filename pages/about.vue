@@ -273,7 +273,7 @@ function initHobbies(){
 }
 
 onMounted(() => {
-  setTimeout(()=> {
+  //setTimeout(()=> {
     ctx = $gsap.context(()=>{
     const tl = $gsap.timeline()
     tl.to(prenom.value,revealNameTo)
@@ -378,7 +378,7 @@ onMounted(() => {
     if(!hobbiesLoaded.value) initHobbies()
 
   }, rootEl.value)
-  }, 1000)
+  //}, 1000)
 })
 
 onUnmounted(() => {

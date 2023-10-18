@@ -204,7 +204,7 @@ const { data: skills } = await useAsyncData('skill', async () => {
 })
 
 onMounted(()=> {
-  setTimeout(()=> {
+  //setTimeout(()=> {
     ctx = $gsap.context(() => {
       $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
         padding: 0,
@@ -319,7 +319,7 @@ onMounted(()=> {
         });
       })
     }, rootEl.value)
-  }, 1000)
+  //}, 1000)
 })
 
 onUnmounted(() => {
