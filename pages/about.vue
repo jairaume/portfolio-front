@@ -1,6 +1,6 @@
 <template>
 <main ref="rootEl" class="text-white overflow-hidden">
-  <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-32">
+  <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-12 s:py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-1">
@@ -100,7 +100,7 @@
 
   <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 responsive-padding-x bg-gradient-to-b from-black to-grey-700">
     <div class="responsive-layout">
-      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
+      <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-layout-l-c-1-g-2">
         <div>
           <h4 id="otherStuff" ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">
             {{ $t('pages.about.other_stuff') }}
@@ -118,7 +118,7 @@
                 <nuxt-img loading="lazy"
                           :src="hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
                           :alt="hobby['description_'+locale]"
-                          class="w-full h-full max-h-[min(50vh,_600px)] object-cover"
+                          class="w-full h-full max-h-[clamp(50vh,_50vw,_500px)] object-cover"
                 />
               </div>
             </div>

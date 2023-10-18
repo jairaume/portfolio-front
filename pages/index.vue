@@ -3,7 +3,7 @@
     <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
-          <div class="relative h-full flex flex-col items-center justify-around py-6">
+          <div class="relative h-full flex flex-col items-center justify-center py-6">
             <div class="relative text-white text-center px-8">
               <h4 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
@@ -14,22 +14,22 @@
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
               </h1>
 
-              <div class="absolute my-12 s:my-20 left-20 s:left-8 bottom-full m-0">
+              <div class="absolute m-0 my-6 m:my-20 left-12 s:left-8 bottom-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="-rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-12 s:my-20 left-12 s:left-24 top-full m-0">
-                <MouseLooker :active="!isOutsideHero">
-                  <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
-                </MouseLooker>
-              </div>
-              <div class="absolute my-12 s:my-20 right-20 s:right-8 bottom-full m-0">
+              <div class="absolute m-0 my-6 m:my-20 right-12 s:right-8 bottom-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">&lt;</p>
                 </MouseLooker>
               </div>
-              <div class="absolute my-12 s:my-20 right-12 s:right-24 top-full m-0">
+              <div class="absolute m-0 my-6 m:my-20 left-20 s:left-24 top-[170%] s:top-full blur s:blur-sm">
+                <MouseLooker :active="!isOutsideHero">
+                  <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">{</p>
+                </MouseLooker>
+              </div>
+              <div class="absolute m-0 my-6 m:my-20 right-20 s:right-24 top-[170%] s:top-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
                   <p class="rotate-90 font-monument text-[8vw] m:text-7xl text-orange-100">/</p>
                 </MouseLooker>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-      <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
+      <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-2 xs:top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
         <div ref="heroBox" class="relative bg-black rounded-big w-full h-full overflow-hidden">
           <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 bg-orange-100/10 rounded-full blur-3xl"></div>
         </div>
@@ -251,7 +251,7 @@ onMounted(()=> {
         const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
           type: 'underline',
           multiline: true,
-          color: "rgba(237, 112, 45, .5)",
+          color: "rgba(237, 112, 45, .2)",
           strokeWidth: 8,
         })
         heroAnnotation.show()
