@@ -1,6 +1,6 @@
 <template>
-  <header ref="rootEl" id="menu" class="w-full z-50 sticky top-0 text-white">
-    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow">
+  <header id="menu" class="w-full z-50 sticky top-0 text-white">
+    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2">
       <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta px-8 hidden m:block">
         {{ $t('common.home') }}
       </nuxt-link>
@@ -68,18 +68,56 @@
 </template>
 
 <script setup lang="ts">
-const {$gsap, $ScrollTrigger} = useNuxtApp()
-const rootEl = ref<HTMLElement>()
+const {$gsap} = useNuxtApp()
 const route = useRoute()
 const expanded = ref(false)
 
 const {breakpoints} = useDefaultBreakpoints()
 const sm = breakpoints.smaller('m')
+const {y} = useWindowScroll()
+const scrolled = computed(()=>y.value > 20)
+
 watch(sm, (val)=>{
   if(!val){
     expanded.value = false
   }
 })
+function toggleMenu(){
+  expanded.value = !expanded.value;
+}
+
+
+
+function moveToBasePositions(){
+  $gsap.to('#rightAccent', {
+    ...timings,
+    ...basePositions.rightAccent,
+  })
+  $gsap.to('#leftAccent', {
+    ...timings,
+    ...basePositions.leftAccent,
+  })
+  $gsap.to('#slashMenu', {
+    ...timings,
+    ...basePositions.slashMenu,
+  })
+}
+
+function moveToEndPositions(){
+  $gsap.to('#rightAccent', {
+    ...timings,
+    ...endPositions.rightAccent,
+  })
+  $gsap.to('#leftAccent', {
+    ...timings,
+    ...endPositions.leftAccent,
+  })
+  $gsap.to('#slashMenu', {
+    ...timings,
+    ...endPositions.slashMenu,
+  })
+}
+
 const timings = {
   duration: 0.5,
   ease: "power2.inOut"
@@ -132,47 +170,16 @@ const endPositions = {
   }
 }
 
-const headerScrollTrigger = {
-  trigger: "header",
-  start: "center top",
-  end: "bottom top",
-  scrub:1
-}
-
-function toggleMenu(){
-  expanded.value = !expanded.value;
-}
-
-useSafeOnMounted(rootEl, ()=>{
-  $gsap.fromTo('#rightAccent', {
-    ...timings,
-    ...basePositions.rightAccent,
-  },{
-    ...timings,
-    ...endPositions.rightAccent,
-    scrollTrigger: headerScrollTrigger
-  })
-  $gsap.fromTo('#leftAccent', {
-    ...timings,
-    ...basePositions.leftAccent
-  },{
-    ...timings,
-    ...endPositions.leftAccent,
-    scrollTrigger: headerScrollTrigger
-  })
-  $gsap.fromTo('#slashMenu', {
-    ...timings,
-    ...basePositions.slashMenu
-  },{
-    ...timings,
-    ...endPositions.slashMenu,
-    scrollTrigger: headerScrollTrigger
-  })
+watch(scrolled, (val)=>{
+  if(val){
+    moveToEndPositions()
+  }
+  else {
+    moveToBasePositions()
+  }
 })
-
-onBeforeUnmount(()=>{
-  $ScrollTrigger.killAll()
-  $gsap.globalTimeline.clear();
+onMounted(()=> {
+  moveToBasePositions();
 })
 
 </script>

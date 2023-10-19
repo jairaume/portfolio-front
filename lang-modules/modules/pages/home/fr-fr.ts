@@ -8,9 +8,9 @@ export const home: LangHome = {
     catch_phrase: 'Réaliser des',
     catch_phrase_underline: 'idées ambitieuses',
     hi_im: 'Je m\'appelle',
-    p1_reveal: "et je suis un (futur) ingénieur en informatique spécialisé dans le développement logiciel. \nJ'aime résoudre et concevoir des solutions à tous types de problèmes (et tout ça en musique)!",
+    p1_reveal: "et je suis un (futur) ingénieur en informatique spécialisé dans le développement logiciel. \nJ'aime résoudre et concevoir des solutions à tous types de problèmes (et tout cela en musique)!",
 
-    title2: 'Experiences',
+    title2: 'Expériences',
 
     title3: 'Compétences',
     subtitle3: 'Certaines d\'entre elles ;)',

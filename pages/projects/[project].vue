@@ -71,7 +71,7 @@
             <div class="flex flex-col gap-8 xs:flex-row flex-wrap s:gap-12">
               <div class="max-layout-m-c-8-g-7">
                 <h4 class="text-h4">{{ $t('pages.projects.description') }}</h4>
-                <p>
+                <p class="whitespace-pre-line">
                   {{ projectData["description_"+locale]}}
                 </p>
               </div>

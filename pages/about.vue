@@ -1,6 +1,6 @@
 <template>
 <main ref="rootEl" class="text-white overflow-hidden">
-  <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-32">
+  <section :aria-label="$t('pages.about.hi_im') + ' Jérôme Rascle'" class="py-12 s:py-32">
     <div class="responsive-padding-x">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-1">
@@ -95,18 +95,18 @@
     </div>
     <nuxt-img loading="lazy" src="/images/emoji/popcorn.png" alt="Emoji of a popcorn bucket" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
     <nuxt-img loading="lazy" src="/images/emoji/surf.png" alt="Emoji of a man surfing" class="surf absolute top-1/2 left-4 w-16 h-16 xs:left-8 s:w-24 s:h-24 s:left-10 m:w-24 m:h-24 m:left-24"></nuxt-img>
-    <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
+    <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-72 m:bottom-5"></nuxt-img>
   </section>
 
-  <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 pb-72 responsive-padding-x relative h-screen bg-gradient-to-b from-black to-grey-700">
+  <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 responsive-padding-x bg-gradient-to-b from-black to-grey-700">
     <div class="responsive-layout">
-      <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-2-g-2">
+      <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-layout-l-c-1-g-2">
         <div>
           <h4 id="otherStuff" ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">
             {{ $t('pages.about.other_stuff') }}
           </h4>
         </div>
-        <ul class="mt-44">
+        <ul class="relative pt-20 min-h-[min(70vh,_1000px)]">
           <li v-for="(hobby, i) in hobbies" :key="i"
               class="hobby group absolute top-1/2 left-1/2">
             <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
@@ -118,7 +118,7 @@
                 <nuxt-img loading="lazy"
                           :src="hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
                           :alt="hobby['description_'+locale]"
-                          class="w-full h-full max-h-[min(50vh,_600px)] object-cover"
+                          class="w-full h-full max-h-[clamp(50vh,_50vw,_500px)] object-cover"
                 />
               </div>
             </div>
@@ -249,6 +249,7 @@ function initHobbies(){
       translateX:"-50%",
       translateY:"-50%",
       scale:.6,
+      opacity:0,
       rotation: -positions.r,
     }, {
       rotation: positions.r,
@@ -257,6 +258,7 @@ function initHobbies(){
       translateX: positions.x,
       translateY: positions.y,
       scale:1,
+      opacity:1,
       scrollTrigger:{
         trigger: hobby as HTMLElement,
         toggleActions: 'play none none reverse',

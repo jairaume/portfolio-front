@@ -57,7 +57,7 @@
         </MouseLooker>
       </div>
     </section>
-    <div ref="blur" class="z-0 absolute hidden s:block w-1/2 h-1/2 rounded-full top-0 left-0 -translate-x-1/2 -translate-y-1/2 bg-orange-100/10 blur-3xl pointer-events-none"></div>
+    <div ref="blur" class="z-0 absolute opacity-0 hidden m:block w-1/2 h-1/2 rounded-full top-0 left-0 bg-orange-100/10 blur-3xl pointer-events-none"></div>
   </main>
 </template>
 
@@ -67,15 +67,21 @@ const theSection = ref<HTMLElement | null>(null)
 const {$gsap} = useNuxtApp()
 const {x, y, isOutside} = useMouseInElement(theSection)
 
+const {breakpoints} = useDefaultBreakpoints()
+const screenSmall = breakpoints.smaller('m')
+
+const { isMobile } = useDevice();
+
 const blur = ref<HTMLElement | null>(null)
 
 watch([x,y],()=>{
-  if(blur.value){
+  if(blur.value && !isMobile && !screenSmall.value){
     $gsap.to(blur.value, {
-      x: x.value,
-      y: y.value,
+      x: x.value - (blur.value.offsetWidth/2),
+      y: y.value - (blur.value.offsetHeight/2),
+      opacity:1,
       duration: 1,
-      ease: 'power1'
+      ease: 'power2'
     })
   }
 })
