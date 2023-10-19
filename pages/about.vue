@@ -95,7 +95,7 @@
     </div>
     <nuxt-img loading="lazy" src="/images/emoji/popcorn.png" alt="Emoji of a popcorn bucket" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
     <nuxt-img loading="lazy" src="/images/emoji/surf.png" alt="Emoji of a man surfing" class="surf absolute top-1/2 left-4 w-16 h-16 xs:left-8 s:w-24 s:h-24 s:left-10 m:w-24 m:h-24 m:left-24"></nuxt-img>
-    <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-80"></nuxt-img>
+    <nuxt-img loading="lazy" src="/images/emoji/drum.png" alt="Emoji of a drum" class="drum absolute bottom-20 right-16 w-16 h-16 xs:right-20 s:w-24 s:h-24 s:right-32 m:w-24 m:h-24 m:right-72 m:bottom-5"></nuxt-img>
   </section>
 
   <section aria-labelledby="otherStuff" id="hobbyCards" class="py-32 responsive-padding-x bg-gradient-to-b from-black to-grey-700">
