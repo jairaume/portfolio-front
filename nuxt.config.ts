@@ -1,4 +1,5 @@
-export default defineNuxtConfig({
+// @ts-ignore
+export default defineNuxtConfig<NuxtConfig>({
   css: [
     '~/assets/css/main.css',
   ],
@@ -6,6 +7,7 @@ export default defineNuxtConfig({
     supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
     supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
     public: {
+      supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "",
       socialImage: process.env.NUXT_PUBLIC_SOCIAL_IMAGE || "",
     }
@@ -50,6 +52,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
+    '@nuxtjs/device',
     '@nuxtjs/supabase'
   ],
   components: [
