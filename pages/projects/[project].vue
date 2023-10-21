@@ -175,7 +175,7 @@ const { data: other_projects } = await useAsyncData('other_projects', async () =
 
 
 onMounted(()=> {
-  //setTimeout(()=> {
+  setTimeout(()=> {
     if(!projectSwiperElement.value) return
     projectSwiper.value = new Swiper(projectSwiperElement.value, {
       grabCursor: true,
@@ -222,7 +222,7 @@ onMounted(()=> {
         }
       },
     })
-  //}, 1000)
+  }, 1000)
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();

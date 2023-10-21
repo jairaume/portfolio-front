@@ -207,7 +207,7 @@ const { data: skills } = await useAsyncData('skill', async () => {
 })
 
 onMounted(()=> {
-  //setTimeout(()=> {
+  setTimeout(()=> {
     ctx = $gsap.context(() => {
       let mm = $gsap.matchMedia();
       mm.add("(max-width: 1099px)", () => {
@@ -320,7 +320,7 @@ onMounted(()=> {
         });
       })
     }, rootEl.value)
-  //}, 1000)
+  }, 1000)
 })
 
 onUnmounted(() => {
