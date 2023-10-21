@@ -13,7 +13,7 @@ export default defineNuxtConfig<NuxtConfig>({
     }
   },
   app: {
-    pageTransition: { name: 'page', mode: 'out-in' },
+    //pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: {
         lang: 'en'
