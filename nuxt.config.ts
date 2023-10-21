@@ -13,7 +13,7 @@ export default defineNuxtConfig<NuxtConfig>({
     }
   },
   app: {
-    //pageTransition: { name: 'page', mode: 'out-in' },
+    pageTransition: { name: 'page', mode: 'out-in' },
     head: {
       htmlAttrs: {
         lang: 'en'
@@ -85,7 +85,7 @@ export default defineNuxtConfig<NuxtConfig>({
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
-      redirectOn: 'root', // recommended
+      redirectOn: 'root',
     }
   },
   supabase: {
