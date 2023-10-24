@@ -6,7 +6,7 @@
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
           <div ref="projectSwiperElement" class="swiper projectSwiper w-full !overflow-visible">
             <div class="swiper-wrapper">
-              <div class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)] shadow-2xl">
+              <div class="swiper-slide project-image-slide">
                 <nuxt-picture
                     :src="projectData.thumbnail_image"
                     loading="lazy"
@@ -18,20 +18,18 @@
               </div>
               <div v-if="projectData.slider_images && projectData.slider_images.length > 0"
                    v-for="(slider_image, s) in projectData.slider_images" :key="s"
-                   class="swiper-slide rounded-big overflow-hidden min-h-[50vh] max-h-[min(50vh,600px)] shadow-2xl">
+                   class="swiper-slide project-image-slide">
                 <nuxt-picture
                     :src="slider_image"
                     loading="lazy"
-                    :alt="'Slide n°' + (s+1) + ' of project' + projectData.title"
+                    :alt="'Slide n°' + (s+1) + ' of project ' + projectData.title"
                     :img-attrs="{
                       class: 'absolute top-0 left-0 h-full w-full object-cover object-center',
                     }"
                 ></nuxt-picture>
               </div>
             </div>
-            <!-- If we need pagination -->
             <div class="swiper-pagination" v-show="projectData.slider_images && projectData.slider_images.length > 0"></div>
-            <!-- If we need navigation buttons -->
             <div class="absolute w-full top-1/2 -translate-y-1/2 flex justify-between z-50">
 
               <div class="swiper-button-prev">
@@ -114,7 +112,7 @@
             >
               <div class="absolute w-full h-full top-0 left-0">
                 <nuxt-picture :src="other_project.thumbnail_image"
-                              alt="Projects – Grangette"
+                              :alt="other_project.title"
                               class="w-full h-full rounded-big"
                               :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
                 />
@@ -138,7 +136,7 @@
 <script setup lang="ts">
 import Swiper from "swiper";
 import 'swiper/css';
-import type {Project} from "types";
+import type {Project} from "~/types";
 import {annotate} from "rough-notation";
 
 const supabase = useSupabaseClient()
@@ -198,7 +196,7 @@ onMounted(()=> {
         rotate: 0,
         scale: 0.8,
       },
-      spaceBetween: 50,
+      spaceBetween: -10,
       mousewheel: {
         forceToAxis: true,
       },
@@ -284,6 +282,10 @@ useHead({htmlAttrs: {lang: locale.value}})
     &:hover div i{
       @apply s:-translate-x-2
     }
+  }
+
+  .project-image-slide {
+    @apply relative rounded-big overflow-hidden min-h-[70vh] max-h-[1200px] shadow-2xl;
   }
 
 </style>

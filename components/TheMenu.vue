@@ -68,6 +68,7 @@
 </template>
 
 <script setup lang="ts">
+
 const {$gsap} = useNuxtApp()
 const route = useRoute()
 const expanded = ref(false)
