@@ -37,6 +37,8 @@ watch([x, y], () => {
       $gsap.to(element.value as HTMLElement, {
         rotation: lookingAngle.value + "_short",
         scale: $gsap.utils.clamp(.5, 1.5, 1 + distance.value/1000),
+        translateX: $gsap.utils.clamp(-50, 50, (x.value - trueOrigin.value.x)/10),
+        translateY: $gsap.utils.clamp(-50, 50, (y.value - trueOrigin.value.y)/10),
         duration: 2,
         ease: "power3",
       })
