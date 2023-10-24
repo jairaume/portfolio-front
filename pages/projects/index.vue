@@ -6,7 +6,7 @@
         <div class="responsive-layout">
           <div class="grid gap-y-12 py-12">
 
-            <CardProject v-for="(project, i) in projects" :project="project" :width="width" :height="height" :key="i" />
+            <CardProject v-for="(project, i) in projects" :project="project as Project" :width="width" :height="height" :key="i" />
 
           </div>
         </div>
@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import type {Project} from "types";
+import type {Project} from "~/types";
 
 const supabase = useSupabaseClient()
 const {t, locale} = useI18n()

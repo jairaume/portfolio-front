@@ -6,7 +6,7 @@
   >
     <div class="absolute w-full h-full top-0 left-0">
       <nuxt-picture :src="project.thumbnail_image"
-                    alt="Projects – Grangette"
+                    :alt="project.title"
                     class="w-full h-full rounded-big"
                     :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
       />
@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import {Project} from "types";
+import type {Project} from "~/types";
 
 const props = defineProps<{
   project: Project

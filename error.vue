@@ -41,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+
 useSeoMeta({
   title: '404 Error',
   description: 'The page you\'re trying to reach does not exist.',
