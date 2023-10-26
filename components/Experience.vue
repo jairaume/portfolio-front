@@ -14,7 +14,8 @@
           }) : $t('common.now')
         }}
       </h3>
-      <h4 class="text-h4">{{ experience["position_" + locale] }} · {{ experience.company }}</h4>
+      <h4 class="text-h4 font-black">
+        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h4>
       <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
@@ -35,7 +36,8 @@
           }) : $t('common.now')
         }}
       </h3>
-      <h4 class="text-h4">{{ experience["position_" + locale] }} · {{ experience.company }}</h4>
+      <h4 class="text-h4 font-black">
+        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h4>
       <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
