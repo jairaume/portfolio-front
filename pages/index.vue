@@ -110,7 +110,7 @@
                 {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
               </h4>
               <div class="xs:col-start-2">
-                <h4 class="text-h4 font-medium">
+                <h4 class="text-h4 font-light">
                   {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
                 </h4>
                 <p class="whitespace-pre-line text-grey-100 font-light max-layout-xs-c-1-g-1 xs:max-layout-s-c-5-g-5 s:max-layout-m-c-3-g-3 m:max-layout-l-c-2-g-3">
