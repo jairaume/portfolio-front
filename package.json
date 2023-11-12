@@ -19,6 +19,8 @@
     "autoprefixer": "^10.4.15",
     "nuxi": "^3.9.1",
     "nuxt": "^3.8.0",
+    "nuxt-simple-robots": "^3.1.9",
+    "nuxt-simple-sitemap": "^4.0.1",
     "postcss": "^8.4.31",
     "sass": "^1.66.1",
     "tailwindcss": "^3.3.3"
