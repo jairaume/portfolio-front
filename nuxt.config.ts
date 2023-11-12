@@ -53,13 +53,16 @@ export default defineNuxtConfig<NuxtConfig>({
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/device',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    'nuxt-simple-sitemap',
+    'nuxt-simple-robots'
   ],
   components: [
     { path: '~/components/Card' , prefix: 'Card'},
     '~/components',
   ],
   i18n: {
+    baseUrl: `${process.env.NUXT_PUBLIC_SITE_URL}/`,
     vueI18n: './i18n.config.ts',
     experimental: {
       jsTsFormatResource: true
