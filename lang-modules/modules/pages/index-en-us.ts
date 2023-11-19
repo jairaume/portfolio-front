@@ -1,4 +1,4 @@
-import {LangPages} from "~/lang-modules/types";
+import type {LangPages} from "~/lang-modules/types";
 import {home} from "~/lang-modules/modules/pages/home/en-us";
 import {about} from "~/lang-modules/modules/pages/about/en-us";
 import {projects} from "~/lang-modules/modules/pages/projects/en-us";

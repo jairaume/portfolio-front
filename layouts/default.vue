@@ -7,6 +7,18 @@
   </div>
 </template>
 
+<script setup lang="ts">
+const route = useRoute()
+useHead(() => ({
+  link: [
+    {
+      rel: 'canonical',
+      href: (process.env.NUXT_PUBLIC_SITE_URL || "https://rasclejero.me") + route.path,
+    },
+  ],
+}))
+</script>
+
 <style>
 .page-enter-active,
 .page-leave-active {

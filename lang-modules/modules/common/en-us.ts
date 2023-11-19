@@ -1,11 +1,11 @@
-import {LangCommon} from "~/lang-modules/types";
+import type {LangCommon} from "~/lang-modules/types";
 
 export const common: LangCommon = {
     // Page names
-    home: 'home',
-    about: 'about',
-    projects: 'projects',
-    contact: 'contact',
+    home: 'Home',
+    about: 'About',
+    projects: 'Projects',
+    contact: 'Contact',
 
     // Buttons
     more_about: 'Get to know me',

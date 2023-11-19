@@ -275,8 +275,7 @@ function initHobbies(){
 }
 
 onMounted(() => {
-  setTimeout(()=> {
-    ctx = $gsap.context(()=>{
+  ctx = $gsap.context(()=>{
     const tl = $gsap.timeline()
     tl.to(prenom.value,revealNameTo)
     tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
@@ -380,7 +379,6 @@ onMounted(() => {
     if(!hobbiesLoaded.value) initHobbies()
 
   }, rootEl.value)
-  }, 1000)
 })
 
 onUnmounted(() => {

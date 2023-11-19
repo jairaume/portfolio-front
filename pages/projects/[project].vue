@@ -173,54 +173,52 @@ const { data: other_projects } = await useAsyncData('other_projects', async () =
 
 
 onMounted(()=> {
-  setTimeout(()=> {
-    if(!projectSwiperElement.value) return
-    projectSwiper.value = new Swiper(projectSwiperElement.value, {
-      grabCursor: true,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
+  if(!projectSwiperElement.value) return
+  projectSwiper.value = new Swiper(projectSwiperElement.value, {
+    grabCursor: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    slidesPerView: 1,
+    autoplay: {
+      delay: 3000,
+    },
+    speed: 800,
+    effect: 'coverflow',
+    coverflowEffect: {
+      depth: 50,
+      rotate: 0,
+      scale: 0.8,
+    },
+    spaceBetween: -10,
+    mousewheel: {
+      forceToAxis: true,
+    },
+  })
+  const viewOthersAnnotate = annotate(viewOthers.value as HTMLElement, {
+    type: 'highlight',
+    multiline:true,
+    color: projectData.value?.color || '#ffffff',
+  })
+  $gsap.from(viewOthers.value as HTMLElement, {
+    scrollTrigger: {
+      trigger: viewOthers.value as HTMLElement,
+      start: 'top 75%',
+      end: 'bottom center',
+      scrub: 2,
+      onEnter: () => {
+        viewOthersAnnotate.show()
       },
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      slidesPerView: 1,
-      autoplay: {
-        delay: 3000,
-      },
-      speed: 800,
-      effect: 'coverflow',
-      coverflowEffect: {
-        depth: 50,
-        rotate: 0,
-        scale: 0.8,
-      },
-      spaceBetween: -10,
-      mousewheel: {
-        forceToAxis: true,
-      },
-    })
-    const viewOthersAnnotate = annotate(viewOthers.value as HTMLElement, {
-      type: 'highlight',
-      multiline:true,
-      color: projectData.value?.color || '#ffffff',
-    })
-    $gsap.from(viewOthers.value as HTMLElement, {
-      scrollTrigger: {
-        trigger: viewOthers.value as HTMLElement,
-        start: 'top 75%',
-        end: 'bottom center',
-        scrub: 2,
-        onEnter: () => {
-          viewOthersAnnotate.show()
-        },
-        onLeaveBack: () => {
-          viewOthersAnnotate.hide()
-        }
-      },
-    })
-  }, 1000)
+      onLeaveBack: () => {
+        viewOthersAnnotate.hide()
+      }
+    },
+  })
 })
 
 const {public: {siteUrl}} = useRuntimeConfig();

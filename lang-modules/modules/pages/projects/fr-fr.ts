@@ -1,4 +1,4 @@
-import {LangProjects} from "~/lang-modules/types";
+import type {LangProjects} from "~/lang-modules/types";
 
 export const projects: LangProjects = {
     meta_title: "Jérôme Rascle - Projets",

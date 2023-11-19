@@ -62,7 +62,7 @@ export default defineNuxtConfig<NuxtConfig>({
     '~/components',
   ],
   i18n: {
-    baseUrl: `${process.env.NUXT_PUBLIC_SITE_URL}/`,
+    baseUrl: `${process.env.NUXT_PUBLIC_SITE_URL}` || "https://rasclejero.me",
     vueI18n: './i18n.config.ts',
     experimental: {
       jsTsFormatResource: true
