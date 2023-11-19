@@ -1,4 +1,4 @@
-import {LangContact} from "~/lang-modules/types";
+import type {LangContact} from "~/lang-modules/types";
 
 export const contact: LangContact = {
     meta_title: "Jérôme Rascle - Contact",

@@ -6396,7 +6396,7 @@ nuxt-site-config@^1.5.5:
     site-config-stack "1.5.5"
     ufo "^1.3.1"
 
-nuxt@^3.8.0, nuxt@^3.8.1:
+nuxt@^3.8.1:
   version "3.8.1"
   resolved "https://registry.npmjs.org/nuxt/-/nuxt-3.8.1.tgz"
   integrity sha512-RSGO56Gv0x2f6AXWw4o4GoBaVdsD0qkPCjrX7Ud/jzH3cRJoyYMPuq/9AOLvf2o1ecZWl39j5elqJ4QHmggyOA==
@@ -7571,9 +7571,9 @@ setprototypeof@1.2.0:
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
 sharp@^0.32.1:
-  version "0.32.5"
-  resolved "https://registry.npmjs.org/sharp/-/sharp-0.32.5.tgz"
-  integrity sha512-0dap3iysgDkNaPOaOL4X/0akdu0ma62GcdC2NBQ+93eqpePdDdr2/LM0sFdDSMmN7yS+odyZtPsb7tx/cYBKnQ==
+  version "0.32.6"
+  resolved "https://registry.npmjs.org/sharp/-/sharp-0.32.6.tgz"
+  integrity sha512-KyLTWwgcR9Oe4d9HwCwNM2l7+J0dUQwn/yf7S0EnTtb0eVS4RxO0eUSvxPtzT4F3SY+C4K6fqdv/DO27sJ/v/w==
   dependencies:
     color "^4.2.3"
     detect-libc "^2.0.2"

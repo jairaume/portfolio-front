@@ -1,4 +1,4 @@
-import {LangHome} from "~/lang-modules/types";
+import type {LangHome} from "~/lang-modules/types";
 
 export const home: LangHome = {
     meta_title: 'Jérôme Rascle - Accueil',

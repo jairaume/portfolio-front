@@ -207,120 +207,118 @@ const { data: skills } = await useAsyncData('skill', async () => {
 })
 
 onMounted(()=> {
-  setTimeout(()=> {
-    ctx = $gsap.context(() => {
-      let mm = $gsap.matchMedia();
-      mm.add("(max-width: 1099px)", () => {
-        $gsap.from(".projects_wrapper", {x: 0})
+  ctx = $gsap.context(() => {
+    let mm = $gsap.matchMedia();
+    mm.add("(max-width: 1099px)", () => {
+      $gsap.from(".projects_wrapper", {x: 0})
 
-        const draggable = $Draggable.create('.projects_wrapper', {
-          type: "x",
-          edgeResistance: .2,
-          bounds: {
-            minX: -1500,
-            maxX: 0
-          }
-        });
-
-        return () => {
-          draggable[0].kill()
+      const draggable = $Draggable.create('.projects_wrapper', {
+        type: "x",
+        edgeResistance: .2,
+        bounds: {
+          minX: -1500,
+          maxX: 0
         }
       });
 
-      mm.add("(min-width: 1100px)", () => {
-        $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
-          padding: 0,
-          maxWidth: "100vw",
-          scrollTrigger: {
-            trigger: heroBox.value,
-            scrub: 1,
-            start: "75% center",
-            endTrigger: revealText.value,
-            end: "top 10%",
-          }
-        })
-        $gsap.to(heroBox.value, {
-          borderRadius: 0,
-          background: "rgb(30,30,30)",
-          scrollTrigger: {
-            trigger: heroBox.value,
-            scrub: 1,
-            start: "75% center",
-            endTrigger: revealText.value,
-            end: "top 10%",
-          }
-        })
+      return () => {
+        draggable[0].kill()
+      }
+    });
 
-        const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
-          type: 'underline',
-          multiline: true,
-          color: "rgba(237, 112, 45, .2)",
-          strokeWidth: 8,
-        })
-        heroAnnotation.show()
-        roundPaths()
-
-        $gsap.set(heroContent.value, {transformOrigin: "top"})
-        $gsap.to(heroContent.value, {
-          opacity: 0,
-          top: -100,
-          scrollTrigger: {
-            trigger: heroBox.value,
-            scrub: 1,
-            start: "75% center",
-            endTrigger: revealText.value,
-            end: "top 10%",
-          }
-        })
-
-        $gsap.to(revealContainer.value, {
-          duration: 1,
-          scrollTrigger: {
-            trigger: revealText.value,
-            scrub: 1,
-            pin: true,
-            start: "top top",
-            end: "200% bottom",
-          }
-        })
-
-        $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
-          backgroundPositionX: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#reveal-text",
-            scrub: 1,
-            start: "top top",
-            end: "25% top",
-          }
-        });
-
-        $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
-          backgroundPositionY: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: "#reveal-text-paragraph",
-            scrub: 1,
-            start: "center 25%",
-            end: "175% 25%",
-          }
-        });
-
-        $gsap.fromTo(".projects_wrapper", {x: 0}, {
-          xPercent: -120,
-          ease: "none",
-          scrollTrigger: {
-            trigger: projects.value,
-            pin: true,
-            scrub: 1,
-            start: "center center",
-            end: "+=100%",
-            invalidateOnRefresh: true,
-          }
-        });
+    mm.add("(min-width: 1100px)", () => {
+      $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
+        padding: 0,
+        maxWidth: "100vw",
+        scrollTrigger: {
+          trigger: heroBox.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%",
+        }
       })
-    }, rootEl.value)
-  }, 1000)
+      $gsap.to(heroBox.value, {
+        borderRadius: 0,
+        background: "rgb(30,30,30)",
+        scrollTrigger: {
+          trigger: heroBox.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%",
+        }
+      })
+
+      const heroAnnotation = annotate(heroAnnotate.value as HTMLElement, {
+        type: 'underline',
+        multiline: true,
+        color: "rgba(237, 112, 45, .2)",
+        strokeWidth: 8,
+      })
+      heroAnnotation.show()
+      roundPaths()
+
+      $gsap.set(heroContent.value, {transformOrigin: "top"})
+      $gsap.to(heroContent.value, {
+        opacity: 0,
+        top: -100,
+        scrollTrigger: {
+          trigger: heroBox.value,
+          scrub: 1,
+          start: "75% center",
+          endTrigger: revealText.value,
+          end: "top 10%",
+        }
+      })
+
+      $gsap.to(revealContainer.value, {
+        duration: 1,
+        scrollTrigger: {
+          trigger: revealText.value,
+          scrub: 1,
+          pin: true,
+          start: "top top",
+          end: "200% bottom",
+        }
+      })
+
+      $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
+        backgroundPositionX: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#reveal-text",
+          scrub: 1,
+          start: "top top",
+          end: "25% top",
+        }
+      });
+
+      $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
+        backgroundPositionY: 0,
+        ease: "none",
+        scrollTrigger: {
+          trigger: "#reveal-text-paragraph",
+          scrub: 1,
+          start: "center 25%",
+          end: "175% 25%",
+        }
+      });
+
+      $gsap.fromTo(".projects_wrapper", {x: 0}, {
+        xPercent: -120,
+        ease: "none",
+        scrollTrigger: {
+          trigger: projects.value,
+          pin: true,
+          scrub: 1,
+          start: "center center",
+          end: "+=100%",
+          invalidateOnRefresh: true,
+        }
+      });
+    })
+  }, rootEl.value)
 })
 
 onUnmounted(() => {
