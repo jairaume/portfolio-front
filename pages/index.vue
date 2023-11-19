@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28 max-w-screen overflow-hidden">
-    <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-grey-50 h-[clamp(600px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-gradient-to-b to-black from-orange-200 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-center py-6">
@@ -49,7 +49,7 @@
         </div>
       </div>
       <div ref="heroBoxCtn" class="z-0 absolute w-full h-full top-2 xs:top-0 left-1/2 -translate-x-1/2 p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px]">
-        <div ref="heroBox" class="relative bg-black rounded-big w-full h-full overflow-hidden">
+        <div ref="heroBox" class="relative bg-black shadow-xl rounded-big w-full h-full overflow-hidden">
           <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-1/2 bg-orange-100/10 rounded-full blur-3xl"></div>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative">
             <h3 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h3>
-            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle</h1>
+            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h1>
             <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
               {{ $t('pages.home.p1_reveal') }}
             </h3>
