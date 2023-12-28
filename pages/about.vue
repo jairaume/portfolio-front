@@ -67,6 +67,7 @@
     <div class="responsive-layout space-y-6">
         <h1 id="skills" class="text-big-title">{{ $t('pages.about.title3') }}</h1>
       <div class="relative px-layout-xs-c-0-g-1 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-0">
+        <div class="absolute z-0 w-2/3 s:w-1/2 h-3/4 s:h-1/2 blur-3xl bg-orange-100/20 opacity-75 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
         <ul class="grid gap-12">
           <li :id="'skill_'+skill['skill_name_'+locale]" v-for="skill in all_skills" :key="skill.id" class="flex flex-col gap-2 s:items-start relative pb-6
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
@@ -79,7 +80,6 @@
             </div>
           </li>
         </ul>
-          <div class="absolute z-0 w-2/3 s:w-1/2 h-3/4 s:h-1/2 blur-3xl bg-orange-100/20 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
       </div>
 
     </div>
@@ -164,7 +164,7 @@ const revealNameTo: gsap.TweenVars = {
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
   start: 'top 75%',
-  end: 'center center',
+  end: 'bottom center',
   scrub: 1
 }
 
