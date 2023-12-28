@@ -101,7 +101,7 @@
         <div class="gap-y-12 flex flex-col justify-between">
           <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
 
-          <div class="grid gap-4 xs:grid-cols-2">
+          <div class="grid gap-4 xs:grid-cols-3">
 
             <template v-for="(experience, i) in featured_experiences" :key="i">
               <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1">
@@ -109,7 +109,7 @@
                 &nbsp;–&nbsp;
                 {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
               </h4>
-              <div class="xs:col-start-2">
+              <div class="xs:col-start-2 xs:col-span-2">
                 <h4 class="text-h4 font-light">
                   {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
                 </h4>
@@ -134,7 +134,7 @@
         <div class="gap-y-8 flex flex-col justify-between">
           <h1 class="relative text-big-title text-center xs:text-left">
             {{ $t('pages.home.title3') }}
-            <span class="text-xs font-light absolute bottom-0 s:left-0"> {{ $t('pages.home.subtitle3') }} </span>
+            <span class="text-xs font-light absolute top-0 right-0 xs:bottom-0 xs:top-auto xs:right-auto xs:left-0"> {{ $t('pages.home.subtitle3') }} </span>
           </h1>
 
           <div class="grid gap-8 group">
