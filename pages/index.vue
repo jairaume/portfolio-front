@@ -1,6 +1,6 @@
 <template>
   <main ref="rootEl" id="rootEl" class="bg-black -mt-28 max-w-screen overflow-hidden">
-    <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-gradient-to-b to-black from-orange-200 h-[clamp(600px,_80vh,_1000px)]">
+    <section aria-labelledby="job_title" ref="heroSection" class="max-w-[100dvw] overflow-hidden relative bg-gradient-to-b to-black from-grey-500 h-[clamp(600px,_80vh,_1000px)]">
       <div class="p-4 xs:p-6 s:px-8 m:px-12 max-w-[1400px] mx-auto h-full">
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-center py-6">
@@ -56,15 +56,15 @@
     </section>
 
     <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-20 xs:py-24 m:py-32 min-h-[100vh] responsive-padding-x max-w-[100dvw]">
-      <div ref="revealContainer" id="reveal-container" class="">
+      <div ref="revealContainer" id="reveal-container">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
-          <div class="relative">
+          <div class="relative isolate">
             <h3 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h3>
-            <h1 id="reveal-text-content" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h1>
-            <h3 id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal reveal-text-vertical">
-              {{ $t('pages.home.p1_reveal') }}
-            </h3>
-            <div class="absolute z-0 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
+            <h1 id="reveal-text-title" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h1>
+            <p id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal">
+              <span>{{ $t('pages.home.p1_reveal') }}</span>
+            </p>
+            <div class="absolute -z-10 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
           <nuxt-link :title="$t('common.more_about')" :to="localePath('/about')" class="btn btn-orange-100 w-fit">
             <p>{{ $t('common.more_about') }}</p>
@@ -227,6 +227,7 @@ onMounted(()=> {
     });
 
     mm.add("(min-width: 1100px)", () => {
+      //HERO SECTION
       $gsap.fromTo(heroBoxCtn.value, {maxWidth: "1400px"}, {
         padding: 0,
         maxWidth: "100vw",
@@ -272,39 +273,47 @@ onMounted(()=> {
         }
       })
 
-      $gsap.to(revealContainer.value, {
-        duration: 1,
-        scrollTrigger: {
-          trigger: revealText.value,
-          scrub: 1,
-          pin: true,
-          start: "top top",
-          end: "200% bottom",
-        }
+      //REVEAL TEXT SECTION
+      $gsap.set('p#reveal-text-paragraph > span', {
+        '--progress': 0,
+        backgroundPositionX: 'calc(-400vmax + (var(--progress) * 400vmax)), calc(-400vmax + (var(--progress) * 400vmax)), 0',
+        color: 'transparent',
       })
 
-      $gsap.fromTo("#reveal-text-content", {backgroundPositionX: "100%"}, {
+      $gsap.fromTo("#reveal-text-title", {backgroundPositionX: "100%"}, {
         backgroundPositionX: 0,
         ease: "none",
         scrollTrigger: {
           trigger: "#reveal-text",
+          endTrigger: revealContainer.value,
           scrub: 1,
-          start: "top top",
-          end: "25% top",
+          start: "-50% top",
+          end: 'top-=100px top',
         }
       });
 
-      $gsap.fromTo("#reveal-text-paragraph", {backgroundPositionY: "100%"}, {
-        backgroundPositionY: 0,
-        ease: "none",
+      $gsap.to('p#reveal-text-paragraph > span', {
+        '--progress': 1,
         scrollTrigger: {
-          trigger: "#reveal-text-paragraph",
-          scrub: 1,
-          start: "center 25%",
-          end: "175% 25%",
+          trigger: revealContainer.value,
+          scrub: .5,
+          start: 'top-=100px top',
+          end: '300% 75%',
+          pin: true,
+          anticipatePin: 1,
         }
-      });
+      })
+      $gsap.to('p#reveal-text-paragraph > span', {
+        color: 'white',
+        scrollTrigger: {
+          trigger: revealText.value,
+          scrub: 0.5,
+          start: 'bottom-=20% bottom',
+          end: 'bottom-=5% bottom',
+        }
+      })
 
+      //PROJECTS SECTION
       $gsap.fromTo(".projects_wrapper", {x: 0}, {
         xPercent: -120,
         ease: "none",
@@ -340,25 +349,30 @@ useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>
+svg.rough-annotation path{
+  border-radius: 4px;
+}
+
 .reveal-text {
   @screen m{
     @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
     background-size: 200% 100%;
   }
 }
-
-#reveal-text {
-  contain: paint;
-}
-
-.reveal-text-vertical {
-  @screen m {
-    @apply bg-gradient-to-b bg-bottom from-40% via-[49%] to-50% from-grey-50 via-white to-grey-500 bg-clip-text text-transparent;
-    background-size: 100% 200%;
-  }
-}
-
-svg.rough-annotation path{
-  border-radius: 4px;
+p#reveal-text-paragraph > span {
+  background-image:
+		/* First one is the highlight */
+		linear-gradient(90deg, transparent calc(100% - 8ch), transparent calc(100%  - 8ch), white 100%),
+  	linear-gradient(90deg, hsl(0 0% 50%),hsl(0 0% 50%)),
+    linear-gradient(90deg, hsl(0 0% 50% / 0.15),hsl(0 0% 50% / 0.15));
+  background-size:
+    400vmax 1lh,
+    400vmax 1lh,
+    100% 1lh;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 100%;
+  background-clip: text;
+  color: white;
 }
 </style>
