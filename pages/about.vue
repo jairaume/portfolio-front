@@ -10,11 +10,11 @@
               <nuxt-img preload src="/images/jerome.jpeg" alt="Picture of Jérôme Rascle" class="absolute w-full h-full top-0 left-0 object-cover rounded shadow-custom-ondark"/>
             </div>
 
-            <div class="text-white flex flex-col gap-2">
+            <div class="flex flex-col gap-2">
               <h4 class="text-h4">{{ $t('pages.about.hi_im') }}</h4>
-              <h1 class="text-h1 text-grey-500 leading-none">
-                <span ref="prenom" class="reveal-text">Jérôme </span>
-                <span ref="nom" class="reveal-text">Rascle</span></h1>
+              <h1 id="reveal-name" class="text-h1 leading-none">
+                <span>Jérôme Rascle</span>
+              </h1>
               <p class="whitespace-pre-line xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
                 {{ $t('pages.about.p1') }}
               </p>
@@ -139,9 +139,6 @@ const rootEl = ref()
 const supabase = useSupabaseClient()
 const {downloadResume} = useDownloadResume()
 
-const prenom = ref<HTMLElement|null>(null)
-const nom = ref<HTMLElement|null>(null)
-
 const movieAnnotate = ref<HTMLElement>()
 const surfAnnotate = ref<HTMLElement>()
 const drumsAnnotate = ref<HTMLElement>()
@@ -154,12 +151,6 @@ let ctx: gsap.Context;
 
 const experiencesLoaded = ref(false)
 const hobbiesLoaded = ref(false)
-
-const revealNameTo: gsap.TweenVars = {
-  backgroundPositionX:0,
-  duration:1,
-  ease: 'power2.in',
-}
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
@@ -276,9 +267,12 @@ function initHobbies(){
 
 onMounted(() => {
   ctx = $gsap.context(()=>{
-    const tl = $gsap.timeline()
-    tl.to(prenom.value,revealNameTo)
-    tl.to(nom.value,{...revealNameTo, ease:"power2.out"},1)
+    $gsap.set("#reveal-name > span", {
+      '--progress': 0,
+      backgroundPositionX: 'calc(-100vmax + (var(--progress) * 100vmax)), calc(-100vmax + (var(--progress) * 100vmax)), 0',
+      color: 'transparent',
+    })
+    $gsap.to("#reveal-name > span", {'--progress': 1, duration: 2, ease: 'power1.out', delay: .5})
 
     const movieAnnotation = annotate(movieAnnotate.value as HTMLElement, {type: 'underline', multiline: true, color: "rgba(237, 112, 45, .5)"})
     const surfAnnotation = annotate(surfAnnotate.value as HTMLElement, {type: 'box', multiline: true, color: "rgba(237, 112, 45, .5)"})
@@ -399,10 +393,23 @@ useHead({htmlAttrs: {lang: locale.value}})
 </script>
 
 <style scoped>
-.reveal-text {
-  @apply bg-gradient-to-r bg-right-top from-40% via-[49%] to-50% from-orange-100 via-orange-300 to-grey-500 bg-clip-text text-transparent;
-  background-size: 230% 100%;
+#reveal-name > span {
+  background-image:
+		/* First one is the highlight */
+		linear-gradient(90deg, transparent calc(100% - 2ch), transparent calc(100%  - 2ch), theme('colors.orange.50') 100%),
+  	linear-gradient(90deg, theme('colors.orange.100'), theme('colors.orange.100')),
+    linear-gradient(90deg, hsl(0 0% 50% / 0.15),hsl(0 0% 50% / 0.15));
+  background-size:
+    100vmax 2lh,
+    100vmax 2lh,
+    100% 2lh;
+  background-repeat: no-repeat;
+  background-position-x: 0;
+  background-position-y: 100%;
+  background-clip: text;
+  color: transparent;
 }
+
 
 .line-section{
   @apply bg-grey-300 w-full rounded-full;
