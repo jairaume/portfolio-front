@@ -16,7 +16,7 @@
                 <span>Jérôme Rascle</span>
               </h1>
               <p class="whitespace-pre-line xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
-                {{ $t('pages.about.p1') }}
+                {{ $t('pages.about.p1', {age: computedAge }) }}
               </p>
               <div class="grid gap-4 mt-8">
                 <p class="text-orange-100">{{ $t('pages.about.philosophy') }}</p>
@@ -134,6 +134,17 @@
 import type {Experience, Skill, Hobby} from "~/types";
 import {annotate} from "rough-notation";
 import {useDownloadResume} from "~/composables/useDownloadResume";
+
+const birthdate = new Date(2002,0,9)
+const computedAge = computed<number>(()=>{
+  const today = new Date()
+  let age = today.getFullYear() - birthdate.getFullYear()
+  const m = today.getMonth() - birthdate.getMonth();
+  if (m < 0) {
+    age--;
+  }
+  return age;
+})
 
 const rootEl = ref()
 const supabase = useSupabaseClient()
@@ -395,7 +406,6 @@ useHead({htmlAttrs: {lang: locale.value}})
 <style scoped>
 #reveal-name > span {
   background-image:
-		/* First one is the highlight */
 		linear-gradient(90deg, transparent calc(100% - 2ch), transparent calc(100%  - 2ch), theme('colors.orange.50') 100%),
   	linear-gradient(90deg, theme('colors.orange.100'), theme('colors.orange.100')),
     linear-gradient(90deg, hsl(0 0% 50% / 0.15),hsl(0 0% 50% / 0.15));
