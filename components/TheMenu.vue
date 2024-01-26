@@ -1,6 +1,6 @@
 <template>
   <header id="menu" class="w-full z-50 sticky top-0 text-white">
-    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2 backdrop-blur-md">
+    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2 duration-300" :class="{'backdrop-blur-md' : scrolled}">
       <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta px-8 hidden m:block">
         {{ $t('common.home') }}
       </nuxt-link>
