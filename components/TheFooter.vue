@@ -61,7 +61,9 @@
     </div>
 
     <p class="text-center text-xs text-grey-100 py-2">
-      Designed & Made with 🎶 by <span class="font-extrabold">Jérôme Rascle</span><span class="text-orange-100"> | </span> © {{ $t('common.footer.all_rights_reserved') }}
+      © {{ $t('common.footer.all_rights_reserved') }} {{ new Date().getFullYear() }} 
+      <span class="text-orange-100"> | </span>
+      Designed & Made with 🎶 by <span class="font-extrabold">Jérôme Rascle</span>
     </p>
 
   </footer>

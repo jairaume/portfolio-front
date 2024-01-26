@@ -224,11 +224,12 @@ onMounted(()=> {
 const {public: {siteUrl}} = useRuntimeConfig();
 
 useSeoMeta({
-  title: "Jérôme Rascle - "+projectData.value.title,
-  ogTitle: "Jérôme Rascle - "+projectData.value.title,
+  title: "Jérôme Rascle - "+projectData.value?.title,
+  ogTitle: "Jérôme Rascle - "+projectData.value?.title,
   ogSiteName: 'Jérôme Rascle',
   ogDescription: projectData.value["description_"+locale.value],
   ogUrl: siteUrl,
+  ogImage: projectData.value?.thumbnail_image
 })
 
 useHead({htmlAttrs: {lang: locale.value}})
