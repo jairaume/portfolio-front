@@ -4,7 +4,7 @@
     <div v-if="left" class="experience grid px-4 h-fit relative">
       <span
           class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 right-0 translate-x-1/2 translate-y-1/2"></span>
-      <h3 class="text-monument-h3 text-orange-100 text-right font-light s:absolute top-0 s:left-full w-full s:text-left s:pl-8 s:translate-y-1/2">
+      <h2 class="text-monument-h3 text-orange-100 text-right font-light s:absolute top-0 s:left-full w-full s:text-left s:pl-8 s:translate-y-1/2">
         {{ new Date(experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
         &nbsp;–&nbsp;
         {{
@@ -13,9 +13,9 @@
             year: 'numeric'
           }) : $t('common.now')
         }}
-      </h3>
-      <h4 class="text-h4 font-black">
-        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h4>
+      </h2>
+      <h3 class="text-h4 font-black">
+        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h3>
       <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
@@ -26,7 +26,7 @@
     <div v-else class="experience col-start-2 grid px-4 h-fit relative">
       <span
           class="w-4 h-4 border-4 bg-white border-white shadow rounded-full absolute top-0 left-0 -translate-x-1/2 translate-y-1/2"></span>
-      <h3 class="text-monument-h3 text-orange-100 text-left font-light s:absolute top-0 s:right-full w-full s:text-right s:pr-8 s:translate-y-1/2">
+      <h2 class="text-monument-h3 text-orange-100 text-left font-light s:absolute top-0 s:right-full w-full s:text-right s:pr-8 s:translate-y-1/2">
         {{ new Date(experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
         &nbsp;–&nbsp;
         {{
@@ -35,9 +35,9 @@
             year: 'numeric'
           }) : $t('common.now')
         }}
-      </h3>
-      <h4 class="text-h4 font-black">
-        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h4>
+      </h2>
+      <h3 class="text-h4 font-black">
+        <span class="font-light">{{ experience["position_" + locale] }}</span> · {{ experience.company }}</h3>
       <p class="whitespace-pre-line text-grey-50 text-sm font-light">
         {{
           experience["description_" + locale]
