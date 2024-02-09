@@ -5,14 +5,14 @@
         <div ref="heroContent" class="relative z-10 py-8 pt-32 xs:pt-12 h-full">
           <div class="relative h-full flex flex-col items-center justify-center py-6">
             <div class="relative text-white text-center px-8">
-              <h4 id="job_title" class="text-h4 text-white">
+              <h1 id="job_title" class="text-h4 text-white">
                 <span class="text-orange-100">Jérôme Rascle</span>
                 <span class="font-light"> – {{ $t('pages.home.job_title') }}.</span>
-              </h4>
-              <h1 class="text-h1">
+              </h1>
+              <h2 class="text-h1">
                 <span class="font-light text-grey-50">{{ $t('pages.home.catch_phrase') }}&nbsp;</span>
                 <span ref="heroAnnotate">{{ $t('pages.home.catch_phrase_underline') }}</span>
-              </h1>
+              </h2>
 
               <div class="absolute m-0 my-6 m:my-20 left-12 s:left-8 bottom-full blur s:blur-sm">
                 <MouseLooker :active="!isOutsideHero">
@@ -59,8 +59,8 @@
       <div ref="revealContainer" id="reveal-container">
         <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
           <div class="relative isolate">
-            <h3 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h3>
-            <h1 id="reveal-text-title" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h1>
+            <h2 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h2>
+            <h2 id="reveal-text-title" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h2>
             <p id="reveal-text-paragraph" class="whitespace-pre-line text-white font-bold text-h3 leading-normal">
               <span>{{ $t('pages.home.p1_reveal') }}</span>
             </p>
@@ -83,7 +83,7 @@
     <section aria-label="Projects" class="relative bg-grey-900 text-white py-20 w-screen overflow-hidden">
       <div class="responsive-layout">
         <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1">
-          <h1 class="text-big-title py-8">{{$t('common.more_projects')}}</h1>
+          <h2 class="text-big-title py-8">{{$t('common.more_projects')}}</h2>
         </div>
         <div ref="projects" class="projects_wrapper will-change-transform flex space-x-8 px-8">
           <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
@@ -99,16 +99,16 @@
     <section :aria-label="$t('pages.home.title2') + ' & ' + $t('pages.home.title3')" class="py-20 pb-72 bg-gradient-to-b from-black to-grey-700 text-white responsive-padding-x max-w-[100dvw] overflow-hidden">
       <div class="grid m:grid-cols-2 responsive-layout gap-16 xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-0">
         <div class="gap-y-12 flex flex-col justify-between">
-          <h1 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h1>
+          <h2 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h2>
 
           <div class="grid gap-4 xs:grid-cols-3">
 
             <template v-for="(experience, i) in featured_experiences" :key="i">
-              <h4 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1">
+              <h3 class="text-monument-h3 text-orange-100 font-light pt-2 col-start-1">
                 {{ new Date(experience.experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
                 &nbsp;–&nbsp;
                 {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
-              </h4>
+              </h3>
               <div class="xs:col-start-2 xs:col-span-2">
                 <h4 class="text-h4 font-light">
                   {{ experience.experience["position_"+locale] }}&nbsp;· <span class="font-black">{{ experience.experience.company }}</span>
@@ -132,14 +132,14 @@
 
         </div>
         <div class="gap-y-8 flex flex-col justify-between">
-          <h1 class="relative text-big-title text-center xs:text-left">
+          <h2 class="relative text-big-title text-center xs:text-left">
             {{ $t('pages.home.title3') }}
             <span class="text-xs font-light absolute top-0 right-0 xs:bottom-0 xs:top-auto xs:right-auto xs:left-0"> {{ $t('pages.home.subtitle3') }} </span>
-          </h1>
+          </h2>
 
           <div class="grid gap-8 group">
             <nuxt-link :to="localePath('/about')+'#skill_'+skill.skill['skill_name_'+locale]" v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 s:group-hover:-rotate-3 odd:-rotate-3 s:odd:group-hover:rotate-3 hover:border-white active:scale-95 duration-300 text-center">
-              <h4 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h4>
+              <h3 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h3>
             </nuxt-link>
           </div>
 

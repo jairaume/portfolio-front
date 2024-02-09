@@ -11,10 +11,10 @@
             </div>
 
             <div class="flex flex-col gap-2">
-              <h4 class="text-h4">{{ $t('pages.about.hi_im') }}</h4>
-              <h1 id="reveal-name" class="text-h1 leading-none">
+              <h1 class="text-h4">{{ $t('pages.about.hi_im') }}</h1>
+              <h2 id="reveal-name" class="text-h1 leading-none">
                 <span>Jérôme Rascle</span>
-              </h1>
+              </h2>
               <p class="whitespace-pre-line xs:max-layout-s-c-8-g-7 s:max-layout-m-c-5-g-4 m:max-layout-l-c-3-g-2">
                 {{ $t('pages.about.p1', {age: computedAge }) }}
               </p>
@@ -54,7 +54,7 @@
       </div>
 
 
-      <div @click="downloadResume" role="button" :title="$t('common.resume')" class="!mt-12 btn btn-white w-fit mx-auto group">
+      <div @click="downloadResume" tabindex="0" role="button" :title="$t('common.resume')" class="!mt-12 btn btn-white w-fit mx-auto group">
         <p>{{ $t('common.resume') }}</p>
         <div class="flex items-center">
           <i class="icon icon-arrow rotate-90 scale-x-75 duration-100 group-hover:translate-y-1"/>
@@ -73,7 +73,7 @@
             after:absolute last:after:hidden after:w-5/6 after:h-1 after:rounded-full after:bg-white/10 after:-bottom-4 after:left-1/2 after:-translate-x-1/2
           ">
             <div class="text-center text-cta shrink-0">
-              <h4 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">{{ skill["skill_name_"+locale] }}</h4>
+              <h2 class="w-fit mx-auto border border-white rounded-md py-1 px-2 my-2">{{ skill["skill_name_"+locale] }}</h2>
             </div>
             <div class="max-w-[800px] text-grey-50">
               <p class="whitespace-pre-line">{{ skill["description_"+locale] }}</p>
@@ -88,9 +88,9 @@
   <section aria-label="Hobbies" id="hobbies" class="relative py-32 s:py-40 responsive-padding-x">
     <div class="responsive-layout">
       <div class="px-layout-xs-c-0-g-1 xs:px-layout-s-c-2-g-1 s:px-layout-m-c-2-g-1 m:px-layout-l-c-1-g-2">
-        <h3 class="text-h3 font-light leading-normal">
+        <h2 class="text-h3 font-light leading-normal">
           {{ $t('pages.about.p4.intro') }} <span ref="movieAnnotate">{{ $t('pages.about.p4.hobby1') }}</span>{{ $t('pages.about.p4.or') }}<span ref="surfAnnotate">{{ $t('pages.about.p4.hobby2') }}</span>{{ $t('pages.about.p4.or2') }}<span ref="drumsAnnotate" class="relative littleArrow">{{$t('pages.about.p4.hobby3')}}</span>&nbsp;!
-        </h3>
+        </h2>
       </div>
     </div>
     <nuxt-img loading="lazy" src="/images/emoji/popcorn.png" alt="Emoji of a popcorn bucket" class="movie absolute top-32 right-4 w-16 h-16 xs:right-8 s:w-24 s:h-24 s:right-16 m:w-24 m:h-24 m:right-32"></nuxt-img>
@@ -102,9 +102,9 @@
     <div class="responsive-layout">
       <div class="xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-1 m:px-layout-l-c-1-g-2">
         <div>
-          <h4 id="otherStuff" ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">
+          <h2 id="otherStuff" ref="otherAnnotate" class="text-h4 text-white text-center w-fit mx-auto">
             {{ $t('pages.about.other_stuff') }}
-          </h4>
+          </h2>
         </div>
         <ul class="relative pt-20 min-h-[min(70vh,_1000px)]">
           <li v-for="(hobby, i) in hobbies" :key="i"
@@ -117,7 +117,7 @@
                 </div>
                 <nuxt-img loading="lazy"
                           :src="hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
-                          :alt="hobby['description_'+locale]"
+                          alt=""
                           class="w-full h-full max-h-[clamp(50vh,_50vw,_500px)] object-cover"
                 />
               </div>
@@ -394,6 +394,7 @@ const {public: {siteUrl}} = useRuntimeConfig();
 
 useSeoMeta({
   title: t("pages.about.meta_title"),
+  description: t("pages.about.meta_description"),
   ogTitle: t("pages.about.meta_title"),
   ogSiteName: 'Jérôme Rascle',
   ogDescription: t("pages.about.meta_description"),

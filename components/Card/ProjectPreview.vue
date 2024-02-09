@@ -6,7 +6,7 @@
   >
     <div class="absolute w-full h-full top-0 left-0">
       <nuxt-picture :src="project.thumbnail_image"
-                    :alt="project.title"
+                    alt=""
                     class="w-full h-full rounded-big"
                     :img-attrs="{class: 'absolute left-0 top-0 h-full w-full object-cover object-center'}"
       />
@@ -15,7 +15,7 @@
       <div :style="{backgroundColor: project.color}"
            class="relative isolate overflow-hidden bg-grey-500 rounded-btn text-white flex justify-between items-center px-2 group/name
               after:absolute after:-z-10 after:w-full after:h-full after:left-0 after:top-0 after:bg-gradient-to-r after:from-black/95 after:to-black/50">
-        <h4 class="text-cta py-1 px-2 font-light">{{ project.title }}</h4>
+        <h3 class="text-cta py-1 px-2 font-light">{{ project.title }}</h3>
         <i class="icon icon-arrow group-hover/name:-translate-x-2 duration-300"></i>
       </div>
     </div>
