@@ -2,6 +2,10 @@
   "name": "portfolio-jerome-rascle",
   "version": "1.0.0",
   "private": true,
+  "description": "My personal portfolio",
+  "author": "Jérôme Rascle",
+  "repository": "https://github.com/jairaume/portfolio-front",
+  "license": "MIT",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
