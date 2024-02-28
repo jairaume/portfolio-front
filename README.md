@@ -1,48 +1,42 @@
-# Nuxt Example
+# Jérôme RASCLE – Portfolio
 
-Deploy your [Nuxt](https://nuxt.com) project to Vercel with zero configuration.
+## Description
+A fully-responsive portfolio website built to showcase my projects and coding abilities. 
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/vercel/vercel/tree/main/examples/nuxtjs&template=nuxtjs)
-
-_Live Example: https://nuxtjs-template.vercel.app_
-
-Look at the [Nuxt 3 documentation](https://v3.nuxtjs.org) to learn more.
+## Technologies used
+> [![Tech-Stack](https://skillicons.dev/icons?i=nuxt,tailwind,supabase,vercel)](https://skillicons.dev)      
+> Animations : **GSAP**
 
 ## Setup
 
 Make sure to install the dependencies:
 
 ```bash
-# yarn
 yarn
-
-# npm
-npm install
-
-# pnpm
-pnpm install --shamefully-hoist
 ```
 
-## Development Server
+### Development Server
 
 Start the development server on http://localhost:3000
 
 ```bash
-npm run dev
+yarn run dev
 ```
 
-## Production
+### Production
 
 Build the application for production:
 
 ```bash
-npm run build
+yarn run build
 ```
 
 Locally preview production build:
 
 ```bash
-npm run preview
+yarn run preview
 ```
 
-Checkout the [deployment documentation](https://v3.nuxtjs.org/guide/deploy/presets) for more information.
+## License
+Copyright © 2024, [Jérôme Rascle](https://github.com/jairaume).
+Released under the [MIT License](LICENSE).
