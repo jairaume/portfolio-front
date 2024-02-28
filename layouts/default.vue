@@ -1,4 +1,5 @@
 <template>
+  <SpeedInsights/>
   <div id="layoutContainer" class="bg-black max-w-screen">
     <LanguageSwitch class="fixed bottom-4 left-0 z-50"/>
     <TheMenu/>
@@ -8,6 +9,8 @@
 </template>
 
 <script setup lang="ts">
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
+
 const route = useRoute()
 useHead(() => ({
   link: [
