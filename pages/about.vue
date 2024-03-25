@@ -109,14 +109,14 @@
         <ul class="relative pt-20 min-h-[min(70vh,_1000px)]">
           <li v-for="(hobby, i) in hobbies" :key="i"
               class="hobby group absolute top-1/2 left-1/2">
-            <div class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
+            <div v-if="hobby.image" class="relative rounded-btn overflow-hidden shadow-custom-ondark hover:scale-105 duration-300">
               <div class=" w-full h-full">
                 <div class="absolute will-change-transform bottom-0 left-0 w-full p-4 translate-y-full opacity-0 group-hover:opacity-100 group-hover:translate-y-0 duration-300">
                   <p class="bg-black/50 backdrop-blur border border-black/25 shadow-xl text-white text-center px-4 py-2 rounded-full w-fit mx-auto">
                     {{ hobby["description_"+locale] }}</p>
                 </div>
                 <nuxt-img loading="lazy"
-                          :src="hobby.image+'?cache='+(new Date()).getTime()+'&metadata=false'"
+                          :src="hobby.image"
                           alt=""
                           class="w-full h-full max-h-[clamp(50vh,_50vw,_500px)] object-cover"
                 />
@@ -165,9 +165,9 @@ const hobbiesLoaded = ref(false)
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
-  start: 'top 75%',
-  end: 'bottom center',
-  scrub: 1
+  start: 'top 25%',
+  end: 'bottom 75%',
+  toggleActions: 'play none none reverse'
 }
 
 const { data: experiences } = await useAsyncData('experiences', async () => {
@@ -243,24 +243,24 @@ function initHobbies(){
   const hobbies = $gsap.utils.toArray('li.hobby')
   hobbies.forEach((hobby)=>{
     let positions = {
-      x: ($gsap.utils.random(-25,25)-50)+"%",
-      y: ($gsap.utils.random(-15,15)-50)+"%",
+      x: ($gsap.utils.random(-70,70))+"%",
+      y: ($gsap.utils.random(-15, 15))+"%",
       r: $gsap.utils.random(-10,10),
     }
     $gsap.fromTo(hobby as HTMLElement,{
-      translateX:"-50%",
-      translateY:"-50%",
-      scale:.6,
-      opacity:0,
+      xPercent: -50,
+      yPercent: -50,
+      scale:.5,
       rotation: -positions.r,
+      filter: "blur(5px)"
     }, {
       rotation: positions.r,
       duration:1,
-      ease:"power3.out",
-      translateX: positions.x,
-      translateY: positions.y,
+      ease:"elastic(1,0.75)",
+      x: positions.x,
+      y: positions.y,
       scale:1,
-      opacity:1,
+      filter: "blur(0px)",
       scrollTrigger:{
         trigger: hobby as HTMLElement,
         toggleActions: 'play none none reverse',
@@ -271,6 +271,19 @@ function initHobbies(){
     $Draggable.create(hobby as HTMLElement,{
       bounds: document.querySelector('#hobbyCards') as HTMLElement,
       edgeResistance: 0.65,
+      onDragStart: () => {
+        $gsap.to(hobby as HTMLElement, {
+          scale: 1.2,
+          duration: .5
+        })
+      },
+      onDragEnd: () => {
+        $gsap.to(hobby as HTMLElement, {
+          scale: 1,
+          duration: .5,
+          ease:"elastic(1,0.75)"
+        })
+      }
     })
   })
   hobbiesLoaded.value = true
@@ -340,7 +353,8 @@ onMounted(() => {
       x:10
     }, {
       scrollTrigger : hobbiesScrollTrigger,
-      ease: 'none',
+      ease: 'elastic(1,0.75)',
+      duration: 2,
       scale:1.2,
       rotation: 15,
       x:0
@@ -352,7 +366,8 @@ onMounted(() => {
       x:-10
     }, {
       scrollTrigger : hobbiesScrollTrigger,
-      ease: 'none',
+      ease: 'elastic(1,0.75)',
+      duration: 2,
       scale:1.2,
       rotation: -15,
       x:0

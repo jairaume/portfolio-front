@@ -36,6 +36,7 @@ export interface LangCommon {
         work: string,
         school: string,
         freelance: string,
+        personal: string
     }
 
     // Project type

@@ -284,32 +284,30 @@ onMounted(()=> {
         backgroundPositionX: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: "#reveal-text",
-          endTrigger: revealContainer.value,
+          trigger: '#reveal-text-title',
           scrub: 1,
-          start: "-50% top",
-          end: 'top-=100px top',
+          start: "top 80%",
+          end: 'bottom 75%',
         }
       });
 
       $gsap.to('p#reveal-text-paragraph > span', {
         '--progress': 1,
         scrollTrigger: {
-          trigger: revealContainer.value,
+          trigger: '#reveal-text-title',
+          endTrigger: '#reveal-text-paragraph',
           scrub: .5,
-          start: 'top-=100px top',
-          end: '300% 75%',
-          pin: true,
-          anticipatePin: 1,
+          start: 'bottom 75%',
+          end: 'bottom 25%',
         }
       })
       $gsap.to('p#reveal-text-paragraph > span', {
         color: 'white',
         scrollTrigger: {
-          trigger: revealText.value,
-          scrub: 0.5,
-          start: 'bottom-=20% bottom',
-          end: 'bottom-=5% bottom',
+          trigger: '#reveal-text-paragraph',
+          scrub: 1,
+          start: 'bottom-=10% 75%',
+          end: 'bottom+=25% center',
         }
       })
 
@@ -320,7 +318,7 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: projects.value,
           pin: true,
-          scrub: 1,
+          scrub: 2,
           start: "center center",
           end: "+=100%",
           invalidateOnRefresh: true,
