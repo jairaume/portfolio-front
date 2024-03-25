@@ -4,7 +4,7 @@
 
       <div class="responsive-layout pt-12">
         <div class="xs:px-layout-s-c-1-g-1 gap-y-12 flex flex-col s:flex-col-reverse">
-          <div ref="projectSwiperElement" class="swiper projectSwiper w-full !overflow-visible">
+          <div v-if="projectData.thumbnail_image" ref="projectSwiperElement" class="swiper projectSwiper w-full !overflow-visible">
             <div class="swiper-wrapper">
               <div class="swiper-slide project-image-slide">
                 <nuxt-picture

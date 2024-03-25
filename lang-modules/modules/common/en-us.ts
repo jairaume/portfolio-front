@@ -34,6 +34,7 @@ export const common: LangCommon = {
         work: "Work for",
         school: "During my studies at",
         freelance: "Freelance for",
+        personal: "Personal project"
     },
 
     // Project type

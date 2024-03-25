@@ -4,7 +4,7 @@
     <section aria-label="All my projects" class="text-white text-right">
       <div class="responsive-padding-x">
         <div class="responsive-layout">
-          <div class="grid gap-y-12 py-12">
+          <div class="grid gap-y-6 py-12 max-layout-l-c-7-g-6 mx-auto">
 
             <CardProject v-for="(project, i) in projects" :project="project as Project" :width="width" :height="height" :key="i" />
 
