@@ -70,12 +70,10 @@
 </template>
 
 <script setup lang="ts">
+const {$gsap} = useNuxtApp();
 
 function scrollToTop(){
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  })
+  $gsap.to(window, { duration: 1, scrollTo: 0, ease: 'power3.inOut'});
 }
 </script>
 
