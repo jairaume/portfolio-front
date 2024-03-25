@@ -165,9 +165,9 @@ const hobbiesLoaded = ref(false)
 
 const hobbiesScrollTrigger = {
   trigger: '#hobbies',
-  start: 'top center',
-  end: 'bottom center',
-  toggleActions: 'play none none reset'
+  start: 'top 25%',
+  end: 'bottom 75%',
+  toggleActions: 'play none none reverse'
 }
 
 const { data: experiences } = await useAsyncData('experiences', async () => {
@@ -354,6 +354,7 @@ onMounted(() => {
     }, {
       scrollTrigger : hobbiesScrollTrigger,
       ease: 'elastic(1,0.75)',
+      duration: 2,
       scale:1.2,
       rotation: 15,
       x:0
@@ -366,6 +367,7 @@ onMounted(() => {
     }, {
       scrollTrigger : hobbiesScrollTrigger,
       ease: 'elastic(1,0.75)',
+      duration: 2,
       scale:1.2,
       rotation: -15,
       x:0
