@@ -167,7 +167,6 @@ const hobbiesScrollTrigger = {
   trigger: '#hobbies',
   start: 'top center',
   end: 'bottom center',
-  markers: true,
   toggleActions: 'play none none reset'
 }
 
