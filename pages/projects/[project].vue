@@ -44,10 +44,13 @@
             <div class="flex justify-between flex-wrap items-center gap-8">
               <div class="">
                 <h1 id="project-title" class="text-h1 leading-tight">{{ projectData.title }}</h1>
-                <h4 class="text-cta font-light">
+                <h4 v-if="projectData.company" class="text-cta font-light">
                   {{ $t('common.collab.'+projectData.collaboration_type) }} <span class="font-bold filter brightness-200 saturate-100" :style="{color:projectData.color}">
                   {{ projectData.company }}
-                </span>
+                  </span>
+                </h4>
+                <h4 v-else class="text-cta font-bold filter brightness-200 saturate-100" :style="{color:projectData.color}">
+                  {{ $t('common.collab.personal') }}
                 </h4>
               </div>
               <div>
