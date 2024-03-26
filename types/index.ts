@@ -6,7 +6,7 @@ export interface Availability {
 }
 
 export interface Experience {
-        company: string | null
+        company: Company | null
         description_en: string | null
         description_fr: string | null
         end_date: string | null
@@ -15,6 +15,13 @@ export interface Experience {
         position_fr: string
         start_date: string
 }
+
+export interface Company {
+    id: number
+    name: string
+    logo_url: string | null
+}
+
 export interface Project {
     collaboration_type: Collaboration_Type | null
     color: string | null
