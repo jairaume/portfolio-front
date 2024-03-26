@@ -172,8 +172,9 @@ const hobbiesScrollTrigger = {
 
 const { data: experiences } = await useAsyncData('experiences', async () => {
   const { data, error } = await supabase.from('experience')
-      .select()
+      .select('*, company(*)')
       .eq('status', 'published')
+      .order('start_date', {ascending: false})
   if(error) console.error(error)
   return data as unknown as Experience
 })
