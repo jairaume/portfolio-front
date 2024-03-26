@@ -101,25 +101,30 @@
         <div class="gap-y-12 flex flex-col justify-between">
           <h2 class="text-big-title text-center xs:text-left">{{ $t('pages.home.title2') }}</h2>
 
-          <div class="grid gap-4">
+          <div class="grid gap-6">
 
             <template v-for="(experience) in featured_experiences" :key="experience.id">
-              <div class="grid">
-                <h3 class="text-h4 font-light">
-                  <span class="font-black">{{ experience.experience.company.name }}</span>
-                  &nbsp;·&nbsp;
-                  {{ experience.experience["position_"+locale] }}
-                </h3>
-                <h4 class="text-monument-h3 text-orange-100 font-light pt-2">
-                  {{ new Date(experience.experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
-                  &nbsp;–&nbsp;
-                  {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
-                </h4>
-                <p class="whitespace-pre-line text-grey-100 font-light">
-                  {{
-                    experience.experience["description_"+locale]
-                  }}
-                </p>
+              <div class="grid s:grid-cols-4">
+                <div v-if="experience.experience.company.logo_url" class="py-4 max-w-32 s:p-6 s:my-auto">
+                  <NuxtImg :src="experience.experience.company.logo_url" :alt="experience.experience.company.name + ' logo'"/>
+                </div>
+                <div class="s:col-span-3 s:col-start-2">
+                  <h3 class="text-h4 font-light">
+                    <span class="font-black">{{ experience.experience.company.name }}</span>
+                    &nbsp;·&nbsp;
+                    {{ experience.experience["position_"+locale] }}
+                  </h3>
+                  <h4 class="text-monument-h3 text-orange-100 font-light pt-2">
+                    {{ new Date(experience.experience.start_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) }}
+                    &nbsp;–&nbsp;
+                    {{ experience.experience.end_date ? new Date(experience.experience.end_date).toLocaleDateString(locale, {month: 'long', year: 'numeric'}) : $t('common.now') }}
+                  </h4>
+                  <p class="whitespace-pre-line text-grey-100 font-light">
+                    {{
+                      experience.experience["description_"+locale]
+                    }}
+                  </p>
+                </div>
               </div>
             </template>
 
