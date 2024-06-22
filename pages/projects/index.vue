@@ -24,7 +24,7 @@ const {width, height} = useWindowSize()
 
 const { data: projects } = await useAsyncData('projects', async () => {
   const { data, error } = await supabase.from('project')
-      .select('id, title, slug, thumbnail_image, collaboration_type, company')
+      .select('id, title, created_at, slug, thumbnail_image, collaboration_type, company, color, description_fr, description_en')
       .range(0,6)
       .eq('status','published')
       .order('created_at', { ascending: false })
