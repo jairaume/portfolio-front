@@ -311,7 +311,6 @@ onMounted(()=> {
       $gsap.fromTo('p#reveal-text-paragraph > span',{backgroundPositionX: "110%"}, {
         backgroundPositionX: "0%",
         scrollTrigger: {
-          markers:true,
           trigger: '#reveal-text-title',
           endTrigger: '#reveal-text-paragraph',
           scrub: .5,
