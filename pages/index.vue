@@ -55,9 +55,9 @@
       </div>
     </section>
 
-    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-20 xs:py-24 m:py-32 min-h-[100vh] responsive-padding-x max-w-[100dvw]">
+    <section aria-label="Presentation" ref="revealText" id="reveal-text" class="bg-gradient-to-b from-grey-700 to-black py-20 xs:py-24 m:py-32 m:min-h-[100dvh] responsive-padding-x max-w-[100dvw]">
       <div ref="revealContainer" id="reveal-container">
-        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 space-y-12">
+        <div class="relative xs:px-layout-s-c-1-g-1 s:px-layout-m-c-1-g-0 m:px-layout-l-c-1-g-1 m:max-layout-l-c-7-g-8 space-y-12 mx-auto">
           <div class="relative isolate">
             <h2 class="text-white text-h4">{{ $t('pages.home.hi_im') }}</h2>
             <h2 id="reveal-text-title" class="text-big-title text-orange-100 reveal-text leading-tight">Jérôme Rascle.</h2>
@@ -282,9 +282,18 @@ onMounted(()=> {
       })
 
       //REVEAL TEXT SECTION
+      $gsap.to("#reveal-text",
+      {
+        scrollTrigger: {
+          trigger: "#reveal-text",
+          endTrigger: "#reveal-text",
+          scrub: 1,
+          pin: true,
+          start: "top top",
+          end: "bottom top",
+        }
+      })
       $gsap.set('p#reveal-text-paragraph > span', {
-        '--progress': 0,
-        backgroundPositionX: 'calc(-400vmax + (var(--progress) * 400vmax)), calc(-400vmax + (var(--progress) * 400vmax)), 0',
         color: 'transparent',
       })
 
@@ -299,14 +308,14 @@ onMounted(()=> {
         }
       });
 
-      $gsap.to('p#reveal-text-paragraph > span', {
-        '--progress': 1,
+      $gsap.fromTo('p#reveal-text-paragraph > span',{backgroundPositionX: "110%"}, {
+        backgroundPositionX: "0%",
         scrollTrigger: {
           trigger: '#reveal-text-title',
           endTrigger: '#reveal-text-paragraph',
           scrub: .5,
           start: 'bottom 75%',
-          end: 'bottom 25%',
+          end: '200% center',
         }
       })
       $gsap.to('p#reveal-text-paragraph > span', {
@@ -314,8 +323,8 @@ onMounted(()=> {
         scrollTrigger: {
           trigger: '#reveal-text-paragraph',
           scrub: 1,
-          start: 'bottom-=10% 75%',
-          end: 'bottom+=25% center',
+          start: '225% center',
+          end: '250% center',
         }
       })
 
@@ -367,14 +376,10 @@ svg.rough-annotation path{
 }
 p#reveal-text-paragraph > span {
   background-image:
-		/* First one is the highlight */
-		linear-gradient(90deg, transparent calc(100% - 8ch), transparent calc(100%  - 8ch), white 100%),
-  	linear-gradient(90deg, hsl(0 0% 50%),hsl(0 0% 50%)),
-    linear-gradient(90deg, hsl(0 0% 50% / 0.15),hsl(0 0% 50% / 0.15));
-  background-size:
-    400vmax 1lh,
-    400vmax 1lh,
-    100% 1lh;
+		linear-gradient(90deg, transparent calc(50% - 8ch), white 50%, transparent calc(50%  + 1ch)),
+    linear-gradient(90deg, hsl(0, 0%, 65%) 0%, hsl(0, 0%, 65%) 50%, hsl(0, 0%, 30%) 50%, hsl(0, 0%, 30%) 100%),
+  	linear-gradient(90deg, hsl(0 0% 30%),hsl(0 0% 30%));
+  background-size: 200% 1lh;
   background-repeat: no-repeat;
   background-position-x: 0;
   background-position-y: 100%;
