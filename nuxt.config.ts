@@ -3,6 +3,7 @@ export default defineNuxtConfig<NuxtConfig>({
   css: [
     '~/assets/css/main.css',
   ],
+
   runtimeConfig:{
     supabaseUrl: process.env.NUXT_PUBLIC_SUPABASE_URL,
     supabaseKey: process.env.NUXT_PUBLIC_SUPABASE_KEY,
@@ -12,6 +13,7 @@ export default defineNuxtConfig<NuxtConfig>({
       socialImage: process.env.NUXT_PUBLIC_SOCIAL_IMAGE || "",
     }
   },
+
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     head: {
@@ -40,6 +42,7 @@ export default defineNuxtConfig<NuxtConfig>({
       ],
     }
   },
+
   postcss: {
     plugins: {
       'postcss-import': {},
@@ -48,6 +51,7 @@ export default defineNuxtConfig<NuxtConfig>({
       autoprefixer: {},
     },
   },
+
   modules: [
     '@nuxt/image',
     '@vueuse/nuxt',
@@ -57,10 +61,12 @@ export default defineNuxtConfig<NuxtConfig>({
     'nuxt-simple-sitemap',
     'nuxt-simple-robots'
   ],
+
   components: [
     { path: '~/components/Card' , prefix: 'Card'},
     '~/components',
   ],
+
   i18n: {
     baseUrl: `${process.env.NUXT_PUBLIC_SITE_URL}` || "https://rasclejero.me",
     vueI18n: './i18n.config.ts',
@@ -91,9 +97,12 @@ export default defineNuxtConfig<NuxtConfig>({
       redirectOn: 'root',
     }
   },
+
   supabase: {
     redirect: false,
     url: process.env.NUXT_PUBLIC_SUPABASE_URL,
     key: process.env.NUXT_PUBLIC_SUPABASE_KEY,
-  }
+  },
+
+  compatibilityDate: '2024-08-08',
 });

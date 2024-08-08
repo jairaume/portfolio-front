@@ -1,6 +1,7 @@
 <template>
   <header id="menu" class="w-full z-50 sticky top-0 text-white">
-    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2 duration-300" :class="{'backdrop-blur-md' : scrolled}">
+    <ProgressiveBlur :active="scrolled"/>
+    <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2 duration-300 z-10">
       <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta px-8 hidden m:block">
         {{ $t('common.home') }}
       </nuxt-link>
@@ -8,23 +9,23 @@
         {{ $t('common.about') }}
       </nuxt-link>
       <nuxt-link :title="$t('common.home')"
-          :to="localePath('/')"
-          class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]"
-          :class="{ 'text-white': route.fullPath.includes('projects/')}"
+      :to="localePath('/')"
+      class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]"
+      :class="{ 'text-white': route.fullPath.includes('projects/')}"
       >
-        <h1 class="relative w-fit">
-          Jerome
-          <span id="rightAccent" class="absolute w-[1ch] rotate-180">&lt;</span>
-          <span id="slashMenu" class="absolute w-[1ch]">/</span>
-          <span id="leftAccent" class="absolute w-[1ch] right-full">&lt;</span>
-        </h1>
-      </nuxt-link>
-      <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta px-8 hidden m:block">
-        {{ $t('common.projects') }}
-      </nuxt-link>
-      <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden m:block">
-        {{ $t('common.contact') }}
-      </nuxt-link>
+      <h1 class="relative w-fit">
+        Jerome
+        <span id="rightAccent" class="absolute w-[1ch] rotate-180">&lt;</span>
+        <span id="slashMenu" class="absolute w-[1ch]">/</span>
+        <span id="leftAccent" class="absolute w-[1ch] right-full">&lt;</span>
+      </h1>
+    </nuxt-link>
+    <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta px-8 hidden m:block">
+      {{ $t('common.projects') }}
+    </nuxt-link>
+    <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden m:block">
+      {{ $t('common.contact') }}
+    </nuxt-link>
 
       <div class="absolute right-0 mx-8">
         <button title="Open navigation menu" class="text-cta px-3 py-1 border border-white rounded-lg duration-300 m:hidden"
