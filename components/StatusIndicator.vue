@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link v-if="availability" :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
+  <nuxt-link v-if="availability" :title="$t('common.contact_me')" :to="$localePath('/contact')" class="btn btn-black w-fit h-full mx-auto space-x-2">
     <p><span class="font-light">{{ $t('common.currently') }}</span> {{ availability["currently_"+locale] }}</p>
     <span
         :class="{

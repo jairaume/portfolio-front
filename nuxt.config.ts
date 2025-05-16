@@ -1,5 +1,5 @@
-// @ts-ignore
-export default defineNuxtConfig<NuxtConfig>({
+export default defineNuxtConfig({
+  compatibilityDate: "2025-05-16",
   css: [
     '~/assets/css/main.css',
   ],
@@ -40,22 +40,15 @@ export default defineNuxtConfig<NuxtConfig>({
       ],
     }
   },
-  postcss: {
-    plugins: {
-      'postcss-import': {},
-      "tailwindcss/nesting": {},
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
   modules: [
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@nuxtjs/device',
     '@nuxtjs/supabase',
-    'nuxt-simple-sitemap',
-    'nuxt-simple-robots'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
+    '@nuxtjs/tailwindcss',
   ],
   components: [
     { path: '~/components/Card' , prefix: 'Card'},

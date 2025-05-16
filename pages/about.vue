@@ -20,7 +20,7 @@
               </p>
               <div class="grid gap-4 mt-8">
                 <p class="text-orange-100">{{ $t('pages.about.philosophy') }}</p>
-                <nuxt-link :title="$t('common.contact_me')" :to="localePath('/contact')" class="btn btn-white w-fit">
+                <nuxt-link :title="$t('common.contact_me')" :to="$localePath('/contact')" class="btn btn-white w-fit">
                   <p>{{ $t('common.contact_me') }}</p>
                   <i class="icon icon-mail"></i>
                 </nuxt-link>

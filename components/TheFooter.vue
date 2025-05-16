@@ -15,7 +15,7 @@
           <div class="flex flex-col s:flex-row s:items-center s:justify-around gap-12">
             <div class="s:max-layout-m-c-5-g-4 m:max-layout-l-c-4-g-2">
               <h1 class="text-big-title">{{ $t('common.footer.cta_projects') }}</h1>
-              <nuxt-link :title="$t('common.footer.cta_contact')" class="pushContact text-orange-100 text-cta inline-flex items-center gap-6 group" :to="localePath('/contact')">
+              <nuxt-link :title="$t('common.footer.cta_contact')" class="pushContact text-orange-100 text-cta inline-flex items-center gap-6 group" :to="$localePath('/contact')">
                 <p>{{ $t('common.footer.cta_contact') }}</p>
                 <i class="icon-arrow icon group-hover:translate-x-1/2 duration-300 ease-out"></i>
               </nuxt-link>
@@ -25,22 +25,22 @@
               <nav>
                 <ul class="grid gap-2 text-right whitespace-nowrap">
                   <li>
-                    <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.home')" :to="$localePath('/')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.home') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.about')" :to="$localePath('/about')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.about') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.projects')" :to="$localePath('/projects')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.projects') }}
                     </nuxt-link>
                   </li>
                   <li>
-                    <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1">
+                    <nuxt-link :title="$t('common.contact')" :to="$localePath('/contact')" class="text-cta font-medium rounded-md px-2 py-1">
                       {{ $t('common.contact') }}
                     </nuxt-link>
                   </li>

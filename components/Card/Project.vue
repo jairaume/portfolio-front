@@ -1,5 +1,5 @@
 <template>
-  <nuxt-link v-if="project" :title="$t('common.see_more')+' – '+ project.title" :to="localePath('/projects/'+project.slug)">
+  <nuxt-link v-if="project" :title="$t('common.see_more')+' – '+ project.title" :to="$localePath('/projects/'+project.slug)">
     <article ref="projectCard"
         class="relative rounded-big overflow-hidden hover:shadow-custom-ondark bg-grey-300 h-[min(800px,66vh)] max-h-[1200px]
                   group cursor-pointer duration-300 border-2 border-black/50 hover:border-transparent" :style="{backgroundColor: project.color}"

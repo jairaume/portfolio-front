@@ -4,11 +4,11 @@ export const home: LangHome = {
     meta_title: 'Jérôme Rascle - Accueil',
     meta_description: 'Page d\'accueil du portfolio de Jérôme Rascle',
 
-    job_title: 'Ingénieur logiciel indépendant',
+    job_title: 'Ingénieur informatique',
     catch_phrase: 'Réaliser des',
     catch_phrase_underline: 'idées ambitieuses',
     hi_im: 'Je m\'appelle',
-    p1_reveal: "Je suis un étudiant ingénieur en informatique spécialisé dans le développement logiciel. \nJ'aime résoudre et concevoir des solutions à tous types de problèmes (et tout ça en musique).",
+    p1_reveal: "Je suis passionné de musique et je travaille comme ingénieur en informatique. \nJ'aime méler mes différentes passions dans le but de résoudre et concevoir des solutions à tous types de problèmes !",
 
     title2: 'Expériences',
 

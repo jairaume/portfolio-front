@@ -1,5 +1,6 @@
 export default interface LangModule {
-    common: LangCommon
+    common: LangCommon,
+    pages: LangPages
 }
 
 export interface LangCommon {

@@ -14,30 +14,29 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.7.1",
-    "@commitlint/config-conventional": "^17.7.0",
-    "@nuxt/devtools": "^1.0.1",
-    "@nuxt/image": "^1.0.0-rc.1",
-    "@nuxtjs/device": "^3.1.1",
-    "@nuxtjs/i18n": "^8.0.0-rc.5",
-    "autoprefixer": "^10.4.15",
-    "nuxi": "^3.9.1",
-    "nuxt": "^3.16.0",
-    "nuxt-simple-robots": "^4.0.0-rc.14",
-    "nuxt-simple-sitemap": "^4.0.1",
-    "postcss": "^8.4.31",
-    "sass": "^1.66.1",
-    "tailwindcss": "^3.3.3"
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@nuxt/devtools": "^2.4.1",
+    "@nuxt/image": "^1.10.0",
+    "@nuxtjs/device": "^3.2.4",
+    "@nuxtjs/i18n": "^9.5.4",
+    "@nuxtjs/tailwindcss": "6.14.0",
+    "autoprefixer": "^10.4.21",
+    "nuxi": "^3.25.1",
+    "nuxt": "^3.17.3",
+    "sass": "^1.89.0"
   },
   "dependencies": {
-    "@nuxt/content": "^2.7.2",
-    "@nuxtjs/supabase": "^1.1.3",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.0.10",
-    "@vueuse/nuxt": "^10.2.0",
-    "gsap": "^3.12.2",
+    "@nuxt/content": "^3.5.1",
+    "@nuxtjs/robots": "^5.2.10",
+    "@nuxtjs/sitemap": "^7.2.10",
+    "@nuxtjs/supabase": "^1.5.1",
+    "@vercel/analytics": "^1.5.0",
+    "@vercel/speed-insights": "^1.2.0",
+    "@vueuse/nuxt": "^13.2.0",
+    "gsap": "^3.13.0",
     "rough-notation": "^0.5.1",
-    "swiper": "^10.2.0"
+    "swiper": "^11.2.6"
   },
   "hooks": {
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
@@ -47,5 +46,6 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
