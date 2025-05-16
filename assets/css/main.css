@@ -1,7 +1,5 @@
-@import "tailwindcss/base";
 @import "assets/css/base/default.css";
 
-@import "tailwindcss/components";
 @import "assets/css/components/icon.css";
 @import "assets/css/components/svg.css";
 @import "assets/css/components/layout.css";
@@ -10,8 +8,10 @@
 @import "assets/css/components/input.css";
 @import "assets/css/components/swiper.css";
 @import "assets/css/components/animation.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-@import "tailwindcss/utilities";
 @layer utilities {
     .pause {
         animation-play-state: paused;

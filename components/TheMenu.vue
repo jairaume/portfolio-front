@@ -1,14 +1,14 @@
 <template>
   <header id="menu" class="w-full z-50 sticky top-0 text-white">
     <nav class="relative responsive-padding-x py-8 flex items-center justify-between m:justify-center m:gap-6 drop-shadow s:mr-2 duration-300" :class="{'backdrop-blur-md' : scrolled}">
-      <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta px-8 hidden m:block">
+      <nuxt-link :title="$t('common.home')" :to="$localePath('/')" class="text-cta px-8 hidden m:block">
         {{ $t('common.home') }}
       </nuxt-link>
-      <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta px-8 hidden m:block">
+      <nuxt-link :title="$t('common.about')" :to="$localePath('/about')" class="text-cta px-8 hidden m:block">
         {{ $t('common.about') }}
       </nuxt-link>
       <nuxt-link :title="$t('common.home')"
-          :to="localePath('/')"
+          :to="$localePath('/')"
           class="text-monument-menu text-orange-100 w-fit px-8 s:mx-[1ch] s:mr-[2ch]"
           :class="{ 'text-white': route.fullPath.includes('projects/')}"
       >
@@ -19,10 +19,10 @@
           <span id="leftAccent" class="absolute w-[1ch] right-full">&lt;</span>
         </h1>
       </nuxt-link>
-      <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta px-8 hidden m:block">
+      <nuxt-link :title="$t('common.projects')" :to="$localePath('/projects')" class="text-cta px-8 hidden m:block">
         {{ $t('common.projects') }}
       </nuxt-link>
-      <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden m:block">
+      <nuxt-link :title="$t('common.contact')" :to="$localePath('/contact')" class="text-cta btn btn-black px-4 py-1 hidden m:block">
         {{ $t('common.contact') }}
       </nuxt-link>
 
@@ -38,22 +38,22 @@
             <nav>
               <ul class="w-full pr-1 space-y-2 flex flex-col items-end" @click="toggleMenu">
                 <li>
-                  <nuxt-link :title="$t('common.home')" :to="localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                  <nuxt-link :title="$t('common.home')" :to="$localePath('/')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
                     {{ $t('common.home') }}
                   </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :title="$t('common.about')" :to="localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                  <nuxt-link :title="$t('common.about')" :to="$localePath('/about')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
                     {{ $t('common.about') }}
                   </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :title="$t('common.projects')" :to="localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
+                  <nuxt-link :title="$t('common.projects')" :to="$localePath('/projects')" class="text-cta border rounded-full border-white/25 py-1 px-3 bg-black/10 shadow">
                     {{ $t('common.projects') }}
                   </nuxt-link>
                 </li>
                 <li>
-                  <nuxt-link :title="$t('common.contact')" :to="localePath('/contact')" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
+                  <nuxt-link :title="$t('common.contact')" :to="$localePath('/contact')" class="text-cta border rounded-full border-white/25 py-1 px-3 flex items-center gap-2 bg-black/10 shadow">
                     {{ $t('common.contact') }}
                     <i class="icon icon-mail bg-white"></i>
                   </nuxt-link>

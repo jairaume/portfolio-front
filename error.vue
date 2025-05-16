@@ -10,7 +10,7 @@
         <h3 class="text-h4 font-light">
           {{ $t('common.error.not_found') }}
         </h3>
-        <nuxt-link :to="localePath('/')" class="btn btn-orange-100 w-fit mx-auto">
+        <nuxt-link :to="$localePath('/')" class="btn btn-orange-100 w-fit mx-auto">
           <i class="icon icon-arrow rotate-180"></i>
           <p>{{ $t('common.error.go_home') }}</p>
         </nuxt-link>

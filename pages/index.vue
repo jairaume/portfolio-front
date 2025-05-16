@@ -38,7 +38,7 @@
 
             <div class="mx-auto s:absolute s:bottom-0 w-full h-fit s:left-1/2 s:-translate-x-1/2 my-8">
               <div class="relative w-fit mx-auto grid s:grid-cols-2 justify-center gap-8">
-                <nuxt-link :title="$t('common.more_projects')" :to="localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
+                <nuxt-link :title="$t('common.more_projects')" :to="$localePath('/projects')" class="btn btn-orange-100 w-fit h-full mx-auto">
                   <p>{{$t('common.more_projects')}}</p>
                   <i class="icon icon-arrow"/>
                 </nuxt-link>
@@ -66,7 +66,7 @@
             </p>
             <div class="absolute -z-10 w-2/3 h-2/3 blur-3xl bg-orange-100/10 rounded-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"></div>
           </div>
-          <nuxt-link :title="$t('common.more_about')" :to="localePath('/about')" class="btn btn-orange-100 w-fit">
+          <nuxt-link :title="$t('common.more_about')" :to="$localePath('/about')" class="btn btn-orange-100 w-fit">
             <p>{{ $t('common.more_about') }}</p>
             <i class="icon icon-arrow"/>
           </nuxt-link>
@@ -89,7 +89,7 @@
           <CardProjectPreview v-for="(project, i) in featured_projects" :key="i" :project="project.project" />
         </div>
 
-        <nuxt-link :title="$t('common.more_projects2')" :to="localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
+        <nuxt-link :title="$t('common.more_projects2')" :to="$localePath('/projects')" class="btn btn-white m-12 w-fit mx-auto">
           <p>{{ $t('common.more_projects2') }}</p>
           <i class="icon icon-arrow"/>
         </nuxt-link>
@@ -145,12 +145,12 @@
           </h2>
 
           <div class="grid gap-8 group">
-            <nuxt-link :to="localePath('/about')+'#skill_'+skill.skill['skill_name_'+locale]" v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 s:group-hover:-rotate-3 odd:-rotate-3 s:odd:group-hover:rotate-3 hover:border-white active:scale-95 duration-300 text-center">
+            <nuxt-link :to="$localePath('/about')+'#skill_'+skill.skill['skill_name_'+locale]" v-for="skill in skills" :key="skill.id" class="border-2 border-orange-100 rounded-full py-1 px-2 rotate-3 s:group-hover:-rotate-3 odd:-rotate-3 s:odd:group-hover:rotate-3 hover:border-white active:scale-95 duration-300 text-center">
               <h3 class="text-h3 py-1 px-2 font-light">{{ skill.skill['skill_name_'+locale] }}</h3>
             </nuxt-link>
           </div>
 
-          <nuxt-link :title="$t('common.more_about2')" :to="localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
+          <nuxt-link :title="$t('common.more_about2')" :to="$localePath('/about')" class="btn btn-orange-100 w-fit mx-auto group">
             <p>{{ $t('common.more_about2') }}</p>
             <i class="icon icon-arrow duration-100 group-hover:translate-x-1"/>
           </nuxt-link>

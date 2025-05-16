@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
       :title="project.title"
-      :to="localePath('/projects/'+project.slug)"
+      :to="$localePath('/projects/'+project.slug)"
       class="group relative p-8 shadow-custom-ondark rounded-big overflow-hidden min-w-[clamp(300px,_50vw,_700px)] min-h-[clamp(250px,_40vh,_800px)]"
   >
     <div class="absolute w-full h-full top-0 left-0">
