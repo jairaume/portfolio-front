@@ -110,7 +110,7 @@
           <div class="grid s:grid-cols-2 gap-8">
             <nuxt-link v-for="(other_project , o) in other_projects" :key="o"
                 :title="other_project.title"
-                :to="localePath('/projects/'+other_project.slug)"
+                :to="$localePath('/projects/'+other_project.slug)"
                 class="otherProject group relative p-8 shadow-custom-ondark rounded-big overflow-hidden h-32"
             >
               <div class="absolute w-full h-full top-0 left-0">
