@@ -36,7 +36,7 @@
     "@vueuse/nuxt": "^13.2.0",
     "gsap": "^3.13.0",
     "rough-notation": "^0.5.1",
-    "swiper": "^11.2.6"
+    "swiper": "^12.1.2"
   },
   "hooks": {
     "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
